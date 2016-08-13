@@ -11,6 +11,8 @@ from django.contrib.gis.db import models
 
 #Land, PLZ, Ort, Strasse, Hausnummer, Tuernummer, Anrede, Vorname, Nachname,
 # E-Mail Adresse, Produktbedarf (Paket mit 500 Flyern)
+from rest_framework.exceptions import ValidationError
+
 
 class Activist(models.Model):
     uuid = models.UUIDField(unique=True, default=uuid.uuid4, editable=False)
@@ -18,14 +20,17 @@ class Activist(models.Model):
     anrede = models.CharField(max_length=100, null=True, blank=True)
     first_name = models.CharField(max_length=300, null=True, blank=True)
     last_name = models.CharField(max_length=300, null=True, blank=True)
+    facebook_id = models.CharField(max_length=32, null=True, blank=True)
     email = models.EmailField()
-    postalcode = models.IntegerField()  # PLZ (4-digit)
+    postalcode = models.IntegerField(null=True, blank=True)  # PLZ (4-digit)
     municipal = models.CharField(max_length=500, null=True, blank=True)  # Ort
     street = models.CharField(max_length=500, null=True, blank=True)
     house_number = models.CharField(max_length=100, null=True, blank=True)
     coordinate = models.PointField(null=True, blank=True)
-    # todo:
-    # - hash as link to user
+
+    def clean(self):
+        if self.postalcode is None and self.municipal is None:
+            raise ValidationError(_('Either postalcode or municipal are required.'))
 
     def __str__(self):
         return '{} ({}) - {}'.format(self.email, self.postalcode, self.uuid)
