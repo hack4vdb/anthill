@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User, Group
+from anthill import models
 from rest_framework import viewsets
-from anthill.serializers import UserSerializer, GroupSerializer
+from anthill.serializers import UserSerializer, GroupSerializer, \
+    ActivistSerializer, MeetupSerializer
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -18,3 +20,19 @@ class GroupViewSet(viewsets.ModelViewSet):
     """
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
+
+
+class ActivistViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows activists to be viewed or edited.
+    """
+    queryset = models.Activist.objects.all()
+    serializer_class = ActivistSerializer
+
+
+class MeetupViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows meetups to be viewed or edited.
+    """
+    queryset = models.Meetup.objects.all()
+    serializer_class = MeetupSerializer
