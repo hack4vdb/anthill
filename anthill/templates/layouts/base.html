@@ -58,7 +58,9 @@ function postDataToBackend(response) {
   request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
   request.onload = function() {
     if (request.status >= 200 && request.status < 400) {
-      window.location = "/events?id=" + JSON.parse(request.responseText).uuid;
+      var user_uuid = JSON.parse(request.responseText).uuid;
+      document.cookie = "user_uuid=" + user_uuid + "; max-age=31536e3; path=/";
+      window.location = "/events";
     } else {
       console.error('alert');
     }
@@ -95,6 +97,23 @@ function getDataFromForm() {
   response.email = document.getElementById('inputEmail').value;
   response.postalcode = document.getElementById('inputPostalcode').value;
   postDataToBackend(response);
+}
+
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+window.onload = function() {
+  if (getParameterByName('id')) {
+    document.cookie = "user_uuid=" + getParameterByName('id') + "; max-age=31536e3; path=/";
+    window.location = "/events";
+  }
 }
     </script>
   </head>
