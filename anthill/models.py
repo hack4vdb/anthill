@@ -6,10 +6,10 @@ from django.contrib.gis.db import models
 # Create your models here.
 
 
-#Datenfelder für Import CSV: Anrede (Herr, Frau, Keine Angabe), Vornamen (Textfeld),
-# Nachname (Textfeld), E-Mail Adresse, PLZ (4-digit), Straße, Hausnummer
+#Datenfelder fuer Import CSV: Anrede (Herr, Frau, Keine Angabe), Vornamen (Textfeld),
+# Nachname (Textfeld), E-Mail Adresse, PLZ (4-digit), Strasse, Hausnummer
 
-#Land, PLZ, Ort, Straße, Hausnummer, Türnummer, Anrede, Vorname, Nachname,
+#Land, PLZ, Ort, Strasse, Hausnummer, Tuernummer, Anrede, Vorname, Nachname,
 # E-Mail Adresse, Produktbedarf (Paket mit 500 Flyern)
 
 class Activist(models.Model):
