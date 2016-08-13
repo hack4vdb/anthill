@@ -1,0 +1,56 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+<div class="container">
+  <h1>Flyern für VdB</h1>
+  <p>Diese Aktionen finden in deiner Nähe statt:</p>
+  <ul>
+    <li class="event">
+      <div class="row">
+        <div class="two-thirds column">
+          <h3>Flyerverteilen am Kirtag Hintertupfing</h3>
+          <p class="event-location"><i class="fa fa-map-marker" aria-hidden="true"></i> Hauptplatz Hintertupfing</p>
+          <p class="event-date"><i class="fa fa-clock-o" aria-hidden="true"></i> Montag, 32. August 2016, 18.00h</p>
+          <p>Schon 3 Leute haben sich für diese Aktion angemeldet.</p>
+        </div>
+        <div class="one-third column">
+          <a class="event-button" href="{% url 'join_event' %}">
+            <div>Ich mach' mit!</div>
+          </a>
+        </div>
+      </div>
+    </li>
+    <li class="event">
+      <div class="row">
+        <div class="two-thirds column">
+          <h3>Flyerverteilen am Kirtag Hintertupfing</h3>
+          <p class="event-location"><i class="fa fa-map-marker" aria-hidden="true"></i> Hauptplatz Hintertupfing</p>
+          <p class="event-date"><i class="fa fa-clock-o" aria-hidden="true"></i> Montag, 32. August 2016, 18.00h</p>
+          <p>Schon 3 Leute haben sich für diese Aktion angemeldet.</p>
+        </div>
+        <div class="one-third column">
+          <a class="event-button" href="{% url 'join_event' %}">
+            <div>Ich mach' mit!</div>
+          </a>
+        </div>
+      </div>
+    </li>
+    <li class="event">
+      <div class="row">
+        <div class="two-thirds column">
+          <h3>Flyerverteilen am Kirtag Hintertupfing</h3>
+          <p class="event-location"><i class="fa fa-map-marker" aria-hidden="true"></i> Hauptplatz Hintertupfing</p>
+          <p class="event-date"><i class="fa fa-clock-o" aria-hidden="true"></i> Montag, 32. August 2016, 18.00h</p>
+          <p>Schon 3 Leute haben sich für diese Aktion angemeldet.</p>
+        </div>
+        <div class="one-third column">
+          <a class="event-button" href="{% url 'join_event' %}">
+            <div>Ich mach' mit!</div>
+          </a>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <a class="event-button" href="{% url 'start_event' %}"><div>Ich starte meine eigene Aktion!</div></a>
+</div>
+{% endblock %}
