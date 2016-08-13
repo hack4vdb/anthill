@@ -18,8 +18,7 @@ function statusChangeCallback(response) {
   console.log('statusChangeCallback');
   console.log(response);
   if (response.status === 'connected') {
-    // Logged into your app and Facebook.
-    testAPI();
+    getDataFromFBAPI();
   } else if (response.status === 'not_authorized') {
     // things
   } else {
@@ -53,11 +52,49 @@ window.fbAsyncInit = function() {
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 
-function testAPI() {
+function postDataToBackend(response) {
+  var request = new XMLHttpRequest();
+  request.open('POST', '/api/activists/', true);
+  request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+  request.onload = function() {
+    if (request.status >= 200 && request.status < 400) {
+      window.location = "/events?id=" + JSON.parse(request.responseText).uuid;
+    } else {
+      console.error('alert');
+    }
+  };
+
+  request.onerror = function() {
+    console.error('alert');
+  };
+
+  request.send(JSON.stringify({
+    "first_name": response.first_name,
+    "last_name": response.last_name,
+    "email": response.email,
+    "municipal": response.municipal,
+    "postalcode": response.postalcode
+  }));
+}
+
+function getDataFromFBAPI() {
   console.log('Welcome!  Fetching your information.... ');
-  FB.api('/me', {fields: ['name', 'email', 'location']}, function(response) {
+  FB.api('/me', {fields: ['first_name', 'last_name', 'email', 'location']}, function(response) {
     console.log(response);
+    var data = {};
+    data.first_name = response.first_name;
+    data.last_name = response.last_name;
+    data.email = response.email;
+    data.municipal = response.location.name;
+    postDataToBackend(response);
   });
+}
+
+function getDataFromForm() {
+  var response = {};
+  response.email = document.getElementById('inputEmail').value;
+  response.postalcode = document.getElementById('inputPostalcode').value;
+  postDataToBackend(response);
 }
     </script>
   </head>
