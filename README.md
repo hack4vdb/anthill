@@ -80,8 +80,28 @@ Please don't do this in production. Use something like *gunicorn* + *nginx* inst
 Now navigate to the `/admin` path of your app and login with the user you just created.
 
 
+### OsX note
 
 
+Get Homebrew 
+```
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" 
+```
+
+Install Postgres
+```
+brew install postgresql PostGIS
+```	
+
+Install PIP
+```
+sudo easy_install pip;
+```	
+
+#To start Server:
+```
+brew services start postgres
+```
 
 
 
