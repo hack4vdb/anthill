@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-#from django.db import models
+import uuid
 from django.contrib.gis.db import models
 
 # Create your models here.
@@ -13,6 +13,7 @@ from django.contrib.gis.db import models
 # E-Mail Adresse, Produktbedarf (Paket mit 500 Flyern)
 
 class Activist(models.Model):
+    uuid = models.UUIDField(unique=True, default=uuid.uuid4, editable=False)
     anrede = models.CharField(max_length=100) #Anrede (Herr, Frau, Keine Angabe)
     first_name = models.CharField(max_length=300)
     last_name = models.CharField(max_length=300)
@@ -30,6 +31,7 @@ class Activist(models.Model):
 
 
 class Meetup(models.Model):
+    uuid = models.UUIDField(unique=True, default=uuid.uuid4, editable=False)
     title = models.CharField(max_length=1000)
     datetime = models.DateTimeField()
     postalcode = models.IntegerField() #PLZ (4-digit)

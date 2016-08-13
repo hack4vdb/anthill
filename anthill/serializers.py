@@ -18,7 +18,7 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 class ActivistSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Activist
-        fields = ('anrede', 'first_name', 'last_name', 'email',
+        fields = ('uuid', 'anrede', 'first_name', 'last_name', 'email',
                   'postalcode', 'municipal', 'street', 'house_number',
                   'coordinate')
 
@@ -26,5 +26,5 @@ class ActivistSerializer(serializers.HyperlinkedModelSerializer):
 class MeetupSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Meetup
-        fields = ('title', 'datetime', 'postalcode', 'municipal',
+        fields = ('uuid', 'title', 'datetime', 'postalcode', 'municipal',
                   'street', 'house_number', 'coordinate', 'activist')
