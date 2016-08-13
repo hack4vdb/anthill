@@ -5,6 +5,8 @@ from rest_framework import viewsets
 from anthill.serializers import UserSerializer, GroupSerializer, \
     ActivistSerializer, MeetupSerializer
 
+from rest_framework.response import Response
+from rest_framework.decorators import list_route
 
 class UserViewSet(viewsets.ModelViewSet):
     """
@@ -29,6 +31,13 @@ class ActivistViewSet(viewsets.ModelViewSet):
     queryset = models.Activist.objects.all()
     serializer_class = ActivistSerializer
 
+    def list(self, request, format=None):
+        # we don't return lists of all activists ...
+        return Response()
+
+    # def retrieve(self, request, format=None, pk=None):
+    #   return Response()
+
 
 class MeetupViewSet(viewsets.ModelViewSet):
     """
@@ -36,3 +45,7 @@ class MeetupViewSet(viewsets.ModelViewSet):
     """
     queryset = models.Meetup.objects.all()
     serializer_class = MeetupSerializer
+
+    def list(self, request, format=None):
+        # we don't return lists of all meetups ...
+        return Response()
