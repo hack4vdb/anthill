@@ -8,6 +8,8 @@ from anthill.serializers import UserSerializer, GroupSerializer, \
 from rest_framework.response import Response
 from rest_framework.decorators import list_route
 
+from anthill.models import *
+
 
 class UserViewSet(viewsets.ModelViewSet):
     """
@@ -29,24 +31,41 @@ class ActivistViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows activists to be viewed or edited.
     """
-    queryset = models.Activist.objects.all()
+    queryset = Activist.objects.all()
     serializer_class = ActivistSerializer
 
     def list(self, request, format=None):
         # we don't return lists of all activists ...
         return Response()
 
-    # def retrieve(self, request, format=None, pk=None):
-    #   return Response()
+    def retrieve(self, request, format=None, pk=None):
+        try:
+            data = Activist.objects.filter(uuid=pk).first()
+        except ValueError as e:
+            return Response()
+        serializer = ActivistSerializer(
+            data, many=False, context={
+                'request': request})
+        return Response(serializer.data)
 
 
 class MeetupViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows meetups to be viewed or edited.
     """
-    queryset = models.Meetup.objects.all()
+    queryset = Meetup.objects.all()
     serializer_class = MeetupSerializer
 
     def list(self, request, format=None):
         # we don't return lists of all meetups ...
         return Response()
+
+    def retrieve(self, request, format=None, pk=None):
+        try:
+            data = Meetup.objects.filter(uuid=pk).first()
+        except ValueError as e:
+            return Response()
+        serializer = MeetupSerializer(
+            data, many=False, context={
+                'request': request})
+        return Response(serializer.data)
