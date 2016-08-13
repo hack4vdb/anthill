@@ -6,7 +6,7 @@ from django.contrib.gis.db import models
 # Create your models here.
 
 
-#Datenfelder fuer Import CSV: Anrede (Herr, Frau, Keine Angabe), Vornamen (Textfeld),
+# Datenfelder fuer Import CSV: Anrede (Herr, Frau, Keine Angabe), Vornamen (Textfeld),
 # Nachname (Textfeld), E-Mail Adresse, PLZ (4-digit), Strasse, Hausnummer
 
 #Land, PLZ, Ort, Strasse, Hausnummer, Tuernummer, Anrede, Vorname, Nachname,
@@ -14,12 +14,13 @@ from django.contrib.gis.db import models
 
 class Activist(models.Model):
     uuid = models.UUIDField(unique=True, default=uuid.uuid4, editable=False)
-    anrede = models.CharField(max_length=100, null=True, blank=True) #Anrede (Herr, Frau, Keine Angabe)
+    # Anrede (Herr, Frau, Keine Angabe)
+    anrede = models.CharField(max_length=100, null=True, blank=True)
     first_name = models.CharField(max_length=300, null=True, blank=True)
     last_name = models.CharField(max_length=300, null=True, blank=True)
     email = models.EmailField()
-    postalcode = models.IntegerField() #PLZ (4-digit)
-    municipal = models.CharField(max_length=500, null=True, blank=True) #Ort
+    postalcode = models.IntegerField()  # PLZ (4-digit)
+    municipal = models.CharField(max_length=500, null=True, blank=True)  # Ort
     street = models.CharField(max_length=500, null=True, blank=True)
     house_number = models.CharField(max_length=100, null=True, blank=True)
     coordinate = models.PointField(null=True, blank=True)
@@ -34,12 +35,13 @@ class Meetup(models.Model):
     uuid = models.UUIDField(unique=True, default=uuid.uuid4, editable=False)
     title = models.CharField(max_length=1000)
     datetime = models.DateTimeField()
-    postalcode = models.IntegerField() #PLZ (4-digit)
-    municipal = models.CharField(max_length=500) #Ort
+    postalcode = models.IntegerField()  # PLZ (4-digit)
+    municipal = models.CharField(max_length=500)  # Ort
     street = models.CharField(max_length=500)
     house_number = models.CharField(max_length=100)
     coordinate = models.PointField()
-    activist = models.ManyToManyField(Activist, null=True, blank=True)
+    activist = models.ManyToManyField(
+        Activist, null=True, blank=True, related_name='meetups')
 
     def __str__(self):
         return self.title
