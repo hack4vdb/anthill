@@ -1,4 +1,5 @@
 .idea
+.vagrant/
 *.swp
 .python-version
 *.py[cod]

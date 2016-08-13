@@ -7,8 +7,37 @@ Anthill - Hack4VDB's Leutevernetztool #swingtourismus
 
 ## Setup
 
+### Notes
+ * review settings before using it in production
 
-### Django Requirements
+### Vagrant
+
+*not recommended for production*
+
+start vagrant
+```
+vagrant up
+```
+
+create an admin user:
+
+```
+python manage.py createsuperuser
+```
+
+start django development Server
+```
+vagrant ssh
+python manage.py runserver 0.0.0.0:8000
+```
+
+the app should be reachable at http://127.0.0.1:8000/ now.
+
+Navigate to the `/admin` path of your app and login with the user you just created.
+
+### Manual
+
+#### Django Requirements
 
 To install Django and it's requirements, simply run:
 
@@ -17,7 +46,7 @@ pip install -r requirements.txt
 ```
 
 
-### PostGIS Setup
+#### PostGIS Setup
 
 
 PostGIS needs the following Debian packages: postgresql-x.x, postgresql-x.x-postgis, postgresql-server-dev-x.x, python-psycopg2 (x.x matching the PostgreSQL version you want to install). 
@@ -29,7 +58,7 @@ apt-get install postgresql-9.4 postgresql-9.4-postgis-2.2 postgresql-server-dev-
 ```
 
 
-### Database Setup
+#### Database Setup
 
 After installing PostGIS, you need to create a database and enable spatial functionality. Furthermore, add an user for our app. 
 
@@ -55,7 +84,7 @@ local   all             all                                     md5
 ```
 
 
-### Finalize Setup
+#### Finalize Setup
 
 To fill the database with our tables, navigate to the project dir and run:
 
@@ -80,7 +109,7 @@ Please don't do this in production. Use something like *gunicorn* + *nginx* inst
 Now navigate to the `/admin` path of your app and login with the user you just created.
 
 
-##OsX note
+### OS X notes
 
 
 Get Homebrew 
@@ -98,11 +127,9 @@ Install PIP
 sudo easy_install pip;
 ```	
 
-###To start Server:
+#### To start Server:
 ```
 brew services start postgres
 ```
-
-
 
 
