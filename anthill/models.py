@@ -14,20 +14,20 @@ from django.contrib.gis.db import models
 
 class Activist(models.Model):
     uuid = models.UUIDField(unique=True, default=uuid.uuid4, editable=False)
-    anrede = models.CharField(max_length=100) #Anrede (Herr, Frau, Keine Angabe)
-    first_name = models.CharField(max_length=300)
-    last_name = models.CharField(max_length=300)
+    anrede = models.CharField(max_length=100, null=True, blank=True) #Anrede (Herr, Frau, Keine Angabe)
+    first_name = models.CharField(max_length=300, null=True, blank=True)
+    last_name = models.CharField(max_length=300, null=True, blank=True)
     email = models.EmailField()
     postalcode = models.IntegerField() #PLZ (4-digit)
-    municipal = models.CharField(max_length=500) #Ort
-    street = models.CharField(max_length=500)
-    house_number = models.CharField(max_length=100)
-    coordinate = models.PointField()
+    municipal = models.CharField(max_length=500, null=True, blank=True) #Ort
+    street = models.CharField(max_length=500, null=True, blank=True)
+    house_number = models.CharField(max_length=100, null=True, blank=True)
+    coordinate = models.PointField(null=True, blank=True)
     # todo:
     # - hash as link to user
 
     def __str__(self):
-        return self.first_name + ' ' + self.last_name
+        return '{} {}'.format(self.postalcode, self.uuid)
 
 
 class Meetup(models.Model):
@@ -39,7 +39,7 @@ class Meetup(models.Model):
     street = models.CharField(max_length=500)
     house_number = models.CharField(max_length=100)
     coordinate = models.PointField()
-    activist = models.ManyToManyField(Activist)
+    activist = models.ManyToManyField(Activist, null=True, blank=True)
 
     def __str__(self):
         return self.title
