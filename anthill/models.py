@@ -27,7 +27,7 @@ class Activist(models.Model):
     # - hash as link to user
 
     def __str__(self):
-        return '{} {}'.format(self.postalcode, self.uuid)
+        return '{} ({})'.format(self.email, self.postalcode)
 
 
 class Meetup(models.Model):
