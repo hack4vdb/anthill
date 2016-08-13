@@ -1,0 +1,4 @@
+IMAP_HOST = ''
+IMAP_USER = ''
+IMAP_PASSWORD = ''
+
