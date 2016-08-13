@@ -1,0 +1,34 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+<div class="container">
+  <h1>Flyern für VdB</h1>
+  <h2>Danke für deine Anmeldung!</h2>
+
+  <div class="row">
+    <div class="one-half column">
+      <h3>Gib' deine Adresse an,…</h3>
+      <p>dann senden wir dir ein Starter-Kit mit Flyern und anderen Materialien für die Aktion zu.</p>
+      <div>
+        <label for="inputName" class="col-sm-4 control-label">Name</label>
+        <div>
+          <input type="text" class="form-control" id="inputName" placeholder="Vorname Nachname">
+        </div>
+        <label for="inputAdresse">Adresse</label>
+        <div>
+          <input type="text" id="inputAdresse" placeholder="Adresse">
+        </div>
+        <label for="inputOrt">PLZ/Ort</label>
+        <div>
+          <input type="text" id="inputOrt" placeholder="4321 Hintertupfing">
+        </div>
+        <button type="submit">Ich bringe das Starter-Kit zur Aktion!</button>
+      </div>
+    </div>
+
+    <div class="one-half column">
+      <h3>Lade jetzt deine Freunde ein!</h3>
+    </div>
+  </div>
+</div>
+{% endblock %}

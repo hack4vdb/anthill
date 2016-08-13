@@ -18,6 +18,7 @@ from rest_framework import routers
 from django.contrib import admin
 
 from anthill import views
+from anthill import staticviews
 
 apiRouter = routers.DefaultRouter()
 #apiRouter.register(r'users', views.UserViewSet)
@@ -27,6 +28,11 @@ apiRouter.register(r'meetups', views.MeetupViewSet)
 
 
 urlpatterns = [
+    url(r'^$', staticviews.home, name='home'),
+    url(r'^events/$', staticviews.events, name='events'),
+    url(r'^join_event/$', staticviews.join_event, name='join_event'),
+    url(r'^join_first_event/$', staticviews.join_first_event, name='join_first_event'),
+    url(r'^start_event/$', staticviews.start_event, name='start_event'),
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include(apiRouter.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
