@@ -40,4 +40,4 @@ class Meetup(models.Model):
     activist = models.ManyToManyField(Activist)
 
     def __str__(self):
-        return self.first_name + ' ' + self.last_name
+        return self.title
