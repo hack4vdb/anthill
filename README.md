@@ -80,7 +80,7 @@ Please don't do this in production. Use something like *gunicorn* + *nginx* inst
 Now navigate to the `/admin` path of your app and login with the user you just created.
 
 
-### OsX note
+##OsX note
 
 
 Get Homebrew 
@@ -98,7 +98,7 @@ Install PIP
 sudo easy_install pip;
 ```	
 
-#To start Server:
+###To start Server:
 ```
 brew services start postgres
 ```
