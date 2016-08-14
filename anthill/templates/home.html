@@ -3,39 +3,46 @@
 {% block content %}
 <div id="page-home">
 
-  <div class="container">
-    <div class="row">
-      <div class="one-half column testimonial">
-        <div></div>
-        <blockquote>Ich bin dabei – für Van der Bellen!</blockquote>
-        <h3>Alexandra, Wien</h3>
-      </div>
-      <div class="one-half column signup-bubble">
-        <h2><strong>Ja</strong> ich will Van der Bellen gewinnen helfen.</h2>
-        <div class="sm-button" onclick="FB.login(function(response) { statusChangeCallback(response); }, {scope: 'public_profile,email,user_location'});">
-          <i class="fa fa-facebook-official" aria-hidden="true"></i> Mit Facebook anmelden
+  <h1>Weil's um was geht.</h1>
+
+  <div class="photowall">
+    <div class="photo" style="background-image:url(/static/img/bg.jpg)"></div>
+  </div>
+
+  <div id="first-viewport">
+    <div class="container">
+      <div class="row">
+        <div id="signup-bubble" class="one-half column offset-by-six">
+          <h2>Ich will, dass Van der Bellen gewinnt.</h2>
+          <p>Und ich bin bereit, mich vor Ort einzubringen. Weil's um was geht.</p>
+
+          <form action="" method="POST">
+            {% csrf_token %}
+            <div class="message">
+              {{ form.message.errors }}
+              {{ form.message }}
+            </div>
+            {{ form.email.errors }}
+            {{ form.email }}
+            {{ form.postcode.errors }}
+            {{ form.postcode }}
+            <button type="submit" class="event-button">
+              Was kann ich tun?
+            </button>
+          </form>
+
+          <!--hr />
+
+          <div class="sm-button" onclick="FB.login(function(response) { statusChangeCallback(response); }, {scope: 'public_profile,email,user_location'});">
+            <i class="fa fa-facebook-official" aria-hidden="true"></i> Mit Facebook anmelden
+          </div-->
+
         </div>
-
-        <p class="loginDivider">&ndash; oder &ndash;</p>
-
-        <form action="" method="POST">
-          {% csrf_token %}
-          <div class="message">
-            {{ form.message.errors }}
-            {{ form.message }}
-          </div>
-          {{ form.email.errors }}
-          {{ form.email }}
-          {{ form.postcode.errors }}
-          {{ form.postcode }}
-          <button type="submit" class="event-button">
-            Jetzt mithelfen!
-          </button>
-        </form>
       </div>
     </div>
   </div>
-  <div class="full-width-container explainer">
+
+  <div class="full-width-container second-viewport explainer">
     <div class="container">
       <div class="row">
         <div class="one-half column">
@@ -55,40 +62,33 @@
           <p>Wenige Stunden Engagement für die Kampagne können das Wahlergebnis entscheiden.</p>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="full-width-container photowall">
-    <div></div>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="one-half column">
-        <h2>Jetzt bist du gefordert.</h2>
-        <p>Unterstütze Alexander Van der Bellen in deiner Region.</p>
-        <button class="sm-button" onclick="FB.login(function(response) { statusChangeCallback(response); }, {scope: 'public_profile,email,user_location'});">
-          <i class="fa fa-facebook-official" aria-hidden="true"></i> Mit Facebook anmelden
-        </button>
-      </div>
-      <div class="one-half column">
-        <form action="" method="POST">
-          {% csrf_token %}
-          <div class="message">
-            {{ form.message.errors }}
-            {{ form.message }}
-          </div>
-          {{ form.email.label }}
-          {{ form.email.errors }}
-          {{ form.email }}
-          {{ form.postcode.label }}
-          {{ form.postcode.errors }}
-          {{ form.postcode }}
-          <button type="submit" class="event-button">
-            Jetzt mithelfen!
-          </button>
-        </form>
+      <div class="row">
+        <div class="one-half column offset-by-three" id="signup-bubble-2">
+          <h2>Jetzt bist du gefordert.</h2>
+          <p>Unterstütze Alexander Van der Bellen in deiner Region.</p>
+          <!--button class="sm-button" onclick="FB.login(function(response) { statusChangeCallback(response); }, {scope: 'public_profile,email,user_location'});">
+            <i class="fa fa-facebook-official" aria-hidden="true"></i> Mit Facebook anmelden
+          </button-->
+
+          <form action="" method="POST">
+            {% csrf_token %}
+            <div class="message">
+              {{ form.message.errors }}
+              {{ form.message }}
+            </div>
+            {{ form.email.errors }}
+            {{ form.email }}
+            {{ form.postcode.errors }}
+            {{ form.postcode }}
+            <button type="submit" class="event-button">
+              Jetzt mithelfen!
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   </div>
+
 
 </div>
 {% endblock %}

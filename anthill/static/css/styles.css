@@ -27,11 +27,70 @@ footer .title {
   color: #999;
 }
 
-#page-home h2 strong {
-  font-size: 7rem;
+
+.second-viewport {
+  position: absolute;
+  clear: both;
+  top: 100%;
+  left: 0;
+  width: 100%;
 }
+
+#page-home {
+  display: block;
+  height:100%;
+}
+
+#page-home h1 {
+  color: #fff;
+  position: absolute;
+  top: 0; left: 0;
+  padding-top: 2.5rem;
+  padding-left: 4rem;
+  width: 100%;
+  height: 20%;
+  background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,0));
+  z-index: 2;
+  font-size: 4rem;
+  font-family: 'Caveat Brush';
+  letter-spacing: -.05em;
+  text-shadow: rgba(0,0,0,.5) 0 0 .5em;
+  box-sizing: border-box;
+}
+
+#page-home #first-viewport {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+#page-home .photowall {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  list-style: none;
+  background: #ffef99;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+#page-home .photowall .photo {
+  width: 120%;
+  height: 100%;
+  opacity: .6;
+  background-size: cover;
+  background-position: -120px;
+  /*-webkit-filter:blur(2px);*/
+}
+
 #page-home h2 {
-  font-size: 3.5rem;
+  font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 0;
+  line-height: 1.05em;
 }
 #page-home div.sm-button {
   font-size: 2rem;
@@ -53,8 +112,8 @@ footer .title {
   float: left;
 }
 #page-home #inputEmail {
-  width: 65%;
-  margin-right:5%;
+  width: 67%;
+  margin-right:3%;
   float: left;
 }
 
@@ -77,21 +136,41 @@ footer .title {
 #page-home .signin-input {
   width: 100%;
 }
-#page-home .signup-bubble {
-  background: #ffde00;
+#page-home #signup-bubble {
+  margin-top: 10rem;
+  background: #fff;
   border-radius: 5px;
-  padding: 2rem;
-  text-align: center;
+  padding: 3rem 4rem 1.6rem;
   font-size: 1.5em;
+  box-shadow: rgba(0,0,0,.6) 0 0 2em;
+  min-width: 330px;
 }
-#page-home .signup-bubble button[type="submit"] {
+#page-home #signup-bubble p {
+  font-size: .85em;
+  margin: .8em 0 1em;
+  line-height: 1.45em;
+}
+
+#page-home #signup-bubble-2 {
+  background: #fff;
+  padding: 4rem;
+}
+
+#page-home hr {
+  margin-top: 0;
+  margin-bottom: 1.4em;
+}
+#page-home #signup-bubble button[type="submit"] {
   font-size: 1em;
   padding: 8px;
   height: auto;
+  background: #ffde00;
 }
 
 p.loginDivider {
-  margin-top: 2.2rem;
+  margin: .8rem 0;
+  font-size: .8em;
+  color: #777;
 }
 
 #page-home .testimonial div {
@@ -108,6 +187,12 @@ p.loginDivider {
   font-style: italic;
   font-size: 3.6rem;
   margin: 0;
+}
+
+#page-home footer {
+  position: absolute;
+  top: 200%;
+  z-index: 999;
 }
 
 
@@ -140,11 +225,7 @@ p.loginDivider {
   background-color: #ffde00;
   padding: 10rem 0;
 }
-.photowall {
-  background-color: black;
-  padding: 10rem 0;
-  margin: 0 0 2rem 0;
-}
+
 h3 {
   font-weight: bold;
 }
