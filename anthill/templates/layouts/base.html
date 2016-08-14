@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
     <link rel="stylesheet" href="{% static 'css/skeleton.css' %}">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,300italic' rel='stylesheet' type='text/css'>
 
     <script src="https://use.fontawesome.com/c0f7dc3f38.js"></script>
     <script>
@@ -53,19 +53,32 @@ window.fbAsyncInit = function() {
 }(document, 'script', 'facebook-jssdk'));
 
 function postDataToBackend(response) {
+  var csrftoken = getCookie('csrftoken');
   var request = new XMLHttpRequest();
   request.open('POST', '/api/activists/', true);
   request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+  request.setRequestHeader('X-CSRFToken', csrftoken);
+
   request.onload = function() {
+    var response = JSON.parse(request.responseText);
     if (request.status >= 200 && request.status < 400) {
-      window.location = "/events?id=" + JSON.parse(request.responseText).uuid;
+      var user_uuid = response.uuid;
+      document.cookie = "user_uuid=" + user_uuid + "; max-age=31536e3; path=/";
+      window.location = "/events";
     } else {
-      console.error('alert');
+      var email_alert = response.email ? response.email[0] : '';
+      if (email_alert === "activist with this email already exists.") {
+        alert('Eine andere Person ist bereits mit dieser E-Mail-Adresse registriert.\n\r' +
+          'Falls diese Person du bist, überprüfe deinen E-Mail-Account, ob du eine Bestätigungsmail bekommen hast. ' +
+          'Diese E-Mail enthält einen Link, mit dem du dich immer anmelden kannst.');
+      } else {
+        alert('Ein Fehler ist passiert, bitte versuche es erneut!');
+      }
     }
   };
 
   request.onerror = function() {
-    console.error('alert');
+    alert('Ein Fehler ist passiert, bitte versuche es erneut!');
   };
 
   request.send(JSON.stringify({
@@ -95,12 +108,114 @@ function getDataFromForm() {
   response.email = document.getElementById('inputEmail').value;
   response.postalcode = document.getElementById('inputPostalcode').value;
   postDataToBackend(response);
+  return false;
+}
+
+function getParameterByName(name, url) {
+  if (!url) url = window.location.href;
+  name = name.replace(/[\[\]]/g, "\\$&");
+  var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+      results = regex.exec(url);
+  if (!results) return null;
+  if (!results[2]) return '';
+  return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+function getCookie(name) {
+  var value = "; " + document.cookie;
+  var parts = value.split("; " + name + "=");
+  if (parts.length == 2) return parts.pop().split(";").shift();
+}
+
+function getCloseMeetupsFromBackend(user_uuid) {
+  var csrftoken = getCookie('csrftoken');
+  var request = new XMLHttpRequest();
+  request.open('GET', '/api/meetupsnearactivist/' + user_uuid + '/', true);
+  request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+  request.setRequestHeader('X-CSRFToken', csrftoken);
+
+  request.onload = function() {
+    var response = JSON.parse(request.responseText);
+    if (request.status >= 200 && request.status < 400) {
+      var meetups = response;
+      meetups.forEach(function(meetup) {
+        console.log(meetup);
+      });
+    } else {
+
+    }
+  };
+
+  request.onerror = function() {
+    alert('Ein Fehler ist passiert, bitte versuche es erneut!');
+  };
+
+  request.send();
+}
+
+function postMeetupToBackend(response) {
+  var request = new XMLHttpRequest();
+  request.open('POST', '/api/meetups/', true);
+  request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+  request.onload = function() {
+    if (request.status >= 200 && request.status < 400) {
+      console.log(request.responseText);
+    } else {
+      console.error('alert');
+    }
+  };
+
+  request.onerror = function() {
+    console.error('alert');
+  };
+
+  request.send(JSON.stringify({
+    "datetime": response.datetime,
+    "title": response.location
+  }));
+}
+
+function createMeetup() {
+  var uuid = getCookie('user_uuid');
+  if (uuid) {
+    var response = {}
+    response.location = document.getElementById('inputLocation').value;
+    response.datetime = document.getElementById('inputDate').value;
+    console.log(uuid, response);
+    postMeetupToBackend(response);
+  } else {
+    window.location = "/";
+  }
+}
+
+window.onload = function() {
+  if (getParameterByName('id')) {
+    document.cookie = "user_uuid=" + getParameterByName('id') + "; max-age=31536e3; path=/";
+    window.location = "/events";
+  }
 }
     </script>
   </head>
 
   <body>
+    <header>
+      <div class="container">
+        <h1>weil's um was geht.</h1>
+      </div>
+    </header>
     {% block content %}
     {% endblock %}
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="one-half column">
+            <p>Diese Seite steht in keiner Verbindung zum Verein "Gemeinsam für Van der Bellen".</p>
+          </div>
+          <div class="one-half column">
+            <p class="title">weil's um was geht.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

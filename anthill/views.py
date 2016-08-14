@@ -8,10 +8,12 @@ from anthill.serializers import UserSerializer, GroupSerializer, \
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import list_route
+from django.contrib.gis.measure import Distance
 
 from anthill.models import *
-
-from anthill.geocoding import Geocoder
+from django.http import HttpResponse
+from rest_framework.decorators import api_view
+from anthill import geo
 
 class UserViewSet(viewsets.ModelViewSet):
     """
@@ -81,3 +83,42 @@ class MeetupViewSet(viewsets.ModelViewSet):
             data, many=False, context={
                 'request': request})
         return Response(serializer.data)
+
+
+class MeetupNearActivistViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+    API endpoint that allows meetups near activists to be viewed or edited.
+    """
+    queryset = Meetup.objects.all()
+    serializer_class = MeetupSerializer
+
+    def list(self, request, format=None):
+        # we don't return lists of all meetups ...
+        return Response()
+
+    def retrieve(self, request, format=None, pk=None):
+        data = Meetup.find_meetups_near_activist(pk)
+        serializer = MeetupSerializer(
+            data, many=True, context={
+                'request': request})
+        return Response(serializer.data)
+
+
+@api_view(['POST'])
+def partake_meetup(request, meetupid, userid):
+    meetup = Meetup.objects.filter(uuid=meetupid).first()
+    activist = Activist.objects.filter(uuid=userid).first()
+    meetup.activist.add(activist)
+    return Response()
+
+
+@api_view(['GET'])
+def interesting_places(request, id):
+    activist = Activist.objects.filter(uuid=id).first()
+    location = activist.coordinate
+
+    # todo: ortezumflyern should be in the database
+    # todo: sort by closeness
+    places = geo.data.ortezumflyern.orte[:10]
+
+    return Response(places)

@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="container">
-  <h1>Flyern für VdB</h1>
+
   <p>Such' dir eine passende Location in deiner Umgebung, einen Termin in den nächsten 4 bis 10 Tagen und wir sagen dir Bescheid, wenn sich genügend Leute finden, die mithelfen.</p>
   <form action="{% url 'join_first_event' %}">
     <div>
@@ -10,11 +10,13 @@
       <div>
         <input type="text" class="form-control" id="inputLocation" placeholder="Location">
       </div>
-      <label for="inputDatum">Datum</label>
+      <label for="inputDate">Datum</label>
       <div>
-        <input type="text" id="inputAdresse" placeholder="Datum">
+        <input type="datetime-local" id="inputDate" placeholder="Datum">
       </div>
-      <button type="submit">Aktion erstellen!</button>
+      <a class="event-button" href="#" onclick="createMeetup();">
+        <div>Aktion erstellen!</div>
+      </a>
     </div>
   </form>
 </div>

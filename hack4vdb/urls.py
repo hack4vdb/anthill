@@ -23,17 +23,21 @@ from anthill import staticviews
 apiRouter = routers.DefaultRouter()
 #apiRouter.register(r'users', views.UserViewSet)
 #apiRouter.register(r'groups', views.GroupViewSet)
-apiRouter.register(r'activists', views.ActivistViewSet)
-apiRouter.register(r'meetups', views.MeetupViewSet)
+apiRouter.register(r'activists', views.ActivistViewSet, base_name='activists')
+apiRouter.register(r'meetups', views.MeetupViewSet, base_name='meetups')
+apiRouter.register(r'meetupsnearactivist', views.MeetupNearActivistViewSet, base_name='meetupsnearactivist')
 
 
 urlpatterns = [
     url(r'^$', staticviews.home, name='home'),
+    url(r'^check_mail/$', staticviews.check_mail, name='check_mail'),
     url(r'^events/$', staticviews.events, name='events'),
     url(r'^join_event/$', staticviews.join_event, name='join_event'),
     url(r'^join_first_event/$', staticviews.join_first_event, name='join_first_event'),
     url(r'^start_event/$', staticviews.start_event, name='start_event'),
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include(apiRouter.urls)),
+    url(r'^api/meetups/(?P<meetupid>[\d\w-]+)/partake/(?P<userid>[\d\w-]+)/', views.partake_meetup, name='partake_meetup'),
+    url(r'^api/interestingplaces/(?P<id>[\d\w-]+)/', views.interesting_places, name='interesting_places'),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
