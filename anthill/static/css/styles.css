@@ -72,6 +72,7 @@ footer .title {
   font-size: 3.6rem;
   margin: 0;
 }
+
 .full-width-container {
   width: 100%;
   max-width: 100%;
@@ -90,3 +91,9 @@ footer .title {
 h3 {
   font-weight: bold;
 }
+
+.meetup_list .meetup {
+  border: 1px solid black;
+  list-style: none;
+}
+

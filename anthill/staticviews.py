@@ -1,5 +1,6 @@
 # -*- coding: UTF-8 -*-
 from django.shortcuts import render, redirect, get_object_or_404
+from geo import get_nearest_ortzumflyern
 
 def home(request):
     return render(request, 'home.html')
@@ -8,7 +9,9 @@ def check_mail(request):
     return render(request, 'checkMail.html')
 
 def events(request):
-    return render(request, 'events.html')
+    location = get_nearest_ortzumflyern(1234)
+    locations = [location]
+    return render(request, 'events.html', {'locations': locations})
 
 def join_event(request):
     return render(request, 'joinEvent.html')
