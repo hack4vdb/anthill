@@ -21,8 +21,8 @@ class ActivistSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Activist
-        fields = ('uuid', 'anrede', 'first_name', 'last_name', 'email',
-                  'postalcode', 'municipal', 'street', 'house_number',
+        fields = ('uuid', 'first_name', 'last_name', 'email',
+                  'facebook_id', 'facebook_bot_id', 'postalcode',
                   'coordinate', 'meetups')
         depth = 1
 

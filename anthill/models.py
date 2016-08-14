@@ -24,7 +24,8 @@ class Activist(models.Model):
     first_name = models.CharField(max_length=300, null=True, blank=True)
     last_name = models.CharField(max_length=300, null=True, blank=True)
     facebook_id = models.CharField(max_length=32, null=True, blank=True)
-    email = models.EmailField(unique=True)
+    facebook_bot_id = models.CharField(max_length=32, null=True, blank=True)
+    email = models.EmailField(null=True, blank=True)
     postalcode = models.IntegerField(null=True, blank=True)  # PLZ (4-digit)
     municipal = models.CharField(max_length=500, null=True, blank=True)  # Ort
     street = models.CharField(max_length=500, null=True, blank=True)
@@ -34,6 +35,11 @@ class Activist(models.Model):
     def clean(self):
         if self.postalcode is None and self.municipal is None:
             raise ValidationError(_('Either postalcode or municipal are required.'))
+
+        if self.email is None and self.facebook_id is None and self.facebook_bot_id is None:
+            raise ValidationError(_('Either email or facebook_id or facebook_bot_id are required.'))
+
+        # todo: email, facebook_id and facebook_bot_id need to be unique when set.
 
     def __str__(self):
         return '{} ({}) - {}'.format(self.email, self.postalcode, self.uuid)
