@@ -73,7 +73,7 @@ class MeetupViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
 
 
-class MeetupNearActivistViewSet(viewsets.ModelViewSet):
+class MeetupNearActivistViewSet(viewsets.ReadOnlyModelViewSet):
     """
     API endpoint that allows meetups to be viewed or edited.
     """
