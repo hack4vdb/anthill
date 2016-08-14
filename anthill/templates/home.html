@@ -3,18 +3,17 @@
 {% block content %}
 <div class="container">
   <div class="row">
-    <div class="one-half column">
+    <div class="one-half column testimonial">
+      <div></div>
       <blockquote>Ich bin dabei – für Van der Bellen!</blockquote>
       <h3>Alexandra, Wien</h3>
     </div>
-    <div class="one-half column">
+    <div class="one-half column signup-bubble">
       <h2>Jetzt bist du gefordert.</h2>
       <p>Unterstütze Alexander Van der Bellen in deiner Region.</p>
-      <a class="sm-button" href="#" onclick="FB.login(function(response) { statusChangeCallback(response); }, {scope: 'public_profile,email,user_location'});">
-        <div style="background-color: #3b5998;">
-          <i class="fa fa-facebook-official" aria-hidden="true"></i> Mit Facebook anmelden
-        </div>
-      </a>
+      <button class="sm-button" onclick="FB.login(function(response) { statusChangeCallback(response); }, {scope: 'public_profile,email,user_location'});">
+        <i class="fa fa-facebook-official" aria-hidden="true"></i> Mit Facebook anmelden
+      </button>
       <p>oder</p>
 
       <label for="inputPostalcode">Deine Postleitzahl</label>
@@ -23,9 +22,9 @@
       <label for="inputEmail" class="col-sm-4 control-label">Deine E-Mail-Adresse</label>
       <input class="signin-input" type="email" id="inputEmail" placeholder="E-Mail-Adresse">
 
-      <a class="event-button" href="#" onclick="getDataFromForm();">
-        <div>Jetzt mithelfen!</div>
-      </a>
+      <button class="event-button" onclick="getDataFromForm();">
+        Jetzt mithelfen!
+      </button>
     </div>
   </div>
 </div>

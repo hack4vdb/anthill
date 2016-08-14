@@ -34,31 +34,41 @@ footer .title {
 }
 .event-date {
 }
-.event-button > div {
+.event-button {
   width: 100%;
   background-color: #ffde00;
-  text-align: center;
-  color: black;
-  padding: 10px;
-  border-radius: 10px;
   font-weight: bold;
-}
-.event-button {
-  text-decoration: none;
-}
-
-.sm-button > div {
-  width: 100%;
-  text-align: center;
-  color: white;
-  padding: 10px;
-  border-radius: 10px;
-  font-weight: bold;
-  margin-bottom: 5px;
 }
 .sm-button {
-  text-decoration: none;
+  background-color: #3b5998;
+  width: 100%;
+  color: white;
+}
+.sm-button:hover {
+  background-color: white;
+  color: #3b5998;
 }
 .signin-input {
   width: 100%;
+}
+.signup-bubble {
+  border: 3px #ffde00 solid;
+  border-radius: 5px;
+  padding: 2rem;
+  text-align: center;
+}
+.testimonial div {
+  background-image: url('../img/alexandra.jpg');
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+  border-radius: 50%;
+}
+.testimonial blockquote {
+  font-weight: lighter;
+  font-style: italic;
+  font-size: 3.6rem;
+  margin: 0;
 }
