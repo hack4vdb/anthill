@@ -3,94 +3,104 @@
 {% block body_class %}home{% endblock %}
 
 {% block content %}
-<div id="page-home">
 
-  <h1>Weil's um was geht.</h1>
+<h1>Weil's um was geht.</h1>
 
-  <div class="photowall">
-    <div class="photo" style="background-image:url(/static/img/bg.jpg)"></div>
-  </div>
-
-  <div id="first-viewport">
-    <div class="container">
-      <div class="row">
-        <div id="signup-bubble" class="one-half column offset-by-six">
-          <h2>Ich will, dass Van der Bellen gewinnt.</h2>
-          <p>Und ich bin bereit, mich vor Ort einzubringen. Weil's um was geht.</p>
-
-          <form action="" method="POST">
-            {% csrf_token %}
-            <div class="message">
-              {{ form.message.errors }}
-              {{ form.message }}
-            </div>
-            {{ form.email.errors }}
-            {{ form.email }}
-            {{ form.postcode.errors }}
-            {{ form.postcode }}
-            <button type="submit" class="event-button">
-              Was kann ich tun?
-            </button>
-          </form>
-
-          <!--hr />
-
-          <div class="sm-button" onclick="FB.login(function(response) { statusChangeCallback(response); }, {scope: 'public_profile,email,user_location'});">
-            <i class="fa fa-facebook-official" aria-hidden="true"></i> Mit Facebook anmelden
-          </div-->
-
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="full-width-container second-viewport explainer">
-    <div class="container">
-      <div class="row">
-        <div class="one-half column">
-          <h3>Du bist nicht alleine</h3>
-          <p>In deiner Nähe gibt es hunderte UnterstützerInnen von Alexander van der Bellen.</p>
-        </div>
-        <div class="one-half column">
-          <i class="fa fa-5x fa-users" aria-hidden="true"></i>
-        </div>
-      </div>
-      <div class="row">
-        <div class="one-half column">
-          <i class="fa fa-5x fa-map-signs" aria-hidden="true"></i>
-        </div>
-        <div class="one-half column">
-          <h3>Du machst den Unterschied</h3>
-          <p>Wenige Stunden Engagement für die Kampagne können das Wahlergebnis entscheiden.</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="one-half column offset-by-three" id="signup-bubble-2">
-          <h2>Jetzt bist du gefordert.</h2>
-          <p>Unterstütze Alexander Van der Bellen in deiner Region.</p>
-          <!--button class="sm-button" onclick="FB.login(function(response) { statusChangeCallback(response); }, {scope: 'public_profile,email,user_location'});">
-            <i class="fa fa-facebook-official" aria-hidden="true"></i> Mit Facebook anmelden
-          </button-->
-
-          <form action="" method="POST">
-            {% csrf_token %}
-            <div class="message">
-              {{ form.message.errors }}
-              {{ form.message }}
-            </div>
-            {{ form.email.errors }}
-            {{ form.email }}
-            {{ form.postcode.errors }}
-            {{ form.postcode }}
-            <button type="submit" class="event-button">
-              Jetzt mithelfen!
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
+<div class="photowall">
+  <div class="photo" style="background-image:url(/static/img/bg.jpg)"></div>
 </div>
+
+<div id="first-viewport">
+  <div class="container">
+    <div class="row">
+      <div id="signup-bubble" class="one-half column offset-by-six">
+        <h2>Ich will, dass Van der Bellen gewinnt.</h2>
+        <p>Und ich bin bereit, mich vor Ort einzubringen. Weil's um was geht.</p>
+
+        <form action="" method="POST">
+          {% csrf_token %}
+          <div class="message">
+            {{ form.message.errors }}
+            {{ form.message }}
+          </div>
+          {{ form.email.errors }}
+          {{ form.email }}
+          {{ form.postcode.errors }}
+          {{ form.postcode }}
+          <button type="submit" class="event-button">
+            Was kann ich tun?
+          </button>
+        </form>
+
+        <!--hr />
+
+        <div class="sm-button" onclick="FB.login(function(response) { statusChangeCallback(response); }, {scope: 'public_profile,email,user_location'});">
+          <i class="fa fa-facebook-official" aria-hidden="true"></i> Mit Facebook anmelden
+        </div-->
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="second-viewport" class="full-width-container explainer">
+  <div class="container">
+    <div class="row">
+      <div class="one-half column">
+        <h3>Du bist nicht alleine</h3>
+        <p>In deiner Nähe gibt es hunderte UnterstützerInnen von Alexander van der Bellen.</p>
+      </div>
+      <div class="one-half column">
+        <i class="fa fa-5x fa-users" aria-hidden="true"></i>
+      </div>
+    </div>
+    <div class="row">
+      <div class="one-half column">
+        <i class="fa fa-5x fa-map-signs" aria-hidden="true"></i>
+      </div>
+      <div class="one-half column">
+        <h3>Du machst den Unterschied</h3>
+        <p>Wenige Stunden Engagement für die Kampagne können das Wahlergebnis entscheiden.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="one-half column offset-by-three" id="signup-bubble-2">
+        <h2>Jetzt bist du gefordert.</h2>
+        <p>Unterstütze Alexander Van der Bellen in deiner Region.</p>
+        <!--button class="sm-button" onclick="FB.login(function(response) { statusChangeCallback(response); }, {scope: 'public_profile,email,user_location'});">
+          <i class="fa fa-facebook-official" aria-hidden="true"></i> Mit Facebook anmelden
+        </button-->
+
+        <form action="" method="POST">
+          {% csrf_token %}
+          <div class="message">
+            {{ form.message.errors }}
+            {{ form.message }}
+          </div>
+          {{ form.email.errors }}
+          {{ form.email }}
+          {{ form.postcode.errors }}
+          {{ form.postcode }}
+          <button type="submit" class="event-button">
+            Jetzt mithelfen!
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="one-half column">
+          <p>Diese Seite steht in keiner Verbindung zum Verein "Gemeinsam für Van der Bellen".</p>
+        </div>
+        <div class="one-half column">
+          <p class="title">weil's um was geht.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+
 {% endblock %}
