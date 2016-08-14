@@ -20,13 +20,12 @@
         <form action="" method="POST">
           {% csrf_token %}
           <div class="message">
-            {{ form.message.errors }}
             {{ form.message }}
           </div>
-          {{ form.email.errors }}
           {{ form.email }}
-          {{ form.postcode.errors }}
           {{ form.postcode }}
+          {{ form.email.errors }}
+          {{ form.postcode.errors }}
           <button type="submit" class="event-button">
             Was kann ich tun?
           </button>

@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
 from django.shortcuts import render, redirect, get_object_or_404
 from forms import SignupForm
-from models import Activist
+from models import Activist, Meetup
 from anthill.geo import get_nearest_ortzumflyern
 from anthill.emailviews import WelcomeMessageView
 from django.contrib.auth import authenticate, login
@@ -14,8 +14,9 @@ def home(request):
         if form.is_valid():
             email = form.cleaned_data['email']
             postcode = form.cleaned_data['postcode']
-            if not Activist.objects.filter(email=email).exists() and len(form.cleaned_data['message']) == 0:  #honey trap was not filled out
-                activist = Activist(email=email, postalcode=postcode)
+            # if not Activist.objects.filter(email=email).exists() and len(form.cleaned_data['message']) == 0:  #honey trap was not filled out
+            if len(form.cleaned_data['message']) == 0:  #honey trap was not filled out
+                activist = Activist.create(email=email, postalcode=postcode)
                 activist.save()
                 activist = authenticate(uuid=activist.uuid)
                 login(request, activist)
@@ -31,12 +32,17 @@ def check_mail(request):
 
 @login_required
 def events(request):
-    location = get_nearest_ortzumflyern(1234)
-    locations = [location]
     user = request.user
-    return render(request, 'events.html', {'locations': locations,
-                                           'uuid': user.uuid,
-                                           'user': user})
+    location = get_nearest_ortzumflyern(user.postalcode)
+    locations = [ Meetup.create(
+        title="Flyerverteilen in {}".format(location['ort']),
+        postalcode=location['plz'],
+        municipal=location['ort'],
+        street=location['treffpunkt'],
+        house_number='',
+        coordinate = (location['lat'], location['lon'])
+    ) ]
+    return render(request, 'events.html', {'locations': locations, 'user': user})
 
 @login_required
 def join_event(request):

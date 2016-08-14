@@ -8,9 +8,9 @@
     <li class="meetup">
       <div class="row">
         <div class="two-thirds column">
-          <h3>Flyerverteilen in {{ location.ort }}</h3>
-          <p class="meetup_location"><i class="fa fa-map-marker" aria-hidden="true"></i> {{ location.treffpunkt }}</p>
-          <p class="meetup_date"><i class="fa fa-clock-o" aria-hidden="true"></i> Montag, 32. August 2016, 18.00h</p>
+          <h3>{{ location.title }}</h3>
+          <p class="meetup_location"><i class="fa fa-map-marker" aria-hidden="true"></i> {{ location.postalcode }} {{ location.municipal }}</p>
+          <p class="meetup_date"><i class="fa fa-clock-o" aria-hidden="true"></i> {{ location.datetime }}</p>
         </div>
         <div class="one-third column">
           <a class="event-button" href="{% url 'join_event' %}">
@@ -22,38 +22,11 @@
     {% endfor %}
 
     <p>
-      You are user {{ uuid }} with email {{ user.email }}
+      You are user {{ user.uuid }} with email {{ user.email }} in PLZ {{ user.postalcode }}
     </p>
 
-    <li class="event">
-      <div class="row">
-        <div class="two-thirds column">
-          <h3>Flyerverteilen am Kirtag Hintertupfing</h3>
-          <p class="event-location"><i class="fa fa-map-marker" aria-hidden="true"></i> Hauptplatz Hintertupfing</p>
-          <p class="event-date"><i class="fa fa-clock-o" aria-hidden="true"></i> Montag, 32. August 2016, 18.00h</p>
-        </div>
-        <div class="one-third column">
-          <a class="event-button" href="{% url 'join_event' %}">
-            <div>Ich mach' mit!</div>
-          </a>
-        </div>
-      </div>
-    </li>
-    <li class="event">
-      <div class="row">
-        <div class="two-thirds column">
-          <h3>Flyerverteilen am Kirtag Hintertupfing</h3>
-          <p class="event-location"><i class="fa fa-map-marker" aria-hidden="true"></i> Hauptplatz Hintertupfing</p>
-          <p class="event-date"><i class="fa fa-clock-o" aria-hidden="true"></i> Montag, 32. August 2016, 18.00h</p>
-          <p>Schon 3 Leute haben sich für diese Aktion angemeldet.</p>
-        </div>
-        <div class="one-third column">
-          <a class="event-button" href="{% url 'join_event' %}">
-            <div>Ich mach' mit!</div>
-          </a>
-        </div>
-      </div>
-    </li>
+    <p><a href="https://www.google.com/maps?hl=en&q={{ user.coordinate }}">Maps {{ user.coordinate }}</a></p>
+
   </ul>
   <a class="event-button" href="{% url 'start_event' %}"><div>Ich starte meine eigene Aktion!</div></a>
 </div>

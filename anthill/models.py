@@ -4,6 +4,7 @@ import uuid
 from django.contrib.gis.db import models
 from django.contrib.gis.geos import GEOSGeometry
 from django.contrib.gis.measure import Distance
+import geo
 
 # Create your models here.
 
@@ -36,6 +37,13 @@ class Activist(models.Model):
     last_login = models.DateTimeField(null=True)
 
     USERNAME_FIELD = 'uuid'
+
+    @classmethod
+    def create(cls, email, postalcode):
+        activist = cls(email=email, postalcode=postalcode)
+        coordinate = geo.get_coordinates(activist.postalcode)
+        activist.coordinate = GEOSGeometry('POINT(%f %f)' % (coordinate[1], coordinate[0]), srid=4326)
+        return activist
 
     @property
     def is_authenticated(self):
@@ -80,6 +88,16 @@ class Meetup(models.Model):
     coordinate = models.PointField()
     activist = models.ManyToManyField(
         Activist, null=True, blank=True, related_name='meetups')
+
+    @classmethod
+    def create(cls, title, postalcode, municipal, street, house_number, coordinate=None):
+        meetup = cls(title=title, postalcode=postalcode, municipal=municipal, street=street, house_number=house_number)
+        if coordinate is None:
+            meetup.coordinate = GEOSGeometry('POINT(%f %f)' % (coordinate[1], coordinate[0]), srid=4326)
+        else:
+            coordinate = geo.get_coordinates(postalcode)
+            meetup.coordinate = GEOSGeometry('POINT(%f %f)' % (coordinate[1], coordinate[0]), srid=4326)
+        return meetup
 
     def __str__(self):
         return '{} - {}'.format(self.title, self.uuid)

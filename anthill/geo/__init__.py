@@ -1,6 +1,7 @@
 from anthill.geo.data.ergebnisse import ergebnisse
 from anthill.geo.data.plz_latlon import coordinates
 from anthill.geo.data.ortezumflyern import orte
+from geopy.distance import great_circle
 
 def get_wahlergebnis(plz):
     """
@@ -23,5 +24,9 @@ def get_nearest_ortzumflyern(plz):
     Returns a the nearest location for a meetup from our "cool places to
     create meetups"-file
     """
-    #TODO
+    print(plz)
+    plz_latlon = get_coordinates(plz)
+    ort_latlon = (orte[0]['lat'], orte[0]['lon'])
+    print(plz_latlon, ort_latlon)
+    print(great_circle(plz_latlon, ort_latlon).meters/1000.0)
     return orte[0]
