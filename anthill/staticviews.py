@@ -1,6 +1,7 @@
 # -*- coding: UTF-8 -*-
 from django.shortcuts import render, redirect, get_object_or_404
 from geo import get_nearest_ortzumflyern
+from emailviews import WelcomeMessageView
 
 def home(request):
     return render(request, 'home.html')
@@ -14,6 +15,8 @@ def events(request):
     return render(request, 'events.html', {'locations': locations})
 
 def join_event(request):
+    # Instantiate and send a message.
+    WelcomeMessageView('user@example.com').send()
     return render(request, 'joinEvent.html')
 
 def join_first_event(request):
