@@ -5,11 +5,13 @@ from rest_framework import viewsets
 from anthill.serializers import UserSerializer, GroupSerializer, \
     ActivistSerializer, MeetupSerializer
 
+from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import list_route
 
 from anthill.models import *
 
+from anthill.geocoding import Geocoder
 
 class UserViewSet(viewsets.ModelViewSet):
     """
@@ -47,6 +49,16 @@ class ActivistViewSet(viewsets.ModelViewSet):
             data, many=False, context={
                 'request': request})
         return Response(serializer.data)
+
+    def create(self, request, format=None):
+        serializer = ActivistSerializer(data=request.data)
+        if serializer.is_valid():
+            activist = serializer.save()
+            geocoder = Geocoder()
+            activist.coordinate = geocoder.postalcode2coordinates(activist.postalcode)
+            activist.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class MeetupViewSet(viewsets.ModelViewSet):
