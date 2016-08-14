@@ -3,3 +3,4 @@ django-filter==0.13.0
 djangorestframework==3.4.4
 Markdown==2.6.6
 psycopg2==2.6.2
+django-mailviews==0.6.5
