@@ -7,8 +7,10 @@ from anthill.serializers import UserSerializer, GroupSerializer, \
 
 from rest_framework.response import Response
 from rest_framework.decorators import list_route
+from django.contrib.gis.measure import Distance as D
 
 from anthill.models import *
+from django.http import HttpResponse
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -69,3 +71,17 @@ class MeetupViewSet(viewsets.ModelViewSet):
             data, many=False, context={
                 'request': request})
         return Response(serializer.data)
+
+
+def meetups_near_activist(request, id):
+    try:
+        activist = Activist.objects.filter(uuid=id).first()
+        input_point = activist.coordinate
+        DISTANCE_LIMIT_METERS = 100000 #todo: check if this is really meters
+        data = Meetup.objects.filter(coordinate__distance_lt=(input_point, D(m=DISTANCE_LIMIT_METERS)))
+    except ValueError as e:
+        return HttpResponse(e)
+    serializer = MeetupSerializer(
+        data, many=True, context={
+            'request': request})
+    return HttpResponse(data)
