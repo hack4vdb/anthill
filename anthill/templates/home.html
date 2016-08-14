@@ -14,17 +14,20 @@
       <button class="sm-button" onclick="FB.login(function(response) { statusChangeCallback(response); }, {scope: 'public_profile,email,user_location'});">
         <i class="fa fa-facebook-official" aria-hidden="true"></i> Mit Facebook anmelden
       </button>
+
       <p>oder</p>
 
-      <label for="inputPostalcode">Deine Postleitzahl</label>
-      <input class="signin-input" type="number" id="inputPostalcode" placeholder="Postleitzahl">
+      <form onsubmit="return getDataFromForm();">
+        <label for="inputPostalcode">Deine Postleitzahl</label>
+        <input class="signin-input" type="number" id="inputPostalcode" placeholder="Postleitzahl">
 
-      <label for="inputEmail" class="col-sm-4 control-label">Deine E-Mail-Adresse</label>
-      <input class="signin-input" type="email" id="inputEmail" placeholder="E-Mail-Adresse">
+        <label for="inputEmail" class="col-sm-4 control-label">Deine E-Mail-Adresse</label>
+        <input class="signin-input" type="email" id="inputEmail" placeholder="E-Mail-Adresse">
 
-      <button class="event-button" onclick="getDataFromForm();">
-        Jetzt mithelfen!
-      </button>
+        <button type="submit" class="event-button">
+          Jetzt mithelfen!
+        </button>
+      </form>
     </div>
   </div>
 </div>
@@ -63,15 +66,17 @@
       </button>
     </div>
     <div class="one-half column">
-      <label for="inputPostalcode">Deine Postleitzahl</label>
-      <input class="signin-input" type="number" id="inputPostalcode" placeholder="Postleitzahl">
+      <form onsubmit="return getDataFromForm();">
+        <label for="inputPostalcode">Deine Postleitzahl</label>
+        <input class="signin-input" type="number" id="inputPostalcode" placeholder="Postleitzahl">
 
-      <label for="inputEmail" class="col-sm-4 control-label">Deine E-Mail-Adresse</label>
-      <input class="signin-input" type="email" id="inputEmail" placeholder="E-Mail-Adresse">
+        <label for="inputEmail" class="col-sm-4 control-label">Deine E-Mail-Adresse</label>
+        <input class="signin-input" type="email" id="inputEmail" placeholder="E-Mail-Adresse">
 
-      <button class="event-button" onclick="getDataFromForm();">
-        Jetzt mithelfen!
-      </button>
+        <button type="submit" class="event-button">
+          Jetzt mithelfen!
+        </button>
+      </form>
     </div>
   </div>
 </div>
