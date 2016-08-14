@@ -2,43 +2,76 @@
 
 {% block content %}
 <div class="container">
-  <h1>Flyern für VdB</h1>
-  <p>Melde dich jetzt an und hilf mit!</p>
+  <div class="row">
+    <div class="one-half column testimonial">
+      <div></div>
+      <blockquote>Ich bin dabei – für Van der Bellen!</blockquote>
+      <h3>Alexandra, Wien</h3>
+    </div>
+    <div class="one-half column signup-bubble">
+      <h2>Jetzt bist du gefordert.</h2>
+      <p>Unterstütze Alexander Van der Bellen in deiner Region.</p>
+      <button class="sm-button" onclick="FB.login(function(response) { statusChangeCallback(response); }, {scope: 'public_profile,email,user_location'});">
+        <i class="fa fa-facebook-official" aria-hidden="true"></i> Mit Facebook anmelden
+      </button>
+      <p>oder</p>
+
+      <label for="inputPostalcode">Deine Postleitzahl</label>
+      <input class="signin-input" type="number" id="inputPostalcode" placeholder="Postleitzahl">
+
+      <label for="inputEmail" class="col-sm-4 control-label">Deine E-Mail-Adresse</label>
+      <input class="signin-input" type="email" id="inputEmail" placeholder="E-Mail-Adresse">
+
+      <button class="event-button" onclick="getDataFromForm();">
+        Jetzt mithelfen!
+      </button>
+    </div>
+  </div>
+</div>
+<div class="full-width-container explainer">
+  <div class="container">
+    <div class="row">
+      <div class="one-half column">
+        <h3>Du bist nicht alleine</h3>
+        <p>In deiner Nähe gibt es hunderte UnterstützerInnen von Alexander van der Bellen.</p>
+      </div>
+      <div class="one-half column">
+        <i class="fa fa-5x fa-users" aria-hidden="true"></i>
+      </div>
+    </div>
+    <div class="row">
+      <div class="one-half column">
+        <i class="fa fa-5x fa-map-signs" aria-hidden="true"></i>
+      </div>
+      <div class="one-half column">
+        <h3>Du machst den Unterschied</h3>
+        <p>Wenige Stunden Engagement für die Kampagne können das Wahlergebnis entscheiden.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="full-width-container photowall">
+  <div></div>
+</div>
+<div class="container">
   <div class="row">
     <div class="one-half column">
-      <h2>Melde dich an mit…</h2>
-      <a class="sm-button" href="#" onclick="FB.login(function(response) { statusChangeCallback(response); }, {scope: 'public_profile,email,user_location'});">
-        <div style="background-color: #3b5998;">
-          <i class="fa fa-facebook-official" aria-hidden="true"></i> Facebook
-        </div>
-      </a>
-      <a class="sm-button" href="#">
-        <div style="background-color: #00aced;">
-          <i class="fa fa-twitter" aria-hidden="true"></i> Twitter
-        </div>
-      </a>
-      <a class="sm-button" href="#">
-        <div style="background-color: #dd4b39;">
-          <i class="fa fa-google-plus" aria-hidden="true"></i> Google
-        </div>
-      </a>
+      <h2>Jetzt bist du gefordert.</h2>
+      <p>Unterstütze Alexander Van der Bellen in deiner Region.</p>
+      <button class="sm-button" onclick="FB.login(function(response) { statusChangeCallback(response); }, {scope: 'public_profile,email,user_location'});">
+        <i class="fa fa-facebook-official" aria-hidden="true"></i> Mit Facebook anmelden
+      </button>
     </div>
     <div class="one-half column">
-      <h2>…oder registriere dich mit deiner E-Mail-Adresse!</h2>
-      <div class="row">
-        <div class="two-thirds column">
-          <label for="inputEmail" class="col-sm-4 control-label">E-Mail</label>
-          <input class="signin-input" type="email" id="inputEmail" placeholder="E-Mail">
-        </div>
+      <label for="inputPostalcode">Deine Postleitzahl</label>
+      <input class="signin-input" type="number" id="inputPostalcode" placeholder="Postleitzahl">
 
-        <div class="one-third column">
-          <label for="inputPostalcode">PLZ</label>
-          <input class="signin-input" type="number" id="inputPostalcode" placeholder="Postleitzahl">
-        </div>
-      </div>
-      <a class="event-button" href="#" onclick="getDataFromForm();">
-        <div>Jetzt mithelfen!</div>
-      </a>
+      <label for="inputEmail" class="col-sm-4 control-label">Deine E-Mail-Adresse</label>
+      <input class="signin-input" type="email" id="inputEmail" placeholder="E-Mail-Adresse">
+
+      <button class="event-button" onclick="getDataFromForm();">
+        Jetzt mithelfen!
+      </button>
     </div>
   </div>
 </div>
