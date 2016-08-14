@@ -86,17 +86,7 @@ class MeetupNearActivistViewSet(viewsets.ReadOnlyModelViewSet):
         return Response()
 
     def retrieve(self, request, format=None, pk=None):
-        try:
-            activist = Activist.objects.filter(uuid=pk).first()
-            input_point = activist.coordinate
-            DISTANCE_LIMIT_METERS = 100000  # todo: check if this is really meters
-            data = Meetup.objects.filter(coordinate__distance_lt=(input_point, Distance(m=DISTANCE_LIMIT_METERS)))
-            #data = Meetup.objects.filter(coordinate__distance_lt=(input_point, Distance(m=DISTANCE_LIMIT_METERS)))\
-            #    .annotate(distance=Distance('coordinate', input_point))\
-            #    .order_by('distance')
-
-        except ValueError as e:
-            return Response(e)
+        data = Meetup.find_meetups_near_activist(pk)
         serializer = MeetupSerializer(
             data, many=True, context={
                 'request': request})

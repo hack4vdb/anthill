@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 import uuid
 from django.contrib.gis.db import models
+from django.contrib.gis.measure import Distance
 
 # Create your models here.
 
@@ -12,6 +13,8 @@ from django.contrib.gis.db import models
 #Land, PLZ, Ort, Strasse, Hausnummer, Tuernummer, Anrede, Vorname, Nachname,
 # E-Mail Adresse, Produktbedarf (Paket mit 500 Flyern)
 from rest_framework.exceptions import ValidationError
+
+from anthill.models import *
 
 
 class Activist(models.Model):
@@ -50,3 +53,17 @@ class Meetup(models.Model):
 
     def __str__(self):
         return '{} - {}'.format(self.title, self.uuid)
+
+    @staticmethod
+    def find_meetups_near_activist(activist_uuid):
+        try:
+            activist = Activist.objects.filter(uuid=activist_uuid).first()
+            input_point = activist.coordinate
+            DISTANCE_LIMIT_METERS = 100000  # todo: check if this is really meters
+            data = Meetup.objects.filter(coordinate__distance_lt=(input_point, Distance(m=DISTANCE_LIMIT_METERS)))
+            #data = Meetup.objects.filter(coordinate__distance_lt=(input_point, Distance(m=DISTANCE_LIMIT_METERS)))\
+            #    .annotate(distance=Distance('coordinate', input_point))\
+            #    .order_by('distance')
+            return data
+        except ValueError as e:
+            return []
