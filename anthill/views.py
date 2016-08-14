@@ -5,6 +5,7 @@ from rest_framework import viewsets
 from anthill.serializers import UserSerializer, GroupSerializer, \
     ActivistSerializer, MeetupSerializer
 
+from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import list_route
 from django.contrib.gis.measure import Distance
@@ -51,6 +52,16 @@ class ActivistViewSet(viewsets.ModelViewSet):
                 'request': request})
         return Response(serializer.data)
 
+    def create(self, request, format=None):
+        serializer = ActivistSerializer(data=request.data)
+        if serializer.is_valid():
+            activist = serializer.save()
+            geocoder = Geocoder()
+            activist.coordinate = geocoder.postalcode2coordinates(activist.postalcode)
+            activist.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 class MeetupViewSet(viewsets.ModelViewSet):
     """
@@ -86,7 +97,8 @@ class MeetupNearActivistViewSet(viewsets.ReadOnlyModelViewSet):
         return Response()
 
     def retrieve(self, request, format=None, pk=None):
-        data = Meetup.find_meetups_near_activist(pk)
+        activist = Activist.objects.filter(uuid=pk).first()
+        data = activist.find_meetups_nearby()
         serializer = MeetupSerializer(
             data, many=True, context={
                 'request': request})

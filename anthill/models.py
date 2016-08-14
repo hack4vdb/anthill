@@ -24,7 +24,8 @@ class Activist(models.Model):
     first_name = models.CharField(max_length=300, null=True, blank=True)
     last_name = models.CharField(max_length=300, null=True, blank=True)
     facebook_id = models.CharField(max_length=32, null=True, blank=True)
-    email = models.EmailField(unique=True)
+    facebook_bot_id = models.CharField(max_length=32, null=True, blank=True)
+    email = models.EmailField(null=True, blank=True)
     postalcode = models.IntegerField(null=True, blank=True)  # PLZ (4-digit)
     municipal = models.CharField(max_length=500, null=True, blank=True)  # Ort
     street = models.CharField(max_length=500, null=True, blank=True)
@@ -34,6 +35,22 @@ class Activist(models.Model):
     def clean(self):
         if self.postalcode is None and self.municipal is None:
             raise ValidationError(_('Either postalcode or municipal are required.'))
+
+        if self.email is None and self.facebook_id is None and self.facebook_bot_id is None:
+            raise ValidationError(_('Either email or facebook_id or facebook_bot_id are required.'))
+
+        # todo: email, facebook_id and facebook_bot_id need to be unique when set.
+
+    def find_meetups_nearby(self):
+        try:
+            DISTANCE_LIMIT_METERS = 100000  # todo: check if this is really meters
+            data = Meetup.objects.filter(coordinate__distance_lt=(self.coordinate, Distance(m=DISTANCE_LIMIT_METERS)))
+            #data = Meetup.objects.filter(coordinate__distance_lt=(self.coordinate, Distance(m=DISTANCE_LIMIT_METERS)))\
+            #    .annotate(distance=Distance('coordinate', self.coordinate))\
+            #    .order_by('distance')
+            return data
+        except ValueError as e:
+            return []
 
     def __str__(self):
         return '{} ({}) - {}'.format(self.email, self.postalcode, self.uuid)
@@ -56,17 +73,8 @@ class Meetup(models.Model):
 
     @staticmethod
     def find_meetups_near_activist(activist_uuid):
-        try:
-            activist = Activist.objects.filter(uuid=activist_uuid).first()
-            input_point = activist.coordinate
-            DISTANCE_LIMIT_METERS = 100000  # todo: check if this is really meters
-            data = Meetup.objects.filter(coordinate__distance_lt=(input_point, Distance(m=DISTANCE_LIMIT_METERS)))
-            #data = Meetup.objects.filter(coordinate__distance_lt=(input_point, Distance(m=DISTANCE_LIMIT_METERS)))\
-            #    .annotate(distance=Distance('coordinate', input_point))\
-            #    .order_by('distance')
-            return data
-        except ValueError as e:
-            return []
+        activist = Activist.objects.filter(uuid=activist_uuid).first()
+        return activist.find_meetups_nearby()
 
 
 class InterestingPlaces(models.Model):
