@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.models import User, Group
 from anthill import models
 from rest_framework import viewsets
+
 from anthill.serializers import UserSerializer, GroupSerializer, \
     ActivistSerializer, MeetupSerializer
 
@@ -9,6 +10,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import list_route
 from django.contrib.gis.measure import Distance
+from django.contrib.gis.geos import GEOSGeometry
 
 from anthill.models import *
 from django.http import HttpResponse
@@ -56,8 +58,8 @@ class ActivistViewSet(viewsets.ModelViewSet):
         serializer = ActivistSerializer(data=request.data)
         if serializer.is_valid():
             activist = serializer.save()
-            geocoder = Geocoder()
-            activist.coordinate = geocoder.postalcode2coordinates(activist.postalcode)
+            coordinate = geo.get_coordinates(activist.postalcode)
+            activist.coordinate = GEOSGeometry('POINT(%f %f)' % (coordinate[1], coordinate[0]), srid=4326)
             activist.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

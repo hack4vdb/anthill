@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 import uuid
 from django.contrib.gis.db import models
+from django.contrib.gis.geos import GEOSGeometry
 from django.contrib.gis.measure import Distance
 
 # Create your models here.
@@ -14,6 +15,7 @@ from django.contrib.gis.measure import Distance
 # E-Mail Adresse, Produktbedarf (Paket mit 500 Flyern)
 from rest_framework.exceptions import ValidationError
 
+from anthill import geo
 from anthill.models import *
 
 
@@ -38,6 +40,10 @@ class Activist(models.Model):
 
         if self.email is None and self.facebook_id is None and self.facebook_bot_id is None:
             raise ValidationError(_('Either email or facebook_id or facebook_bot_id are required.'))
+
+        # if self.postalcode is not None:
+        #   coordinate = geo.get_coordinates(self.postalcode)
+        #    self.coordinate = GEOSGeometry('POINT(%f %f)' % (coordinate[1], coordinate[0]), srid=4326)
 
         # todo: email, facebook_id and facebook_bot_id need to be unique when set.
 
