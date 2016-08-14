@@ -23,9 +23,9 @@ from anthill import staticviews
 apiRouter = routers.DefaultRouter()
 #apiRouter.register(r'users', views.UserViewSet)
 #apiRouter.register(r'groups', views.GroupViewSet)
-apiRouter.register(r'activists', views.ActivistViewSet)
-apiRouter.register(r'meetups', views.MeetupViewSet)
-apiRouter.register(r'meetupsnearactivist', views.MeetupNearActivistViewSet)
+apiRouter.register(r'activists', views.ActivistViewSet, base_name='activists')
+apiRouter.register(r'meetups', views.MeetupViewSet, base_name='meetups')
+apiRouter.register(r'meetupsnearactivist', views.MeetupNearActivistViewSet, base_name='meetupsnearactivist')
 
 
 urlpatterns = [
