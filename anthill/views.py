@@ -11,6 +11,7 @@ from django.contrib.gis.measure import Distance
 
 from anthill.models import *
 from django.http import HttpResponse
+from rest_framework.decorators import api_view
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -100,3 +101,11 @@ class MeetupNearActivistViewSet(viewsets.ReadOnlyModelViewSet):
             data, many=True, context={
                 'request': request})
         return Response(serializer.data)
+
+
+@api_view(['POST'])
+def partake_meetup(request, meetupid, userid):
+    meetup = Meetup.objects.filter(uuid=meetupid).first()
+    activist = Activist.objects.filter(uuid=userid).first()
+    meetup.activist.add(activist)
+    return Response()
