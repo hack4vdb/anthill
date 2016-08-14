@@ -33,6 +33,13 @@ class Activist(models.Model):
     street = models.CharField(max_length=500, null=True, blank=True)
     house_number = models.CharField(max_length=100, null=True, blank=True)
     coordinate = models.PointField(null=True, blank=True)
+    last_login = models.DateTimeField(null=True)
+
+    USERNAME_FIELD = 'uuid'
+
+    @property
+    def is_authenticated(self):
+        return True
 
     def clean(self):
         if self.postalcode is None and self.municipal is None:

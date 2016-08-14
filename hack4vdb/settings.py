@@ -104,6 +104,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = ['hack4vdb.backends.UuidAuthBackend', 'django.contrib.auth.backends.ModelBackend']
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
@@ -120,6 +121,9 @@ USE_TZ = True
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+LOGIN_URL = '/'
+LOGIN_REDIRECT_URL = '/events'
 
 
 # Static files (CSS, JavaScript, Images)
