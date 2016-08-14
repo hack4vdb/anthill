@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 from django.shortcuts import render, redirect, get_object_or_404
-from geo import get_nearest_ortzumflyern
+from anthill.geo import get_nearest_ortzumflyern
 
 def home(request):
     return render(request, 'home.html')

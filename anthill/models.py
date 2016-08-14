@@ -50,3 +50,13 @@ class Meetup(models.Model):
 
     def __str__(self):
         return '{} - {}'.format(self.title, self.uuid)
+
+
+class InterestingPlaces(models.Model):
+    title = models.CharField(max_length=1000)
+    postalcode = models.IntegerField()  # PLZ (4-digit)
+    municipal = models.CharField(max_length=500)  # Ort
+    coordinate = models.PointField()
+
+    def __str__(self):
+        return '{} {}: {}'.format(self.postalcode, self.municipal, self.title)

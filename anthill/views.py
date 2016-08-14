@@ -12,7 +12,7 @@ from django.contrib.gis.measure import Distance
 from anthill.models import *
 from django.http import HttpResponse
 from rest_framework.decorators import api_view
-
+from anthill import geo
 
 class UserViewSet(viewsets.ModelViewSet):
     """
@@ -76,7 +76,7 @@ class MeetupViewSet(viewsets.ModelViewSet):
 
 class MeetupNearActivistViewSet(viewsets.ReadOnlyModelViewSet):
     """
-    API endpoint that allows meetups to be viewed or edited.
+    API endpoint that allows meetups near activists to be viewed or edited.
     """
     queryset = Meetup.objects.all()
     serializer_class = MeetupSerializer
@@ -91,6 +91,7 @@ class MeetupNearActivistViewSet(viewsets.ReadOnlyModelViewSet):
             input_point = activist.coordinate
             DISTANCE_LIMIT_METERS = 100000  # todo: check if this is really meters
             data = Meetup.objects.filter(coordinate__distance_lt=(input_point, Distance(m=DISTANCE_LIMIT_METERS)))
+            # todo: order by distance and limit results
             #data = Meetup.objects.filter(coordinate__distance_lt=(input_point, Distance(m=DISTANCE_LIMIT_METERS)))\
             #    .annotate(distance=Distance('coordinate', input_point))\
             #    .order_by('distance')
@@ -109,3 +110,15 @@ def partake_meetup(request, meetupid, userid):
     activist = Activist.objects.filter(uuid=userid).first()
     meetup.activist.add(activist)
     return Response()
+
+
+@api_view(['GET'])
+def interesting_places(request, id):
+    activist = Activist.objects.filter(uuid=id).first()
+    location = activist.coordinate
+
+    # todo: ortezumflyern should be in the database
+    # todo: sort by closeness
+    places = geo.data.ortezumflyern.orte[:10]
+
+    return Response(places)
