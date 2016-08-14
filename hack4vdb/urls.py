@@ -25,6 +25,7 @@ apiRouter = routers.DefaultRouter()
 #apiRouter.register(r'groups', views.GroupViewSet)
 apiRouter.register(r'activists', views.ActivistViewSet)
 apiRouter.register(r'meetups', views.MeetupViewSet)
+apiRouter.register(r'meetupsnearactivist', views.MeetupNearActivistViewSet)
 
 
 urlpatterns = [
@@ -35,6 +36,6 @@ urlpatterns = [
     url(r'^start_event/$', staticviews.start_event, name='start_event'),
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include(apiRouter.urls)),
-    url(r'^api/meetupsnearactivist/(?P<id>[\d\w-]+)/', views.meetups_near_activist, name='meetups_near_activist'),
+    #url(r'^api/meetupsnearactivist/(?P<id>[\d\w-]+)/', views.meetups_near_activist, name='meetups_near_activist'),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]

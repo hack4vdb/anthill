@@ -7,7 +7,7 @@ from anthill.serializers import UserSerializer, GroupSerializer, \
 
 from rest_framework.response import Response
 from rest_framework.decorators import list_route
-from django.contrib.gis.measure import Distance as D
+from django.contrib.gis.measure import Distance
 
 from anthill.models import *
 from django.http import HttpResponse
@@ -73,15 +73,30 @@ class MeetupViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
 
 
-def meetups_near_activist(request, id):
-    try:
-        activist = Activist.objects.filter(uuid=id).first()
-        input_point = activist.coordinate
-        DISTANCE_LIMIT_METERS = 100000 #todo: check if this is really meters
-        data = Meetup.objects.filter(coordinate__distance_lt=(input_point, D(m=DISTANCE_LIMIT_METERS)))
-    except ValueError as e:
-        return HttpResponse(e)
-    serializer = MeetupSerializer(
-        data, many=True, context={
-            'request': request})
-    return HttpResponse(data)
+class MeetupNearActivistViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows meetups to be viewed or edited.
+    """
+    queryset = Meetup.objects.all()
+    serializer_class = MeetupSerializer
+
+    def list(self, request, format=None):
+        # we don't return lists of all meetups ...
+        return Response()
+
+    def retrieve(self, request, format=None, pk=None):
+        try:
+            activist = Activist.objects.filter(uuid=pk).first()
+            input_point = activist.coordinate
+            DISTANCE_LIMIT_METERS = 100000  # todo: check if this is really meters
+            data = Meetup.objects.filter(coordinate__distance_lt=(input_point, Distance(m=DISTANCE_LIMIT_METERS)))
+            #data = Meetup.objects.filter(coordinate__distance_lt=(input_point, Distance(m=DISTANCE_LIMIT_METERS)))\
+            #    .annotate(distance=Distance('coordinate', input_point))\
+            #    .order_by('distance')
+
+        except ValueError as e:
+            return Response(e)
+        serializer = MeetupSerializer(
+            data, many=True, context={
+                'request': request})
+        return Response(serializer.data)
