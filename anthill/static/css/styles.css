@@ -1,6 +1,27 @@
 body {
   font-family: 'Source Sans Pro', sans-serif;
 }
+header {
+  margin-bottom: 1rem;
+  border-bottom: 1px #eee solid;
+}
+header h1 {
+  margin-top: 2rem;
+  font-weight: bold;
+}
+footer {
+  margin-top: 1rem;
+  border-top: 1px #eee solid;
+}
+footer p {
+  margin: 2rem 0;
+}
+footer .title {
+  font-size: 4.0rem;
+  line-height: 1.2;
+  font-weight: bold;
+  color: #999;
+}
 .event {
   list-style: none;
 }
