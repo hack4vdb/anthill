@@ -86,7 +86,8 @@ class MeetupNearActivistViewSet(viewsets.ReadOnlyModelViewSet):
         return Response()
 
     def retrieve(self, request, format=None, pk=None):
-        data = Meetup.find_meetups_near_activist(pk)
+        activist = Activist.objects.filter(uuid=pk).first()
+        data = activist.find_meetups_nearby()
         serializer = MeetupSerializer(
             data, many=True, context={
                 'request': request})
