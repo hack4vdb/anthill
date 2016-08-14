@@ -21,7 +21,7 @@ class Activist(models.Model):
     first_name = models.CharField(max_length=300, null=True, blank=True)
     last_name = models.CharField(max_length=300, null=True, blank=True)
     facebook_id = models.CharField(max_length=32, null=True, blank=True)
-    email = models.EmailField()
+    email = models.EmailField(unique=True)
     postalcode = models.IntegerField(null=True, blank=True)  # PLZ (4-digit)
     municipal = models.CharField(max_length=500, null=True, blank=True)  # Ort
     street = models.CharField(max_length=500, null=True, blank=True)
