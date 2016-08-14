@@ -1,0 +1,17 @@
+[Unit]
+Description=anthill daemon
+Requires=anthill.socket
+After=network.target
+
+[Service]
+PIDFile=/run/anthill/pid
+User=anthill
+Group=anthill
+WorkingDirectory=/home/anthill/hack4vdb
+ExecStart=/usr/local/bin/gunicorn --reload --pid /run/anthill/pid hack4vdb.wsgi
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s TERM $MAINPID
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
