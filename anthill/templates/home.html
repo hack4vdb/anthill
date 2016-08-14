@@ -1,83 +1,84 @@
 {% extends "layouts/base.html" %}
 
 {% block content %}
-<div class="container">
-  <div class="row">
-    <div class="one-half column testimonial">
-      <div></div>
-      <blockquote>Ich bin dabei – für Van der Bellen!</blockquote>
-      <h3>Alexandra, Wien</h3>
-    </div>
-    <div class="one-half column signup-bubble">
-      <h2>Jetzt bist du gefordert.</h2>
-      <p>Unterstütze Alexander Van der Bellen in deiner Region.</p>
-      <button class="sm-button" onclick="FB.login(function(response) { statusChangeCallback(response); }, {scope: 'public_profile,email,user_location'});">
-        <i class="fa fa-facebook-official" aria-hidden="true"></i> Mit Facebook anmelden
-      </button>
+<div id="page-home">
 
-      <p>oder</p>
+  <div class="container">
+    <div class="row">
+      <div class="one-half column testimonial">
+        <div></div>
+        <blockquote>Ich bin dabei – für Van der Bellen!</blockquote>
+        <h3>Alexandra, Wien</h3>
+      </div>
+      <div class="one-half column signup-bubble">
+        <h2><strong>Ja</strong> ich will Van der Bellen gewinnen helfen.</h2>
+        <div class="sm-button" onclick="FB.login(function(response) { statusChangeCallback(response); }, {scope: 'public_profile,email,user_location'});">
+          <i class="fa fa-facebook-official" aria-hidden="true"></i> Mit Facebook anmelden
+        </div>
 
-      <form onsubmit="return getDataFromForm();">
-        <label for="inputPostalcode">Deine Postleitzahl</label>
-        <input class="signin-input" type="number" id="inputPostalcode" placeholder="Postleitzahl">
+        <p class="loginDivider">&ndash; oder &ndash;</p>
 
-        <label for="inputEmail" class="col-sm-4 control-label">Deine E-Mail-Adresse</label>
-        <input class="signin-input" type="email" id="inputEmail" placeholder="E-Mail-Adresse">
+        <form onsubmit="return getDataFromForm();">
+          <input class="signin-input" type="number" id="inputPostalcode" placeholder="PLZ" inputmode="numeric">
 
-        <button type="submit" class="event-button">
-          Jetzt mithelfen!
-        </button>
-      </form>
+          <input class="signin-input" type="email" id="inputEmail" placeholder="E-Mail">
+
+          <button type="submit" class="event-button">
+            Jetzt mithelfen!
+          </button>
+        </form>
+      </div>
     </div>
   </div>
-</div>
-<div class="full-width-container explainer">
+  <div class="full-width-container explainer">
+    <div class="container">
+      <div class="row">
+        <div class="one-half column">
+          <h3>Du bist nicht alleine</h3>
+          <p>In deiner Nähe gibt es hunderte UnterstützerInnen von Alexander van der Bellen.</p>
+        </div>
+        <div class="one-half column">
+          <i class="fa fa-5x fa-users" aria-hidden="true"></i>
+        </div>
+      </div>
+      <div class="row">
+        <div class="one-half column">
+          <i class="fa fa-5x fa-map-signs" aria-hidden="true"></i>
+        </div>
+        <div class="one-half column">
+          <h3>Du machst den Unterschied</h3>
+          <p>Wenige Stunden Engagement für die Kampagne können das Wahlergebnis entscheiden.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="full-width-container photowall">
+    <div></div>
+  </div>
   <div class="container">
     <div class="row">
       <div class="one-half column">
-        <h3>Du bist nicht alleine</h3>
-        <p>In deiner Nähe gibt es hunderte UnterstützerInnen von Alexander van der Bellen.</p>
-      </div>
-      <div class="one-half column">
-        <i class="fa fa-5x fa-users" aria-hidden="true"></i>
-      </div>
-    </div>
-    <div class="row">
-      <div class="one-half column">
-        <i class="fa fa-5x fa-map-signs" aria-hidden="true"></i>
-      </div>
-      <div class="one-half column">
-        <h3>Du machst den Unterschied</h3>
-        <p>Wenige Stunden Engagement für die Kampagne können das Wahlergebnis entscheiden.</p>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="full-width-container photowall">
-  <div></div>
-</div>
-<div class="container">
-  <div class="row">
-    <div class="one-half column">
-      <h2>Jetzt bist du gefordert.</h2>
-      <p>Unterstütze Alexander Van der Bellen in deiner Region.</p>
-      <button class="sm-button" onclick="FB.login(function(response) { statusChangeCallback(response); }, {scope: 'public_profile,email,user_location'});">
-        <i class="fa fa-facebook-official" aria-hidden="true"></i> Mit Facebook anmelden
-      </button>
-    </div>
-    <div class="one-half column">
-      <form onsubmit="return getDataFromForm();">
-        <label for="inputPostalcode">Deine Postleitzahl</label>
-        <input class="signin-input" type="number" id="inputPostalcode" placeholder="Postleitzahl">
-
-        <label for="inputEmail" class="col-sm-4 control-label">Deine E-Mail-Adresse</label>
-        <input class="signin-input" type="email" id="inputEmail" placeholder="E-Mail-Adresse">
-
-        <button type="submit" class="event-button">
-          Jetzt mithelfen!
+        <h2>Jetzt bist du gefordert.</h2>
+        <p>Unterstütze Alexander Van der Bellen in deiner Region.</p>
+        <button class="sm-button" onclick="FB.login(function(response) { statusChangeCallback(response); }, {scope: 'public_profile,email,user_location'});">
+          <i class="fa fa-facebook-official" aria-hidden="true"></i> Mit Facebook anmelden
         </button>
-      </form>
+      </div>
+      <div class="one-half column">
+        <form onsubmit="return getDataFromForm();">
+          <label for="inputPostalcode">Deine Postleitzahl</label>
+          <input class="signin-input" type="number" id="inputPostalcode" placeholder="Postleitzahl">
+
+          <label for="inputEmail" class="col-sm-4 control-label">Deine E-Mail-Adresse</label>
+          <input class="signin-input" type="email" id="inputEmail" placeholder="E-Mail-Adresse">
+
+          <button type="submit" class="event-button">
+            Jetzt mithelfen!
+          </button>
+        </form>
+      </div>
     </div>
   </div>
+
 </div>
 {% endblock %}
