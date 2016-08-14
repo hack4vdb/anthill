@@ -4,8 +4,10 @@ body {
 .event {
   list-style: none;
 }
-.event p, .event h3 {
-  margin-bottom: 0;
+.event {
+  p, h3 {
+    margin-bottom: 0;
+  }
 }
 .event-location {
   float:left;
