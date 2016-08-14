@@ -18,11 +18,16 @@
 
         <p class="loginDivider">&ndash; oder &ndash;</p>
 
-        <form onsubmit="return getDataFromForm();">
-          <input class="signin-input" type="number" id="inputPostalcode" placeholder="PLZ" inputmode="numeric">
-
-          <input class="signin-input" type="email" id="inputEmail" placeholder="E-Mail">
-
+        <form action="" method="POST">
+          {% csrf_token %}
+          <div class="message">
+            {{ form.message.errors }}
+            {{ form.message }}
+          </div>
+          {{ form.email.errors }}
+          {{ form.email }}
+          {{ form.postcode.errors }}
+          {{ form.postcode }}
           <button type="submit" class="event-button">
             Jetzt mithelfen!
           </button>
@@ -65,13 +70,18 @@
         </button>
       </div>
       <div class="one-half column">
-        <form onsubmit="return getDataFromForm();">
-          <label for="inputPostalcode">Deine Postleitzahl</label>
-          <input class="signin-input" type="number" id="inputPostalcode" placeholder="Postleitzahl">
-
-          <label for="inputEmail" class="col-sm-4 control-label">Deine E-Mail-Adresse</label>
-          <input class="signin-input" type="email" id="inputEmail" placeholder="E-Mail-Adresse">
-
+        <form action="" method="POST">
+          {% csrf_token %}
+          <div class="message">
+            {{ form.message.errors }}
+            {{ form.message }}
+          </div>
+          {{ form.email.label }}
+          {{ form.email.errors }}
+          {{ form.email }}
+          {{ form.postcode.label }}
+          {{ form.postcode.errors }}
+          {{ form.postcode }}
           <button type="submit" class="event-button">
             Jetzt mithelfen!
           </button>

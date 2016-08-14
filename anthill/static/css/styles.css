@@ -54,8 +54,8 @@ footer .title {
 }
 #page-home #inputEmail {
   width: 65%;
-  margin-left:5%;
-  float: left;  
+  margin-right:5%;
+  float: left;
 }
 
 #page-home input.signin-input::-webkit-outer-spin-button,
@@ -154,3 +154,9 @@ h3 {
   list-style: none;
 }
 
+form .message {
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0.01;
+}
