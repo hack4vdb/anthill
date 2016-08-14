@@ -3,29 +3,30 @@
 {% block content %}
 <div class="container">
   <p>Diese Aktionen finden in deiner Nähe statt:</p>
-  <ul>
-    <li class="event">
+  <ul class="meetup_list">
+    {% for location in locations %}
+    <li class="meetup">
       <div class="row">
         <div class="two-thirds column">
-          <h3>Flyerverteilen am Kirtag Hintertupfing</h3>
-          <p class="event-location"><i class="fa fa-map-marker" aria-hidden="true"></i> Hauptplatz Hintertupfing</p>
-          <p class="event-date"><i class="fa fa-clock-o" aria-hidden="true"></i> Montag, 32. August 2016, 18.00h</p>
-          <p>Schon 3 Leute haben sich für diese Aktion angemeldet.</p>
+          <h3>Flyerverteilen in {{ location.ort }}</h3>
+          <p class="meetup_location"><i class="fa fa-map-marker" aria-hidden="true"></i> {{ location.treffpunkt }}</p>
+          <p class="meetup_date"><i class="fa fa-clock-o" aria-hidden="true"></i> Montag, 32. August 2016, 18.00h</p>
         </div>
         <div class="one-third column">
           <a class="event-button" href="{% url 'join_event' %}">
-            <div>Ich mach' mit!</div>
+            <div>Jetzt mitmachen</div>
           </a>
         </div>
       </div>
     </li>
+    {% endfor %}
+    
     <li class="event">
       <div class="row">
         <div class="two-thirds column">
           <h3>Flyerverteilen am Kirtag Hintertupfing</h3>
           <p class="event-location"><i class="fa fa-map-marker" aria-hidden="true"></i> Hauptplatz Hintertupfing</p>
           <p class="event-date"><i class="fa fa-clock-o" aria-hidden="true"></i> Montag, 32. August 2016, 18.00h</p>
-          <p>Schon 3 Leute haben sich für diese Aktion angemeldet.</p>
         </div>
         <div class="one-third column">
           <a class="event-button" href="{% url 'join_event' %}">
