@@ -24,9 +24,13 @@ def get_nearest_ortzumflyern(plz):
     Returns a the nearest location for a meetup from our "cool places to
     create meetups"-file
     """
-    print(plz)
     plz_latlon = get_coordinates(plz)
-    ort_latlon = (orte[0]['lat'], orte[0]['lon'])
-    print(plz_latlon, ort_latlon)
-    print(great_circle(plz_latlon, ort_latlon).meters/1000.0)
-    return orte[0]
+    min_idx = 0
+    min = 99999
+    for i in range(len(orte)):
+        ort_latlon = (orte[i]['lat'], orte[i]['lon'])
+        dist = great_circle(plz_latlon, ort_latlon).meters
+        if dist < min:
+            min = dist
+            min_idx = i
+    return orte[min_idx]
