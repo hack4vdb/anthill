@@ -13,8 +13,8 @@
   <div class="container">
     <div class="row">
       <div id="signup-bubble" class="one-half column offset-by-six">
-        <h2>Ich will, dass Van der Bellen gewinnt.</h2>
-        <p>Und ich bin bereit, mich vor Ort einzubringen. Weil's um was geht.</p>
+        <h2><!--Ich will, dass Van der Bellen gewinnt.-->Van der Bellen muss gewinnen.</h2>
+        <p>Ich bin bereit, mich vor Ort gemeinsam mit anderen einzubringen. Weil's um was geht.</p>
 
         <form action="" method="POST">
           {% csrf_token %}
@@ -26,7 +26,7 @@
           {{ form.email.errors }}
           {{ form.postcode.errors }}
           <button type="submit" class="event-button">
-            Was kann ich tun?
+            <!--Was kann ich tun?-->Zeige, was ich tun kann ➜
           </button>
         </form>
 
@@ -45,8 +45,18 @@
   <div class="container">
     <div class="row">
       <div class="one-half column">
-        <h3>Du bist nicht alleine</h3>
-        <p>In deiner Nähe gibt es hunderte UnterstützerInnen von Alexander van der Bellen.</p>
+        <h3>Gemeinsam sind wir unaufhaltbar.</h3>
+        <ul>
+          <li>
+            In deiner Nähe gibt es hunderte UnterstützerInnen von Alexander van der Bellen, die nicht still sitzen wollen.
+          </li>
+          <li>
+            Diese Website bringt euch zusammen und zeigt auf, was ihr tun könnt, um Van der Bellen zum Präsidenten zu machen.
+          </li>
+          <li>
+            Make plans. Make friends. Make a difference.
+          </li>
+        </ul>
       </div>
       <div class="one-half column icon">
         <i class="fa fa-5x fa-users" aria-hidden="true"></i>
@@ -57,14 +67,24 @@
         <i class="fa fa-5x fa-map-signs" aria-hidden="true"></i>
       </div>
       <div class="one-half column">
-        <h3>Du machst den Unterschied</h3>
-        <p>Wenige Stunden Engagement für die Kampagne können das Wahlergebnis entscheiden.</p>
+        <h3>Du machst den Unterschied.</h3>
+        <ul>
+          <li>
+            Wir wissen: Es wird wieder knapp. Es geht um jede Stimme.
+          </li>
+          <li>
+            Dein Kreuzerl am Stimmzettel ist unverzichtbar. Aber dein aktives Engagement kann das Wahlergebnis entscheiden.
+          </li>
+          <li>
+            Überlass es nicht dem Zufall. Steh auf!
+          </li>
+        </ul>        
       </div>
     </div>
     <div class="row">
       <div class="eight columns offset-by-two" id="signup-bubble-2">
-        <h2>Jetzt bist du gefordert.</h2>
-        <p>Unterstütze Alexander Van der Bellen in deiner Region.</p>
+        <h2>Werde Teil Österreichs größter Wahlbewegung.</h2>
+        <p>Mach jetzt den ersten Schritt – ganz einfach und unverbindlich:</p>
         <!--button class="sm-button" onclick="FB.login(function(response) { statusChangeCallback(response); }, {scope: 'public_profile,email,user_location'});">
           <i class="fa fa-facebook-official" aria-hidden="true"></i> Mit Facebook anmelden
         </button-->
