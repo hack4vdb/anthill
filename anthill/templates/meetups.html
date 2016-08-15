@@ -58,7 +58,7 @@
 
           <p class="meetup_type"><i class="fa fa-tag" aria-hidden="true"></i> <a href="#">Verteilaktion</a></p>
         </div>
-        {% for start_time, end_time in potential_times %}
+        {% for start_time, end_time in potential_meetup.proposed_times %}
         <div class="two columns join">
           <span class="date-nice">{{ start_time|date:"l" }}</span>
           <span class="date-full">{{ start_time|date:"j. M" }}</span>
