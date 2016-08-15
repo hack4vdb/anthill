@@ -1,9 +1,9 @@
 <table border="0" cellpadding="0" cellspacing="0">
   <tr>
     <td>
-      <p>{Fritz} —</p>
-      <p>Die Verteilaktion am 13. September hat eben die notwenidige Teilnehmerzahl erreicht. Wir schicken heute die Flyer per Post an Michael.</p>
-      <p>Alle Antworten, die Du an diese Mailadresse schickst (<a href="mailto:">oqiwjasoijdqw@weilsumwasgeht.at</a>) erreichen alle Teilnehmer:</p>
+      <p>{{ recipient.first_name }} —</p>
+      <p>Die Verteilaktion am {{ meetup.datetime|date:"j. F" }} hat eben die notwendige Teilnehmerzahl erreicht. Wir schicken heute die Flyer per Post an {{ owner.first_name }}.</p>
+      <p>Alle Antworten, die Du an diese Mailadresse schickst (<a href="mailto:">aktiv@weilsumwasgeht.at</a>) erreichen alle Teilnehmer:</p>
       <p>
         Fritz<br />
         Susi<br />
@@ -26,7 +26,7 @@
           </tr>
         </tbody>
       </table>
-      <p>Danke, Fritz! Gemeinsam werden wir am 2. Oktober erneut erfolgreich sein.<br />
+      <p>Danke, {{ recipient.first_name }}! Gemeinsam werden wir am 2. Oktober erneut erfolgreich sein.<br />
         Weils um was geht.</p>
         <p><br />Team Van der Bellen</p>
       </td>
