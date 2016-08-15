@@ -273,7 +273,11 @@ body.meetups .coach.full-width-container {
 }
 
 body.meetups .coach h3 {
-  margin: 0 0 .5em;
+  font-family: 'Caveat Brush';
+  color: #eecd00;
+  font-size: 3.8rem;
+  line-height:.8em;
+  margin: 0 0 .4em;
 }
 
 body.meetups .meetup_list h3 {
@@ -283,10 +287,11 @@ body.meetups .coach-photo {
   background-image: url('/static/img/alexandra.jpg');
   background-size: 170%;
   background-position: top;
-  width: 100%;
+  width: 85%;
   height: 0;
-  padding-bottom: 100%;
+  padding-bottom: 85%;
   border-radius: 50%;
+  margin-left:3%;
 }
 
 body.meetups .event {
@@ -319,7 +324,7 @@ body.meetups .event-button {
 }
 body.meetups .speech-bubble {
   background: #fff;
-  padding: 0 2rem;
+  padding: 0 2.5rem 0 3rem;
   border-radius: 2rem;
 }
 body.meetups .speech-bubble:before {
@@ -331,7 +336,7 @@ body.meetups .speech-bubble:before {
   border-top: 1.5rem solid #ffde00;
   border-bottom: 1.5rem solid #ffde00;
   border-right: 1.5rem solid #fff;
-  left: -3.4rem;
+  left: -4.4rem;
   top: 3rem;
 }
 body.meetups .meetup_list p {

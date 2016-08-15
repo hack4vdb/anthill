@@ -35,7 +35,7 @@ def events(request):
     user = request.user
     location = get_nearest_ortzumflyern(user.postalcode)
     locations = [ Meetup.create(
-        title="Flyerverteilen in {}".format(location['ort']),
+        title="{} für VdB".format(location['ort']),
         postalcode=location['plz'],
         municipal=location['ort'],
         street=location['treffpunkt'],
