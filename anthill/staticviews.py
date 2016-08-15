@@ -20,9 +20,11 @@ def home(request):
                 activist.save()
                 activist = authenticate(uuid=activist.uuid)
                 login(request, activist)
-            return redirect('events')
+            return redirect('meetups')
     else:
         form = SignupForm()
+    if request.user.is_authenticated:
+        return redirect('meetups')
     return render(request, 'home.html', {'form': form})
 
 
@@ -31,7 +33,7 @@ def check_mail(request):
 
 
 @login_required
-def events(request):
+def meetups(request):
     user = request.user
     meetups = user.find_meetups_nearby()
     location = get_nearest_ortzumflyern(user.postalcode)
@@ -43,18 +45,16 @@ def events(request):
         house_number='',
         coordinate=(location['lat'], location['lon'])
     )]
-    return render(request, 'events.html', {
+    return render(request, 'meetups.html', {
         'meetups': meetups,
         'locations': locations,
         'user': user
     })
 
 @login_required
-def join_event(request):
-    # Instantiate and send a message.
-    WelcomeMessageView('user@example.com').send()
+def join_meetup(request, meetup_id=None, time=None, location=None):
     user = request.user
-    return render(request, 'joinEvent.html', {'user': user})
+    return render(request, 'join_meetup.html', {'user': user})
 
 
 def join_first_event(request):
