@@ -277,6 +277,7 @@ body.meetups .coach.full-width-container {
   background-color: #ffde00;
   margin-bottom: 3rem;
   padding: 2rem 0;
+  overflow: hidden;
 }
 
 body.meetups .coach h3 {
@@ -287,25 +288,80 @@ body.meetups .coach h3 {
   margin: 0 0 .4em;
 }
 
+
 body.meetups .meetup_list h3 {
   font-size: 3rem;
 }
 body.meetups .coach-photo {
+  width: 100%; height: 100px;
   background-image: url('/static/img/alexandra.jpg');
-  background-size: 170%;
-  background-position: top;
-  width: 85%;
+  background-position: 0 -20px;
+  background-size: cover;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+}
+@media (min-width: 550px) {
+  body.meetups .coach-photo {
+    width: 85%;
+    border-radius: 50%;
+    height: 0;
+    padding-bottom: 85%;
+    margin-left:3%;
+    background-size: 170%;
+    background-position: top;
+  }
+}
+
+body.meetups .speech-bubble {
+  background: #fff;
+  padding: 0 2.5rem 0 3rem;
+  border-bottom-left-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+}
+@media (min-width: 550px) {
+  body.meetups .speech-bubble {
+    border-radius: 2rem;
+  }
+}
+
+body.meetups .speech-bubble h3 {
+  font-size: 3.5rem;
+  margin-top: 1.5rem;
+}
+@media (min-width: 550px) {
+  body.meetups .speech-bubble h3 {
+    margin-top: 0;
+    font-size: 3.8rem;
+  }
+}
+
+body.meetups .speech-bubble:before {
+  position: relative;
+  content: "";
   height: 0;
-  padding-bottom: 85%;
-  border-radius: 50%;
-  margin-left:3%;
+  font-size: 0;
+  line-height: 0;
+}
+@media (min-width: 550px) {
+  body.meetups .speech-bubble:before {
+    border-top: 1.5rem solid #ffde00;
+    border-bottom: 1.5rem solid #ffde00;
+    border-right: 1.5rem solid #fff;
+    left: -4.4rem;
+    top: 3rem;    
+  }
 }
 
 body.meetups li.meetup {
   list-style: none;
-  padding-right: 3%;
   margin-bottom: 3rem;
 }
+@media (min-width: 550px) {
+  body.meetups li.meetup {
+    padding-right: 3%;
+  } 
+}
+
 body.meetups li.meetup p,
 body.meetups li.meetup h3 {
   margin-bottom: 0;
@@ -314,72 +370,98 @@ body.meetups li.meetup i.fa {
   width: 1.5rem;
   text-align: center;
 }
-body.meetups li.meetup .meetup_location {
-}
-
-body.meetups .button {
-  padding: 0;
-}
-
 body.meetups .join {
   line-height: 1.8em;
-  text-align: center;
-  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
+@media (min-width: 550px) {
+  body.meetups .join {
+    margin-bottom: 0;
+  }
+}
+
+body.meetups .join .date {
+  float: left;
+  margin-left: 2rem;
+}
+@media (min-width: 550px) {
+  body.meetups .join .date {
+    float: none;
+    text-align: center;
+    margin-left: 0;
+  }
+}
+
 body.meetups .join span {
   display: block;
+  line-height: 1.1em;
+  margin: .5rem 0;
 }
+body.meetups .join span.date-nice {
+  margin-bottom: .3rem;
+}
+body.meetups .join span.date-full {
+  font-size: 2.4rem;
+  padding: 0;
+  margin-top: 0;
+}
+
 
 body.meetups li.meetup h3 {
   font-size: 2.7rem;
   margin: .4rem 0 .8rem;
 }
 body.meetups .button {
-  width: 100%;
   background-color: #ffde00;
+  font-size: 2rem;
   font-weight: bold;
-  padding: 0 .5em;
-  font-size: 1.7rem;
   margin-top: .8rem;
+  white-space: normal;
+  line-height: 2.6em;
+  height: initial;
+  float: right;
+  margin-right: 2rem;
+}
+@media (min-width: 550px) {
+  body.meetups .button {
+    font-size: 1.7rem;
+    line-height: 1em;
+    padding: .2em .5em;
+    float: none;
+    width: 100%;
+    margin-right: 0;
+  }
 }
 
-body.meetups .date-full {
-  font-size: 2.4rem;
-  padding: 0;
-}
-
-body.meetups .speech-bubble {
-  background: #fff;
-  padding: 0 2.5rem 0 3rem;
-  border-radius: 2rem;
-}
-body.meetups .speech-bubble:before {
-  position: relative;
-  content: "";
-  height: 0;
-  font-size: 0;
-  line-height: 0;
-  border-top: 1.5rem solid #ffde00;
-  border-bottom: 1.5rem solid #ffde00;
-  border-right: 1.5rem solid #fff;
-  left: -4.4rem;
-  top: 3rem;
-}
 body.meetups .meetup_list p {
   margin: .3em 0;
   line-height: 1.4em;
 }
 body.meetups .meetup_list .map {
-  height: 170px;
+  height: 60px;
   background-color: #eee;
   background-position: center;
   background-size: cover;
   border-top-left-radius: 1rem;
-  border-bottom-left-radius: 1rem;
+  border-top-right-radius: 1rem;
 }
-body.meetups .meetup_list .info,
-body.meetups .meetup_list .join {
-  padding: .5em 0;
+@media (min-width: 550px) {
+  body.meetups .meetup_list .map {
+    height: 170px;
+    border-bottom-left-radius: 1rem;
+    border-top-right-radius: 0;
+  }
+}
+
+
+body.meetups .meetup_list .info {
+  padding: 1.5rem;
+}
+@media (min-width: 550px) {
+  body.meetups .meetup_list .info,
+  body.meetups .meetup_list .join {
+    padding: .5em 0;
+  }
 }
 
 body.meetups .meetup {
