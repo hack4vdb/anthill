@@ -31,7 +31,8 @@ class Activist(models.Model):
     facebook_bot_id = models.CharField(max_length=32, null=True, blank=True)
     email = models.EmailField(null=True, blank=True)
     postalcode = models.IntegerField(null=True, blank=True)  # PLZ (4-digit)
-    municipal = models.CharField(max_length=500, null=True, blank=True)  # Ort
+    city = models.CharField(max_length=500, null=True, blank=True)  # Ort
+    phone = models.CharField(max_length=25, null=True, blank=True)
     street = models.CharField(max_length=500, null=True, blank=True)
     house_number = models.CharField(max_length=100, null=True, blank=True)
     coordinate = models.PointField(null=True, blank=True)
@@ -53,9 +54,8 @@ class Activist(models.Model):
         return True
 
     def clean(self):
-        if self.postalcode is None and self.municipal is None:
-            raise ValidationError(
-                _('Either postalcode or municipal are required.'))
+        if self.postalcode is None and self.city is None:
+            raise ValidationError(_('Either postalcode or city are required.'))
 
         if self.email is None and self.facebook_id is None and self.facebook_bot_id is None:
             raise ValidationError(
@@ -84,7 +84,7 @@ class Meetup(models.Model):
     title = models.CharField(max_length=1000)
     datetime = models.DateTimeField()
     postalcode = models.IntegerField()  # PLZ (4-digit)
-    municipal = models.CharField(max_length=500)  # Ort
+    city = models.CharField(max_length=500)  # Ort
     street = models.CharField(max_length=500)
     house_number = models.CharField(max_length=100)
     coordinate = models.PointField()
@@ -96,20 +96,8 @@ class Meetup(models.Model):
         return geo.get_wahl_details(self.postalcode)
 
     @classmethod
-    def create(
-            cls,
-            title,
-            postalcode,
-            municipal,
-            street,
-            house_number,
-            coordinate=None):
-        meetup = cls(
-            title=title,
-            postalcode=postalcode,
-            municipal=municipal,
-            street=street,
-            house_number=house_number)
+    def create(cls, title, postalcode, city, street, house_number, coordinate=None):
+        meetup = cls(title=title, postalcode=postalcode, city=city, street=street, house_number=house_number)
         if coordinate is None:
             coordinate = geo.get_coordinates(postalcode)
         meetup.coordinate = GEOSGeometry(
@@ -167,8 +155,8 @@ class Meetup(models.Model):
 class InterestingPlaces(models.Model):
     title = models.CharField(max_length=1000)
     postalcode = models.IntegerField()  # PLZ (4-digit)
-    municipal = models.CharField(max_length=500)  # Ort
+    city = models.CharField(max_length=500)  # Ort
     coordinate = models.PointField()
 
     def __str__(self):
-        return '{} {}: {}'.format(self.postalcode, self.municipal, self.title)
+        return '{} {}: {}'.format(self.postalcode, self.city, self.title)

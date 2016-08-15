@@ -53,7 +53,7 @@ def meetups(request):
     potential_meetup = Meetup.create(
         title="{} für VdB".format(location['ort']),
         postalcode=location['plz'],
-        municipal=location['ort'],
+        city=location['ort'],
         street=location['treffpunkt'],
         house_number='',
         coordinate=(location['lat'], location['lon'])
