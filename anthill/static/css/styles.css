@@ -84,7 +84,21 @@ body.home h1 {
   box-sizing: border-box;
 }
 
-body.home .photowall {
+body.home .final-call {
+  position: relative;
+  overflow: hidden;
+  height: 40rem;
+  margin-top: 5rem;
+}
+body.home .final-call .container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+
+body.home .big-photo {
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
@@ -92,13 +106,43 @@ body.home .photowall {
   background: #ffef99;
   overflow: hidden;
 }
-body.home .photowall .photo {
+body.home .big-photo .photo {
   width: 120%;
   height: 100%;
   opacity: .6;
   background-size: cover;
   background-position: -120px;
-  /*-webkit-filter:blur(2px);*/
+}
+
+body.home .photowall {
+  position: absolute;
+  top: 0; left: 0;
+  width: 120%; height: 100%;
+  /*width: 100%; height: 100%;*/
+  z-index: 1;
+  background: #fff;
+  overflow: hidden;
+  list-style:none;
+  background: xurl(/static/img/cheers.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+body.home .photowall li {
+  xdisplay: none;
+  float: left;
+  margin: 0; padding: 0;
+  width: 110px;
+  height: 110px;
+  overflow: hidden;
+}
+body.home .photowall img {
+  width: 200%;
+  height: 200%;
+  margin-left: -50%;
+  margin-top: -30%;
+  /*-webkit-filter: blur(6px);
+  transition: -webkit-filter 2s ease-in-out;*/
 }
 
 body.home h2 {
@@ -206,12 +250,12 @@ body.home footer {
 body.home #second-viewport footer {
   display: block;
   background: #fff;
-  margin-top: 4rem;
+  margin-top: 0;
 }
 
 body.home .explainer {
   background-color: #ffde00;
-  padding: 10rem 0 0;
+  padding: 10rem 0 0 0;
 }
 body.home .explainer .icon {
   text-align: center;
