@@ -125,6 +125,15 @@ class Meetup(models.Model):
             workday = workday + datetime.timedelta(days=1)
         return map(lambda t: (t, t + datetime.timedelta(hours=2)), sorted([saturday, sunday, workday]))
 
+    @staticmethod
+    def find_meetups_by_postalcode(lat , lng):
+        try:
+            DISTANCE_LIMIT_METERS = 100000  # todo: check if this is really meters
+            coordinate = GEOSGeometry('POINT(%f %f)' % (lng, lat), srid=4326)
+            data = Meetup.objects.filter(coordinate__distance_lt=(coordinate, Distance(m=DISTANCE_LIMIT_METERS)))
+            return data
+        except ValueError as e:
+            return []
 class InterestingPlaces(models.Model):
     title = models.CharField(max_length=1000)
     postalcode = models.IntegerField()  # PLZ (4-digit)

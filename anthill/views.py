@@ -107,6 +107,7 @@ class MeetupNearActivistViewSet(viewsets.ReadOnlyModelViewSet):
         return Response(serializer.data)
 
 
+
 @api_view(['POST'])
 def partake_meetup(request, meetupid, userid):
     meetup = Meetup.objects.filter(uuid=meetupid).first()
@@ -125,3 +126,20 @@ def interesting_places(request, id):
     places = geo.data.ortezumflyern.orte[:10]
 
     return Response(places)
+
+
+@api_view(['GET'])
+def meetupsByPostalcode(request, latlong):
+    if ',' not in latlong:
+        return Response('invalid request, coordinates malformed', status=status.HTTP_400_BAD_REQUEST)
+    lat, lng = latlong.split(',')
+    try:
+        lat = float(lat)
+        lng = float(lng)
+    except ValueError:
+        return Response('invalid request, coordinates malformed', status=status.HTTP_400_BAD_REQUEST)
+    data = Meetup.find_meetups_by_postalcode(lat, lng)
+    serializer = MeetupSerializer(
+        data, many=True, context={
+            'request': request})
+    return Response(serializer.data)
