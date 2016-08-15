@@ -145,9 +145,9 @@ body.home .photowall li {
 }
 body.home .photowall img {
   width: 200%;
-  height: 200%;
+  /*height: 200%;*/
   margin-left: -50%;
-  margin-top: -30%;
+  /*margin-top: -30%;*/
   /*-webkit-filter: blur(6px);
   transition: -webkit-filter 2s ease-in-out;*/
 }
