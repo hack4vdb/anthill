@@ -374,6 +374,8 @@ body.meetups .meetup_list .map {
   background-color: #eee;
   background-position: center;
   background-size: cover;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
 }
 body.meetups .meetup_list .info,
 body.meetups .meetup_list .join {

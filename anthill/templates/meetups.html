@@ -25,7 +25,7 @@
     {% for meetup in meetups %}
     <li class="meetup">
       <div class="row">
-        <div class="three columns map" style="background-image:url(https://maps.googleapis.com/maps/api/staticmap?center={{ meetup.street }},{{ meetup.municipal }},Austria&zoom=15&size=300x300&key=AIzaSyANphiyaXrFh_146PzRNbNGTozPv7Meibw)">
+        <div class="three columns map" style="background-image:url(https://maps.googleapis.com/maps/api/staticmap?center={{ meetup.street }},{{ meetup.city }},Austria&zoom=15&size=300x300&key=AIzaSyANphiyaXrFh_146PzRNbNGTozPv7Meibw)">
           &nbsp;
         </div>
         <div class="seven columns info">
@@ -47,7 +47,7 @@
     {% endfor %}
     <li class="meetup">
       <div class="row">
-        <div class="two columns map" style="background-image:url(https://maps.googleapis.com/maps/api/staticmap?center={{ potential_meetup.street }},{{ potential_meetup.municipal }},Austria&zoom=15&size=300x300&key=AIzaSyANphiyaXrFh_146PzRNbNGTozPv7Meibw)">
+        <div class="two columns map" style="background-image:url(https://maps.googleapis.com/maps/api/staticmap?center={{ potential_meetup.street }},{{ potential_meetup.city }},Austria&zoom=15&size=300x300&key=AIzaSyANphiyaXrFh_146PzRNbNGTozPv7Meibw)">
           &nbsp;
         </div>
         <div class="four columns info">
