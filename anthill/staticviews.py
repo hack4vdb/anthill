@@ -49,18 +49,20 @@ def check_mail(request):
 def meetups(request):
     user = request.user
     meetups = user.find_meetups_nearby()
-    location = get_nearest_ortzumflyern(user.postalcode)
-    locations = [Meetup.create(
+    location_id, location = get_nearest_ortzumflyern(user.postalcode)
+    potential_meetup = Meetup.create(
         title="{} für VdB".format(location['ort']),
         postalcode=location['plz'],
         municipal=location['ort'],
         street=location['treffpunkt'],
         house_number='',
         coordinate=(location['lat'], location['lon'])
-    )]
+    )
     return render(request, 'meetups.html', {
         'meetups': meetups,
-        'locations': locations,
+        'potential_meetup': potential_meetup,
+        'potential_meetup_id': location_id,
+        'potential_times': Meetup.proposed_times(),
         'user': user
     })
 
