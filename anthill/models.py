@@ -89,6 +89,10 @@ class Meetup(models.Model):
     activist = models.ManyToManyField(
         Activist, null=True, blank=True, related_name='meetups')
 
+    @property
+    def wahl_details(self):
+        return geo.get_wahl_details(self.postalcode)
+
     @classmethod
     def create(cls, title, postalcode, municipal, street, house_number, coordinate=None):
         meetup = cls(title=title, postalcode=postalcode, municipal=municipal, street=street, house_number=house_number)
