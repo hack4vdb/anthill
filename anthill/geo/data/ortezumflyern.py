@@ -156,5 +156,117 @@ orte = [
     {'ort': 'Schwanenstadt', 'plz': '4690', 'treffpunkt': 'Sparkassenplatz', 'lat': 48.055369, 'lon': 13.775557},
     {'ort': 'Scheibbs', 'plz': '3270', 'treffpunkt': 'Hauptstraße/Gaminger Straße', 'lat': 48.006274, 'lon': 15.16663},
     {'ort': 'Mariazell', 'plz': '8630', 'treffpunkt': 'Hauptplatz', 'lat': 47.773063, 'lon': 15.317687},
-    {'ort': 'Lilienfeld', 'plz': '3180', 'treffpunkt': 'Gemeindeamt', 'lat': 48.014881, 'lon': 15.594985}
+    {'ort': 'Lilienfeld', 'plz': '3180', 'treffpunkt': 'Gemeindeamt', 'lat': 48.014881, 'lon': 15.594985},
+    {
+      "ort": "Favoriten",
+      "plz": "1100",
+      "treffpunkt": "Reumannplatz",
+      "lat": "48.1742612",
+      "lon": "16.378051"
+    },
+    {
+      "ort": "Simmering",
+      "plz": "1110",
+      "treffpunkt": "Simmeringer Platz",
+      "lat": "48.1700213",
+      "lon": "16.420356"
+    },
+    {
+      "ort": "Meidling",
+      "plz": "1120",
+      "treffpunkt": "Meidlinger Hauptstraße",
+      "lat": "48.174553",
+      "lon": "16.330512"
+    },
+    {
+      "ort": "Innere Stadt",
+      "plz": "1010",
+      "treffpunkt": "Schottentor",
+      "lat": "48.213891",
+      "lon": "16.362456"
+    },
+    {
+      "ort": "Penzing",
+      "plz": "1140",
+      "treffpunkt": "Hütteldorferstraße",
+      "lat": "48.199085",
+      "lon": "16.313013"
+    },
+    {
+      "ort": "Rudolfsheim-Fünfhausen",
+      "plz": "1150",
+      "treffpunkt": "Urban Loris Platz",
+      "lat": "48.20182",
+      "lon": "16.337309"
+    },
+    {
+      "ort": "Neubau",
+      "plz": "1070",
+      "treffpunkt": "Westahnhof",
+      "lat": "48.196792",
+      "lon": "16.338354"
+    },
+    {
+      "ort": "Ottakring",
+      "plz": "1160",
+      "treffpunkt": "U-Bahnstation Ottakring",
+      "lat": "48.212524",
+      "lon": "16.311716"
+    },
+    {
+      "ort": "Floridsdorf",
+      "plz": "1210",
+      "treffpunkt": "Franz-Jonas-Platz",
+      "lat": "48.256535",
+      "lon": "16.398953"
+    },
+    {
+      "ort": "Donaustadt",
+      "plz": "1220",
+      "treffpunkt": "Kagran",
+      "lat": "48.243137",
+      "lon": "16.433665"
+    },
+    {
+      "ort": "Liesing",
+      "plz": "1230",
+      "treffpunkt": "Siebenhirten",
+      "lat": "48.129801",
+      "lon": "16.30994"
+    },
+    {
+      "ort": "Linz",
+      "plz": "4020",
+      "treffpunkt": "Hauptbahnhof",
+      "lat": "48.291651",
+      "lon": "14.291064"
+    },
+    {
+      "ort": "Salzburg",
+      "plz": "5020",
+      "treffpunkt": "Südtiroler Platz",
+      "lat": "47.813435",
+      "lon": "13.043762"
+    },
+    {
+      "ort": "Graz",
+      "plz": "8020",
+      "treffpunkt": "Europaplatz / Hauptbahnhof",
+      "lat": "47.07295",
+      "lon": "15.417777"
+    },
+    {
+      "ort": "Klagenfurt",
+      "plz": "9020",
+      "treffpunkt": "Walther-von-der-Vogelweide-Platz",
+      "lat": "46.6163467",
+      "lon": "14.313621"
+    },
+    {
+      "ort": "Innsbruck",
+      "plz": "6020",
+      "treffpunkt": "Südtiroler Platz",
+      "lat": "47.263753",
+      "lon": "11.399986"
+    }
 ]
