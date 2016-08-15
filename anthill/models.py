@@ -93,10 +93,8 @@ class Meetup(models.Model):
     def create(cls, title, postalcode, municipal, street, house_number, coordinate=None):
         meetup = cls(title=title, postalcode=postalcode, municipal=municipal, street=street, house_number=house_number)
         if coordinate is None:
-            meetup.coordinate = GEOSGeometry('POINT(%f %f)' % (coordinate[1], coordinate[0]), srid=4326)
-        else:
             coordinate = geo.get_coordinates(postalcode)
-            meetup.coordinate = GEOSGeometry('POINT(%f %f)' % (coordinate[1], coordinate[0]), srid=4326)
+        meetup.coordinate = GEOSGeometry('POINT(%f %f)' % (coordinate[1], coordinate[0]), srid=4326)
         return meetup
 
     def __str__(self):
