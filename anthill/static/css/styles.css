@@ -301,19 +301,22 @@ body.meetups .coach-photo {
   margin-left:3%;
 }
 
-body.meetups .event {
+body.meetups li.meetup {
   list-style: none;
+  padding-right: .5em;
 }
-body.meetups .event p,
-body.meetups .event h3 {
+body.meetups li.meetup p,
+body.meetups li.meetup h3 {
   margin-bottom: 0;
 }
-body.meetups .event-location {
-  float:left;
-  margin-right: 10px;
+body.meetups li.meetup i.fa {
+  width: 1.5rem;
+  text-align: center;
+}
+body.meetups li.meetup .meetup_location {
 }
 
-body.meetups button.event-button {
+body.meetups .button {
   padding: 0;
 }
 
@@ -321,14 +324,22 @@ body.meetups .join span {
   display: block;
 }
 
-body.meetups .event h3 {
+body.meetups li.meetup h3 {
   font-size: 2rem;
 }
-body.meetups .event-button {
+body.meetups .button {
   width: 100%;
   background-color: #ffde00;
   font-weight: bold;
+  padding: 0 .5em;
+  font-size: 1.7rem;
 }
+
+body.meetups .date-full {
+  font-size: 2.4rem;
+  padding: 0;
+}
+
 body.meetups .speech-bubble {
   background: #fff;
   padding: 0 2.5rem 0 3rem;
@@ -350,16 +361,17 @@ body.meetups .meetup_list p {
   margin: .5em 0;
 }
 body.meetups .meetup_list .map {
-  background: #eee;
-  height: 150px;
+  height: 170px;
+  background-color: #eee;
+  background-position: center;
+  background-size: cover;
 }
 body.meetups .meetup_list .info,
 body.meetups .meetup_list .join {
   padding: .5em 0;
 }
 
-
-.meetup_list .meetup {
+body.meetups .meetup {
   border: 1px solid #ccc;
   border-radius: 1rem;
   list-style: none;

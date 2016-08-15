@@ -25,26 +25,27 @@
     {% for meetup in meetups %}
     <li class="meetup">
       <div class="row">
-        <div class="two columns map">
+        <div class="two columns map" style="background-image:url(https://maps.googleapis.com/maps/api/staticmap?center={{ meetup.street }},{{ meetup.municipal }},Austria&zoom=15&size=400x400&key=AIzaSyANphiyaXrFh_146PzRNbNGTozPv7Meibw)">
           &nbsp;
         </div>
-        <div class="four columns info">
+        <div class="eight columns info">
           <h3>{{ meetup.title }}{{ location.title }}</h3>
           <p class="meetup_location"><i class="fa fa-map-marker" aria-hidden="true"></i> {{ meetup.street }}, {{ meetup.municipal }}</p>
           <p class="meetup_date"><i class="fa fa-clock-o" aria-hidden="true"></i> {{ meetup.datetime }}</p>
           <p class="meetup_date"><i class="fa fa-fire" aria-hidden="true"></i> Hier war’s knapp - können wir den Bezirk für uns gewinnen?</p>
+          <!--<p>wahl: {{ meetup.wahl_details }}</p>-->
 
           <p class="meetup_date"><i class="fa fa-tag" aria-hidden="true"></i> <a href="#">Verteilaktion</a></p>
         </div>
         <div class="two columns join">
-          <a class="button event-button" href="{% url 'join_meetup' %}">Bin dabei</a>
+          <a class="button" href="{% url 'join_meetup' %}">Bin dabei</a>
         </div>
       </div>
     </li>
     {% endfor %}
     <li class="meetup">
       <div class="row">
-        <div class="two columns map">
+        <div class="two columns map" style="background-image:url(https://maps.googleapis.com/maps/api/staticmap?center={{ potential_meetup.street }},{{ potential_meetup.municipal }},Austria&zoom=15&size=400x400&key=AIzaSyANphiyaXrFh_146PzRNbNGTozPv7Meibw)">
           &nbsp;
         </div>
         <div class="four columns info">
@@ -60,7 +61,7 @@
           <span class="date-nice">{{ start_time|date:"l" }}</span>
           <span class="date-full">{{ start_time|date:"j. M" }}</span>
           <span class="date-hour">{{ start_time|date:"H" }}-{{ end_time|date:"H" }} Uhr</span>
-          <a class="button event-button" href="{% url 'join_meetup' %}?time_id={{ forloop.counter0 | urlencode }}&location_id={{ potential_meetup_id | urlencode }}">Bin dabei</a>
+          <a class="button" href="{% url 'join_meetup' %}?time_id={{ forloop.counter0 | urlencode }}&location_id={{ potential_meetup_id | urlencode }}">Bin dabei</a>
         </div>
         {% endfor %}
       </div>
