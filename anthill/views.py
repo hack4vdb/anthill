@@ -17,6 +17,7 @@ from django.http import HttpResponse
 from rest_framework.decorators import api_view
 from anthill import geo
 
+
 class UserViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
@@ -59,7 +60,9 @@ class ActivistViewSet(viewsets.ModelViewSet):
         if serializer.is_valid():
             activist = serializer.save()
             coordinate = geo.get_coordinates(activist.postalcode)
-            activist.coordinate = GEOSGeometry('POINT(%f %f)' % (coordinate[1], coordinate[0]), srid=4326)
+            activist.coordinate = GEOSGeometry(
+                'POINT(%f %f)' %
+                (coordinate[1], coordinate[0]), srid=4326)
             activist.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -107,7 +110,6 @@ class MeetupNearActivistViewSet(viewsets.ReadOnlyModelViewSet):
         return Response(serializer.data)
 
 
-
 @api_view(['POST'])
 def partake_meetup(request, meetupid, userid):
     meetup = Meetup.objects.filter(uuid=meetupid).first()
@@ -129,16 +131,20 @@ def interesting_places(request, id):
 
 
 @api_view(['GET'])
-def meetupsByPostalcode(request, latlong):
+def meetupsByLatLng(request, latlong):
     if ',' not in latlong:
-        return Response('invalid request, coordinates malformed', status=status.HTTP_400_BAD_REQUEST)
+        return Response(
+            'invalid request, coordinates malformed',
+            status=status.HTTP_400_BAD_REQUEST)
     lat, lng = latlong.split(',')
     try:
         lat = float(lat)
         lng = float(lng)
     except ValueError:
-        return Response('invalid request, coordinates malformed', status=status.HTTP_400_BAD_REQUEST)
-    data = Meetup.find_meetups_by_postalcode(lat, lng)
+        return Response(
+            'invalid request, coordinates malformed',
+            status=status.HTTP_400_BAD_REQUEST)
+    data = Meetup.find_meetups_by_latlong(lat, lng)
     serializer = MeetupSerializer(
         data, many=True, context={
             'request': request})

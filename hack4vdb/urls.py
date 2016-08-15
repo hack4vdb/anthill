@@ -25,7 +25,10 @@ apiRouter = routers.DefaultRouter()
 #apiRouter.register(r'groups', views.GroupViewSet)
 apiRouter.register(r'activists', views.ActivistViewSet, base_name='activists')
 apiRouter.register(r'meetups', views.MeetupViewSet, base_name='meetups')
-apiRouter.register(r'meetupsnearactivist', views.MeetupNearActivistViewSet, base_name='meetupsnearactivist')
+apiRouter.register(
+    r'meetupsnearactivist',
+    views.MeetupNearActivistViewSet,
+    base_name='meetupsnearactivist')
 
 
 urlpatterns = [
@@ -39,7 +42,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include(apiRouter.urls)),
     url(r'^api/meetups/(?P<meetupid>[\d\w-]+)/partake/(?P<userid>[\d\w-]+)/', views.partake_meetup, name='partake_meetup'),
-    url(r'^api/meetupsbypostalcode/(?P<latlong>.+)/', views.meetupsByPostalcode, name='meetupsbypostalcode'),
+    url(r'^api/meetupsbylatlng/(?P<latlong>.+)/', views.meetupsByLatLng, name='meetupsbylatlng'),
     url(r'^api/interestingplaces/(?P<id>[\d\w-]+)/', views.interesting_places, name='interesting_places'),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]

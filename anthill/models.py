@@ -5,6 +5,7 @@ import datetime
 from django.contrib.gis.db import models
 from django.contrib.gis.geos import GEOSGeometry
 from django.contrib.gis.measure import Distance
+from django.contrib.gis.measure import D
 
 # Create your models here.
 
@@ -42,7 +43,9 @@ class Activist(models.Model):
     def create(cls, email, postalcode):
         activist = cls(email=email, postalcode=postalcode)
         coordinate = geo.get_coordinates(activist.postalcode)
-        activist.coordinate = GEOSGeometry('POINT(%f %f)' % (coordinate[1], coordinate[0]), srid=4326)
+        activist.coordinate = GEOSGeometry(
+            'POINT(%f %f)' %
+            (coordinate[1], coordinate[0]), srid=4326)
         return activist
 
     @property
@@ -51,25 +54,24 @@ class Activist(models.Model):
 
     def clean(self):
         if self.postalcode is None and self.municipal is None:
-            raise ValidationError(_('Either postalcode or municipal are required.'))
+            raise ValidationError(
+                _('Either postalcode or municipal are required.'))
 
         if self.email is None and self.facebook_id is None and self.facebook_bot_id is None:
-            raise ValidationError(_('Either email or facebook_id or facebook_bot_id are required.'))
+            raise ValidationError(
+                _('Either email or facebook_id or facebook_bot_id are required.'))
 
         # if self.postalcode is not None:
         #   coordinate = geo.get_coordinates(self.postalcode)
         #    self.coordinate = GEOSGeometry('POINT(%f %f)' % (coordinate[1], coordinate[0]), srid=4326)
 
-        # todo: email, facebook_id and facebook_bot_id need to be unique when set.
+        # todo: email, facebook_id and facebook_bot_id need to be unique when
+        # set.
 
     def find_meetups_nearby(self):
         try:
-            DISTANCE_LIMIT_METERS = 100000  # todo: check if this is really meters
-            data = Meetup.objects.filter(coordinate__distance_lt=(self.coordinate, Distance(m=DISTANCE_LIMIT_METERS)))
-            #data = Meetup.objects.filter(coordinate__distance_lt=(self.coordinate, Distance(m=DISTANCE_LIMIT_METERS)))\
-            #    .annotate(distance=Distance('coordinate', self.coordinate))\
-            #    .order_by('distance')
-            return data
+            return Meetup.find_meetups_by_latlong(
+                self.coordinate[0], self.coordinate[1])
         except ValueError as e:
             return []
 
@@ -94,11 +96,25 @@ class Meetup(models.Model):
         return geo.get_wahl_details(self.postalcode)
 
     @classmethod
-    def create(cls, title, postalcode, municipal, street, house_number, coordinate=None):
-        meetup = cls(title=title, postalcode=postalcode, municipal=municipal, street=street, house_number=house_number)
+    def create(
+            cls,
+            title,
+            postalcode,
+            municipal,
+            street,
+            house_number,
+            coordinate=None):
+        meetup = cls(
+            title=title,
+            postalcode=postalcode,
+            municipal=municipal,
+            street=street,
+            house_number=house_number)
         if coordinate is None:
             coordinate = geo.get_coordinates(postalcode)
-        meetup.coordinate = GEOSGeometry('POINT(%f %f)' % (coordinate[1], coordinate[0]), srid=4326)
+        meetup.coordinate = GEOSGeometry(
+            'POINT(%f %f)' %
+            (coordinate[1], coordinate[0]), srid=4326)
         return meetup
 
     def __str__(self):
@@ -114,7 +130,8 @@ class Meetup(models.Model):
         """returns an array of porposed datetimes that new events may be created at"""
         today = datetime.date.today()
         # find the next saturday that's at least 7 days away from today
-        saturday = today + datetime.timedelta(days=(5-today.weekday()), weeks=1)
+        saturday = today + \
+            datetime.timedelta(days=(5 - today.weekday()), weeks=1)
         # events on saturday start at 11:00
         saturday = datetime.datetime.combine(saturday, datetime.time(11, 00))
         # find the sunday after this saturday, using the same time as saturday
@@ -127,17 +144,26 @@ class Meetup(models.Model):
             workday = workday + datetime.timedelta(days=2)
         elif workday.weekday() == 6:
             workday = workday + datetime.timedelta(days=1)
-        return map(lambda t: (t, t + datetime.timedelta(hours=2)), sorted([saturday, sunday, workday]))
+        return map(lambda t: (t, t + datetime.timedelta(hours=2)),
+                   sorted([saturday, sunday, workday]))
 
     @staticmethod
-    def find_meetups_by_postalcode(lat , lng):
+    def find_meetups_by_latlong(lat, lng):
         try:
             DISTANCE_LIMIT_METERS = 100000  # todo: check if this is really meters
             coordinate = GEOSGeometry('POINT(%f %f)' % (lng, lat), srid=4326)
-            data = Meetup.objects.filter(coordinate__distance_lt=(coordinate, Distance(m=DISTANCE_LIMIT_METERS)))
+            data = Meetup.objects.filter(
+                coordinate__distance_lt=(
+                    coordinate, Distance(
+                        m=DISTANCE_LIMIT_METERS)))
+            #coordinate = GEOSGeometry(lng, lat, srid=4326)
+            # coordinate.transform(900913)
+            # data = Meetup.objects.filter(geom__dwithin=(coordinate , D(m=DISTANCE_LIMIT_METERS)))
             return data
         except ValueError as e:
             return []
+
+
 class InterestingPlaces(models.Model):
     title = models.CharField(max_length=1000)
     postalcode = models.IntegerField()  # PLZ (4-digit)
