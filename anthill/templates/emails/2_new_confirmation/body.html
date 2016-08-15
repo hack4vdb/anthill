@@ -1,8 +1,8 @@
 <table border="0" cellpadding="0" cellspacing="0">
   <tr>
     <td>
-      <p>{Markus} —</p>
-      <p>eben hat Michi für die Verteilaktion am 13. September am Hauptplatz in Bruck an der Mur zugesagt. Die Beiden brauchen dringend Deine Unterstützung.</p>
+      <p>{{ recipient.first_name }} —</p>
+      <p>eben hat {{ firstParticipant.first_name }} für die Verteilaktion am {{ meetup.datetime|date:"j. F" }} in {{ meetup.municipal }} zugesagt. Die Beiden brauchen dringend Deine Unterstützung.</p>
       <p>Sag auch Du jetzt zu und werdet gemeinsam aktiv!</p>
       <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
         <tbody>
@@ -11,7 +11,7 @@
               <table border="0" cellpadding="0" cellspacing="0">
                 <tbody>
                   <tr>
-                    <td> <a href="http://htmlemail.io" target="_blank">Ich bin am 13. September dabei</a> </td>
+                    <td> <a href="http://htmlemail.io" target="_blank">Ich bin am {{ meetup.datetime|date:"j. F" }} dabei</a> </td>
                   </tr>
                 </tbody>
               </table>
@@ -20,28 +20,13 @@
         </tbody>
       </table>
       <p><strong>Treffpunkt:</strong><br />
-        13. September<br />
-        14 Uhr (pünktlich)<br />
-        Hauptplatz 1<br />
-        Bruck an der Mur<br />
+        {{ meetup.datetime|date:"j. F" }}<br />
+        {{ meetup.datetime|time }} (pünktlich)<br />
+        {{ meetup.street }} {{ meetup.house_number }}<br />
+        {{ meetup.municipal }} <br />
       </p>
       
-      <table border="0" cellpadding="0" cellspacing="0" class="btn btn-secondary">
-        <tbody>
-          <tr>
-            <td align="center">
-              <table border="0" cellpadding="0" cellspacing="0">
-                <tbody>
-                  <tr>
-                    <td> <a href="http://htmlemail.io" target="_blank">Ich will an einem anderen Termin aktiv werden</a> </td>
-                  </tr>
-                </tbody>
-              </table>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <p>Danke, Thomas! Nur gemeinsam können wir am 2. Oktober erfolgreich sein.<br />
+      <p>Danke, {{ recipient.first_name }}! Nur gemeinsam können wir am 2. Oktober erfolgreich sein.<br />
         Weils um was geht.</p>
         <p><br />Team Van der Bellen</p>
       </td>
