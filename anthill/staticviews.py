@@ -48,7 +48,7 @@ def check_mail(request):
 @login_required
 def meetups(request):
     user = request.user
-    meetups = user.find_meetups_nearby()[:3]
+    meetups = user.find_meetups_nearby()[:5]
     location_id, location = get_nearest_ortzumflyern(user.postalcode)
     potential_meetup = Meetup.create(
         title="{} für VdB".format(location['ort']),
