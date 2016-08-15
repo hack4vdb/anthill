@@ -1,24 +1,11 @@
 from __future__ import unicode_literals
-
 import uuid
 import datetime
 from django.contrib.gis.db import models
 from django.contrib.gis.geos import GEOSGeometry
-from django.contrib.gis.measure import Distance
-from django.contrib.gis.measure import D
-
-# Create your models here.
-
-
-# Datenfelder fuer Import CSV: Anrede (Herr, Frau, Keine Angabe), Vornamen (Textfeld),
-# Nachname (Textfeld), E-Mail Adresse, PLZ (4-digit), Strasse, Hausnummer
-
-#Land, PLZ, Ort, Strasse, Hausnummer, Tuernummer, Anrede, Vorname, Nachname,
-# E-Mail Adresse, Produktbedarf (Paket mit 500 Flyern)
+from django.contrib.gis.measure import Distance, D
 from rest_framework.exceptions import ValidationError
-
 from anthill import geo
-from anthill.models import *
 
 
 class Activist(models.Model):
