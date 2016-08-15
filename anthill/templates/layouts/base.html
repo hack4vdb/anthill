@@ -88,7 +88,7 @@ function postDataToBackend(response) {
     "first_name": response.first_name,
     "last_name": response.last_name,
     "email": response.email,
-    "municipal": response.municipal,
+    "city": response.city,
     "postalcode": response.postalcode
   }));
 }
@@ -101,7 +101,7 @@ function getDataFromFBAPI() {
     data.first_name = response.first_name;
     data.last_name = response.last_name;
     data.email = response.email;
-    data.municipal = response.location.name;
+    data.city = response.location.name;
     postDataToBackend(response);
   });
 }

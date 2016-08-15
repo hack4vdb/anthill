@@ -303,7 +303,8 @@ body.meetups .coach-photo {
 
 body.meetups li.meetup {
   list-style: none;
-  padding-right: .5em;
+  padding-right: 3%;
+  margin-bottom: 3rem;
 }
 body.meetups li.meetup p,
 body.meetups li.meetup h3 {
@@ -320,12 +321,18 @@ body.meetups .button {
   padding: 0;
 }
 
+body.meetups .join {
+  line-height: 1.8em;
+  text-align: center;
+  margin-top: 1rem;
+}
 body.meetups .join span {
   display: block;
 }
 
 body.meetups li.meetup h3 {
-  font-size: 2rem;
+  font-size: 2.7rem;
+  margin: .4rem 0 .8rem;
 }
 body.meetups .button {
   width: 100%;
@@ -333,6 +340,7 @@ body.meetups .button {
   font-weight: bold;
   padding: 0 .5em;
   font-size: 1.7rem;
+  margin-top: .8rem;
 }
 
 body.meetups .date-full {
@@ -358,7 +366,8 @@ body.meetups .speech-bubble:before {
   top: 3rem;
 }
 body.meetups .meetup_list p {
-  margin: .5em 0;
+  margin: .3em 0;
+  line-height: 1.4em;
 }
 body.meetups .meetup_list .map {
   height: 170px;
