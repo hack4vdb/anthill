@@ -132,9 +132,10 @@ class Meetup(models.Model):
     @staticmethod
     def find_meetups_by_geo(geo):
         try:
-            DISTANCE_LIMIT_METERS = 100000  # todo: check if this is really meters
+            DISTANCE_LIMIT_METERS = 40000  # todo: check if this is really meters
             coordinate = geo
             data = Meetup.objects.filter(coordinate__distance_lt=(coordinate, Distance(m=DISTANCE_LIMIT_METERS)))
+            data = data.order_by('datetime')
             # data = Meetup.objects.filter(coordinate__distance_lte=(coordinate, D(m=DISTANCE_LIMIT_METERS))).distance(coordinate).order_by('coordinate__distance')
             #coordinate = GEOSGeometry(lng, lat, srid=4326)
             # coordinate.transform(900913)
