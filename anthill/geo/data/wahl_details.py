@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 wahl_details = [
     {
         'ort': 'Villach',
