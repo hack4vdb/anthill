@@ -111,15 +111,19 @@ class Meetup(models.Model):
         today = datetime.date.today()
         # find the next saturday that's at least 7 days away from today
         saturday = today + datetime.timedelta(days=(5-today.weekday()), weeks=1)
-        # find the sunday after this saturday
+        # events on saturday start at 11:00
+        saturday = datetime.datetime.combine(saturday, datetime.time(11, 00))
+        # find the sunday after this saturday, using the same time as saturday
         sunday = saturday + datetime.timedelta(days=1)
         # find the next workday that's at least 5 days away from today
         workday = today + datetime.timedelta(days=5)
+        # events on a workday start at 18:00
+        workday = datetime.datetime.combine(workday, datetime.time(18, 00))
         if workday.weekday() == 5:
             workday = workday + datetime.timedelta(days=2)
         elif workday.weekday() == 6:
             workday = workday + datetime.timedelta(days=1)
-        return sorted([saturday, sunday, workday])
+        return map(lambda t: (t, t + datetime.timedelta(hours=2)), sorted([saturday, sunday, workday]))
 
 class InterestingPlaces(models.Model):
     title = models.CharField(max_length=1000)
