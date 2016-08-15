@@ -99,8 +99,8 @@ class Meetup(models.Model):
         activist = Activist.objects.filter(uuid=activist_uuid).first()
         return activist.find_meetups_nearby()
 
-    @staticmethod
-    def proposed_times():
+    @property
+    def proposed_times(self):
         """returns an array of porposed datetimes that new events may be created at"""
         today = datetime.date.today()
         # find the next saturday that's at least 7 days away from today
@@ -143,6 +143,19 @@ class Meetup(models.Model):
             return data
         except ValueError as e:
             return []
+
+    @staticmethod
+    def potential_meetup(postalcode):
+        location_id, location = geo.get_nearest_ortzumflyern(postalcode)
+        potential_meetup = Meetup.create(
+            title="{} für VdB".format(location['ort']),
+            postalcode=location['plz'],
+            city=location['ort'],
+            street=location['treffpunkt'],
+            house_number='',
+            coordinate=(location['lat'], location['lon'])
+        )
+        return potential_meetup, location_id
 
 
 class InterestingPlaces(models.Model):

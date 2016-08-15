@@ -121,13 +121,11 @@ def partake_meetup(request, meetupid, userid):
 @api_view(['GET'])
 def interesting_places(request, id):
     activist = Activist.objects.filter(uuid=id).first()
-    location = activist.coordinate
-
-    # todo: ortezumflyern should be in the database
-    # todo: sort by closeness
-    places = geo.data.ortezumflyern.orte[:10]
-
-    return Response(places)
+    potential_meetup, location_id = Meetup.potential_meetup(activist.postalcode)
+    serializer = MeetupSerializer(
+        potential_meetup, many=False, context={
+            'request': request})
+    return Response(serializer.data)
 
 
 @api_view(['GET'])
