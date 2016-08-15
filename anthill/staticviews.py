@@ -26,6 +26,17 @@ def home(request):
     return render(request, 'home.html', {'form': form})
 
 
+def home_with_uuid(request, userid):
+    from django.http import HttpResponse
+    try:
+        activist = Activist.objects.filter(uuid=userid).first()
+        activist = authenticate(uuid=activist.uuid)
+        login(request, activist)
+        return redirect('events')
+    except ValueError as e:
+        return HttpResponse(e)
+
+
 def check_mail(request):
     return render(request, 'checkMail.html')
 

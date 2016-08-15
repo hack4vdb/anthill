@@ -30,6 +30,7 @@ apiRouter.register(r'meetupsnearactivist', views.MeetupNearActivistViewSet, base
 
 urlpatterns = [
     url(r'^$', staticviews.home, name='home'),
+    url(r'^(?P<userid>[\d\w-]+)/$', staticviews.home_with_uuid, name='home_with_uuid'),
     url(r'^check_mail/$', staticviews.check_mail, name='check_mail'),
     url(r'^events/$', staticviews.events, name='events'),
     url(r'^join_event/$', staticviews.join_event, name='join_event'),
