@@ -70,8 +70,7 @@ class Activist(models.Model):
 
     def find_meetups_nearby(self):
         try:
-            return Meetup.find_meetups_by_latlong(
-                self.coordinate[0], self.coordinate[1])
+            return Meetup.find_meetups_by_geo(self.coordinate)
         except ValueError as e:
             return []
 
@@ -150,12 +149,18 @@ class Meetup(models.Model):
     @staticmethod
     def find_meetups_by_latlong(lat, lng):
         try:
-            DISTANCE_LIMIT_METERS = 100000  # todo: check if this is really meters
             coordinate = GEOSGeometry('POINT(%f %f)' % (lng, lat), srid=4326)
-            data = Meetup.objects.filter(
-                coordinate__distance_lt=(
-                    coordinate, Distance(
-                        m=DISTANCE_LIMIT_METERS)))
+            return Meetup.find_meetups_by_geo(coordinate)
+        except ValueError as e:
+            return []
+
+    @staticmethod
+    def find_meetups_by_geo(geo):
+        try:
+            DISTANCE_LIMIT_METERS = 100000  # todo: check if this is really meters
+            coordinate = geo
+            data = Meetup.objects.filter(coordinate__distance_lt=(coordinate, Distance(m=DISTANCE_LIMIT_METERS)))
+            # data = Meetup.objects.filter(coordinate__distance_lte=(coordinate, D(m=DISTANCE_LIMIT_METERS))).distance(coordinate).order_by('coordinate__distance')
             #coordinate = GEOSGeometry(lng, lat, srid=4326)
             # coordinate.transform(900913)
             # data = Meetup.objects.filter(geom__dwithin=(coordinate , D(m=DISTANCE_LIMIT_METERS)))
