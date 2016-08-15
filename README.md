@@ -16,7 +16,13 @@ This repo also contains frontend stuff and should be renamed soon™.
 
 start vagrant
 ```
-vagrant up
+vagrant up --provider virtualbox
+```
+
+ssh into the vagrant box (run all other commands from inside the box)
+
+```shell
+vagrant ssh
 ```
 
 create an admin user:
@@ -27,7 +33,6 @@ python manage.py createsuperuser
 
 start django development Server
 ```
-vagrant ssh
 python manage.py runserver 0.0.0.0:8000
 ```
 
