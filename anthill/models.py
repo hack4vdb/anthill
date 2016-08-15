@@ -44,13 +44,12 @@ class Activist(models.Model):
     def is_authenticated(self):
         return True
 
-    def clean(self):
-        if self.postalcode is None and self.city is None:
-            raise ValidationError(_('Either postalcode or city are required.'))
+    # def clean(self):
+    #     if self.postalcode is None and self.city is None:
+    #         raise ValidationError(_('Either postalcode or city are required.'))
 
-        if self.email is None and self.facebook_id is None and self.facebook_bot_id is None:
-            raise ValidationError(
-                _('Either email or facebook_id or facebook_bot_id are required.'))
+    #     if self.email is None and self.facebook_id is None and self.facebook_bot_id is None:
+    #         raise ValidationError(_('Either email or facebook_id or facebook_bot_id are required.'))
 
         # if self.postalcode is not None:
         #   coordinate = geo.get_coordinates(self.postalcode)
@@ -86,14 +85,31 @@ class Meetup(models.Model):
         return geo.get_wahl_details(self.postalcode)
 
     @classmethod
-    def create(cls, title, postalcode, city, street, house_number, coordinate=None):
-        meetup = cls(title=title, postalcode=postalcode, city=city, street=street, house_number=house_number)
+    def create(cls, title, postalcode, city, street, house_number,
+               coordinate=None, datetime=None):
+        meetup = cls(title=title, postalcode=postalcode, city=city,
+                     street=street, house_number=house_number,
+                     datetime=datetime)
         if coordinate is None:
             coordinate = geo.get_coordinates(postalcode)
         meetup.coordinate = GEOSGeometry(
             'POINT(%f %f)' %
             (coordinate[1], coordinate[0]), srid=4326)
         return meetup
+
+    @classmethod
+    def create_from_potentialmeetup_specs(cls, location_id, time_id):
+        loc = geo.get_ortezumflyern(location_id)
+        start_time = Meetup.get_proposed_time_by_id(time_id)
+        return Meetup.create(
+            title="{} fur VdB".format(loc['ort']),
+            postalcode=int(loc['plz']),
+            city=loc['ort'],
+            street=loc['treffpunkt'],
+            house_number='',
+            coordinate=GEOSGeometry('POINT(%f %f)' % (loc['lat'], loc['lon']), srid=4326),
+            datetime=start_time
+        )
 
     def __str__(self):
         return '{} - {}'.format(self.title, self.uuid)
@@ -103,8 +119,8 @@ class Meetup(models.Model):
         activist = Activist.objects.filter(uuid=activist_uuid).first()
         return activist.find_meetups_nearby()
 
-    @property
-    def proposed_times(self):
+    @staticmethod
+    def proposed_times():
         """returns an array of porposed datetimes that new events may be created at"""
         today = datetime.date.today()
         # find the next saturday that's at least 7 days away from today
@@ -124,6 +140,17 @@ class Meetup(models.Model):
             workday = workday + datetime.timedelta(days=1)
         return map(lambda t: (t, t + datetime.timedelta(hours=2)),
                    sorted([saturday, sunday, workday]))
+
+    @staticmethod
+    def get_proposed_time_by_id(idx):
+        idx = int(idx)
+        times = Meetup.proposed_times()
+        if idx < len(times):
+            start_time, end_time = times[idx]
+        else:
+            start_time, end_time = times[0]
+        return start_time
+
 
     @staticmethod
     def find_meetups_by_latlong(lat, lng):

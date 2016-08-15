@@ -1,7 +1,8 @@
 # -*- coding: UTF-8 -*-
 from django.shortcuts import render, redirect, get_object_or_404
-from anthill.forms import SignupForm
+from anthill.forms import SignupForm, CreateMeetupForm
 from anthill.models import Activist, Meetup
+from anthill.geo import get_nearest_ortzumflyern, get_wahl_details, get_ortezumflyern
 from anthill.emailviews import WelcomeMessageView
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -57,9 +58,26 @@ def meetups(request):
     })
 
 @login_required
-def join_meetup(request, meetup_id=None, time=None, location=None):
+def join_meetup(request):
     user = request.user
-    return render(request, 'join_meetup.html', {'user': user})
+    form = CreateMeetupForm(request.POST or None, instance=user)
+    meetup_id = request.GET.get('meetup_id', '')
+    time_id = request.GET.get('time_id', '')
+    location_id = request.GET.get('location_id', '')
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            meetup = Meetup.create_from_potentialmeetup_specs(location_id=location_id, time_id=time_id)
+            meetup.save()
+            return redirect('meetups')
+    loc = get_ortezumflyern(location_id)
+    start_time = Meetup.get_proposed_time_by_id(time_id)
+    return render(request, 'join_meetup.html', {
+        'user': user,
+        'form': form,
+        'title': "{} für VdB".format(loc['ort']),
+        'start_time': start_time
+    })
 
 
 def join_first_event(request):

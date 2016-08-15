@@ -7,10 +7,58 @@
 
   <div class="row">
     <div class="one-half column">
-      <h3>{{ user.email }}, gib' deine Adresse an</h3>
+      <h3>{{ title }}</h3>
       <p>…, dann senden wir dir ein Starter-Kit mit Flyern und anderen Materialien für die Aktion zu.</p>
-      <p>Montag, 32. August 2016, 18.00h</p>
+      <p>{{ start_time }}</p>
       <p>3 andere Leute machen mit</p>
+
+      <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.meetup_id }}
+        {{ form.time_id }}
+        {{ form.location_id }}
+
+        <div>
+          {{ form.first_name.label }}
+          {{ form.first_name }}
+          {{ form.first_name.errors }}
+        </div>
+
+        <div>
+          {{ form.last_name.label }}
+          {{ form.last_name }}
+          {{ form.last_name.errors }}
+        </div>
+
+        <div>
+          {{ form.street.label }}
+          {{ form.street }}
+          {{ form.street.errors }}
+        </div>
+
+        <div>
+          {{ form.postalcode.label }}
+          {{ form.postalcode }}
+          {{ form.postalcode.errors }}
+        </div>
+
+        <div>
+          {{ form.city.label }}
+          {{ form.city }}
+          {{ form.city.errors }}
+        </div>
+
+        <div>
+          {{ form.phone.label }}
+          {{ form.phone }}
+          {{ form.phone.errors }}
+        </div>
+
+        <button type="submit" class="event-button">
+          Weiter: Zeige, was ich tun kann ➜
+        </button>
+      </form>
+
     </div>
 
     <div class="one-half column">

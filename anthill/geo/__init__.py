@@ -43,3 +43,12 @@ def get_wahl_details(plz):
         if wahl_details[i]['ort'] == location['ort']:
             return wahl_details[i]
     return None
+
+
+def get_ortezumflyern(idx):
+    idx = int(idx)
+    if idx < len(orte):
+        return orte[idx]
+    else:
+        return orte[0]
+
