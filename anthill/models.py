@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 import uuid
+import datetime
 from django.contrib.gis.db import models
 from django.contrib.gis.geos import GEOSGeometry
 from django.contrib.gis.measure import Distance
@@ -104,6 +105,21 @@ class Meetup(models.Model):
         activist = Activist.objects.filter(uuid=activist_uuid).first()
         return activist.find_meetups_nearby()
 
+    @staticmethod
+    def proposed_times():
+        """returns an array of porposed datetimes that new events may be created at"""
+        today = datetime.date.today()
+        # find the next saturday that's at least 7 days away from today
+        saturday = today + datetime.timedelta(days=(5-today.weekday()), weeks=1)
+        # find the sunday after this saturday
+        sunday = saturday + datetime.timedelta(days=1)
+        # find the next workday that's at least 5 days away from today
+        workday = today + datetime.timedelta(days=5)
+        if workday.weekday() == 5:
+            workday = workday + datetime.timedelta(days=2)
+        elif workday.weekday() == 6:
+            workday = workday + datetime.timedelta(days=1)
+        return sorted([saturday, sunday, workday])
 
 class InterestingPlaces(models.Model):
     title = models.CharField(max_length=1000)
