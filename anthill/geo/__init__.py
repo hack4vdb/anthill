@@ -1,6 +1,7 @@
 from anthill.geo.data.ergebnisse import ergebnisse
 from anthill.geo.data.plz_latlon import coordinates
 from anthill.geo.data.ortezumflyern import orte
+from anthill.geo.data.wahl_details import wahl_details
 from geopy.distance import great_circle
 
 def get_wahlergebnis(plz):
