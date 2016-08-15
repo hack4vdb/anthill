@@ -4,7 +4,7 @@ from anthill.forms import SignupForm
 from anthill.models import Activist, Meetup
 from anthill.geo import get_nearest_ortzumflyern
 from anthill.emailviews import WelcomeMessageView
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
 
@@ -28,13 +28,15 @@ def home(request):
     return render(request, 'home.html', {'form': form})
 
 
-def home_with_uuid(request, userid):
+def login_with_uuid(request, userid):
+    if request.user.is_authenticated:
+        logout(request)
     from django.http import HttpResponse
     try:
         activist = Activist.objects.filter(uuid=userid).first()
         activist = authenticate(uuid=activist.uuid)
         login(request, activist)
-        return redirect('events')
+        return redirect('meetups')
     except ValueError as e:
         return HttpResponse(e)
 
