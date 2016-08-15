@@ -35,3 +35,11 @@ def get_nearest_ortzumflyern(plz):
             min = dist
             min_idx = i
     return (min_idx, orte[min_idx])
+
+
+def get_wahl_details(plz):
+    location_id, location = get_nearest_ortzumflyern(plz)
+    for i in range(len(wahl_details)):
+        if wahl_details[i]['ort'] == location['ort']:
+            return wahl_details[i]
+    return None
