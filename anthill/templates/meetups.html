@@ -31,7 +31,15 @@
         <div class="seven columns info">
           <h3>{{ meetup.title }}{{ location.title }}</h3>
           <p class="meetup_location"><i class="fa fa-map-marker" aria-hidden="true"></i> {{ meetup.street }}, {{ meetup.city }}</p>
-          <p class="meetup_funfact"><i class="fa fa-fire" aria-hidden="true"></i> Hier war’s knapp - können wir den Bezirk für uns gewinnen?</p>
+          {% if meetup.wahl_details != None %}
+            {% if meetup.wahl_details.swingstate %}
+              <p class="meetup_funfact"><i class="fa fa-fire" aria-hidden="true"></i> Hier war’s knapp - können wir den Bezirk für uns gewinnen?</p>
+            {% elif meetup.wahl_details.neutral_ground %}
+              <p class="meetup_funfact"><i class="fa fa-fire" aria-hidden="true"></i> Hier war’s knapp - können wir den Bezirk für uns gewinnen?</p>
+            {% elif meetup.wahl_details.wenigwahler %}
+              <p class="meetup_funfact"><i class="fa fa-fire" aria-hidden="true"></i> Hier war’s knapp - können wir den Bezirk für uns gewinnen?</p>
+            {% endif %}
+          {% endif %}
           <!--<p>wahl: {{ meetup.wahl_details }}</p>-->
           <p class="meetup_type"><i class="fa fa-tag" aria-hidden="true"></i> <a href="#">Verteilaktion</a></p>
         </div>
@@ -54,7 +62,15 @@
           <h3>{{ potential_meetup.title }}</h3>
           <p class="meetup_location"><i class="fa fa-map-marker" aria-hidden="true"></i> {{ potential_meetup.street }}, {{ potential_meetup.city }}</p>
           <!--p class="meetup_date"><i class="fa fa-clock-o" aria-hidden="true"></i> {{ potential_meetup.datetime }}</p-->
-          <p class="meetup_funfact"><i class="fa fa-fire" aria-hidden="true"></i> Hier war’s knapp - können wir den Bezirk für uns gewinnen?</p>
+          {% if potential_meetup.wahl_details != None %}
+            {% if potential_meetup.wahl_details.swingstate %}
+              <p class="meetup_funfact"><i class="fa fa-fire" aria-hidden="true"></i> Hier war’s knapp - können wir den Bezirk für uns gewinnen?</p>
+            {% elif potential_meetup.wahl_details.neutral_ground %}
+              <p class="meetup_funfact"><i class="fa fa-fire" aria-hidden="true"></i> Hier war’s knapp - können wir den Bezirk für uns gewinnen?</p>
+            {% elif potential_meetup.wahl_details.wenigwahler %}
+              <p class="meetup_funfact"><i class="fa fa-fire" aria-hidden="true"></i> Hier war’s knapp - können wir den Bezirk für uns gewinnen?</p>
+            {% endif %}
+          {% endif %}
 
           <p class="meetup_type"><i class="fa fa-tag" aria-hidden="true"></i> <a href="#">Verteilaktion</a></p>
         </div>
