@@ -1,21 +1,49 @@
 {% extends "layouts/base.html" %}
+{% block body_class %}meetups{% endblock %}
 
 {% block content %}
+<div class="full-width-container coach">
+  <div class="container">
+
+    <div class="row">
+      <div class="three columns">
+        <div class="coach-photo">&nbsp;</div>
+      </div>
+      <div class="nine columns speech-bubble">
+          <h3>Willkommen im Team!</h3>
+          <p>
+            Was gerade am wichtigsten ist, ist lokal Präsenz zu zeigen – bitte mach mit bei den Verteilaktionen in deiner Gegend:
+          </p>
+      </div>
+    </div>
+  </div>
+
+</div>
 <div class="container">
-  <p>Diese Aktionen finden in deiner Nähe statt:</p>
+
   <ul class="meetup_list">
     {% for location in locations %}
     <li class="meetup">
       <div class="row">
-        <div class="two-thirds column">
+        <div class="two columns map">
+          &nbsp;
+        </div>
+        <div class="six columns info">
           <h3>{{ location.title }}</h3>
           <p class="meetup_location"><i class="fa fa-map-marker" aria-hidden="true"></i> {{ location.postalcode }} {{ location.municipal }}</p>
           <p class="meetup_date"><i class="fa fa-clock-o" aria-hidden="true"></i> {{ location.datetime }}</p>
         </div>
-        <div class="one-third column">
-          <a class="event-button" href="{% url 'join_event' %}">
-            <div>Jetzt mitmachen</div>
-          </a>
+        <div class="two columns join">
+          <span class="date-nice">Freitag</span>
+          <span class="date-full">16. Sept</span>
+          <span class="date-hour">18-22 Uhr</span>
+          <button class="event-button" href="{% url 'join_event' %}">Bin dabei</button>
+        </div>
+        <div class="two columns join">
+          <span class="date-nice">Freitag</span>
+          <span class="date-full">16. Sept</span>
+          <span class="date-hour">18-22 Uhr</span>
+          <button class="event-button" href="{% url 'join_event' %}">Bin dabei</button>
         </div>
       </div>
     </li>
