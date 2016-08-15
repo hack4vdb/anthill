@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 from __future__ import unicode_literals
 import uuid
 import datetime
@@ -6,6 +9,7 @@ from django.contrib.gis.geos import GEOSGeometry
 from django.contrib.gis.measure import Distance, D
 from rest_framework.exceptions import ValidationError
 from anthill import geo
+
 
 
 class Activist(models.Model):
