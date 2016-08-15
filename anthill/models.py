@@ -4,7 +4,6 @@ import uuid
 from django.contrib.gis.db import models
 from django.contrib.gis.geos import GEOSGeometry
 from django.contrib.gis.measure import Distance
-import geo
 
 # Create your models here.
 

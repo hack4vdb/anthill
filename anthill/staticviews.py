@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
 from django.shortcuts import render, redirect, get_object_or_404
-from forms import SignupForm
-from models import Activist, Meetup
+from anthill.forms import SignupForm
+from anthill.models import Activist, Meetup
 from anthill.geo import get_nearest_ortzumflyern
 from anthill.emailviews import WelcomeMessageView
 from django.contrib.auth import authenticate, login
