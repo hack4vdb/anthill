@@ -25,19 +25,21 @@
     {% for meetup in meetups %}
     <li class="meetup">
       <div class="row">
-        <div class="two columns map" style="background-image:url(https://maps.googleapis.com/maps/api/staticmap?center={{ meetup.street }},{{ meetup.municipal }},Austria&zoom=15&size=400x400&key=AIzaSyANphiyaXrFh_146PzRNbNGTozPv7Meibw)">
+        <div class="three columns map" style="background-image:url(https://maps.googleapis.com/maps/api/staticmap?center={{ meetup.street }},{{ meetup.city }},Austria&zoom=15&size=300x300&key=AIzaSyANphiyaXrFh_146PzRNbNGTozPv7Meibw)">
           &nbsp;
         </div>
-        <div class="eight columns info">
+        <div class="seven columns info">
           <h3>{{ meetup.title }}{{ location.title }}</h3>
           <p class="meetup_location"><i class="fa fa-map-marker" aria-hidden="true"></i> {{ meetup.street }}, {{ meetup.city }}</p>
-          <p class="meetup_date"><i class="fa fa-clock-o" aria-hidden="true"></i> {{ meetup.datetime }}</p>
-          <p class="meetup_date"><i class="fa fa-fire" aria-hidden="true"></i> Hier war’s knapp - können wir den Bezirk für uns gewinnen?</p>
+          <p class="meetup_funfact"><i class="fa fa-fire" aria-hidden="true"></i> Hier war’s knapp - können wir den Bezirk für uns gewinnen?</p>
           <!--<p>wahl: {{ meetup.wahl_details }}</p>-->
-
-          <p class="meetup_date"><i class="fa fa-tag" aria-hidden="true"></i> <a href="#">Verteilaktion</a></p>
+          <p class="meetup_type"><i class="fa fa-tag" aria-hidden="true"></i> <a href="#">Verteilaktion</a></p>
         </div>
         <div class="two columns join">
+          <span class="date-nice">{{ meetup.datetime|date:"l" }}</span>
+          <span class="date-full">{{ meetup.datetime|date:"j. M" }}</span>
+          <span class="date-hour">{{ meetup.datetime|date:"H" }} Uhr</span>
+
           <a class="button" href="{% url 'join_meetup' %}">Bin dabei</a>
         </div>
       </div>
@@ -45,16 +47,16 @@
     {% endfor %}
     <li class="meetup">
       <div class="row">
-        <div class="two columns map" style="background-image:url(https://maps.googleapis.com/maps/api/staticmap?center={{ potential_meetup.street }},{{ potential_meetup.municipal }},Austria&zoom=15&size=400x400&key=AIzaSyANphiyaXrFh_146PzRNbNGTozPv7Meibw)">
+        <div class="two columns map" style="background-image:url(https://maps.googleapis.com/maps/api/staticmap?center={{ potential_meetup.street }},{{ potential_meetup.city }},Austria&zoom=15&size=300x300&key=AIzaSyANphiyaXrFh_146PzRNbNGTozPv7Meibw)">
           &nbsp;
         </div>
         <div class="four columns info">
           <h3>{{ potential_meetup.title }}</h3>
           <p class="meetup_location"><i class="fa fa-map-marker" aria-hidden="true"></i> {{ potential_meetup.street }}, {{ potential_meetup.city }}</p>
           <!--p class="meetup_date"><i class="fa fa-clock-o" aria-hidden="true"></i> {{ potential_meetup.datetime }}</p-->
-          <p class="meetup_date"><i class="fa fa-fire" aria-hidden="true"></i> Hier war’s knapp - können wir den Bezirk für uns gewinnen?</p>
+          <p class="meetup_funfact"><i class="fa fa-fire" aria-hidden="true"></i> Hier war’s knapp - können wir den Bezirk für uns gewinnen?</p>
 
-          <p class="meetup_date"><i class="fa fa-tag" aria-hidden="true"></i> <a href="#">Verteilaktion</a></p>
+          <p class="meetup_type"><i class="fa fa-tag" aria-hidden="true"></i> <a href="#">Verteilaktion</a></p>
         </div>
         {% for start_time, end_time in potential_times %}
         <div class="two columns join">
