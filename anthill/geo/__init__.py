@@ -33,4 +33,4 @@ def get_nearest_ortzumflyern(plz):
         if dist < min:
             min = dist
             min_idx = i
-    return orte[min_idx]
+    return (min_idx, orte[min_idx])

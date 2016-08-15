@@ -42,41 +42,29 @@
       </div>
     </li>
     {% endfor %}
-    {% for location in locations %}
     <li class="meetup">
       <div class="row">
         <div class="two columns map">
           &nbsp;
         </div>
         <div class="four columns info">
-          <h3>{{ location.title }}</h3>
-          <p class="meetup_location"><i class="fa fa-map-marker" aria-hidden="true"></i> {{ location.street }}, {{ location.municipal }}</p>
-          <!--p class="meetup_date"><i class="fa fa-clock-o" aria-hidden="true"></i> {{ location.datetime }}</p-->
+          <h3>{{ potential_meetup.title }}</h3>
+          <p class="meetup_location"><i class="fa fa-map-marker" aria-hidden="true"></i> {{ potential_meetup.street }}, {{ potential_meetup.municipal }}</p>
+          <!--p class="meetup_date"><i class="fa fa-clock-o" aria-hidden="true"></i> {{ potential_meetup.datetime }}</p-->
           <p class="meetup_date"><i class="fa fa-fire" aria-hidden="true"></i> Hier war’s knapp - können wir den Bezirk für uns gewinnen?</p>
 
           <p class="meetup_date"><i class="fa fa-tag" aria-hidden="true"></i> <a href="#">Verteilaktion</a></p>
         </div>
+        {% for start_time, end_time in potential_times %}
         <div class="two columns join">
-          <span class="date-nice">Freitag</span>
-          <span class="date-full">16. Sept</span>
-          <span class="date-hour">18-22 Uhr</span>
-          <button class="event-button" href="{% url 'join_meetup' %}">Bin dabei</button>
+          <span class="date-nice">{{ start_time|date:"l" }}</span>
+          <span class="date-full">{{ start_time|date:"j. M" }}</span>
+          <span class="date-hour">{{ start_time|date:"H" }}-{{ end_time|date:"H" }} Uhr</span>
+          <a class="event-button" href="{% url 'join_meetup' %}?time_id={{ forloop.counter0 | urlencode }}&location_id={{ potential_meetup_id | urlencode }}">Bin dabei</a>
         </div>
-        <div class="two columns join">
-          <span class="date-nice">Freitag</span>
-          <span class="date-full">16. Sept</span>
-          <span class="date-hour">18-22 Uhr</span>
-          <button class="event-button" href="{% url 'join_meetup' %}">Bin dabei</button>
-        </div>
-        <div class="two columns join">
-          <span class="date-nice">Freitag</span>
-          <span class="date-full">16. Sept</span>
-          <span class="date-hour">18-22 Uhr</span>
-          <button class="event-button" href="{% url 'join_meetup' %}">Bin dabei</button>
-        </div>
+        {% endfor %}
       </div>
     </li>
-    {% endfor %}
 
     <p>
       You are user {{ user.uuid }} with email {{ user.email }} in PLZ {{ user.postalcode }}
