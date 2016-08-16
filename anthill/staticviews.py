@@ -136,16 +136,28 @@ def join_meetup(request):
     })
 
 
-def join_meetup_bot(request, meetupid, user_bot_id):
+def join_meetup_bot(request, meetupid, signeddata):
+
+    s = JSONWebSignatureSerializer('anthill4vdb')
+
+    indata = s.loads(signeddata)
+    # lat, fb_last_name, fb_first_name, long, fb_recipient_id
+    user_bot_id = indata['fb_recipient_id']
+    lat = float(indata['lat'])
+    lng = float(indata['long'])
+    firstname = indata['fb_first_name']
+    lastname = indata['fb_last_name']
+
     data = {
         "data": {
-                "msgtype": "i",
+                # "msgtype": "i", # image
+                "msgtype": "t", # text
                 "fb_recipient_id": user_bot_id,
                 "delay": 60,
-                "data": "http://weilsumwasgeht.at/static/img/alexandra.jpg"
+                #"data": "https://pbs.twimg.com/media/Cp1EL5gXgAAgx5p.jpg"
+                "data": "Danke, dass du dabei bist! :)"
             }
         }
-    s = JSONWebSignatureSerializer('anthill4vdb')
     data = {
         "data": s.dumps(data['data'])
         }
@@ -154,12 +166,11 @@ def join_meetup_bot(request, meetupid, user_bot_id):
     try:
         activist = Activist.objects.filter(facebook_bot_id=user_bot_id).first()
         if activist is None:
-            activist = Activist(facebook_bot_id=user_bot_id, postalcode=1010)
+            activist = Activist(facebook_bot_id=user_bot_id)
 
-        # TODO: move this to function and reuse with view.ActivistViewSet.create
-        coordinate = geo.get_coordinates(1010)
-        activist.coordinate = GEOSGeometry('POINT(%f %f)' % (coordinate[1], coordinate[0]), srid=4326)
-        # / end of TODO
+        activist.coordinate = GEOSGeometry('POINT(%f %f)' % (lng, lat), srid=4326)
+        activist.first_name = firstname
+        activist.last_name = lastname
 
         activist.save()
         activist = authenticate(uuid=activist.uuid)
