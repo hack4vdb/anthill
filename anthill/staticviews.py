@@ -79,9 +79,9 @@ def join_meetup(request):
     # Wenn Meetup gerade erstellt:
     ## Zu einem Formular mit Adress Eingabe
 
-    if meetup_id is None:
+    if meetup_id is None: # in the process of creating a meetup from suggestion
         form = CreateAddressForm(request.POST or None, instance=user)
-        if request.method == 'POST':
+        if request.method == 'POST': # submitting address form
             if form.is_valid():
                 form.save()
                 meetup = Meetup.create_from_potentialmeetup_specs(
@@ -91,14 +91,14 @@ def join_meetup(request):
                 meetup.save()
                 meetup_id = meetup.uuid
                 is_new = True
-        else:
+        else: # displaying address form
             start_time = Meetup.get_proposed_time_by_id(time_id)
-            ort = get_ortezumflyern(location_id)['ort']
+            city = get_ortezumflyern(location_id)['ort']
             return render(request, 'address_form.html', {
                 'user': user,
                 'form': form,
-                'title': "{} für VdB".format(ort),
-                'start_time': start_time
+                'city': city,
+                'date': start_time
             })
 
     # Sonst, Wenn Meetup schon da war:
