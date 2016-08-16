@@ -147,12 +147,16 @@ def join_meetup_bot(request, meetupid, user_bot_id):
 
     try:
         activist = Activist.objects.filter(facebook_bot_id=user_bot_id).first()
+        if activist is None:
+            activist = Activist(facebook_bot_id=user_bot_id)
+            activist.save()
         activist = authenticate(uuid=activist.uuid)
         login(request, activist)
         return HttpResponseRedirect('/join_meetup/?meetup_id={}'.format(meetupid))
     except ValueError as e:
         # todo: return error
-        return Response()
+        return HttpResponse(
+            'invalid request')
 
 
 def invite(request):
