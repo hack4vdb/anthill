@@ -64,7 +64,10 @@ class Activist(models.Model):
             return []
 
     def __str__(self):
-        return '{} ({}) - {}'.format(self.email, self.postalcode, self.uuid)
+        if self.facebook_bot_id:
+            return '{} (FB Bot User) - {}'.format(self.facebook_bot_id, self.uuid)
+        else:
+            return '{} ({}) - {}'.format(self.email, self.postalcode, self.uuid)
 
 
 class Meetup(models.Model):
