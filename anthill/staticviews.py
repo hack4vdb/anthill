@@ -69,7 +69,7 @@ def join_meetup(request):
             form.save()
             meetup = Meetup.create_from_potentialmeetup_specs(location_id=location_id, time_id=time_id)
             meetup.save()
-            return redirect('meetups')
+            return redirect('invite')
     loc = get_ortezumflyern(location_id)
     start_time = Meetup.get_proposed_time_by_id(time_id)
     return render(request, 'join_meetup.html', {
@@ -78,6 +78,11 @@ def join_meetup(request):
         'title': "{} für VdB".format(loc['ort']),
         'start_time': start_time
     })
+
+
+def invite(request):
+    return render(request, 'invite.html')
+
 
 
 def join_first_event(request):
