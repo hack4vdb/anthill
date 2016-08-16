@@ -443,6 +443,10 @@ body.meetups .button {
     width: 100%;
     margin-right: 0;
   }
+  body.meetups .date-join .button {
+      padding-top:.3em;
+      padding-bottom:.3em;
+  }
 }
 
 body.meetups .meetup_list p {
@@ -459,7 +463,7 @@ body.meetups .meetup_list .map {
 }
 @media (min-width: 550px) {
   body.meetups .meetup_list .map {
-    height: 170px;
+    height: 150px;
     border-bottom-left-radius: 1rem;
     border-top-right-radius: 0;
   }
