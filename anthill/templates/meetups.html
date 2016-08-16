@@ -33,11 +33,11 @@
           <p class="meetup_location"><i class="fa fa-map-marker" aria-hidden="true"></i> {{ meetup.street }}, {{ meetup.city }}</p>
           {% if meetup.wahl_details != None %}
             {% if meetup.wahl_details.swingstate %}
-              <p class="meetup_funfact"><i class="fa fa-fire" aria-hidden="true"></i> Hier war’s knapp - können wir den Bezirk für uns gewinnen?</p>
+              <p class="meetup_funfact"><i class="fa fa-fire" aria-hidden="true"></i> Es geht um was! Hier war’s knapp - können wir den Bezirk für uns gewinnen?</p>
             {% elif meetup.wahl_details.neutral_ground %}
-              <p class="meetup_funfact"><i class="fa fa-fire" aria-hidden="true"></i> Hier war’s knapp - können wir den Bezirk für uns gewinnen?</p>
+              <p class="meetup_funfact"><i class="fa fa-fire" aria-hidden="true"></i> Achtung, Unentschlossene: Hier gab es im 1. Wahlgang viele WählerInnen dritter KandidatInnen</p>
             {% elif meetup.wahl_details.wenigwahler %}
-              <p class="meetup_funfact"><i class="fa fa-fire" aria-hidden="true"></i> Hier war’s knapp - können wir den Bezirk für uns gewinnen?</p>
+              <p class="meetup_funfact"><i class="fa fa-fire" aria-hidden="true"></i> Mobilisieren wir: Hier gab es viele NichtwählerInnen</p>
             {% endif %}
           {% endif %}
           <!--<p>wahl: {{ meetup.wahl_details }}</p>-->
@@ -65,11 +65,11 @@
           <!--p class="meetup_date"><i class="fa fa-clock-o" aria-hidden="true"></i> {{ potential_meetup.datetime }}</p-->
           {% if potential_meetup.wahl_details != None %}
             {% if potential_meetup.wahl_details.swingstate %}
-              <p class="meetup_funfact"><i class="fa fa-fire" aria-hidden="true"></i> Hier war’s knapp - können wir den Bezirk für uns gewinnen?</p>
+              <p class="meetup_funfact"><i class="fa fa-fire" aria-hidden="true"></i> Es geht um was! Hier war’s knapp - können wir den Bezirk für uns gewinnen?</p>
             {% elif potential_meetup.wahl_details.neutral_ground %}
-              <p class="meetup_funfact"><i class="fa fa-fire" aria-hidden="true"></i> Hier war’s knapp - können wir den Bezirk für uns gewinnen?</p>
+              <p class="meetup_funfact"><i class="fa fa-fire" aria-hidden="true"></i> Achtung, Unentschlossene: Hier gab es im 1. Wahlgang viele WählerInnen dritter KandidatInnen</p>
             {% elif potential_meetup.wahl_details.wenigwahler %}
-              <p class="meetup_funfact"><i class="fa fa-fire" aria-hidden="true"></i> Hier war’s knapp - können wir den Bezirk für uns gewinnen?</p>
+              <p class="meetup_funfact"><i class="fa fa-fire" aria-hidden="true"></i> Mobilisieren wir: Hier gab es viele NichtwählerInnen</p>
             {% endif %}
           {% endif %}
 
