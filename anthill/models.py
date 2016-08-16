@@ -63,7 +63,7 @@ class Activist(models.Model):
         except ValueError as e:
             return []
 
-    def __str__(self):
+    def __unicode__(self):
         if self.facebook_bot_id:
             return '{} (FB Bot User) - {}'.format(self.facebook_bot_id, self.uuid)
         else:
@@ -118,7 +118,7 @@ class Meetup(models.Model):
                 srid=4326),
             datetime=start_time)
 
-    def __str__(self):
+    def _unicode__(self):
         return '{} - {}'.format(self.title, self.uuid)
 
     @staticmethod
@@ -205,5 +205,5 @@ class InterestingPlaces(models.Model):
     city = models.CharField(max_length=500)  # Ort
     coordinate = models.PointField()
 
-    def __str__(self):
+    def _unicode__(self):
         return '{} {}: {}'.format(self.postalcode, self.city, self.title)
