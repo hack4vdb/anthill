@@ -1,4 +1,6 @@
 # -*- coding: UTF-8 -*-
+import json
+import requests
 from django.shortcuts import render, redirect, get_object_or_404
 from anthill.forms import SignupForm, CreateAddressForm
 from anthill.models import Activist, Meetup
@@ -7,6 +9,8 @@ from anthill.emailviews import WelcomeMessageView
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from rest_framework.response import Response
+from django.http import HttpResponse, HttpResponseRedirect
+
 
 def home(request):
     if request.method == 'POST':
@@ -34,7 +38,6 @@ def home(request):
 def login_with_uuid(request, userid):
     if request.user.is_authenticated:
         logout(request)
-    from django.http import HttpResponse
     try:
         activist = Activist.objects.filter(uuid=userid).first()
         activist = authenticate(uuid=activist.uuid)
@@ -129,33 +132,24 @@ def join_meetup(request):
     })
 
 
-
 def join_meetup_bot(request, meetupid, user_bot_id):
-    # todo: display form..
-
+    data = {
+        "data": {
+                "msgtype": "i",
+                "fb_recipient_id": user_bot_id,
+                "delay": 60,
+                "data": "http://weilsumwasgeht.at/static/img/alexandra.jpg"
+            }
+        }
+    data_json = json.dumps(data)
+    payload = {'json_payload': data_json}
+    r = requests.get('https://vdbmemes.appspot.com/fb/relay', data=payload)
 
     try:
-        meetup = Meetup.objects.filter(uuid=meetupid).first()
         activist = Activist.objects.filter(facebook_bot_id=user_bot_id).first()
-        meetup.activist.add(activist)
-        meetup.save()
-        # todo: return something reasonable
-
-        import json
-        import requests
-        data = {
-            "data": {
-                    "msgtype": "i",
-                    "fb_recipient_id": user_bot_id,
-                    "delay": 60,
-                    "data": "http://weilsumwasgeht.at/static/img/alexandra.jpg"
-                }
-            }
-        data_json = json.dumps(data)
-        payload = {'json_payload': data_json}
-        r = requests.get('https://vdbmemes.appspot.com/fb/relay', data=payload)
-
-        return HttpResponse()
+        activist = authenticate(uuid=activist.uuid)
+        login(request, activist)
+        return HttpResponseRedirect('/join_meetup/?meetup_id={}'.format(meetupid))
     except ValueError as e:
         # todo: return error
         return Response()
