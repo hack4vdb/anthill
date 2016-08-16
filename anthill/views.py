@@ -118,6 +118,19 @@ def partake_meetup(request, meetupid, userid):
     return Response()
 
 
+@api_view(['POST'])
+def partake_meetup_bot(request, meetupid, user_bot_id):
+    try:
+        meetup = Meetup.objects.filter(uuid=meetupid).first()
+        activist = Activist.objects.filter(facebook_bot_id=user_bot_id).first()
+        meetup.activist.add(activist)
+        # todo: return something reasonable
+        return Response()
+    except ValueError as e:
+        # todo: return error
+        return Response()
+
+
 @api_view(['GET'])
 def interesting_places(request, id):
     activist = Activist.objects.filter(uuid=id).first()
