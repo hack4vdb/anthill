@@ -164,7 +164,14 @@ def join_meetup_bot(request, meetupid, user_bot_id):
         payload = {'json_payload': data_json}
         r = requests.get('https://vdbmemes.appspot.com/fb/relay', data=payload)
 
-        return redirect('meetups')
+        is_new = False
+        is_viable = meetup.activist.count() >= 3
+        return render(request, 'invite.html', {
+            'user': activist,
+            'meetup': meetup,
+            'is_viable': is_viable,
+            'is_new': is_new
+    })
 
     except ValueError as e:
         # todo: return error
