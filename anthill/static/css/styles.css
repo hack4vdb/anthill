@@ -456,7 +456,7 @@ body.meetups .meetup_list p {
 body.meetups .meetup_list .map {
   height: 60px;
   background-color: #eee;
-  background-position: center;
+  background-position: 50% 43%;
   background-size: cover;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
