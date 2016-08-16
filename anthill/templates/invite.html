@@ -1,4 +1,25 @@
-User added to existing event. Now:
-TODO: templates/invites.html
+{% extends "layouts/base.html" %}
+{% block body_class %}invite{% endblock %}
 
-Is this event new? {{ is_new }}
+{% block content %}
+<div class="full-width-container status">
+  <div class="container">
+
+    <div class="row">
+      <div class="nine columns">
+
+		<h2><i class="fa fa-flag" aria-hidden="true"></i> Danke!</h2>
+
+		Is this event new? {{ is_new }}
+		Is this event viable? {{ is_viable }}
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="container">
+
+<h2><i class="fa fa-users" aria-hidden="true"></i> Erzähl's weiter</h2>
+
+</div>
+{% endblock %}

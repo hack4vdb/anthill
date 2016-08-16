@@ -112,7 +112,7 @@ def join_meetup(request):
 
     # TODO: check, wieviele schon dabei sind,
 
-    is_viable = meetup.activist.count() >= 3
+    is_viable = meetup.activist.count() >= 3 # TODO: make this configurable somewhere central
 
     # TODO: evtl trigger mail an kampagne
 
@@ -123,9 +123,6 @@ def join_meetup(request):
     # TODO: trigger mail to alle die schon dabei sind
 
     ## Danke & Invite
-
-    # TODO: info, ob schon genug leute (is_viable) sind ans template geben
-
 
 
     return render(request, 'invite.html', {

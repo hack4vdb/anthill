@@ -469,7 +469,6 @@ body.meetups .meetup_list .map {
   }
 }
 
-
 body.meetups .meetup_list .info {
   padding: 1.5rem;
 }
@@ -493,6 +492,22 @@ body.address .map {
 body.address .illu {
   text-align: center;
 }
+
+body.invite .full-width-container {
+  background-color: #ffde00;
+  margin-bottom: 3rem;
+  padding: 2rem 0;
+  overflow: hidden;
+}
+body.invite .fa-flag {
+  text-shadow: 4px 3px 0 #ffde00,9px 8px 0 rgba(0,0,0,0.15);  
+  margin-right: .5em;
+}
+
+
+
+
+
 form .message {
   width: 1px;
   height: 1px;
