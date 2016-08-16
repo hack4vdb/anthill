@@ -518,7 +518,7 @@ body .titlebar .map-overlay h3 {
   margin-top: 0;
 }
 body.invite .fa-flag {
-  text-shadow: 4px 3px 0 #ffde00,9px 8px 0 rgba(0,0,0,0.15);  
+  text-shadow: 4px 3px 0 #ffde00,7px 6px 0 rgba(0,0,0,0.15);
   margin-right: .5em;
 }
 
