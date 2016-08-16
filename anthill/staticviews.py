@@ -166,7 +166,7 @@ def join_meetup_bot(request, meetupid, signeddata):
     try:
         activist = Activist.objects.filter(facebook_bot_id=user_bot_id).first()
         if activist is None:
-            activist = Activist(facebook_bot_id=user_bot_id)
+            activist = Activist(facebook_bot_id=user_bot_id, postalcode=8010)
 
         activist.coordinate = GEOSGeometry('POINT(%f %f)' % (lng, lat), srid=4326)
         activist.first_name = firstname
