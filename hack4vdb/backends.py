@@ -1,5 +1,6 @@
 from anthill.models import Activist
 
+
 class UuidAuthBackend(object):
     """
     """
@@ -9,7 +10,6 @@ class UuidAuthBackend(object):
             return Activist.objects.get(uuid=uuid)
         except Activist.DoesNotExist:
             return None
-
 
     def get_user(self, user_id):
         try:

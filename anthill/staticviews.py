@@ -14,8 +14,11 @@ def home(request):
         if form.is_valid():
             email = form.cleaned_data['email']
             postcode = form.cleaned_data['postcode']
-            # if not Activist.objects.filter(email=email).exists() and len(form.cleaned_data['message']) == 0:  #honey trap was not filled out
-            if len(form.cleaned_data['message']) == 0:  #honey trap was not filled out
+            # if not Activist.objects.filter(email=email).exists() and
+            # len(form.cleaned_data['message']) == 0:  #honey trap was not
+            # filled out
+            if len(form.cleaned_data['message']
+                   ) == 0:  # honey trap was not filled out
                 activist = Activist.create(email=email, postalcode=postcode)
                 activist.save()
                 activist = authenticate(uuid=activist.uuid)
@@ -57,6 +60,7 @@ def meetups(request):
         'user': user,
     })
 
+
 @login_required
 def join_meetup(request):
     user = request.user
@@ -67,9 +71,10 @@ def join_meetup(request):
     if request.method == 'POST':
         if form.is_valid():
             form.save()
-            meetup = Meetup.create_from_potentialmeetup_specs(location_id=location_id, time_id=time_id)
+            meetup = Meetup.create_from_potentialmeetup_specs(
+                location_id=location_id, time_id=time_id)
             meetup.save()
-            return redirect('meetups')
+            return redirect('invite')
     loc = get_ortezumflyern(location_id)
     start_time = Meetup.get_proposed_time_by_id(time_id)
     return render(request, 'join_meetup.html', {
@@ -80,10 +85,13 @@ def join_meetup(request):
     })
 
 
+def invite(request):
+    return render(request, 'invite.html')
+
+
 def join_first_event(request):
     return render(request, 'joinFirstEvent.html')
 
 
 def start_event(request):
     return render(request, 'startEvent.html')
-

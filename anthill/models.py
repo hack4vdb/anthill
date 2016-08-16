@@ -11,7 +11,6 @@ from rest_framework.exceptions import ValidationError
 from anthill import geo
 
 
-
 class Activist(models.Model):
     uuid = models.UUIDField(unique=True, default=uuid.uuid4, editable=False)
     # Anrede (Herr, Frau, Keine Angabe)
@@ -102,14 +101,19 @@ class Meetup(models.Model):
         loc = geo.get_ortezumflyern(location_id)
         start_time = Meetup.get_proposed_time_by_id(time_id)
         return Meetup.create(
-            title="{} fur VdB".format(loc['ort']),
-            postalcode=int(loc['plz']),
+            title="{} fur VdB".format(
+                loc['ort']),
+            postalcode=int(
+                loc['plz']),
             city=loc['ort'],
             street=loc['treffpunkt'],
             house_number='',
-            coordinate=GEOSGeometry('POINT(%f %f)' % (loc['lat'], loc['lon']), srid=4326),
-            datetime=start_time
-        )
+            coordinate=GEOSGeometry(
+                'POINT(%f %f)' %
+                (loc['lat'],
+                 loc['lon']),
+                srid=4326),
+            datetime=start_time)
 
     def __str__(self):
         return '{} - {}'.format(self.title, self.uuid)
@@ -151,7 +155,6 @@ class Meetup(models.Model):
             start_time, end_time = times[0]
         return start_time
 
-
     @staticmethod
     def find_meetups_by_latlong(lat, lng):
         try:
@@ -165,7 +168,10 @@ class Meetup(models.Model):
         try:
             DISTANCE_LIMIT_METERS = 40000  # todo: check if this is really meters
             coordinate = geo
-            data = Meetup.objects.filter(coordinate__distance_lt=(coordinate, Distance(m=DISTANCE_LIMIT_METERS)))
+            data = Meetup.objects.filter(
+                coordinate__distance_lt=(
+                    coordinate, Distance(
+                        m=DISTANCE_LIMIT_METERS)))
             data = data.filter(datetime__gt=datetime.datetime.now())
             data = data.order_by('datetime')
             # data = Meetup.objects.filter(coordinate__distance_lte=(coordinate, D(m=DISTANCE_LIMIT_METERS))).distance(coordinate).order_by('coordinate__distance')

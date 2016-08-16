@@ -134,7 +134,8 @@ def partake_meetup_bot(request, meetupid, user_bot_id):
 @api_view(['GET'])
 def interesting_places(request, id):
     activist = Activist.objects.filter(uuid=id).first()
-    potential_meetup, location_id = Meetup.potential_meetup(activist.postalcode)
+    potential_meetup, location_id = Meetup.potential_meetup(
+        activist.postalcode)
     serializer = MeetupSerializer(
         potential_meetup, many=False, context={
             'request': request})

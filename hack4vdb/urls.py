@@ -37,6 +37,7 @@ urlpatterns = [
     url(r'^check_mail/$', staticviews.check_mail, name='check_mail'),
     url(r'^meetups/$', staticviews.meetups, name='meetups'),
     url(r'^join_meetup/$', staticviews.join_meetup, name='join_meetup'),
+    url(r'^invite/$', staticviews.invite, name='invite'),
     url(r'^join_first_event/$', staticviews.join_first_event, name='join_first_event'),
     url(r'^start_event/$', staticviews.start_event, name='start_event'),
     url(r'^admin/', admin.site.urls),
