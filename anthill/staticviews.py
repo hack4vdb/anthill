@@ -11,6 +11,9 @@ from django.contrib.auth.decorators import login_required
 from rest_framework.response import Response
 from django.http import HttpResponse, HttpResponseRedirect
 
+from django.contrib.gis.geos import GEOSGeometry
+from anthill import geo
+
 from itsdangerous import JSONWebSignatureSerializer
 
 def home(request):
@@ -151,8 +154,14 @@ def join_meetup_bot(request, meetupid, user_bot_id):
     try:
         activist = Activist.objects.filter(facebook_bot_id=user_bot_id).first()
         if activist is None:
-            activist = Activist(facebook_bot_id=user_bot_id)
-            activist.save()
+            activist = Activist(facebook_bot_id=user_bot_id, postalcode=1010)
+
+        # TODO: move this to function and reuse with view.ActivistViewSet.create
+        coordinate = geo.get_coordinates(1010)
+        activist.coordinate = GEOSGeometry('POINT(%f %f)' % (coordinate[1], coordinate[0]), srid=4326)
+        # / end of TODO
+
+        activist.save()
         activist = authenticate(uuid=activist.uuid)
         login(request, activist)
         return HttpResponseRedirect('/join_meetup/?meetup_id={}'.format(meetupid))
