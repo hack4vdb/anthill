@@ -9,13 +9,13 @@ wahl_details = [
         "wg1_vdb": 0.1601,
         "wg2_hofer": 0.5618,
         "wg2_vdb": 0.4382,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6095,
         "wahlberechtigte": 44860,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Wels",
@@ -24,13 +24,13 @@ wahl_details = [
         "wg1_vdb": 0.215,
         "wg2_hofer": 0.495,
         "wg2_vdb": 0.505,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": false,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": False,
         "beteiligung": 0.5729,
         "wahlberechtigte": 39780,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "St. Pölten",
@@ -39,13 +39,13 @@ wahl_details = [
         "wg1_vdb": 0.2238,
         "wg2_hofer": 0.4527,
         "wg2_vdb": 0.5473,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6325,
         "wahlberechtigte": 39130,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Dornbirn",
@@ -54,13 +54,13 @@ wahl_details = [
         "wg1_vdb": 0.2991,
         "wg2_hofer": 0.4195,
         "wg2_vdb": 0.5805,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": false,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": False,
         "beteiligung": 0.5405,
         "wahlberechtigte": 33609,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Wiener Neustadt",
@@ -69,13 +69,13 @@ wahl_details = [
         "wg1_vdb": 0.2139,
         "wg2_hofer": 0.5069,
         "wg2_vdb": 0.4931,
-        "wenigwahler": false,
-        "swingstate": true,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": True,
+        "neutral_ground": True,
         "beteiligung": 0.6276,
         "wahlberechtigte": 31107,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Steyr",
@@ -84,13 +84,13 @@ wahl_details = [
         "wg1_vdb": 0.2169,
         "wg2_hofer": 0.4724,
         "wg2_vdb": 0.5276,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.596,
         "wahlberechtigte": 27705,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Feldkirch",
@@ -99,13 +99,13 @@ wahl_details = [
         "wg1_vdb": 0.3222,
         "wg2_hofer": 0.4044,
         "wg2_vdb": 0.5956,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": false,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": False,
         "beteiligung": 0.5288,
         "wahlberechtigte": 22479,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Bregenz",
@@ -114,13 +114,13 @@ wahl_details = [
         "wg1_vdb": 0.3092,
         "wg2_hofer": 0.4056,
         "wg2_vdb": 0.5944,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": false,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": False,
         "beteiligung": 0.5198,
         "wahlberechtigte": 19216,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Leonding",
@@ -129,13 +129,13 @@ wahl_details = [
         "wg1_vdb": 0.258,
         "wg2_hofer": 0.4242,
         "wg2_vdb": 0.5758,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6185,
         "wahlberechtigte": 20266,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Klosterneuburg",
@@ -144,13 +144,13 @@ wahl_details = [
         "wg1_vdb": 0.3038,
         "wg2_hofer": 0.3563,
         "wg2_vdb": 0.6437,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6935,
         "wahlberechtigte": 19756,
-        "hofer_hoch": false,
-        "vdb_hoch": true
+        "hofer_hoch": False,
+        "vdb_hoch": True
     },
     {
         "ort": "Baden",
@@ -159,13 +159,13 @@ wahl_details = [
         "wg1_vdb": 0.2715,
         "wg2_hofer": 0.4207,
         "wg2_vdb": 0.5793,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6472,
         "wahlberechtigte": 18855,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Leoben",
@@ -174,13 +174,13 @@ wahl_details = [
         "wg1_vdb": 0.1509,
         "wg2_hofer": 0.5868,
         "wg2_vdb": 0.4132,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.5469,
         "wahlberechtigte": 19292,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Wolfsberg",
@@ -189,13 +189,13 @@ wahl_details = [
         "wg1_vdb": 0.1117,
         "wg2_hofer": 0.658,
         "wg2_vdb": 0.342,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6285,
         "wahlberechtigte": 20273,
-        "hofer_hoch": true,
-        "vdb_hoch": false
+        "hofer_hoch": True,
+        "vdb_hoch": False
     },
     {
         "ort": "Krems an der Donau",
@@ -204,13 +204,13 @@ wahl_details = [
         "wg1_vdb": 0.2154,
         "wg2_hofer": 0.4839,
         "wg2_vdb": 0.5161,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6576,
         "wahlberechtigte": 18305,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Traun",
@@ -219,13 +219,13 @@ wahl_details = [
         "wg1_vdb": 0.1964,
         "wg2_hofer": 0.4896,
         "wg2_vdb": 0.5104,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.5957,
         "wahlberechtigte": 16147,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Amstetten",
@@ -234,13 +234,13 @@ wahl_details = [
         "wg1_vdb": 0.1855,
         "wg2_hofer": 0.5299,
         "wg2_vdb": 0.4701,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6753,
         "wahlberechtigte": 17655,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Kapfenberg",
@@ -249,13 +249,13 @@ wahl_details = [
         "wg1_vdb": 0.1272,
         "wg2_hofer": 0.5925,
         "wg2_vdb": 0.4075,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.5443,
         "wahlberechtigte": 17245,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Lustenau",
@@ -264,13 +264,13 @@ wahl_details = [
         "wg1_vdb": 0.2668,
         "wg2_hofer": 0.4516,
         "wg2_vdb": 0.5484,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": false,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": False,
         "beteiligung": 0.5072,
         "wahlberechtigte": 15237,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Hallein",
@@ -279,13 +279,13 @@ wahl_details = [
         "wg1_vdb": 0.2158,
         "wg2_hofer": 0.5001,
         "wg2_vdb": 0.4999,
-        "wenigwahler": false,
-        "swingstate": true,
-        "neutral_ground": false,
+        "wenigwahler": False,
+        "swingstate": True,
+        "neutral_ground": False,
         "beteiligung": 0.6156,
         "wahlberechtigte": 13940,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Mödling",
@@ -294,13 +294,13 @@ wahl_details = [
         "wg1_vdb": 0.3096,
         "wg2_hofer": 0.3622,
         "wg2_vdb": 0.6378,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6394,
         "wahlberechtigte": 15036,
-        "hofer_hoch": false,
-        "vdb_hoch": true
+        "hofer_hoch": False,
+        "vdb_hoch": True
     },
     {
         "ort": "Kufstein",
@@ -309,13 +309,13 @@ wahl_details = [
         "wg1_vdb": 0.2502,
         "wg2_hofer": 0.4887,
         "wg2_vdb": 0.5113,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": false,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": False,
         "beteiligung": 0.5605,
         "wahlberechtigte": 12042,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Traiskirchen",
@@ -324,13 +324,13 @@ wahl_details = [
         "wg1_vdb": 0.202,
         "wg2_hofer": 0.537,
         "wg2_vdb": 0.463,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": false,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": False,
         "beteiligung": 0.7181,
         "wahlberechtigte": 13088,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Schwechat",
@@ -339,13 +339,13 @@ wahl_details = [
         "wg1_vdb": 0.1962,
         "wg2_hofer": 0.5375,
         "wg2_vdb": 0.4625,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": false,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": False,
         "beteiligung": 0.6414,
         "wahlberechtigte": 12242,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Braunau am Inn",
@@ -354,13 +354,13 @@ wahl_details = [
         "wg1_vdb": 0.2044,
         "wg2_hofer": 0.5314,
         "wg2_vdb": 0.4686,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.5408,
         "wahlberechtigte": 11793,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Stockerau",
@@ -369,13 +369,13 @@ wahl_details = [
         "wg1_vdb": 0.2045,
         "wg2_hofer": 0.4918,
         "wg2_vdb": 0.5082,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6732,
         "wahlberechtigte": 12498,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Saalfelden am Steinernen Meer",
@@ -384,13 +384,13 @@ wahl_details = [
         "wg1_vdb": 0.1777,
         "wg2_hofer": 0.556,
         "wg2_vdb": 0.444,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6027,
         "wahlberechtigte": 11941,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Tulln",
@@ -399,13 +399,13 @@ wahl_details = [
         "wg1_vdb": 0.1874,
         "wg2_hofer": 0.5208,
         "wg2_vdb": 0.4792,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.8026,
         "wahlberechtigte": 57283,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Ansfelden",
@@ -414,13 +414,13 @@ wahl_details = [
         "wg1_vdb": 0.1738,
         "wg2_hofer": 0.5464,
         "wg2_vdb": 0.4536,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": false,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": False,
         "beteiligung": 0.6092,
         "wahlberechtigte": 10749,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Hohenems",
@@ -429,13 +429,13 @@ wahl_details = [
         "wg1_vdb": 0.2664,
         "wg2_hofer": 0.5033,
         "wg2_vdb": 0.4967,
-        "wenigwahler": true,
-        "swingstate": true,
-        "neutral_ground": false,
+        "wenigwahler": True,
+        "swingstate": True,
+        "neutral_ground": False,
         "beteiligung": 0.4883,
         "wahlberechtigte": 10792,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Bruck an der Mur",
@@ -444,13 +444,13 @@ wahl_details = [
         "wg1_vdb": 0.156,
         "wg2_hofer": 0.5649,
         "wg2_vdb": 0.4351,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.5563,
         "wahlberechtigte": 12905,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Spittal an der Drau",
@@ -459,13 +459,13 @@ wahl_details = [
         "wg1_vdb": 0.1309,
         "wg2_hofer": 0.5989,
         "wg2_vdb": 0.4011,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.5914,
         "wahlberechtigte": 11966,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Telfs",
@@ -474,13 +474,13 @@ wahl_details = [
         "wg1_vdb": 0.2774,
         "wg2_hofer": 0.4815,
         "wg2_vdb": 0.5185,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": false,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": False,
         "beteiligung": 0.5023,
         "wahlberechtigte": 10753,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Perchtoldsdorf",
@@ -489,13 +489,13 @@ wahl_details = [
         "wg1_vdb": 0.2849,
         "wg2_hofer": 0.3724,
         "wg2_vdb": 0.6276,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6678,
         "wahlberechtigte": 11698,
-        "hofer_hoch": false,
-        "vdb_hoch": true
+        "hofer_hoch": False,
+        "vdb_hoch": True
     },
     {
         "ort": "Ternitz",
@@ -504,13 +504,13 @@ wahl_details = [
         "wg1_vdb": 0.1607,
         "wg2_hofer": 0.5655,
         "wg2_vdb": 0.4345,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6916,
         "wahlberechtigte": 11483,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Eisenstadt",
@@ -519,13 +519,13 @@ wahl_details = [
         "wg1_vdb": 0.2092,
         "wg2_hofer": 0.5126,
         "wg2_vdb": 0.4874,
-        "wenigwahler": false,
-        "swingstate": true,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": True,
+        "neutral_ground": True,
         "beteiligung": 0.6651,
         "wahlberechtigte": 10567,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Feldkirchen",
@@ -534,13 +534,13 @@ wahl_details = [
         "wg1_vdb": 0.1135,
         "wg2_hofer": 0.6464,
         "wg2_vdb": 0.3536,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6796,
         "wahlberechtigte": 24162,
-        "hofer_hoch": true,
-        "vdb_hoch": false
+        "hofer_hoch": True,
+        "vdb_hoch": False
     },
     {
         "ort": "Bludenz",
@@ -549,13 +549,13 @@ wahl_details = [
         "wg1_vdb": 0.2695,
         "wg2_hofer": 0.4245,
         "wg2_vdb": 0.5755,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.5038,
         "wahlberechtigte": 9553,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Bad Ischl",
@@ -564,13 +564,13 @@ wahl_details = [
         "wg1_vdb": 0.2303,
         "wg2_hofer": 0.4527,
         "wg2_vdb": 0.5473,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.5482,
         "wahlberechtigte": 10690,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Hall in Tirol",
@@ -579,13 +579,13 @@ wahl_details = [
         "wg1_vdb": 0.2905,
         "wg2_hofer": 0.4304,
         "wg2_vdb": 0.5696,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": false,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": False,
         "beteiligung": 0.5883,
         "wahlberechtigte": 9506,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Schwaz",
@@ -594,13 +594,13 @@ wahl_details = [
         "wg1_vdb": 0.2482,
         "wg2_hofer": 0.5186,
         "wg2_vdb": 0.4814,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": false,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": False,
         "beteiligung": 0.5599,
         "wahlberechtigte": 9832,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Feldbach",
@@ -609,13 +609,13 @@ wahl_details = [
         "wg1_vdb": 0.1295,
         "wg2_hofer": 0.6207,
         "wg2_vdb": 0.3793,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6033,
         "wahlberechtigte": 10332,
-        "hofer_hoch": true,
-        "vdb_hoch": false
+        "hofer_hoch": True,
+        "vdb_hoch": False
     },
     {
         "ort": "Wörgl",
@@ -624,13 +624,13 @@ wahl_details = [
         "wg1_vdb": 0.2243,
         "wg2_hofer": 0.5158,
         "wg2_vdb": 0.4842,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": false,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": False,
         "beteiligung": 0.5399,
         "wahlberechtigte": 9048,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Wals-Siezenheim",
@@ -639,13 +639,13 @@ wahl_details = [
         "wg1_vdb": 0.1933,
         "wg2_hofer": 0.5679,
         "wg2_vdb": 0.4321,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": false,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": False,
         "beteiligung": 0.6527,
         "wahlberechtigte": 9965,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Hard",
@@ -654,13 +654,13 @@ wahl_details = [
         "wg1_vdb": 0.2932,
         "wg2_hofer": 0.425,
         "wg2_vdb": 0.575,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": false,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": False,
         "beteiligung": 0.533,
         "wahlberechtigte": 9145,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Gmunden",
@@ -669,13 +669,13 @@ wahl_details = [
         "wg1_vdb": 0.2598,
         "wg2_hofer": 0.4244,
         "wg2_vdb": 0.5756,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.5513,
         "wahlberechtigte": 9936,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Marchtrenk",
@@ -684,13 +684,13 @@ wahl_details = [
         "wg1_vdb": 0.1746,
         "wg2_hofer": 0.5551,
         "wg2_vdb": 0.4449,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": false,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": False,
         "beteiligung": 0.6375,
         "wahlberechtigte": 9403,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Korneuburg",
@@ -699,13 +699,13 @@ wahl_details = [
         "wg1_vdb": 0.2437,
         "wg2_hofer": 0.4519,
         "wg2_vdb": 0.5481,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6701,
         "wahlberechtigte": 9359,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Gratwein-Straßengel",
@@ -714,13 +714,13 @@ wahl_details = [
         "wg1_vdb": 0.2042,
         "wg2_hofer": 0.534,
         "wg2_vdb": 0.466,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6366,
         "wahlberechtigte": 10247,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Knittelfeld",
@@ -729,13 +729,13 @@ wahl_details = [
         "wg1_vdb": 0.1446,
         "wg2_hofer": 0.5957,
         "wg2_vdb": 0.4043,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.5262,
         "wahlberechtigte": 9402,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Neunkirchen",
@@ -744,13 +744,13 @@ wahl_details = [
         "wg1_vdb": 0.189,
         "wg2_hofer": 0.5399,
         "wg2_vdb": 0.4601,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6412,
         "wahlberechtigte": 8957,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "St. Veit an der Glan",
@@ -759,13 +759,13 @@ wahl_details = [
         "wg1_vdb": 0.1327,
         "wg2_hofer": 0.5872,
         "wg2_vdb": 0.4128,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.5718,
         "wahlberechtigte": 9932,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Vöcklabruck",
@@ -774,13 +774,13 @@ wahl_details = [
         "wg1_vdb": 0.2559,
         "wg2_hofer": 0.4339,
         "wg2_vdb": 0.5661,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6014,
         "wahlberechtigte": 9000,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Lienz",
@@ -789,13 +789,13 @@ wahl_details = [
         "wg1_vdb": 0.2391,
         "wg2_hofer": 0.458,
         "wg2_vdb": 0.542,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.5335,
         "wahlberechtigte": 9692,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Leibnitz",
@@ -804,13 +804,13 @@ wahl_details = [
         "wg1_vdb": 0.1531,
         "wg2_hofer": 0.6158,
         "wg2_vdb": 0.3842,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.5767,
         "wahlberechtigte": 9332,
-        "hofer_hoch": true,
-        "vdb_hoch": false
+        "hofer_hoch": True,
+        "vdb_hoch": False
     },
     {
         "ort": "Enns",
@@ -819,13 +819,13 @@ wahl_details = [
         "wg1_vdb": 0.198,
         "wg2_hofer": 0.4646,
         "wg2_vdb": 0.5354,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6036,
         "wahlberechtigte": 8013,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Hollabrunn",
@@ -834,13 +834,13 @@ wahl_details = [
         "wg1_vdb": 0.1587,
         "wg2_hofer": 0.5541,
         "wg2_vdb": 0.4459,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6811,
         "wahlberechtigte": 9103,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Rankweil",
@@ -849,13 +849,13 @@ wahl_details = [
         "wg1_vdb": 0.3139,
         "wg2_hofer": 0.391,
         "wg2_vdb": 0.609,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.5383,
         "wahlberechtigte": 8291,
-        "hofer_hoch": false,
-        "vdb_hoch": true
+        "hofer_hoch": False,
+        "vdb_hoch": True
     },
     {
         "ort": "Bad Vöslau",
@@ -864,13 +864,13 @@ wahl_details = [
         "wg1_vdb": 0.2546,
         "wg2_hofer": 0.4479,
         "wg2_vdb": 0.5521,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6723,
         "wahlberechtigte": 8612,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Brunn am Gebirge",
@@ -879,13 +879,13 @@ wahl_details = [
         "wg1_vdb": 0.2734,
         "wg2_hofer": 0.3962,
         "wg2_vdb": 0.6038,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6894,
         "wahlberechtigte": 8604,
-        "hofer_hoch": false,
-        "vdb_hoch": true
+        "hofer_hoch": False,
+        "vdb_hoch": True
     },
     {
         "ort": "Ried im Innkreis",
@@ -894,13 +894,13 @@ wahl_details = [
         "wg1_vdb": 0.2212,
         "wg2_hofer": 0.4747,
         "wg2_vdb": 0.5253,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.5479,
         "wahlberechtigte": 8401,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Deutschlandsberg",
@@ -909,13 +909,13 @@ wahl_details = [
         "wg1_vdb": 0.1374,
         "wg2_hofer": 0.5887,
         "wg2_vdb": 0.4113,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.5349,
         "wahlberechtigte": 9379,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Weiz",
@@ -924,13 +924,13 @@ wahl_details = [
         "wg1_vdb": 0.2173,
         "wg2_hofer": 0.4899,
         "wg2_vdb": 0.5101,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.5873,
         "wahlberechtigte": 9105,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Waidhofen an der Ybbs",
@@ -939,13 +939,13 @@ wahl_details = [
         "wg1_vdb": 0.1941,
         "wg2_hofer": 0.4859,
         "wg2_vdb": 0.5141,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.676,
         "wahlberechtigte": 9026,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Mistelbach",
@@ -954,13 +954,13 @@ wahl_details = [
         "wg1_vdb": 0.1744,
         "wg2_hofer": 0.5557,
         "wg2_vdb": 0.4443,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6727,
         "wahlberechtigte": 9125,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Götzis",
@@ -969,13 +969,13 @@ wahl_details = [
         "wg1_vdb": 0.3057,
         "wg2_hofer": 0.4322,
         "wg2_vdb": 0.5678,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": false,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": False,
         "beteiligung": 0.5442,
         "wahlberechtigte": 7843,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Trofaiach",
@@ -984,13 +984,13 @@ wahl_details = [
         "wg1_vdb": 0.133,
         "wg2_hofer": 0.6105,
         "wg2_vdb": 0.3895,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6085,
         "wahlberechtigte": 9446,
-        "hofer_hoch": true,
-        "vdb_hoch": false
+        "hofer_hoch": True,
+        "vdb_hoch": False
     },
     {
         "ort": "Gänserndorf",
@@ -999,13 +999,13 @@ wahl_details = [
         "wg1_vdb": 0.1925,
         "wg2_hofer": 0.5415,
         "wg2_vdb": 0.4585,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6846,
         "wahlberechtigte": 7958,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Zwettl",
@@ -1014,13 +1014,13 @@ wahl_details = [
         "wg1_vdb": 0.1263,
         "wg2_hofer": 0.6009,
         "wg2_vdb": 0.3991,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.7948,
         "wahlberechtigte": 35947,
-        "hofer_hoch": true,
-        "vdb_hoch": false
+        "hofer_hoch": True,
+        "vdb_hoch": False
     },
     {
         "ort": "Völkermarkt",
@@ -1029,13 +1029,13 @@ wahl_details = [
         "wg1_vdb": 0.1316,
         "wg2_hofer": 0.585,
         "wg2_vdb": 0.415,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6088,
         "wahlberechtigte": 8730,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Sankt Johann im Pongau",
@@ -1044,13 +1044,13 @@ wahl_details = [
         "wg1_vdb": 0.146,
         "wg2_hofer": 0.6044,
         "wg2_vdb": 0.3956,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6383,
         "wahlberechtigte": 7871,
-        "hofer_hoch": true,
-        "vdb_hoch": false
+        "hofer_hoch": True,
+        "vdb_hoch": False
     },
     {
         "ort": "Gerasdorf bei Wien",
@@ -1059,13 +1059,13 @@ wahl_details = [
         "wg1_vdb": 0.1979,
         "wg2_hofer": 0.5437,
         "wg2_vdb": 0.4563,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": false,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": False,
         "beteiligung": 0.6806,
         "wahlberechtigte": 8296,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Seiersberg-Pirka",
@@ -1074,13 +1074,13 @@ wahl_details = [
         "wg1_vdb": 0.1853,
         "wg2_hofer": 0.5594,
         "wg2_vdb": 0.4406,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6216,
         "wahlberechtigte": 8258,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Ebreichsdorf",
@@ -1089,13 +1089,13 @@ wahl_details = [
         "wg1_vdb": 0.1906,
         "wg2_hofer": 0.57,
         "wg2_vdb": 0.43,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": false,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": False,
         "beteiligung": 0.6807,
         "wahlberechtigte": 7867,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Seekirchen am Wallersee",
@@ -1104,13 +1104,13 @@ wahl_details = [
         "wg1_vdb": 0.2383,
         "wg2_hofer": 0.5186,
         "wg2_vdb": 0.4814,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": false,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": False,
         "beteiligung": 0.6742,
         "wahlberechtigte": 7833,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Bischofshofen",
@@ -1119,13 +1119,13 @@ wahl_details = [
         "wg1_vdb": 0.126,
         "wg2_hofer": 0.5998,
         "wg2_vdb": 0.4002,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6094,
         "wahlberechtigte": 7432,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Groß-Enzersdorf",
@@ -1134,13 +1134,13 @@ wahl_details = [
         "wg1_vdb": 0.1798,
         "wg2_hofer": 0.5519,
         "wg2_vdb": 0.4481,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6773,
         "wahlberechtigte": 7961,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Gleisdorf",
@@ -1149,13 +1149,13 @@ wahl_details = [
         "wg1_vdb": 0.2067,
         "wg2_hofer": 0.5523,
         "wg2_vdb": 0.4477,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.5827,
         "wahlberechtigte": 8207,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Judenburg",
@@ -1164,13 +1164,13 @@ wahl_details = [
         "wg1_vdb": 0.1375,
         "wg2_hofer": 0.6243,
         "wg2_vdb": 0.3757,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.5272,
         "wahlberechtigte": 8267,
-        "hofer_hoch": true,
-        "vdb_hoch": false
+        "hofer_hoch": True,
+        "vdb_hoch": False
     },
     {
         "ort": "Imst",
@@ -1179,13 +1179,13 @@ wahl_details = [
         "wg1_vdb": 0.2616,
         "wg2_hofer": 0.5239,
         "wg2_vdb": 0.4761,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": false,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": False,
         "beteiligung": 0.5681,
         "wahlberechtigte": 7156,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Köflach",
@@ -1194,13 +1194,13 @@ wahl_details = [
         "wg1_vdb": 0.112,
         "wg2_hofer": 0.6603,
         "wg2_vdb": 0.3397,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": false,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": False,
         "beteiligung": 0.6299,
         "wahlberechtigte": 8552,
-        "hofer_hoch": true,
-        "vdb_hoch": false
+        "hofer_hoch": True,
+        "vdb_hoch": False
     },
     {
         "ort": "St. Andrä",
@@ -1209,13 +1209,13 @@ wahl_details = [
         "wg1_vdb": 0.0742,
         "wg2_hofer": 0.7446,
         "wg2_vdb": 0.2554,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.5944,
         "wahlberechtigte": 8312,
-        "hofer_hoch": true,
-        "vdb_hoch": false
+        "hofer_hoch": True,
+        "vdb_hoch": False
     },
     {
         "ort": "Lauterach",
@@ -1224,13 +1224,13 @@ wahl_details = [
         "wg1_vdb": 0.2562,
         "wg2_hofer": 0.4673,
         "wg2_vdb": 0.5327,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": false,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": False,
         "beteiligung": 0.5768,
         "wahlberechtigte": 6954,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Laakirchen",
@@ -1239,13 +1239,13 @@ wahl_details = [
         "wg1_vdb": 0.1746,
         "wg2_hofer": 0.4936,
         "wg2_vdb": 0.5064,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6278,
         "wahlberechtigte": 7152,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Zell am See",
@@ -1254,13 +1254,13 @@ wahl_details = [
         "wg1_vdb": 0.1669,
         "wg2_hofer": 0.5699,
         "wg2_vdb": 0.4301,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.5751,
         "wahlberechtigte": 6493,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Purkersdorf",
@@ -1269,13 +1269,13 @@ wahl_details = [
         "wg1_vdb": 0.32,
         "wg2_hofer": 0.3822,
         "wg2_vdb": 0.6178,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6414,
         "wahlberechtigte": 6996,
-        "hofer_hoch": false,
-        "vdb_hoch": true
+        "hofer_hoch": False,
+        "vdb_hoch": True
     },
     {
         "ort": "Voitsberg",
@@ -1284,13 +1284,13 @@ wahl_details = [
         "wg1_vdb": 0.1279,
         "wg2_hofer": 0.649,
         "wg2_vdb": 0.351,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.5982,
         "wahlberechtigte": 7827,
-        "hofer_hoch": true,
-        "vdb_hoch": false
+        "hofer_hoch": True,
+        "vdb_hoch": False
     },
     {
         "ort": "St. Valentin",
@@ -1299,13 +1299,13 @@ wahl_details = [
         "wg1_vdb": 0.2067,
         "wg2_hofer": 0.4702,
         "wg2_vdb": 0.5298,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6849,
         "wahlberechtigte": 7462,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Berndorf",
@@ -1314,13 +1314,13 @@ wahl_details = [
         "wg1_vdb": 0.1915,
         "wg2_hofer": 0.5537,
         "wg2_vdb": 0.4463,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": false,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": False,
         "beteiligung": 0.664,
         "wahlberechtigte": 6488,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Attnang-Puchheim",
@@ -1329,13 +1329,13 @@ wahl_details = [
         "wg1_vdb": 0.1895,
         "wg2_hofer": 0.4829,
         "wg2_vdb": 0.5171,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.5829,
         "wahlberechtigte": 5895,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Mürzzuschlag",
@@ -1344,13 +1344,13 @@ wahl_details = [
         "wg1_vdb": 0.1565,
         "wg2_hofer": 0.536,
         "wg2_vdb": 0.464,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.5524,
         "wahlberechtigte": 6962,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Fürstenfeld",
@@ -1359,13 +1359,13 @@ wahl_details = [
         "wg1_vdb": 0.1473,
         "wg2_hofer": 0.6008,
         "wg2_vdb": 0.3992,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6121,
         "wahlberechtigte": 6876,
-        "hofer_hoch": true,
-        "vdb_hoch": false
+        "hofer_hoch": True,
+        "vdb_hoch": False
     },
     {
         "ort": "Kitzbühel",
@@ -1374,13 +1374,13 @@ wahl_details = [
         "wg1_vdb": 0.1982,
         "wg2_hofer": 0.5359,
         "wg2_vdb": 0.4641,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.505,
         "wahlberechtigte": 5931,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Perg",
@@ -1389,13 +1389,13 @@ wahl_details = [
         "wg1_vdb": 0.187,
         "wg2_hofer": 0.4696,
         "wg2_vdb": 0.5304,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6424,
         "wahlberechtigte": 6121,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Deutsch-Wagram",
@@ -1404,13 +1404,13 @@ wahl_details = [
         "wg1_vdb": 0.2113,
         "wg2_hofer": 0.5401,
         "wg2_vdb": 0.4599,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": false,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": False,
         "beteiligung": 0.685,
         "wahlberechtigte": 6238,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Neulengbach",
@@ -1419,13 +1419,13 @@ wahl_details = [
         "wg1_vdb": 0.2299,
         "wg2_hofer": 0.5068,
         "wg2_vdb": 0.4932,
-        "wenigwahler": false,
-        "swingstate": true,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": True,
+        "neutral_ground": True,
         "beteiligung": 0.6551,
         "wahlberechtigte": 6323,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Kindberg",
@@ -1434,13 +1434,13 @@ wahl_details = [
         "wg1_vdb": 0.1214,
         "wg2_hofer": 0.5622,
         "wg2_vdb": 0.4378,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.5938,
         "wahlberechtigte": 6886,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Liezen",
@@ -1449,13 +1449,13 @@ wahl_details = [
         "wg1_vdb": 0.145,
         "wg2_hofer": 0.5924,
         "wg2_vdb": 0.4076,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.5559,
         "wahlberechtigte": 6064,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Bruck an der Leitha",
@@ -1464,13 +1464,13 @@ wahl_details = [
         "wg1_vdb": 0.1888,
         "wg2_hofer": 0.5444,
         "wg2_vdb": 0.4556,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6879,
         "wahlberechtigte": 5882,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Neusiedl am See",
@@ -1479,13 +1479,13 @@ wahl_details = [
         "wg1_vdb": 0.2273,
         "wg2_hofer": 0.509,
         "wg2_vdb": 0.491,
-        "wenigwahler": false,
-        "swingstate": true,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": True,
+        "neutral_ground": True,
         "beteiligung": 0.6554,
         "wahlberechtigte": 5801,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Landeck",
@@ -1494,13 +1494,13 @@ wahl_details = [
         "wg1_vdb": 0.2766,
         "wg2_hofer": 0.4154,
         "wg2_vdb": 0.5846,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.5794,
         "wahlberechtigte": 5682,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Herzogenburg",
@@ -1509,13 +1509,13 @@ wahl_details = [
         "wg1_vdb": 0.1791,
         "wg2_hofer": 0.5173,
         "wg2_vdb": 0.4827,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.7129,
         "wahlberechtigte": 5950,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Freistadt",
@@ -1524,13 +1524,13 @@ wahl_details = [
         "wg1_vdb": 0.2304,
         "wg2_hofer": 0.4442,
         "wg2_vdb": 0.5558,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6451,
         "wahlberechtigte": 5999,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Langenlois",
@@ -1539,13 +1539,13 @@ wahl_details = [
         "wg1_vdb": 0.1864,
         "wg2_hofer": 0.5516,
         "wg2_vdb": 0.4484,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6924,
         "wahlberechtigte": 6128,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Fehring",
@@ -1554,13 +1554,13 @@ wahl_details = [
         "wg1_vdb": 0.114,
         "wg2_hofer": 0.6679,
         "wg2_vdb": 0.3321,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.5959,
         "wahlberechtigte": 6103,
-        "hofer_hoch": true,
-        "vdb_hoch": false
+        "hofer_hoch": True,
+        "vdb_hoch": False
     },
     {
         "ort": "Oberwart",
@@ -1569,13 +1569,13 @@ wahl_details = [
         "wg1_vdb": 0.1477,
         "wg2_hofer": 0.6079,
         "wg2_vdb": 0.3921,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6325,
         "wahlberechtigte": 5635,
-        "hofer_hoch": true,
-        "vdb_hoch": false
+        "hofer_hoch": True,
+        "vdb_hoch": False
     },
     {
         "ort": "Zeltweg",
@@ -1584,13 +1584,13 @@ wahl_details = [
         "wg1_vdb": 0.1188,
         "wg2_hofer": 0.6488,
         "wg2_vdb": 0.3512,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": false,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": False,
         "beteiligung": 0.5519,
         "wahlberechtigte": 5760,
-        "hofer_hoch": true,
-        "vdb_hoch": false
+        "hofer_hoch": True,
+        "vdb_hoch": False
     },
     {
         "ort": "Pressbaum",
@@ -1599,13 +1599,13 @@ wahl_details = [
         "wg1_vdb": 0.293,
         "wg2_hofer": 0.4197,
         "wg2_vdb": 0.5803,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6736,
         "wahlberechtigte": 5361,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Mattersburg",
@@ -1614,13 +1614,13 @@ wahl_details = [
         "wg1_vdb": 0.1904,
         "wg2_hofer": 0.5481,
         "wg2_vdb": 0.4519,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6696,
         "wahlberechtigte": 5600,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Ferlach",
@@ -1629,13 +1629,13 @@ wahl_details = [
         "wg1_vdb": 0.1266,
         "wg2_hofer": 0.5783,
         "wg2_vdb": 0.4217,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6169,
         "wahlberechtigte": 5628,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Wolkersdorf im Weinviertel",
@@ -1644,13 +1644,13 @@ wahl_details = [
         "wg1_vdb": 0.2479,
         "wg2_hofer": 0.426,
         "wg2_vdb": 0.574,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.7292,
         "wahlberechtigte": 5387,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Hermagor",
@@ -1659,13 +1659,13 @@ wahl_details = [
         "wg1_vdb": 0.1151,
         "wg2_hofer": 0.5441,
         "wg2_vdb": 0.4559,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.7161,
         "wahlberechtigte": 14937,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Schladming",
@@ -1674,13 +1674,13 @@ wahl_details = [
         "wg1_vdb": 0.1273,
         "wg2_hofer": 0.6472,
         "wg2_vdb": 0.3528,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.5153,
         "wahlberechtigte": 5160,
-        "hofer_hoch": true,
-        "vdb_hoch": false
+        "hofer_hoch": True,
+        "vdb_hoch": False
     },
     {
         "ort": "Frohnleiten",
@@ -1689,13 +1689,13 @@ wahl_details = [
         "wg1_vdb": 0.1315,
         "wg2_hofer": 0.5701,
         "wg2_vdb": 0.4299,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.5882,
         "wahlberechtigte": 5546,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Horn",
@@ -1704,13 +1704,13 @@ wahl_details = [
         "wg1_vdb": 0.1652,
         "wg2_hofer": 0.5592,
         "wg2_vdb": 0.4408,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6354,
         "wahlberechtigte": 5269,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Hartberg",
@@ -1719,13 +1719,13 @@ wahl_details = [
         "wg1_vdb": 0.1539,
         "wg2_hofer": 0.6008,
         "wg2_vdb": 0.3992,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6042,
         "wahlberechtigte": 5212,
-        "hofer_hoch": true,
-        "vdb_hoch": false
+        "hofer_hoch": True,
+        "vdb_hoch": False
     },
     {
         "ort": "Wilhelmsburg",
@@ -1734,13 +1734,13 @@ wahl_details = [
         "wg1_vdb": 0.1759,
         "wg2_hofer": 0.5365,
         "wg2_vdb": 0.4635,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6934,
         "wahlberechtigte": 5098,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Hainburg a.d. Donau",
@@ -1749,13 +1749,13 @@ wahl_details = [
         "wg1_vdb": 0.1535,
         "wg2_hofer": 0.6267,
         "wg2_vdb": 0.3733,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": false,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": False,
         "beteiligung": 0.657,
         "wahlberechtigte": 3773,
-        "hofer_hoch": true,
-        "vdb_hoch": false
+        "hofer_hoch": True,
+        "vdb_hoch": False
     },
     {
         "ort": "Gallneukirchen",
@@ -1764,13 +1764,13 @@ wahl_details = [
         "wg1_vdb": 0.328,
         "wg2_hofer": 0.3303,
         "wg2_vdb": 0.6697,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6372,
         "wahlberechtigte": 5113,
-        "hofer_hoch": false,
-        "vdb_hoch": true
+        "hofer_hoch": False,
+        "vdb_hoch": True
     },
     {
         "ort": "Laa an der Thaya",
@@ -1779,13 +1779,13 @@ wahl_details = [
         "wg1_vdb": 0.1278,
         "wg2_hofer": 0.5937,
         "wg2_vdb": 0.4063,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.7029,
         "wahlberechtigte": 5109,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Neumarkt am Wallersee",
@@ -1794,13 +1794,13 @@ wahl_details = [
         "wg1_vdb": 0.191,
         "wg2_hofer": 0.5848,
         "wg2_vdb": 0.4152,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": false,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": False,
         "beteiligung": 0.614,
         "wahlberechtigte": 4471,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Mattighofen",
@@ -1809,13 +1809,13 @@ wahl_details = [
         "wg1_vdb": 0.1653,
         "wg2_hofer": 0.5905,
         "wg2_vdb": 0.4095,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.5442,
         "wahlberechtigte": 3721,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Traismauer",
@@ -1824,13 +1824,13 @@ wahl_details = [
         "wg1_vdb": 0.1691,
         "wg2_hofer": 0.5635,
         "wg2_vdb": 0.4365,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.7333,
         "wahlberechtigte": 4668,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Gloggnitz",
@@ -1839,13 +1839,13 @@ wahl_details = [
         "wg1_vdb": 0.1499,
         "wg2_hofer": 0.5973,
         "wg2_vdb": 0.4027,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6731,
         "wahlberechtigte": 4647,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Radenthein",
@@ -1854,13 +1854,13 @@ wahl_details = [
         "wg1_vdb": 0.1194,
         "wg2_hofer": 0.6452,
         "wg2_vdb": 0.3548,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6065,
         "wahlberechtigte": 4953,
-        "hofer_hoch": true,
-        "vdb_hoch": false
+        "hofer_hoch": True,
+        "vdb_hoch": False
     },
     {
         "ort": "Bärnbach",
@@ -1869,13 +1869,13 @@ wahl_details = [
         "wg1_vdb": 0.1099,
         "wg2_hofer": 0.646,
         "wg2_vdb": 0.354,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.5985,
         "wahlberechtigte": 4643,
-        "hofer_hoch": true,
-        "vdb_hoch": false
+        "hofer_hoch": True,
+        "vdb_hoch": False
     },
     {
         "ort": "Ybbs an der Donau",
@@ -1884,13 +1884,13 @@ wahl_details = [
         "wg1_vdb": 0.1662,
         "wg2_hofer": 0.5354,
         "wg2_vdb": 0.4646,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.644,
         "wahlberechtigte": 4306,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Pinkafeld",
@@ -1899,13 +1899,13 @@ wahl_details = [
         "wg1_vdb": 0.1219,
         "wg2_hofer": 0.7302,
         "wg2_vdb": 0.2698,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": false,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": False,
         "beteiligung": 0.7074,
         "wahlberechtigte": 4382,
-        "hofer_hoch": true,
-        "vdb_hoch": false
+        "hofer_hoch": True,
+        "vdb_hoch": False
     },
     {
         "ort": "Waidhofen an der Thaya",
@@ -1914,13 +1914,13 @@ wahl_details = [
         "wg1_vdb": 0.1646,
         "wg2_hofer": 0.5564,
         "wg2_vdb": 0.4436,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6622,
         "wahlberechtigte": 4751,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Oberndorf bei Salzburg",
@@ -1929,13 +1929,13 @@ wahl_details = [
         "wg1_vdb": 0.2398,
         "wg2_hofer": 0.5067,
         "wg2_vdb": 0.4933,
-        "wenigwahler": false,
-        "swingstate": true,
-        "neutral_ground": false,
+        "wenigwahler": False,
+        "swingstate": True,
+        "neutral_ground": False,
         "beteiligung": 0.6341,
         "wahlberechtigte": 4023,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Poysdorf",
@@ -1944,13 +1944,13 @@ wahl_details = [
         "wg1_vdb": 0.0908,
         "wg2_hofer": 0.6385,
         "wg2_vdb": 0.3615,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.69,
         "wahlberechtigte": 4403,
-        "hofer_hoch": true,
-        "vdb_hoch": false
+        "hofer_hoch": True,
+        "vdb_hoch": False
     },
     {
         "ort": "Gmünd",
@@ -1959,13 +1959,13 @@ wahl_details = [
         "wg1_vdb": 0.1652,
         "wg2_hofer": 0.5143,
         "wg2_vdb": 0.4857,
-        "wenigwahler": false,
-        "swingstate": true,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": True,
+        "neutral_ground": True,
         "beteiligung": 0.631,
         "wahlberechtigte": 4390,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Haag",
@@ -1974,13 +1974,13 @@ wahl_details = [
         "wg1_vdb": 0.2136,
         "wg2_hofer": 0.4819,
         "wg2_vdb": 0.5181,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6595,
         "wahlberechtigte": 4432,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Schrems",
@@ -1989,13 +1989,13 @@ wahl_details = [
         "wg1_vdb": 0.1324,
         "wg2_hofer": 0.5523,
         "wg2_vdb": 0.4477,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6368,
         "wahlberechtigte": 4532,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Mittersill",
@@ -2004,13 +2004,13 @@ wahl_details = [
         "wg1_vdb": 0.1091,
         "wg2_hofer": 0.658,
         "wg2_vdb": 0.342,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6255,
         "wahlberechtigte": 3882,
-        "hofer_hoch": true,
-        "vdb_hoch": false
+        "hofer_hoch": True,
+        "vdb_hoch": False
     },
     {
         "ort": "Zistersdorf",
@@ -2019,13 +2019,13 @@ wahl_details = [
         "wg1_vdb": 0.1086,
         "wg2_hofer": 0.644,
         "wg2_vdb": 0.356,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6756,
         "wahlberechtigte": 4463,
-        "hofer_hoch": true,
-        "vdb_hoch": false
+        "hofer_hoch": True,
+        "vdb_hoch": False
     },
     {
         "ort": "Fischamend",
@@ -2034,13 +2034,13 @@ wahl_details = [
         "wg1_vdb": 0.1973,
         "wg2_hofer": 0.5445,
         "wg2_vdb": 0.4555,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": false,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": False,
         "beteiligung": 0.6585,
         "wahlberechtigte": 3968,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Melk",
@@ -2049,13 +2049,13 @@ wahl_details = [
         "wg1_vdb": 0.2086,
         "wg2_hofer": 0.5052,
         "wg2_vdb": 0.4948,
-        "wenigwahler": false,
-        "swingstate": true,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": True,
+        "neutral_ground": True,
         "beteiligung": 0.6676,
         "wahlberechtigte": 4055,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Spielberg",
@@ -2064,13 +2064,13 @@ wahl_details = [
         "wg1_vdb": 0.1234,
         "wg2_hofer": 0.6435,
         "wg2_vdb": 0.3565,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6142,
         "wahlberechtigte": 4381,
-        "hofer_hoch": true,
-        "vdb_hoch": false
+        "hofer_hoch": True,
+        "vdb_hoch": False
     },
     {
         "ort": "Pregarten",
@@ -2079,13 +2079,13 @@ wahl_details = [
         "wg1_vdb": 0.1898,
         "wg2_hofer": 0.5286,
         "wg2_vdb": 0.4714,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6647,
         "wahlberechtigte": 4241,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Rottenmann",
@@ -2094,13 +2094,13 @@ wahl_details = [
         "wg1_vdb": 0.1315,
         "wg2_hofer": 0.5876,
         "wg2_vdb": 0.4124,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6059,
         "wahlberechtigte": 4144,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Rohrbach",
@@ -2109,13 +2109,13 @@ wahl_details = [
         "wg1_vdb": 0.1586,
         "wg2_hofer": 0.5056,
         "wg2_vdb": 0.4944,
-        "wenigwahler": false,
-        "swingstate": true,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": True,
+        "neutral_ground": True,
         "beteiligung": 0.7307,
         "wahlberechtigte": 46074,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Bad Hall",
@@ -2124,13 +2124,13 @@ wahl_details = [
         "wg1_vdb": 0.1986,
         "wg2_hofer": 0.4962,
         "wg2_vdb": 0.5038,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.5974,
         "wahlberechtigte": 3895,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Steyregg",
@@ -2139,13 +2139,13 @@ wahl_details = [
         "wg1_vdb": 0.2268,
         "wg2_hofer": 0.4469,
         "wg2_vdb": 0.5531,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6444,
         "wahlberechtigte": 3929,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Friesach",
@@ -2154,13 +2154,13 @@ wahl_details = [
         "wg1_vdb": 0.1073,
         "wg2_hofer": 0.6972,
         "wg2_vdb": 0.3028,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.5629,
         "wahlberechtigte": 4219,
-        "hofer_hoch": true,
-        "vdb_hoch": false
+        "hofer_hoch": True,
+        "vdb_hoch": False
     },
     {
         "ort": "Schärding",
@@ -2169,13 +2169,13 @@ wahl_details = [
         "wg1_vdb": 0.1965,
         "wg2_hofer": 0.4872,
         "wg2_vdb": 0.5128,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.5244,
         "wahlberechtigte": 3745,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Radstadt",
@@ -2184,13 +2184,13 @@ wahl_details = [
         "wg1_vdb": 0.11,
         "wg2_hofer": 0.67,
         "wg2_vdb": 0.33,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6141,
         "wahlberechtigte": 3400,
-        "hofer_hoch": true,
-        "vdb_hoch": false
+        "hofer_hoch": True,
+        "vdb_hoch": False
     },
     {
         "ort": "Grieskirchen",
@@ -2199,13 +2199,13 @@ wahl_details = [
         "wg1_vdb": 0.2262,
         "wg2_hofer": 0.4773,
         "wg2_vdb": 0.5227,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": false,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": False,
         "beteiligung": 0.6311,
         "wahlberechtigte": 3519,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Altheim",
@@ -2214,13 +2214,13 @@ wahl_details = [
         "wg1_vdb": 0.1317,
         "wg2_hofer": 0.632,
         "wg2_vdb": 0.368,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6251,
         "wahlberechtigte": 3758,
-        "hofer_hoch": true,
-        "vdb_hoch": false
+        "hofer_hoch": True,
+        "vdb_hoch": False
     },
     {
         "ort": "Althofen",
@@ -2229,13 +2229,13 @@ wahl_details = [
         "wg1_vdb": 0.1191,
         "wg2_hofer": 0.6512,
         "wg2_vdb": 0.3488,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6001,
         "wahlberechtigte": 3851,
-        "hofer_hoch": true,
-        "vdb_hoch": false
+        "hofer_hoch": True,
+        "vdb_hoch": False
     },
     {
         "ort": "Bad Aussee",
@@ -2244,13 +2244,13 @@ wahl_details = [
         "wg1_vdb": 0.2182,
         "wg2_hofer": 0.4467,
         "wg2_vdb": 0.5533,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.4988,
         "wahlberechtigte": 3701,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Retz",
@@ -2259,13 +2259,13 @@ wahl_details = [
         "wg1_vdb": 0.1522,
         "wg2_hofer": 0.5494,
         "wg2_vdb": 0.4506,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.618,
         "wahlberechtigte": 3623,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Schwanenstadt",
@@ -2274,13 +2274,13 @@ wahl_details = [
         "wg1_vdb": 0.2109,
         "wg2_hofer": 0.5014,
         "wg2_vdb": 0.4986,
-        "wenigwahler": false,
-        "swingstate": true,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": True,
+        "neutral_ground": True,
         "beteiligung": 0.6248,
         "wahlberechtigte": 2969,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Scheibbs",
@@ -2289,13 +2289,13 @@ wahl_details = [
         "wg1_vdb": 0.2367,
         "wg2_hofer": 0.4211,
         "wg2_vdb": 0.5789,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6645,
         "wahlberechtigte": 3481,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Mariazell",
@@ -2304,13 +2304,13 @@ wahl_details = [
         "wg1_vdb": 0.1184,
         "wg2_hofer": 0.5863,
         "wg2_vdb": 0.4137,
-        "wenigwahler": true,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": True,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.5926,
         "wahlberechtigte": 3265,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     },
     {
         "ort": "Lilienfeld",
@@ -2319,12 +2319,12 @@ wahl_details = [
         "wg1_vdb": 0.1951,
         "wg2_hofer": 0.497,
         "wg2_vdb": 0.503,
-        "wenigwahler": false,
-        "swingstate": false,
-        "neutral_ground": true,
+        "wenigwahler": False,
+        "swingstate": False,
+        "neutral_ground": True,
         "beteiligung": 0.6724,
         "wahlberechtigte": 2085,
-        "hofer_hoch": false,
-        "vdb_hoch": false
+        "hofer_hoch": False,
+        "vdb_hoch": False
     }
 ]
