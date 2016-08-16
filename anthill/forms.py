@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from django import forms
-from models import Activist
+from anthill.models import Activist
 
 class SignupForm(forms.Form):
     email = forms.EmailField(
