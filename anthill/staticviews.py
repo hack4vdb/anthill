@@ -62,6 +62,7 @@ def meetups(request):
     potential_meetup, location_id = Meetup.potential_meetup(user.postalcode)
     return render(request, 'meetups.html', {
         'meetups': meetups,
+        'meetup_count': meetups.count(),
         'potential_meetup': potential_meetup,
         'potential_meetup_id': location_id,
         'user': user,

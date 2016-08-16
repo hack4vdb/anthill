@@ -356,10 +356,9 @@ body.meetups li.meetup {
   list-style: none;
   margin-bottom: 3rem;
 }
-@media (min-width: 550px) {
-  body.meetups li.meetup {
-    padding-right: 3%;
-  } 
+
+body.meetups .meetup_city {
+  font-size: 2rem;
 }
 
 body.meetups li.meetup p,
@@ -367,17 +366,12 @@ body.meetups li.meetup h3 {
   margin-bottom: 0;
 }
 body.meetups li.meetup i.fa {
-  width: 1.5rem;
+  width: 2rem;
   text-align: center;
 }
 body.meetups .join {
   line-height: 1.8em;
   margin-bottom: 1rem;
-}
-@media (min-width: 550px) {
-  body.meetups .join {
-    margin-bottom: 0;
-  }
 }
 
 body.meetups .join .date-join {
@@ -395,13 +389,6 @@ body.meetups .join .date-join {
 body.meetups .join .date {
   float: left;
   margin-left: 2rem;
-}
-@media (min-width: 550px) {
-  body.meetups .join .date {
-    float: none;
-    text-align: center;
-    margin-left: 0;
-  }
 }
 
 body.meetups .join span {
@@ -421,31 +408,27 @@ body.meetups .join span.date-full {
 
 body.meetups li.meetup h3 {
   font-size: 2.7rem;
-  margin: .4rem 0 .8rem;
+  margin: 0 0 .8rem;
 }
 body.meetups .button {
   background-color: #ffde00;
   font-size: 2rem;
   font-weight: bold;
   margin-top: .8rem;
+  margin-right: 0;
+  margin-left: 5%;
   white-space: normal;
   line-height: 2.6em;
   height: initial;
-  float: right;
-  margin-right: 2rem;
+  display: block;
+  width: 90%;
+  line-height: 1em;
+  padding: .7em .5em;
 }
 @media (min-width: 550px) {
-  body.meetups .button {
-    font-size: 1.7rem;
-    line-height: 1em;
-    padding: .7em .5em;
-    float: none;
-    width: 100%;
-    margin-right: 0;
-  }
   body.meetups .date-join .button {
-      padding-top:.3em;
-      padding-bottom:.3em;
+    padding-top:.3em;
+    padding-bottom:.3em;
   }
 }
 
@@ -461,22 +444,9 @@ body.meetups .meetup_list .map {
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
 }
-@media (min-width: 550px) {
-  body.meetups .meetup_list .map {
-    height: 155px;
-    border-bottom-left-radius: 1rem;
-    border-top-right-radius: 0;
-  }
-}
 
 body.meetups .meetup_list .info {
   padding: 1.5rem;
-}
-@media (min-width: 550px) {
-  body.meetups .meetup_list .info,
-  body.meetups .meetup_list .join {
-    padding: 1em 0 0;
-  }
 }
 
 body.meetups .meetup {
