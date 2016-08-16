@@ -26,12 +26,12 @@
         {{ form.location_id }}
 
         <div class="row">
-          <div class="six columns">
+          <div class="one-half column">
             <label for="exampleEmailInput">{{ form.first_name.label }}</label>
             {{ form.first_name }}
             {{ form.first_name.errors }}
           </div>
-          <div class="six columns">
+          <div class="one-half column">
             <label for="exampleRecipientInput">{{ form.last_name.label }}</label>
             {{ form.last_name }}
             {{ form.last_name.errors }}            
@@ -41,12 +41,12 @@
         {{ form.street }}
         {{ form.street.errors }}
         <div class="row">
-          <div class="three columns">
+          <div class="one-third column">
             <label for="exampleEmailInput">{{ form.postalcode.label }}</label>
             {{ form.postalcode }}
             {{ form.postalcode.errors }}
           </div>
-          <div class="nine columns">
+          <div class="two-thirds column">
             <label for="exampleRecipientInput">{{ form.city.label }}</label>
             {{ form.city }}
             {{ form.city.errors }}            
