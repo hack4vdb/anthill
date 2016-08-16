@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 from django.shortcuts import render, redirect, get_object_or_404
-from anthill.forms import SignupForm, CreateMeetupForm
+from anthill.forms import SignupForm, CreateAddressForm
 from anthill.models import Activist, Meetup
 from anthill.geo import get_nearest_ortzumflyern, get_wahl_details, get_ortezumflyern
 from anthill.emailviews import WelcomeMessageView
@@ -64,32 +64,70 @@ def meetups(request):
 @login_required
 def join_meetup(request):
     user = request.user
-    form = CreateMeetupForm(request.POST or None, instance=user)
     meetup_id = request.GET.get('meetup_id', None)
     time_id = request.GET.get('time_id', None)
     location_id = request.GET.get('location_id', None)
-    if location_id is not None: #if request.method == 'POST':
-        #if form.is_valid():
-         #   form.save()
-            meetup = Meetup.create_from_potentialmeetup_specs(
-                location_id=location_id, time_id=time_id)
-            meetup.save()
-            meetup.activist.add(user)
-            meetup.save()
-            return redirect('invite')
-        #else:
-        #    # TODO: display form validation error?
-        #    pass
+    is_new = False
+
+    # Wenn Meetup gerade erstellt:
+    ## Zu einem Formular mit Adress Eingabe
+
+    if meetup_id is None:
+        form = CreateAddressForm(request.POST or None, instance=user)
+        if request.method == 'POST':
+            if form.is_valid():
+                form.save()
+                meetup = Meetup.create_from_potentialmeetup_specs(
+                    location_id=location_id, time_id=time_id)
+                meetup.save()
+                meetup.activist.add(user)
+                meetup.save()
+                meetup_id = meetup.uuid
+                is_new = True
+        else:
+            start_time = Meetup.get_proposed_time_by_id(time_id)
+            ort = get_ortezumflyern(location_id)['ort']
+            return render(request, 'address_form.html', {
+                'user': user,
+                'form': form,
+                'title': "{} für VdB".format(ort),
+                'start_time': start_time
+            })
+
+    # Sonst, Wenn Meetup schon da war:
+
     meetup = Meetup.objects.filter(uuid=meetup_id).first()
     meetup.activist.add(user)
-    loc = meetup.city # get_ortezumflyern(location_id)
-    start_time = meetup.datetime # Meetup.get_proposed_time_by_id(time_id)
-    return render(request, 'join_meetup.html', {
-        'user': user,
-        'form': form,
-        'title': "{} für VdB".format(loc),
-        'start_time': start_time
+    meetup.save()
+
+    ## Wenn schon genug Leute, und du der bist der es voll macht:
+    ### Kampagne bekommt Mail, dass Paket an Ersteller erschickt werden muss
+
+    # TODO: check, wieviele schon dabei sind,
+
+    is_viable = meetup.activist.count() >= 3
+
+    # TODO: evtl trigger mail an kampagne
+
+    ## Mail an alle bisher zugesagten, dass 1 neue person dabei is
+
+    ## (evtl. Info, dass noch nicht genug sind, und nochmal aufrufen zum Inviten)
+
+    # TODO: trigger mail to alle die schon dabei sind
+
+    ## Danke & Invite
+
+    # TODO: info, ob schon genug leute (is_viable) sind ans template geben
+
+
+
+    return render(request, 'invite.html', {
+            'user': user,
+            'meetup': meetup,
+            'is_viable': is_viable,
+            'is_new': is_new
     })
+
 
 
 def join_meetup_bot(request, meetupid, user_bot_id):

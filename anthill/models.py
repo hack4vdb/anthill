@@ -101,7 +101,7 @@ class Meetup(models.Model):
         loc = geo.get_ortezumflyern(location_id)
         start_time = Meetup.get_proposed_time_by_id(time_id)
         return Meetup.create(
-            title="{} fur VdB".format(
+            title="{} für VdB".format(
                 loc['ort']),
             postalcode=int(
                 loc['plz']),

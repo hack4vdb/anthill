@@ -39,7 +39,7 @@ class SignupForm(forms.Form):
                 'placeholder': 'Ihre Nachricht'}))
 
 
-class CreateMeetupForm(forms.ModelForm):
+class CreateAddressForm(forms.ModelForm):
     first_name = forms.CharField(label='Vorname', required=True, error_messages={
                                  'required': 'Bitte geben Sie Ihren Vornamen an.'})
     last_name = forms.CharField(label='Nachname', required=True, error_messages={
