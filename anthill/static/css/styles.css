@@ -450,9 +450,13 @@ body.meetups .meetup_list .info {
 }
 
 body.meetups .meetup {
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
   border-radius: 1rem;
   list-style: none;
+}
+body.meetups .meetup:hover {
+  background: #fafafa;
+  border-color: #bbb;
 }
 
 .titlebar .container > h3 {
@@ -468,6 +472,9 @@ body.address .map {
 body.address .illu {
   text-align: center;
 }
+body.address .titlebar p {
+  margin: 0;
+}
 
 body.invite .full-width-container,
 body .titlebar {
@@ -479,9 +486,6 @@ body .titlebar {
 body.invite .fa-flag {
   text-shadow: 4px 3px 0 #ffde00,9px 8px 0 rgba(0,0,0,0.15);  
   margin-right: .5em;
-}
-body.address .titlebar p {
-  margin: 0;
 }
 
 
