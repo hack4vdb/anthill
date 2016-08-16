@@ -12,15 +12,16 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 
 import os
 
+import hack4vdb.settings_local as local
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '@jk39$5ro*@uu0l=2$s@ryy46=-!myo$&&dgh7d+i7@hi(x*3-'
+SECRET_KEY = local.SECRET_KEY
 
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_BROWSER_XSS_FILTER = True
@@ -82,14 +83,7 @@ WSGI_APPLICATION = 'hack4vdb.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'anthill',
-        'USER': 'anthill',
-        'PASSWORD': 'vander',
-    }
-}
+DATABASES = local.DATABASES
 
 
 # Password validation
