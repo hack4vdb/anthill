@@ -12,7 +12,7 @@
       <div class="nine columns speech-bubble">
           <h3>Willkommen im Team! &nbsp;<span style="display: inline-block; transform:rotate(4deg)">&hearts;</span></h3>
           <p>
-            <strong>Was gerade am wichtigsten ist:</strong> Lokal Präsenz zeigen – bitte mach bei einer Verteilaktion in deiner Gegend mit! So erreichen wir ganz Österreich und bleiben im Gespräch.
+            <strong>Was gerade am wichtigsten ist:</strong> Lokal Präsenz zeigen. Wann hast du für eine Straßenaktion in deiner Gegend Zeit? Damit erreichen wir ganz Österreich und bleiben im Gespräch.
           </p>
       </div>
     </div>
@@ -53,7 +53,7 @@
         </div>
       </div>
     </li>
-    {% endfor %}
+    {% empty %}
     <li class="meetup">
       <div class="row">
         <div class="three columns map" style="background-image:url(https://maps.googleapis.com/maps/api/staticmap?center={{ potential_meetup.street|urlencode }},{{ potential_meetup.city|urlencode }},Austria&markers=color:red%7C{{ potential_meetup.street|urlencode }},{{ potential_meetup.city|urlencode }},Austria&zoom=15&size=300x300&key=AIzaSyANphiyaXrFh_146PzRNbNGTozPv7Meibw)">
@@ -89,7 +89,7 @@
         </div>
       </div>
     </li>
-
+    {% endfor %}
     <!--p>
       You are user {{ user.uuid }} with email {{ user.email }} in PLZ {{ user.postalcode }}
     </p>
