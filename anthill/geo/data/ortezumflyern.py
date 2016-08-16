@@ -195,7 +195,7 @@ orte = [
     {
       "ort": "Rudolfsheim-Fünfhaus",
       "plz": "1150",
-      "treffpunkt": "Urban Loris Platz",
+      "treffpunkt": "Urban-Loritz-Platz",
       "lat": "48.20182",
       "lon": "16.337309"
     },
