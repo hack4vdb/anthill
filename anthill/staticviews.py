@@ -91,6 +91,37 @@ def join_meetup(request):
     })
 
 
+def join_meetup_bot(request, meetupid, user_bot_id):
+    # todo: display form..
+
+
+    try:
+        meetup = Meetup.objects.filter(uuid=meetupid).first()
+        activist = Activist.objects.filter(facebook_bot_id=user_bot_id).first()
+        meetup.activist.add(activist)
+        meetup.save()
+        # todo: return something reasonable
+
+        import json
+        import requests
+        data = {
+            "data": {
+                    "msgtype": "i",
+                    "fb_recipient_id": user_bot_id,
+                    "delay": 60,
+                    "data": "http://weilsumwasgeht.at/static/img/alexandra.jpg"
+                }
+            }
+        data_json = json.dumps(data)
+        payload = {'json_payload': data_json}
+        r = requests.get('https://vdbmemes.appspot.com/fb/relay', data=payload)
+
+        return HttpResponse()
+    except ValueError as e:
+        # todo: return error
+        return Response()
+
+
 def invite(request):
     return render(request, 'invite.html')
 
