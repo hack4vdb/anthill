@@ -380,6 +380,18 @@ body.meetups .join {
   }
 }
 
+body.meetups .join .date-join {
+  clear:both;
+}
+@media (min-width: 550px) {
+  body.meetups .join .date-join {
+    float: left;
+    clear: none;
+    width: 30.33333%;
+    margin-left: 3%;
+  }
+}
+
 body.meetups .join .date {
   float: left;
   margin-left: 2rem;
@@ -426,7 +438,7 @@ body.meetups .button {
   body.meetups .button {
     font-size: 1.7rem;
     line-height: 1em;
-    padding: .2em .5em;
+    padding: .7em .5em;
     float: none;
     width: 100%;
     margin-right: 0;

@@ -56,7 +56,7 @@
     {% endfor %}
     <li class="meetup">
       <div class="row">
-        <div class="two columns map" style="background-image:url(https://maps.googleapis.com/maps/api/staticmap?center={{ potential_meetup.street }},{{ potential_meetup.city }},Austria&zoom=15&size=300x300&key=AIzaSyANphiyaXrFh_146PzRNbNGTozPv7Meibw)">
+        <div class="three columns map" style="background-image:url(https://maps.googleapis.com/maps/api/staticmap?center={{ potential_meetup.street }},{{ potential_meetup.city }},Austria&zoom=15&size=300x300&key=AIzaSyANphiyaXrFh_146PzRNbNGTozPv7Meibw)">
           &nbsp;
         </div>
         <div class="four columns info">
@@ -75,16 +75,18 @@
 
           <p class="meetup_type"><i class="fa fa-tag" aria-hidden="true"></i> <a href="#">Verteilaktion</a></p>
         </div>
-        {% for start_time, end_time in potential_meetup.proposed_times %}
-        <div class="two columns join">
-          <div class="date">
-            <span class="date-nice">{{ start_time|date:"l" }}</span>
-            <span class="date-full">{{ start_time|date:"j. M" }}</span>
-            <span class="date-hour">{{ start_time|date:"H" }}-{{ end_time|date:"H" }} Uhr</span>
-          </div>
-          <a class="button" href="{% url 'join_meetup' %}?time_id={{ forloop.counter0 | urlencode }}&location_id={{ potential_meetup_id | urlencode }}">Bin dabei</a>
+        <div class="five columns join">
+          {% for start_time, end_time in potential_meetup.proposed_times %}
+            <div class="date-join">
+              <div class="date">
+                <span class="date-nice">{{ start_time|date:"l" }}</span>
+                <span class="date-full">{{ start_time|date:"j. M" }}</span>
+                <span class="date-hour">{{ start_time|date:"H" }}-{{ end_time|date:"H" }} Uhr</span>
+              </div>
+              <a class="button" href="{% url 'join_meetup' %}?time_id={{ forloop.counter0 | urlencode }}&location_id={{ potential_meetup_id | urlencode }}">Bin dabei</a>
+            </div>
+          {% endfor %}
         </div>
-        {% endfor %}
       </div>
     </li>
 
