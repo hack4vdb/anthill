@@ -145,8 +145,8 @@ class Meetup(models.Model):
             workday = workday + datetime.timedelta(days=2)
         elif workday.weekday() == 6:
             workday = workday + datetime.timedelta(days=1)
-        return map(lambda t: (t, t + datetime.timedelta(hours=2)),
-                   sorted([saturday, sunday, workday]))
+        return list(map(lambda t: (t, t + datetime.timedelta(hours=2)),
+                   sorted([saturday, sunday, workday])))
 
     @staticmethod
     def get_proposed_time_by_id(idx):
