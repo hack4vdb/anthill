@@ -6,7 +6,7 @@ from anthill.geo import get_nearest_ortzumflyern, get_wahl_details, get_ortezumf
 from anthill.emailviews import WelcomeMessageView
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-
+from rest_framework.response import Response
 
 def home(request):
     if request.method == 'POST':
@@ -51,7 +51,7 @@ def check_mail(request):
 @login_required
 def meetups(request):
     user = request.user
-    meetups = user.find_meetups_nearby()[:5]
+    meetups = user.find_meetups_nearby()[:3]
     potential_meetup, location_id = Meetup.potential_meetup(user.postalcode)
     return render(request, 'meetups.html', {
         'meetups': meetups,
