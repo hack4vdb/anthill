@@ -198,6 +198,8 @@ def join_meetup_bot(request, meetupid, signeddata):
             'invalid request')
 
 
+def thankyou(request, meetup_id):
+    return render(request, 'thankyou.html')
 
 
 def join_first_event(request):
