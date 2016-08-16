@@ -63,6 +63,9 @@ class Activist(models.Model):
         except ValueError as e:
             return []
 
+    def __str__(self):
+        return self.__unicode__()
+
     def __unicode__(self):
         if self.facebook_bot_id:
             return '{} (FB Bot User) - {}'.format(self.facebook_bot_id, self.uuid)
@@ -205,5 +208,8 @@ class InterestingPlaces(models.Model):
     city = models.CharField(max_length=500)  # Ort
     coordinate = models.PointField()
 
-    def _unicode__(self):
+    def __str__(self):
+        return self.__unicode__()
+
+    def __unicode__(self):
         return '{} {}: {}'.format(self.postalcode, self.city, self.title)
