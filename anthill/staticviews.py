@@ -73,14 +73,20 @@ def join_meetup(request):
             form.save()
             meetup = Meetup.create_from_potentialmeetup_specs(
                 location_id=location_id, time_id=time_id)
+            meetup.activist.add(user)
             meetup.save()
             return redirect('invite')
-    loc = get_ortezumflyern(location_id)
-    start_time = Meetup.get_proposed_time_by_id(time_id)
+        else:
+            # TODO: display form validation error?
+            pass
+    meetup = Meetup.objects.filter(uuid=meetup_id).first()
+    meetup.activist.add(user)
+    loc = meetup.city # get_ortezumflyern(location_id)
+    start_time = meetup.datetime # Meetup.get_proposed_time_by_id(time_id)
     return render(request, 'join_meetup.html', {
         'user': user,
         'form': form,
-        'title': "{} für VdB".format(loc['ort']),
+        'title': "{} für VdB".format(loc),
         'start_time': start_time
     })
 
