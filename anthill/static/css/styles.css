@@ -455,6 +455,12 @@ body.meetups .meetup {
   list-style: none;
 }
 
+.titlebar .container > h3 {
+  margin: 1rem 0 .3rem;
+}
+h3 .fa {
+  margin-right: .8rem;
+}
 
 body.address .map {
   height: 200px;
@@ -473,6 +479,9 @@ body .titlebar {
 body.invite .fa-flag {
   text-shadow: 4px 3px 0 #ffde00,9px 8px 0 rgba(0,0,0,0.15);  
   margin-right: .5em;
+}
+body.address .titlebar p {
+  margin: 0;
 }
 
 
