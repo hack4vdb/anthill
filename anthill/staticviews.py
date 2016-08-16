@@ -16,6 +16,7 @@ from anthill import geo
 
 from itsdangerous import JSONWebSignatureSerializer
 
+
 def home(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
@@ -25,18 +26,25 @@ def home(request):
             # if not Activist.objects.filter(email=email).exists() and
             # len(form.cleaned_data['message']) == 0:  #honey trap was not
             # filled out
-            if len(form.cleaned_data['message']
-                   ) == 0:  # honey trap was not filled out
+            if not Activist.objects.filter(email=email).exists() and \
+                            len(form.cleaned_data['message']) == 0:  # honey trap was not filled out
                 activist = Activist.create(email=email, postalcode=postcode)
                 activist.save()
                 activist = authenticate(uuid=activist.uuid)
                 login(request, activist)
-            return redirect('meetups')
+                return redirect('meetups')
+            else:
+                # todo: resend login email
+                return redirect('register_failed')
     else:
         form = SignupForm()
     if request.user.is_authenticated:
         return redirect('meetups')
     return render(request, 'home.html', {'form': form})
+
+
+def register_failed(request):
+    return render(request, 'register_failed.html', {})
 
 
 def login_with_uuid(request, userid):
