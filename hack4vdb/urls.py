@@ -30,9 +30,9 @@ apiRouter.register(
     views.MeetupNearActivistViewSet,
     base_name='meetupsnearactivist')
 
-
 urlpatterns = [
     url(r'^$', staticviews.home, name='home'),
+
     url(r'^registerfailed/$', staticviews.register_failed, name='register_failed'),
     url(r'^login/(?P<userid>[\d\w-]+)/$', staticviews.login_with_uuid, name='login_with_uuid'),
     url(r'^check_mail/$', staticviews.check_mail, name='check_mail'),
@@ -42,11 +42,13 @@ urlpatterns = [
     url(r'^invite/$', staticviews.invite, name='invite'),
     url(r'^join_first_event/$', staticviews.join_first_event, name='join_first_event'),
     url(r'^start_event/$', staticviews.start_event, name='start_event'),
+
     url(r'^admin/', admin.site.urls),
+
     url(r'^api/', include(apiRouter.urls)),
     url(r'^api/meetups/(?P<meetupid>[\d\w-]+)/partake/(?P<userid>[\d\w-]+)/', views.partake_meetup, name='partake_meetup'),
     url(r'^api/meetupsbylatlng/(?P<latlong>.+)/', views.meetupsByLatLng, name='meetupsbylatlng'),
     url(r'^api/interestingplaces/(?P<id>[\d\w-]+)/', views.interesting_places, name='interesting_places'),
     url(r'^api/potentialmeetups/(?P<user_bot_id>[\d\w-]+)/', views.potential_meetups, name='potential_meetups'),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]

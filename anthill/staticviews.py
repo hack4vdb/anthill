@@ -32,6 +32,11 @@ def home(request):
                 activist.save()
                 activist = authenticate(uuid=activist.uuid)
                 login(request, activist)
+
+                WelcomeMessageView(email=activist.email).send(extra_context={
+                    'user': activist,
+                })
+
                 return redirect('meetups')
             else:
                 # todo: resend login email
