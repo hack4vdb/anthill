@@ -186,22 +186,4 @@
   </footer>
 </div>
 
-<script>
-function rando() {
-  var imgs = document.getElementById('photo-bg').getElementsByTagName('img');
-  setInterval(function() {
-    var r = Math.floor(Math.random() * imgs.length);
-    //console.log(r, imgs[r]);
-    imgs[r].style.webkitFilter = 'blur(0)';
-    var theImg = imgs[r];
-    (function() {
-      setTimeout(function() {
-        theImg.style.webkitFilter = 'blur(6px)';
-      }, 3000);
-    })();
-  }, 800);
-}
-//rando();
-</script>
-
 {% endblock %}
