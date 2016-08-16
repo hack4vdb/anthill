@@ -463,7 +463,7 @@ body.meetups .meetup_list .map {
 }
 @media (min-width: 550px) {
   body.meetups .meetup_list .map {
-    height: 150px;
+    height: 155px;
     border-bottom-left-radius: 1rem;
     border-top-right-radius: 0;
   }
@@ -476,7 +476,7 @@ body.meetups .meetup_list .info {
 @media (min-width: 550px) {
   body.meetups .meetup_list .info,
   body.meetups .meetup_list .join {
-    padding: .5em 0;
+    padding: 1em 0 0;
   }
 }
 
