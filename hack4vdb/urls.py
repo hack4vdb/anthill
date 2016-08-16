@@ -46,5 +46,6 @@ urlpatterns = [
     url(r'^api/meetups/(?P<meetupid>[\d\w-]+)/partake/(?P<userid>[\d\w-]+)/', views.partake_meetup, name='partake_meetup'),
     url(r'^api/meetupsbylatlng/(?P<latlong>.+)/', views.meetupsByLatLng, name='meetupsbylatlng'),
     url(r'^api/interestingplaces/(?P<id>[\d\w-]+)/', views.interesting_places, name='interesting_places'),
+    url(r'^api/potentialmeetups/(?P<user_bot_id>[\d\w-]+)/', views.potential_meetups, name='potential_meetups'),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]

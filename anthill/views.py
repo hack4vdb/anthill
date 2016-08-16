@@ -4,7 +4,7 @@ from anthill import models
 from rest_framework import viewsets
 
 from anthill.serializers import UserSerializer, GroupSerializer, \
-    ActivistSerializer, MeetupSerializer
+    ActivistSerializer, MeetupSerializer, PotentialMeetupSerializer
 
 from rest_framework import status
 from rest_framework.response import Response
@@ -126,6 +126,26 @@ def interesting_places(request, id):
         activist.postalcode)
     serializer = MeetupSerializer(
         potential_meetup, many=False, context={
+            'request': request})
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def potential_meetups(request, user_bot_id):
+    activist = Activist.objects.filter(facebook_bot_id=user_bot_id).first()
+    potential_meetup1, location_id = Meetup.potential_meetup(activist.postalcode)
+    potential_meetup1.datetime = potential_meetup1.proposed_times()[0][0]
+    potential_meetup2, location_id = Meetup.potential_meetup(activist.postalcode)
+    potential_meetup2.datetime = potential_meetup2.proposed_times()[1][0]
+    potential_meetup3, location_id = Meetup.potential_meetup(activist.postalcode)
+    potential_meetup3.datetime = potential_meetup3.proposed_times()[2][0]
+    potential_meetups = [
+        potential_meetup1,
+        potential_meetup2,
+        potential_meetup3,
+    ]
+    serializer = PotentialMeetupSerializer(
+        potential_meetups, many=True, context={
             'request': request})
     return Response(serializer.data)
 

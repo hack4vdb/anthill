@@ -33,3 +33,12 @@ class MeetupSerializer(serializers.ModelSerializer):
         model = Meetup
         fields = ('uuid', 'title', 'datetime', 'postalcode', 'city',
                   'street', 'house_number', 'coordinate')
+
+
+
+class PotentialMeetupSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Meetup
+        fields = ('uuid', 'title', 'datetime', 'postalcode', 'city',
+                  'street', 'house_number', 'coordinate')
