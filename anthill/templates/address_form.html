@@ -1,16 +1,24 @@
 {% extends "layouts/base.html" %}
+{% block body_class %}address{% endblock %}
 
 {% block content %}
+<!--div class="full-width-container map">
+  <div class="container">
+
+    <div class="row">
+      <div class="nine columns">
+      </div>
+    </div>
+  </div>
+
+</div-->
 <div class="container">
   
   <h2>Danke für deine Anmeldung!</h2>
 
   <div class="row">
-    <div class="one-half column">
-      <h3>{{ title }}</h3>
-      <p>…, dann senden wir dir ein Starter-Kit mit Flyern und anderen Materialien für die Aktion zu.</p>
-      <p>{{ start_time }}</p>
-      <!-- <p>3 andere Leute machen mit</p> -->
+    <div class="six columns">
+      <p>Wir benötigen noch deine Adresse, um dir ein Paket Flyer, Sticker & Co zusenden zu können.</p>
 
       <form action="" method="POST">
         {% csrf_token %}
@@ -18,51 +26,48 @@
         {{ form.time_id }}
         {{ form.location_id }}
 
-        <div>
-          {{ form.first_name.label }}
-          {{ form.first_name }}
-          {{ form.first_name.errors }}
+        <div class="row">
+          <div class="six columns">
+            <label for="exampleEmailInput">{{ form.first_name.label }}</label>
+            {{ form.first_name }}
+            {{ form.first_name.errors }}
+          </div>
+          <div class="six columns">
+            <label for="exampleRecipientInput">{{ form.last_name.label }}</label>
+            {{ form.last_name }}
+            {{ form.last_name.errors }}            
+          </div>
         </div>
-
-        <div>
-          {{ form.last_name.label }}
-          {{ form.last_name }}
-          {{ form.last_name.errors }}
+        <label for="exampleMessage">{{ form.street.label }}</label>
+        {{ form.street }}
+        {{ form.street.errors }}
+        <div class="row">
+          <div class="three columns">
+            <label for="exampleEmailInput">{{ form.postalcode.label }}</label>
+            {{ form.postalcode }}
+            {{ form.postalcode.errors }}
+          </div>
+          <div class="nine columns">
+            <label for="exampleRecipientInput">{{ form.city.label }}</label>
+            {{ form.city }}
+            {{ form.city.errors }}            
+          </div>
         </div>
-
-        <div>
-          {{ form.street.label }}
-          {{ form.street }}
-          {{ form.street.errors }}
-        </div>
-
-        <div>
-          {{ form.postalcode.label }}
-          {{ form.postalcode }}
-          {{ form.postalcode.errors }}
-        </div>
-
-        <div>
-          {{ form.city.label }}
-          {{ form.city }}
-          {{ form.city.errors }}
-        </div>
-
-        <div>
-          {{ form.phone.label }}
-          {{ form.phone }}
-          {{ form.phone.errors }}
-        </div>
-
-        <button type="submit" class="event-button">
-          Weiter: Zeige, was ich tun kann ➜
+        <label for="exampleMessage">{{ form.phone.label }}</label>
+        {{ form.phone }}
+        {{ form.phone.errors }}
+        <br />
+        <button type="submit" class="button-primary u-full-width">
+          Speichern
         </button>
       </form>
 
-    </div>
+      <h3>{{ title }}</h3>
+      <p>{{ start_time }}</p>
 
-    <div class="one-half column">
-      <h3>Lade jetzt deine Freunde ein!</h3>
+    </div>
+    <div class="six columns illu">
+      <img src="/static/img/delivery.svg" width="70%"/>
     </div>
   </div>
 </div>

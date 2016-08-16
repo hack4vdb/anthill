@@ -486,6 +486,13 @@ body.meetups .meetup {
   list-style: none;
 }
 
+
+body.address .map {
+  height: 200px;
+}
+body.address .illu {
+  text-align: center;
+}
 form .message {
   width: 1px;
   height: 1px;

@@ -41,24 +41,29 @@ class SignupForm(forms.Form):
 
 class CreateAddressForm(forms.ModelForm):
     first_name = forms.CharField(label='Vorname', required=True, error_messages={
-                                 'required': 'Bitte geben Sie Ihren Vornamen an.'})
+                                 'required': 'Bitte geben Sie Ihren Vornamen an.'},
+                                 widget=forms.TextInput(attrs={'class': "u-full-width"}))
     last_name = forms.CharField(label='Nachname', required=True, error_messages={
-                                'required': 'Bitte geben Sie Ihre Nachnamen an.'})
+                                'required': 'Bitte geben Sie Ihre Nachnamen an.'},
+                                widget=forms.TextInput(attrs={'class': "u-full-width"}))
     street = forms.CharField(
         label='Straße & Hausnummer',
         required=True,
         error_messages={
-            'required': 'Bitte geben Sie Ihre Straße an.'})
+            'required': 'Bitte geben Sie Ihre Straße an.'},
+        widget=forms.TextInput(attrs={'class': "u-full-width"}))
     postalcode = forms.CharField(
         label='PLZ', required=True, error_messages={
-            'required': 'Bitte geben Sie Ihre PLZ an.'})
+            'required': 'Bitte geben Sie Ihre PLZ an.'},
+        widget=forms.TextInput(attrs={'class': "u-full-width"}))
     city = forms.CharField(label='Stadt', required=True, error_messages={
-                           'required': 'Bitte geben Sie Ihre Stadt an.'})
+                           'required': 'Bitte geben Sie Ihre Stadt an.'}, widget=forms.TextInput(attrs={'class': "u-full-width"}))
     phone = forms.CharField(
         label='Telefonnummer (als Ansprechpartner_in für die Verteilaktion',
         required=True,
         error_messages={
-            'required': 'Bitte geben Sie Ihre Telefonnummer an.'})
+            'required': 'Bitte geben Sie Ihre Telefonnummer an.'},
+        widget=forms.TextInput(attrs={'class': "u-full-width"}))
     location_id = forms.CharField(required=False, widget=forms.HiddenInput())
     meetup_id = forms.CharField(required=False, widget=forms.HiddenInput())
     time_id = forms.CharField(required=False, widget=forms.HiddenInput())
