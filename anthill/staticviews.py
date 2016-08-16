@@ -65,20 +65,21 @@ def meetups(request):
 def join_meetup(request):
     user = request.user
     form = CreateMeetupForm(request.POST or None, instance=user)
-    meetup_id = request.GET.get('meetup_id', '')
-    time_id = request.GET.get('time_id', '')
-    location_id = request.GET.get('location_id', '')
-    if request.method == 'POST':
-        if form.is_valid():
-            form.save()
+    meetup_id = request.GET.get('meetup_id', None)
+    time_id = request.GET.get('time_id', None)
+    location_id = request.GET.get('location_id', None)
+    if location_id is not None: #if request.method == 'POST':
+        #if form.is_valid():
+         #   form.save()
             meetup = Meetup.create_from_potentialmeetup_specs(
                 location_id=location_id, time_id=time_id)
+            meetup.save()
             meetup.activist.add(user)
             meetup.save()
             return redirect('invite')
-        else:
-            # TODO: display form validation error?
-            pass
+        #else:
+        #    # TODO: display form validation error?
+        #    pass
     meetup = Meetup.objects.filter(uuid=meetup_id).first()
     meetup.activist.add(user)
     loc = meetup.city # get_ortezumflyern(location_id)
