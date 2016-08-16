@@ -493,7 +493,8 @@ body.address .illu {
   text-align: center;
 }
 
-body.invite .full-width-container {
+body.invite .full-width-container,
+body .titlebar {
   background-color: #ffde00;
   margin-bottom: 3rem;
   padding: 2rem 0;

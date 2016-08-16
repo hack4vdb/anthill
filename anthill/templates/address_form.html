@@ -2,23 +2,21 @@
 {% block body_class %}address{% endblock %}
 
 {% block content %}
-<!--div class="full-width-container map">
+<div class="full-width-container titlebar">
   <div class="container">
 
-    <div class="row">
-      <div class="nine columns">
-      </div>
-    </div>
-  </div>
+    <h2>
+      <i class="fa fa-check-circle" aria-hidden="true"></i>
+      Am {{ date|date:"l" }}, den {{ date|date:"j" }}. in {{city}} Präsenz zeigen
+    </h2>
 
-</div-->
+  </div>
+</div>
 <div class="container">
   
-  <h2>Danke für deine Anmeldung!</h2>
-
   <div class="row">
     <div class="six columns">
-      <p>Wir benötigen noch deine Adresse, um dir ein Paket Flyer, Sticker & Co zusenden zu können.</p>
+      <p>Wir benötigen unbedingt noch deine Adresse, um dir ein Paket Flyer, Sticker & Co zusenden zu können.</p>
 
       <form action="" method="POST">
         {% csrf_token %}
@@ -61,9 +59,6 @@
           Speichern
         </button>
       </form>
-
-      <h3>{{ title }}</h3>
-      <p>{{ start_time }}</p>
 
     </div>
     <div class="six columns illu">
