@@ -141,9 +141,9 @@ def join_meetup_bot(request, meetupid, user_bot_id):
                 "data": "http://weilsumwasgeht.at/static/img/alexandra.jpg"
             }
         }
-    data_json = json.dumps(data)
-    payload = {'json_payload': data_json}
-    r = requests.post('https://vdbmemes.appspot.com/fb/relay', data=data_json)
+    # data_json = json.dumps(data)
+    # payload = {'json_payload': data_json}
+    r = requests.post('https://vdbmemes.appspot.com/fb/relay', json=data)
 
     try:
         activist = Activist.objects.filter(facebook_bot_id=user_bot_id).first()
