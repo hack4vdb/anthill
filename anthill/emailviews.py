@@ -1,5 +1,6 @@
 from mailviews.messages import TemplatedEmailMessageView
 
+
 class GenericMessageView(TemplatedEmailMessageView):
     subject_template_name = ''
     body_template_name = ''
@@ -16,7 +17,12 @@ class GenericMessageView(TemplatedEmailMessageView):
     def render_to_message(self, *args, **kwargs):
         assert 'to' not in kwargs  # this should only be sent to the user
         kwargs['to'] = (self.email,)
-        return super(GenericMessageView, self).render_to_message(*args, **kwargs)
+        return super(
+            GenericMessageView,
+            self).render_to_message(
+            *
+            args,
+            **kwargs)
 
 
 class WelcomeMessageView(GenericMessageView):
