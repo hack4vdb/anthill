@@ -49,7 +49,7 @@
             <span class="date-full">{{ meetup.datetime|date:"j. M" }}</span>
             <span class="date-hour">{{ meetup.datetime|date:"H" }} Uhr</span>
           </div>
-          <a class="button" href="{% url 'join_meetup' %}">Bin dabei</a>
+          <a class="button" href="{% url 'join_meetup' %}?meetup_id={{ meetup.uuid }}">Bin dabei</a>
         </div>
       </div>
     </li>

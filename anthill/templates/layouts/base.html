@@ -67,7 +67,7 @@ function postDataToBackend(response) {
     if (request.status >= 200 && request.status < 400) {
       var user_uuid = response.uuid;
       document.cookie = "user_uuid=" + user_uuid + "; max-age=31536e3; path=/";
-      window.location = "/events";
+      window.location = "/meetups";
     } else {
       var email_alert = response.email ? response.email[0] : '';
       if (email_alert === "activist with this email already exists.") {
@@ -194,7 +194,7 @@ function createMeetup() {
 window.onload = function() {
   if (getParameterByName('id')) {
     document.cookie = "user_uuid=" + getParameterByName('id') + "; max-age=31536e3; path=/";
-    window.location = "/events";
+    window.location = "/meetups";
   }
 }
     </script>
