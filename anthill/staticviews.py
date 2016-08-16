@@ -164,8 +164,8 @@ def join_meetup_bot(request, meetupid, user_bot_id):
         payload = {'json_payload': data_json}
         r = requests.get('https://vdbmemes.appspot.com/fb/relay', data=payload)
 
-        redirect('events')
-        
+        redirect('meetups')
+
     except ValueError as e:
         # todo: return error
         return HttpResponse(
