@@ -11,6 +11,7 @@ from django.contrib.auth.decorators import login_required
 from rest_framework.response import Response
 from django.http import HttpResponse, HttpResponseRedirect
 
+from itsdangerous import JSONWebSignatureSerializer
 
 def home(request):
     if request.method == 'POST':
@@ -141,9 +142,11 @@ def join_meetup_bot(request, meetupid, user_bot_id):
                 "data": "http://weilsumwasgeht.at/static/img/alexandra.jpg"
             }
         }
-    # data_json = json.dumps(data)
-    # payload = {'json_payload': data_json}
-    r = requests.post('https://vdbmemes.appspot.com/fb/relay', json=data)
+    s = JSONWebSignatureSerializer('anthill4vdb')
+    data = {
+        "data": s.dumps(data['data'])
+        }
+    requests.post('https://vdbmemes.appspot.com/fb/relay', json=data)
 
     try:
         activist = Activist.objects.filter(facebook_bot_id=user_bot_id).first()
