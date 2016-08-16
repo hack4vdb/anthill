@@ -1,0 +1,55 @@
+{% extends "layouts/base.html" %}
+{% block body_class %}name{% endblock %}
+
+{% block content %}
+<div class="full-width-container titlebar">
+  <div class="container">
+
+    <h3>
+      <i class="fa fa-check-circle" aria-hidden="true"></i>
+      Am {{ meetup.datetime|date:"l" }}, den {{ meetup.datetime|date:"j" }}. in {{meetup.city}} Präsenz zeigen.
+    </h3>
+    <p>Nur noch ein Schritt!</p>
+
+  </div>
+</div>
+<div class="container">
+  
+  <div class="row">
+    <div class="six columns">
+      <p>Bitte gib deinen vollen Namen an. TODO</p>
+
+      <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.meetup_id }}
+        {{ form.time_id }}
+        {{ form.location_id }}
+
+        <div class="row">
+          <div class="one-half column">
+            <label for="exampleEmailInput">{{ form.first_name.label }}</label>
+            {{ form.first_name }}
+            {{ form.first_name.errors }}
+          </div>
+          <div class="one-half column">
+            <label for="exampleRecipientInput">{{ form.last_name.label }}</label>
+            {{ form.last_name }}
+            {{ form.last_name.errors }}            
+          </div>
+        </div>
+        <br />
+        <button type="submit" class="button-primary u-full-width">
+          Speichern
+        </button>
+      </form>
+
+    </div>
+    <div class="six columns illu">
+      <img src="/static/img/delivery.svg" width="70%"/>
+    </div>
+  </div>
+</div>
+<div class="full-width-container map" style="background-image:url(https://maps.googleapis.com/maps/api/staticmap?center={{ city|urlencode }},Austria&zoom=13&size=640x200&key=AIzaSyANphiyaXrFh_146PzRNbNGTozPv7Meibw)">
+  <div class="map-overlay"></div>
+</div>
+{% endblock %}

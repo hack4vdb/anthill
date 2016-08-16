@@ -2,7 +2,7 @@
 import json
 import requests
 from django.shortcuts import render, redirect, get_object_or_404
-from anthill.forms import SignupForm, CreateAddressForm
+from anthill.forms import SignupForm, CreateAddressForm, CreateRealnameForm
 from anthill.models import Activist, Meetup
 from anthill.geo import get_nearest_ortzumflyern, get_wahl_details, get_ortezumflyern
 from anthill.emailviews import WelcomeMessageView
@@ -10,6 +10,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from rest_framework.response import Response
 from django.http import HttpResponse, HttpResponseRedirect
+from django.db import transaction
 
 from django.contrib.gis.geos import GEOSGeometry
 from anthill import geo
@@ -89,21 +90,20 @@ def join_meetup(request):
     time_id = request.GET.get('time_id', None)
     location_id = request.GET.get('location_id', None)
     is_new = False
-
-    # Wenn Meetup gerade erstellt:
-    ## Zu einem Formular mit Adress Eingabe
+    meetup = None
 
     if meetup_id is None: # in the process of creating a meetup from suggestion
         form = CreateAddressForm(request.POST or None, instance=user)
         if request.method == 'POST': # submitting address form
             if form.is_valid():
-                form.save()
-                meetup = Meetup.create_from_potentialmeetup_specs(
-                    location_id=location_id, time_id=time_id)
-                meetup.save()
-                meetup.activist.add(user)
-                meetup.save()
-                meetup_id = meetup.uuid
+                form.save()  # Save activist data entered by user
+                with transaction.atomic():
+                    meetup = Meetup.create_from_potentialmeetup_specs(
+                        location_id=location_id, time_id=time_id)
+                    meetup.owner = user
+                    meetup.save()
+                    meetup.activist.add(user)
+                    meetup.save()
                 is_new = True
         else: # displaying address form
             start_time = Meetup.get_proposed_time_by_id(time_id)
@@ -114,36 +114,41 @@ def join_meetup(request):
                 'city': city,
                 'date': start_time
             })
+    else:
+        # Meetup should exist. find it from DB
+        try:
+            meetup = Meetup.objects.get(uuid=meetup_id)
+            form = CreateRealnameForm(request.POST or None, instance=user)
+            if request.method == 'POST': # submitting address form
+                if form.is_valid():
+                    form.save()  # Save activist data entered by user
+                    with transaction.atomic():
+                        meetup.activist.add(user)
+                        meetup.save()
+            else: # displaying address form
+                return render(request, 'name_form.html', {
+                    'user': user,
+                    'form': form,
+                    'meetup': meetup,
+                })
+        except Meetup.DoesNotExist:
+            return redirect('meetups')
 
-    # Sonst, Wenn Meetup schon da war:
-
-    meetup = Meetup.objects.filter(uuid=meetup_id).first()
-    meetup.activist.add(user)
-    meetup.save()
-
-    ## Wenn schon genug Leute, und du der bist der es voll macht:
-    ### Kampagne bekommt Mail, dass Paket an Ersteller erschickt werden muss
-
-    # TODO: check, wieviele schon dabei sind,
-
-    is_viable = meetup.activist.count() >= 3 # TODO: make this configurable somewhere central
-
-    # TODO: evtl trigger mail an kampagne
-
-    ## Mail an alle bisher zugesagten, dass 1 neue person dabei is
-
-    ## (evtl. Info, dass noch nicht genug sind, und nochmal aufrufen zum Inviten)
-
-    # TODO: trigger mail to alle die schon dabei sind
-
-    ## Danke & Invite
+    return redirect('invite', meetup_id=str(meetup.uuid))
 
 
+@login_required
+def invite(request, meetup_id):
+    user = request.user
+    try:
+        meetup = Meetup.objects.get(uuid=meetup_id, activist=user)
+    except Meetup.DoesNotExist:
+        return redirect('meetups')
     return render(request, 'invite.html', {
             'user': user,
             'meetup': meetup,
-            'is_viable': is_viable,
-            'is_new': is_new
+            'other_people_string': meetup.other_people_string(user),
+            'is_new': meetup.activist.count() < 2
     })
 
 
@@ -193,8 +198,6 @@ def join_meetup_bot(request, meetupid, signeddata):
             'invalid request')
 
 
-def invite(request):
-    return render(request, 'invite.html')
 
 
 def join_first_event(request):

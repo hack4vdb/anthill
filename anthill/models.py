@@ -84,6 +84,27 @@ class Meetup(models.Model):
     coordinate = models.PointField()
     activist = models.ManyToManyField(
         Activist, null=True, blank=True, related_name='meetups')
+    owner = models.ForeignKey(Activist)
+
+    # TODO
+    ## Wenn schon genug Leute, und du der bist der es voll macht:
+    ### Kampagne bekommt Mail, dass Paket an Ersteller erschickt werden muss
+
+    # TODO: evtl trigger mail an kampagne
+
+    ## Mail an alle bisher zugesagten, dass 1 neue person dabei is
+
+    ## (evtl. Info, dass noch nicht genug sind, und nochmal aufrufen zum Inviten)
+
+    # TODO: trigger mail to alle die schon dabei sind
+
+
+    @property
+    def is_viable(self):
+        return self.activist.count() >= 3
+
+    def other_people_string(self, user):
+        return ", ".join([a.first_name for a in self.activist.all() if a != user])
 
     @property
     def wahl_details(self):

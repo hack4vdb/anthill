@@ -18,10 +18,10 @@
 				Bisher fehlen leider noch einige fixe Zusagen.
 			{% else %}
 				<i class="fa fa-user" aria-hidden="true"></i>
-				{% if not is_viable %}
-					<strong><!-- todo name -->Hansi</strong> hat auch schon zugesagt und wird
+				{% if not meetup.is_viable %}
+          <strong><!-- todo name -->{{ other_people_string }}</strong> hat auch schon zugesagt und wird
 				{% else %}
-					<strong><!-- todo name -->Hansi</strong> und <i class="fa fa-user" aria-hidden="true"></i><strong><!-- todo name -->Mareike</strong> haben auch schon zugesagt und werden
+					<strong><!-- todo name -->{{ other_people_string }}</strong> haben auch schon zugesagt und werden
 				{% endif %}
 				Flyer und Material mitbringen.<br />
 			{% endif %}
@@ -48,7 +48,7 @@
 
   <p>
     <br /><br />
-    <a href="#">Überspringen &raquo;</a>
+    <a href="{% url 'thankyou' meetup_id=meetup.uuid %}">Überspringen &raquo;</a>
   </p>
 </div>
 {% endblock %}

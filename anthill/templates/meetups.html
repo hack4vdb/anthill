@@ -13,7 +13,7 @@
       <div class="nine columns speech-bubble">
           <h3>Willkommen im Team! &nbsp;<span style="display: inline-block; transform:rotate(4deg)">&hearts;</span></h3>
           <p>
-            <strong>Was gerade am wichtigsten ist:</strong> Vor Ort Präsenz zeigen – so bleiben wir zum Wahlkampfauftakt im Gespräch. Welche dieser Straßenaktion in deiner Gegend passt dir zeitlich am besten?
+            <strong>Was gerade am wichtigsten ist:</strong> Vor Ort Präsenz zeigen – so bleiben wir zum Wahlkampfauftakt im Gespräch. Welche dieser Straßenaktion in deiner Gegend passt dir zeitlich am besten?
           </p>
       </div>
     </div>
@@ -54,7 +54,11 @@
           <p class="meetup_type"><i class="fa fa-tag" aria-hidden="true"></i> <a href="#">Straßenaktion</a></p>
         </div>
         <div class="join">
-          <a class="button" href="{% url 'join_meetup' %}?meetup_id={{ meetup.uuid }}">Ich bin dabei</a>
+          {% if user not in meetup.activist.all %}
+            <a class="button" href="{% url 'join_meetup' %}?meetup_id={{ meetup.uuid }}">Ich bin dabei</a>
+          {% else %}
+            <p>✔ Hier mach ich mit</p>
+          {% endif %}
         </div>
 
     </li>
@@ -93,7 +97,6 @@
     <p><a href="https://www.google.com/maps?hl=en&q={{ user.coordinate }}">Maps </a></p-->
 
   </ul>
-  <a class="event-button" href="{% url 'start_event' %}"><div>Ich starte lieber meine eigene Aktion</div></a>
 </div>
 </div>
 {% endblock %}

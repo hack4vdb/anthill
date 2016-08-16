@@ -42,7 +42,7 @@ class SignupForm(forms.Form):
 class CreateAddressForm(forms.ModelForm):
     first_name = forms.CharField(label='Vorname', required=True, error_messages={
                                  'required': 'Bitte geben Sie Ihren Vornamen an.'},
-                                 widget=forms.TextInput(attrs={'class': "u-full-width"}))
+                                 widget=forms.TextInput(attrs={'class': "u-full-width", 'autofocus': True}))
     last_name = forms.CharField(label='Nachname', required=True, error_messages={
                                 'required': 'Bitte geben Sie Ihre Nachnamen an.'},
                                 widget=forms.TextInput(attrs={'class': "u-full-width"}))
@@ -77,3 +77,22 @@ class CreateAddressForm(forms.ModelForm):
             'postalcode',
             'city',
             'phone')
+
+
+class CreateRealnameForm(forms.ModelForm):
+    first_name = forms.CharField(label='Vorname', required=True, error_messages={
+                                 'required': 'Bitte geben Sie Ihren Vornamen an.'},
+                                 widget=forms.TextInput(attrs={'class': "u-full-width", 'autofocus': True}))
+    last_name = forms.CharField(label='Nachname', required=True, error_messages={
+                                'required': 'Bitte geben Sie Ihre Nachnamen an.'},
+                                widget=forms.TextInput(attrs={'class': "u-full-width"}))
+    location_id = forms.CharField(required=False, widget=forms.HiddenInput())
+    meetup_id = forms.CharField(required=False, widget=forms.HiddenInput())
+    time_id = forms.CharField(required=False, widget=forms.HiddenInput())
+
+    class Meta:
+        model = Activist
+        fields = (
+            'first_name',
+            'last_name'
+        )
