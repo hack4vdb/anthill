@@ -6,7 +6,7 @@ from anthill.geo import get_nearest_ortzumflyern, get_wahl_details, get_ortezumf
 from anthill.emailviews import WelcomeMessageView
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from rest_framework.response import Response
+from django.http import HttpResponse
 
 def home(request):
     if request.method == 'POST':
@@ -136,7 +136,16 @@ def join_meetup_bot(request, meetupid, user_bot_id):
 
     try:
         meetup = Meetup.objects.filter(uuid=meetupid).first()
+        if meetup is None:
+            return HttpResponse(
+            'invalid meetup id')
+
+
         activist = Activist.objects.filter(facebook_bot_id=user_bot_id).first()
+        if activist is None:
+            activist = Activist(facebook_bot_id=user_bot_id)
+            activist.save()
+
         meetup.activist.add(activist)
         meetup.save()
         # todo: return something reasonable
@@ -155,10 +164,12 @@ def join_meetup_bot(request, meetupid, user_bot_id):
         payload = {'json_payload': data_json}
         r = requests.get('https://vdbmemes.appspot.com/fb/relay', data=payload)
 
-        return HttpResponse()
+        redirect('events')
+        
     except ValueError as e:
         # todo: return error
-        return Response()
+        return HttpResponse(
+            'invalid request')
 
 
 def invite(request):
