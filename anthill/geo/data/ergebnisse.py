@@ -1,3 +1,9 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+from __future__ import unicode_literals
+
+
 ergebnisse = {
     1010: 63.317640600000004,
     1020: 63.317640600000004,

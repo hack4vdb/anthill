@@ -1,6 +1,9 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+from __future__ import unicode_literals
+
+
 orte = [
     {'ort': 'Villach', 'plz': '9500', 'treffpunkt': 'Hauptplatz', 'lat': 46.614722, 'lon': 13.846111},
     {'ort': 'Wels', 'plz': '4600', 'treffpunkt': 'Stadtplatz', 'lat': 48.1575, 'lon': 14.026667},

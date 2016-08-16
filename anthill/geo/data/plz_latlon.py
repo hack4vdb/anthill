@@ -1,3 +1,9 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+from __future__ import unicode_literals
+
+
 coordinates = {
     1010: (48.209, 16.370),
     1020: (48.201, 16.433),
