@@ -115,6 +115,7 @@ def partake_meetup(request, meetupid, userid):
     meetup = Meetup.objects.filter(uuid=meetupid).first()
     activist = Activist.objects.filter(uuid=userid).first()
     meetup.activist.add(activist)
+    meetup.save()
     return Response()
 
 
@@ -124,6 +125,7 @@ def partake_meetup_bot(request, meetupid, user_bot_id):
         meetup = Meetup.objects.filter(uuid=meetupid).first()
         activist = Activist.objects.filter(facebook_bot_id=user_bot_id).first()
         meetup.activist.add(activist)
+        meetup.save()
         # todo: return something reasonable
 
         import json
