@@ -1,9 +1,10 @@
-from mailviews.messages import TemplatedEmailMessageView
+from mailviews.messages import TemplatedHTMLEmailMessageView
 
 
-class GenericMessageView(TemplatedEmailMessageView):
+class GenericMessageView(TemplatedHTMLEmailMessageView):
     subject_template_name = ''
     body_template_name = ''
+    html_body_template_name = ''
 
     def __init__(self, email, *args, **kwargs):
         super(GenericMessageView, self).__init__(*args, **kwargs)
@@ -29,8 +30,10 @@ class GenericMessageView(TemplatedEmailMessageView):
 class WelcomeMessageView(GenericMessageView):
     subject_template_name = 'emails/welcome/subject.txt'
     body_template_name = 'emails/welcome/body.html'
+    html_body_template_name = 'emails/welcome/body.html'
 
 
 class NewNearMeetupMessageView(GenericMessageView):
     subject_template_name = 'emails/1_new_meetup_1person/subject.txt'
     body_template_name = 'emails/1_new_meetup_1person/body.html'
+    html_body_template_name = 'emails/1_new_meetup_1person/body.html'

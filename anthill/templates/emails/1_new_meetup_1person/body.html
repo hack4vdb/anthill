@@ -1,7 +1,12 @@
+{% extends "emails/base.html" %}
+
+{% block body %}
 <table border="0" cellpadding="0" cellspacing="0">
   <tr>
     <td>
-      <p>{{ recipient.first_name }} —</p>
+      {% if recipient.first_name %}
+        <p>{{ recipient.first_name }} —</p>
+      {% endif %}
       <p>{{ meetup.owner.first_name }} ist dabei.</p>
       <p>Am {{ meetup.datetime|date:"j. F" }} verteilt {{ meetup.owner.first_name }} 100 Flyer in {{ meetup.city }} um Alexander Van der Bellen so zu unterstützen.</p>
       <!--<p>Wie Du weißt war das Wahlergebnis für Van der Bellen in
@@ -37,3 +42,4 @@
       </td>
     </tr>
   </table>
+{% endblock %}

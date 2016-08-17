@@ -104,6 +104,15 @@ def join_meetup(request):
                     meetup.save()
                     meetup.activist.add(user)
                     meetup.save()
+
+                    #TODO Move this code to model or communication
+                    # utils. also send out bot messages
+                    for activist in meetup.find_activists_nearby().all():
+                        NewNearMeetupMessageView(email=activist.email).send(extra_context={
+                            'recipient': activist,
+                            'meetup': meetup
+                        })
+
                 is_new = True
         else: # displaying address form
             start_time = Meetup.get_proposed_time_by_id(time_id)
@@ -144,13 +153,6 @@ def invite(request, meetup_id):
         meetup = Meetup.objects.get(uuid=meetup_id)
         if user not in meetup.activist.all():
             return HttpResponseRedirect('/join_meetup/?meetup_id={}'.format(meetup.uuid))
-
-        for activist in meetup.find_activists_nearby().all():
-            NewNearMeetupMessageView(email=activist.email).send(extra_context={
-                'recipient': activist,
-                'meetup': meetup
-            })
-
         return render(request, 'invite.html', {
                 'user': user,
                 'meetup': meetup,
