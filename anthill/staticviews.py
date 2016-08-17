@@ -4,7 +4,7 @@ import requests
 from django.shortcuts import render, redirect, get_object_or_404
 from anthill.forms import SignupForm, CreateAddressForm, CreateRealnameForm
 from anthill.models import Activist, Meetup
-from anthill.geo import get_nearest_ortzumflyern, get_wahl_details, get_ortezumflyern
+from anthill.geo import get_ortezumflyern
 from anthill.emailviews import WelcomeMessageView, NewNearMeetupMessageView
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required

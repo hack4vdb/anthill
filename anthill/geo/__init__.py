@@ -1,7 +1,7 @@
 from anthill.geo.data.ergebnisse import ergebnisse
-from anthill.geo.data.plz_latlon import coordinates
 from anthill.geo.data.ortezumflyern import orte
 from anthill.geo.data.wahl_details import wahl_details
+from django.contrib.gis.geos import GEOSGeometry
 from geopy.distance import great_circle
 
 def get_wahlergebnis(plz):
@@ -12,33 +12,26 @@ def get_wahlergebnis(plz):
     return ergebnisse.get(int(plz), None)
 
 
-def get_coordinates(plz):
-    """
-    Returns a pair of lat/lon coordinates for the center of the PLZ.
-    When PLZ is not found, returns the center coordinates of Austria.
-    """
-    return coordinates.get(int(plz), (47.5, 14.3))
-
-
-def get_nearest_ortzumflyern(plz):
+def get_nearest_ortzumflyern(coordinates):
     """
     Returns a the nearest location for a meetup from our "cool places to
     create meetups"-file
     """
-    plz_latlon = get_coordinates(plz)
     min_idx = 0
     min = 99999
     for i in range(len(orte)):
-        ort_latlon = (orte[i]['lat'], orte[i]['lon'])
-        dist = great_circle(plz_latlon, ort_latlon).meters
+        ort_latlon = GEOSGeometry(
+            'POINT(%f %f)' %
+            (orte[i]['lon'], orte[i]['lat']), srid=4326)
+        dist = great_circle(coordinates, ort_latlon).meters
         if dist < min:
             min = dist
             min_idx = i
     return (min_idx, orte[min_idx])
 
 
-def get_wahl_details(plz):
-    location_id, location = get_nearest_ortzumflyern(plz)
+def get_wahl_details(coordinates):
+    location_id, location = get_nearest_ortzumflyern(coordinates)
     for i in range(len(wahl_details)):
         if wahl_details[i]['ort'] == location['ort']:
             return wahl_details[i]

@@ -59,10 +59,8 @@ class ActivistViewSet(viewsets.ModelViewSet):
         serializer = ActivistSerializer(data=request.data)
         if serializer.is_valid():
             activist = serializer.save()
-            coordinate = geo.get_coordinates(activist.postalcode)
-            activist.coordinate = GEOSGeometry(
-                'POINT(%f %f)' %
-                (coordinate[1], coordinate[0]), srid=4326)
+            coordinate = PostalcodeCoordinates.get_coordinates(activist.postalcode)
+            activist.coordinate = coordinate
             activist.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
