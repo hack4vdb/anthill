@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from anthill.forms import SignupForm, CreateAddressForm, CreateRealnameForm
 from anthill.models import Activist, Meetup
 from anthill.geo import get_nearest_ortzumflyern, get_wahl_details, get_ortezumflyern
-from anthill.emailviews import WelcomeMessageView
+from anthill.emailviews import WelcomeMessageView, NewNearMeetupMessageView
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from rest_framework.response import Response
@@ -144,6 +144,13 @@ def invite(request, meetup_id):
         meetup = Meetup.objects.get(uuid=meetup_id)
         if user not in meetup.activist.all():
             return HttpResponseRedirect('/join_meetup/?meetup_id={}'.format(meetup.uuid))
+
+        for activist in meetup.find_activists_nearby().all():
+            NewNearMeetupMessageView(email=activist.email).send(extra_context={
+                'recipient': activist,
+                'meetup': meetup
+            })
+
         return render(request, 'invite.html', {
                 'user': user,
                 'meetup': meetup,

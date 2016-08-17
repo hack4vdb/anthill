@@ -29,3 +29,8 @@ class GenericMessageView(TemplatedEmailMessageView):
 class WelcomeMessageView(GenericMessageView):
     subject_template_name = 'emails/welcome/subject.txt'
     body_template_name = 'emails/welcome/body.html'
+
+
+class NewNearMeetupMessageView(GenericMessageView):
+    subject_template_name = 'emails/1_new_meetup_1person/subject.txt'
+    body_template_name = 'emails/1_new_meetup_1person/body.html'

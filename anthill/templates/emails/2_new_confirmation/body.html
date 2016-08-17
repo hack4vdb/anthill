@@ -2,7 +2,7 @@
   <tr>
     <td>
       <p>{{ recipient.first_name }} —</p>
-      <p>eben hat {{ firstParticipant.first_name }} für die Verteilaktion am {{ meetup.datetime|date:"j. F" }} in {{ meetup.municipal }} zugesagt. Die Beiden brauchen dringend Deine Unterstützung.</p>
+      <p>eben hat {{ firstParticipant.first_name }} für die Verteilaktion am {{ meetup.datetime|date:"j. F" }} in {{ meetup.city }} zugesagt. Die Beiden brauchen dringend Deine Unterstützung.</p>
       <p>Sag auch Du jetzt zu und werdet gemeinsam aktiv!</p>
       <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
         <tbody>
@@ -23,7 +23,7 @@
         {{ meetup.datetime|date:"j. F" }}<br />
         {{ meetup.datetime|time }} (pünktlich)<br />
         {{ meetup.street }} {{ meetup.house_number }}<br />
-        {{ meetup.municipal }} <br />
+        {{ meetup.city }} <br />
       </p>
       
       <p>Danke, {{ recipient.first_name }}! Nur gemeinsam können wir am 2. Oktober erfolgreich sein.<br />

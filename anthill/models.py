@@ -11,6 +11,9 @@ from rest_framework.exceptions import ValidationError
 from anthill import geo
 
 
+DISTANCE_LIMIT_METERS = 40000  # todo: check if this is really meters
+
+
 class Activist(models.Model):
     uuid = models.UUIDField(unique=True, default=uuid.uuid4, editable=False)
     # Anrede (Herr, Frau, Keine Angabe)
@@ -193,7 +196,6 @@ class Meetup(models.Model):
     @staticmethod
     def find_meetups_by_geo(geo):
         try:
-            DISTANCE_LIMIT_METERS = 40000  # todo: check if this is really meters
             coordinate = geo
             data = Meetup.objects.filter(
                 coordinate__distance_lt=(
@@ -221,6 +223,15 @@ class Meetup(models.Model):
             coordinate=(location['lat'], location['lon'])
         )
         return potential_meetup, location_id
+
+    def find_activists_nearby(self):
+        """Returns activists nearby that arent't part of this meetup"""
+        try:
+            data = Activist.objects.filter(coordinate__distance_lt=(self.coordinate, Distance(m=DISTANCE_LIMIT_METERS)))
+            data = data.exclude(meetups=self)
+            return data
+        except ValueError as e:
+            return []
 
 
 class InterestingPlaces(models.Model):
