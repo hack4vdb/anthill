@@ -14,7 +14,10 @@ footer .title {
 }
 footer .title {
   font-size: 3rem;
-  padding-top: .9rem;
+}
+.page h2:first-child {
+  margin-top: 1rem;
+  font-size: 3.8rem;
 }
 h3 {
   line-height: 1.1em;
@@ -46,9 +49,15 @@ footer p {
 }
 footer .title {
   float: right;
-  margin-right: 5rem;
-  margin-top: 1rem;
+  margin: 0 0 2rem;
   color: #aaa;
+}
+@media (min-width: 550px) {
+  footer .title {
+    margin-top: 1.9rem;
+    margin-right: 5rem;
+    padding-top: .9rem;
+  }
 }
 
 #first-viewport {
@@ -105,15 +114,6 @@ body.home .final-call .container {
   height: 100%;
   z-index: 2;
 }
-
-/* add spacing after final-call container on mobile layout */
-/* width taken from skeleton.css */
-@media (max-width: 400px) {
-  body.home .final-call .container {
-    margin-bottom: 3rem;
-  }
-}
-
 
 body.home .big-photo {
   position: absolute;
@@ -216,10 +216,26 @@ body.home #signup-bubble {
   margin-top: 14rem;
   background: #fff;
   border-radius: 5px;
-  padding: 3rem 4rem 1.6rem;
+  padding: 2rem 2.1rem 0;
   font-size: 2.2rem;
   box-shadow: rgba(0,0,0,.6) 0 0 2em;
-  min-width: 330px;
+  line-height: 1.4em;
+}
+body.home #signup-bubble h2 {
+  font-size: 3.2rem;
+}
+@media (min-width: 550px) {
+  body.home #signup-bubble {
+    padding: 3rem 4rem 1.6rem;
+  }
+  body.home #signup-bubble h2 {
+    font-size: 4rem;
+  }
+}
+
+body.home #signup-bubble form,
+body.home #signup-bubble-2 form {
+  margin-bottom: 0;
 }
 body.home #signup-bubble p {
   font-size: .85em;
@@ -231,13 +247,22 @@ body.home #signup-bubble-2 {
   background: #fff;
   border-radius: 5px;
   font-size: 1.8rem;
-  padding: 4rem 4rem 1.2rem;
+  padding: 2rem 2.1rem 0;
   margin-top: 2rem;
+  line-height: 1.4em;
 }
 body.home #signup-bubble-2 h2 {
-  font-size: 3.8rem;
+  font-size: 2.7rem;
   line-height: 1.1em;
   margin-bottom: 1.2rem;
+}
+@media (min-width: 550px) {
+  body.home #signup-bubble-2 {
+    padding: 4rem 4rem 1.2rem;    
+  }
+  body.home #signup-bubble-2 h2 {
+    font-size: 3.8rem;
+  }
 }
 
 body.home hr {
@@ -252,6 +277,14 @@ body.home #signup-bubble-2 button[type="submit"] {
   background: #ffde00;
   max-width: 100%;
   white-space: normal;
+  line-height: 1.2em;
+  margin-bottom: 2rem;
+}
+@media (max-width: 375px) {
+  body.home #signup-bubble button[type="submit"] {
+    font-size: .83em;
+    width: 100%;
+  }
 }
 
 body.home p.loginDivider {
@@ -271,17 +304,46 @@ body.home #second-viewport footer {
 }
 
 body.home .explainer {
+  padding: 3rem 0 0 0;
   background-color: #ffde00;
-  padding: 10rem 0 0 0;
+}
+@media (min-width: 550px) {
+  body.home .explainer {
+    padding: 10rem 0 0 0;
+  }
 }
 body.home .explainer .icon {
   text-align: center;
-  padding-top: 2em;
 }
-body.home .explainer .fa-5x {
-  font-size: 10em;
+@media (max-width: 550px) {
+  body.home .explainer .icon {
+    float: right;
+    width: 15%;
+    margin: .8rem 0 0 0;
+    opacity: .2;
+    padding: 0;
+  }
+  body.home .explainer .text {
+    float: left;
+    width: 85%;
+    margin: 0;
+    left: 0;
+  }
+}
+@media (min-width: 550px) {
+  body.home .explainer .icon {
+    padding-top: 2em;
+  }
 }
 
+body.home .explainer .fa-5x {
+  font-size: 3em;
+}
+@media (min-width: 550px) {
+  body.home .explainer .fa-5x {
+    font-size: 10em;
+  }
+}
 body.meetups .coach.full-width-container {
   background-color: #ffde00;
   margin-bottom: 3rem;
