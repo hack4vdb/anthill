@@ -369,7 +369,7 @@ body.meetups li.meetup p,
 body.meetups li.meetup h3 {
   margin-bottom: 0;
 }
-body.meetups li.meetup i.fa {
+.info i.fa {
   width: 2rem;
   text-align: center;
 }
@@ -536,6 +536,15 @@ body .titlebar .map-overlay h3 {
 body.invite .fa-flag {
   text-shadow: 4px 3px 0 #ffde00,7px 6px 0 rgba(0,0,0,0.15);
   margin-right: .5em;
+}
+
+body.invite .info {
+  border-left: 2px dotted #000;
+  padding-left: 2rem;
+  margin-top: 2rem;
+}
+body.invite .status p {
+  margin: 0;
 }
 
 

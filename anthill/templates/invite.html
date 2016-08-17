@@ -6,35 +6,36 @@
   <div class="container">
 		<div class="row">
       <div class="two-thirds column">
-		  <h3><i class="fa fa-flag" aria-hidden="true"></i> {{ user.first_name }} wird aktiv.</h3>
+		    <h3><i class="fa fa-flag" aria-hidden="true"></i> {{ user.first_name }} wird aktiv.</h3>
+
+        <!--p>
+          <strong>Danke, dass du dabei bist.</strong> Hier findest du einen Leitfaden für Straßenaktionen. Keine Sorge – alles ganz easy.
+        </p-->
+        <!-- else -->
+          <!--h3><i class="fa fa-flag" aria-hidden="true"></i> Du bist dabei!</h3-->
+        <!-- endif -->
+
+        <p>
+          {% if is_new %}
+            Bisher fehlen leider noch einige fixe Zusagen.<br />
+          {% else %}
+            <i class="fa fa-user" aria-hidden="true"></i>
+            {% if not meetup.is_viable %}
+              <strong><!-- todo name -->{{ other_people_string }}</strong> hat auch schon zugesagt und wird
+            {% else %}
+              <strong><!-- todo name -->{{ other_people_string }}</strong> haben auch schon zugesagt und werden
+            {% endif %}
+            Flyer und Material mitbringen.<br />
+          {% endif %}
+          {% if not is_viable %}
+            Lade unbedingt noch Leute ein, damit diese Aktion Spaß macht und ein Erfolg wird!
+          {% endif %}
+        </p>
       </div>
       <div class="one-third column">
-        .
+        {% include "_meetup_minimal.html" %}
       </div>
     </div>
-		<!--p>
-			<strong>Danke, dass du dabei bist.</strong> Hier findest du einen Leitfaden für Straßenaktionen. Keine Sorge – alles ganz easy.
-		</p-->
-		<!-- else -->
-			<!--h3><i class="fa fa-flag" aria-hidden="true"></i> Du bist dabei!</h3-->
-		<!-- endif -->
-
-		<p>
-			{% if is_new %}
-				Bisher fehlen leider noch einige fixe Zusagen.
-			{% else %}
-				<i class="fa fa-user" aria-hidden="true"></i>
-				{% if not meetup.is_viable %}
-          <strong><!-- todo name -->{{ other_people_string }}</strong> hat auch schon zugesagt und wird
-				{% else %}
-					<strong><!-- todo name -->{{ other_people_string }}</strong> haben auch schon zugesagt und werden
-				{% endif %}
-				Flyer und Material mitbringen.<br />
-			{% endif %}
-			{% if not is_viable %}
-				Lade unbedingt noch Leute ein, damit diese Aktion Spaß macht und ein Erfolg wird!
-			{% endif %}
-		</p>
   </div>
 
 </div>

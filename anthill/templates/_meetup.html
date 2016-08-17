@@ -6,12 +6,12 @@
     <div class="info">
       <h3>{{ date|date:"l j.n. H:i" }}</h3>
       <p class="meetup_city"><i class="fa fa-map-marker" aria-hidden="true"></i> 
-        {{ meetup.postalcode }}{{ meetup.city }}</p>
+        <!--{{ meetup.postalcode }} -->{{ meetup.city }}</p>
       <p class="meetup_street"><i class="fa fa-crosshairs" aria-hidden="true"></i> 
         {{ meetup.street }}</p>
       
       {% if meetup.title %}
-      <p class="meetup_hour"><i class="fa fa-calendar" aria-hidden="true"></i> 
+      <p class="meetup_title"><i class="fa fa-calendar" aria-hidden="true"></i> 
         {{ meetup.title }}</p>
       {% endif %}
 
