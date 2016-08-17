@@ -24,73 +24,15 @@
 
   <ul class="row meetup_list">
     {% for meetup in meetups %}
-    <li class="meetup one-third column offset-by-{% if meetup_count == 1 %}one-third{% elif meetup_count == 2 %}two{% endif %}">
+ 
+      {% include "_meetup.html" with type='real' date=meetup.datetime %}
 
-        <div class="map" style="background-image:url(https://maps.googleapis.com/maps/api/staticmap?center={{ meetup.street|urlencode }},{{ meetup.city|urlencode }},Austria&markers=color:red%7C{{ meetup.street|urlencode }},{{ meetup.city|urlencode }},Austria&zoom=15&size=500x200&key=AIzaSyANphiyaXrFh_146PzRNbNGTozPv7Meibw)">
-          &nbsp;
-        </div>
-        <div class="info">
-          <h3>{{ meetup.datetime|date:"l j.n. H:i" }}</h3>
-          <p class="meetup_city"><i class="fa fa-map-marker" aria-hidden="true"></i> 
-            {{ meetup.city }}</p>
-          <p class="meetup_street"><i class="fa fa-crosshairs" aria-hidden="true"></i> 
-            {{ meetup.street }}</p>
-          
-          {% if meetup.title != None %}
-          <p class="meetup_hour"><i class="fa fa-calendar" aria-hidden="true"></i> 
-            {{ meetup.title }}</p>
-          {% endif %}
-
-          {% if meetup.wahl_details != None %}
-            {% if meetup.wahl_details.swingstate %}
-              <p class="meetup_funfact"><i class="fa fa-fire" aria-hidden="true"></i> Es geht um was! Hier war’s knapp - können wir den Bezirk für uns gewinnen?</p>
-            {% elif meetup.wahl_details.neutral_ground %}
-              <p class="meetup_funfact"><i class="fa fa-fire" aria-hidden="true"></i> Achtung, Unentschlossene: Hier gab es im 1. Wahlgang viele WählerInnen dritter KandidatInnen</p>
-            {% elif meetup.wahl_details.wenigwahler %}
-              <p class="meetup_funfact"><i class="fa fa-fire" aria-hidden="true"></i> Mobilisieren wir: Hier gab es viele NichtwählerInnen</p>
-            {% endif %}
-          {% endif %}
-          <!--<p>wahl: {{ meetup.wahl_details }}</p>-->
-          <p class="meetup_type"><i class="fa fa-tag" aria-hidden="true"></i> <a href="#">Straßenaktion</a></p>
-        </div>
-        <div class="join">
-          {% if user not in meetup.activist.all %}
-            <a class="button" href="{% url 'join_meetup' %}?meetup_id={{ meetup.uuid }}">Ich bin dabei</a>
-          {% else %}
-            <p class="attending"><i class="fa fa-check-circle" aria-hidden="true"></i>
- Hier mach ich mit</p>
-          {% endif %}
-        </div>
-
-    </li>
     {% empty %}
-      {% for start_time, end_time in potential_meetup.proposed_times %}
-      <li class="meetup four columns">
-        <div class="map" style="background-image:url(https://maps.googleapis.com/maps/api/staticmap?center={{ potential_meetup.street|urlencode }},{{ potential_meetup.city|urlencode }},Austria&markers=color:red%7C{{ potential_meetup.street|urlencode }},{{ potential_meetup.city|urlencode }},Austria&zoom=15&size=500x200&key=AIzaSyANphiyaXrFh_146PzRNbNGTozPv7Meibw)">
-          &nbsp;
-        </div>
-        <div class="info">
-          <h3>{{ start_time|date:"l j.n. H:i" }}</h3>
-          <p class="meetup_city"><i class="fa fa-map-marker" aria-hidden="true"></i> {{ potential_meetup.city }}</p>
-          <p class="meetup_location"><i class="fa fa-crosshairs" aria-hidden="true"></i> {{ potential_meetup.street }}</p>
-          <!--p class="meetup_date"><i class="fa fa-clock-o" aria-hidden="true"></i> {{ potential_meetup.datetime }}</p-->
-          {% if potential_meetup.wahl_details != None %}
-            {% if potential_meetup.wahl_details.swingstate %}
-              <p class="meetup_funfact"><i class="fa fa-fire" aria-hidden="true"></i> Es geht um was! Hier war’s knapp - können wir den Bezirk für uns gewinnen?</p>
-            {% elif potential_meetup.wahl_details.neutral_ground %}
-              <p class="meetup_funfact"><i class="fa fa-fire" aria-hidden="true"></i> Achtung, Unentschlossene! Hier gab es im 1. Wahlgang viele WählerInnen dritter KandidatInnen.</p>
-            {% elif potential_meetup.wahl_details.wenigwahler %}
-              <p class="meetup_funfact"><i class="fa fa-fire" aria-hidden="true"></i> Mobilisieren wir: Hier gab es viele NichtwählerInnen!</p>
-            {% endif %}
-          {% endif %}
 
-          <p class="meetup_type"><i class="fa fa-tag" aria-hidden="true"></i> <a href="#">Straßenaktion</a></p>
-        </div>
-        <div class="join">
-          <a class="button" href="{% url 'join_meetup' %}?time_id={{ forloop.counter0 | urlencode }}&location_id={{ potential_meetup_id | urlencode }}">Ich bin dabei</a>
-        </div>
-      </li>
+      {% for start_time, end_time in potential_meetup.proposed_times %}
+        {% include "_meetup.html" with type='potential' meetup=potential_meetup date=start_time %}
       {% endfor %}
+
     {% endfor %}
     <!--p>
       You are user {{ user.uuid }} with email {{ user.email }} in PLZ {{ user.postalcode }}
