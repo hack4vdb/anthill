@@ -10,6 +10,7 @@ footer .title {
   font-size: 4rem;
   font-family: 'Caveat Brush';
   letter-spacing: -.05em;
+  white-space: nowrap;
 }
 h3 {
   line-height: 1.1em;
