@@ -27,10 +27,12 @@
           inputPostcode.style.width = 0;
           inputPostcode.style.padding = 0;
           inputPostcode.style.border = 0;
-          inputPostcode.required = false;
           setTimeout(function() {
             inputEmail.style.width = '100%';
           }, 100);
+          setTimeout(function() {
+            inputPostcode.value = '9999'; // fake entry to bypass serverside form validation
+          }, 400);
           toggleLink.innerText = "Doch neu anmelden?";
         } else {
           inputEmail.style.width = '67%';
@@ -38,7 +40,7 @@
             inputPostcode.style.width = '30%';
             inputPostcode.style.padding = '6px 10px';
             inputPostcode.style.border = '1px solid #D1D1D1';
-            inputPostcode.required = true;
+            inputPostcode.value = '';
           }, 100);
           toggleLink.innerText = "Doch neu anmelden?";
         }
