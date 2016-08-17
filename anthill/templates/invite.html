@@ -2,6 +2,7 @@
 {% block body_class %}invite{% endblock %}
 
 {% block content %}
+
 <div class="full-width-container status">
   <div class="container">
 		<div class="row">
@@ -51,11 +52,26 @@
   <button class="button-primary"><i class="fa fa-twitter" aria-hidden="true"></i></button>
   <button class="button-primary"><i class="fa fa-envelope" aria-hidden="true"></i></button>
 
-  <input type="text" value="{{ invite_url }}" style="min-width:30%" /><button><i class="fa fa-clipboard" aria-hidden="true"></i></button>
+  <input id="invite-url"type="text" value="{{ invite_url }}" style="min-width:30%" />
+  <button class="clipboard" data-clipboard-target="#invite-url"><i class="fa fa-clipboard" aria-hidden="true"></i></button>
+  <div id="clipboard-msg"></div>
 
   <p>
     <br /><br />
     <a href="{% url 'thankyou' meetup_id=meetup.uuid %}">Überspringen &raquo;</a>
   </p>
+
 </div>
+<script type="text/javascript">
+  var c = new Clipboard('.clipboard');
+  var m = document.getElementById('clipboard-msg');
+  c.on('success', function(e) {
+    m.innerText = 'Link wurde in die Zwischenablage kopiert.'
+    //e.clearSelection();
+  });
+
+  clipboard.on('error', function(e) {
+    m.innerText = 'Bitte manuell kopieren'
+  });
+</script>
 {% endblock %}
