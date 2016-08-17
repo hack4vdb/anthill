@@ -13,7 +13,7 @@
   <div class="container">
     <div class="row">
       <div id="signup-bubble" class="one-half column offset-by-six">
-        <h2><!--Ich will, dass Van der Bellen gewinnt.-->Van der Bellen muss gewinnen.</h2>
+        <h2>Van der Bellen muss gewinnen.</h2>
         <p>Ich bin bereit, mich vor Ort gemeinsam mit anderen einzubringen. Weil's um was geht.</p>
 
         <form action="" method="POST">
@@ -26,8 +26,9 @@
           {{ form.email.errors }}
           {{ form.postcode.errors }}
           <button type="submit" class="event-button">
-            <!--Was kann ich tun?-->Zeige, was ich tun kann ➜
+            Zeige, was ich tun kann ➜
           </button>
+          <a href="#" id="returning" onclick="return loginForm()">Schon hier gewesen? Log dich ein</a>
         </form>
 
         <!--hr />
