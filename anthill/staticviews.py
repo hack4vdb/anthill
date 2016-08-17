@@ -38,7 +38,7 @@ def home(request):
                     'user': activist,
                 })
 
-                return redirect('meetups')
+                return redirect(request.GET.get('next', 'meetups'))
             else:
                 # todo: resend login email
                 return redirect('register_failed')
@@ -141,15 +141,18 @@ def join_meetup(request):
 def invite(request, meetup_id):
     user = request.user
     try:
-        meetup = Meetup.objects.get(uuid=meetup_id, activist=user)
+        meetup = Meetup.objects.get(uuid=meetup_id)
+        if user not in meetup.activist.all():
+            return HttpResponseRedirect('/join_meetup/?meetup_id={}'.format(meetup.uuid))
+        return render(request, 'invite.html', {
+                'user': user,
+                'meetup': meetup,
+                'other_people_string': meetup.other_people_string(user),
+                'invite_url': request.build_absolute_uri(),
+                'is_new': meetup.activist.count() < 2
+        })
     except Meetup.DoesNotExist:
         return redirect('meetups')
-    return render(request, 'invite.html', {
-            'user': user,
-            'meetup': meetup,
-            'other_people_string': meetup.other_people_string(user),
-            'is_new': meetup.activist.count() < 2
-    })
 
 
 def join_meetup_bot(request, meetupid, signeddata):
