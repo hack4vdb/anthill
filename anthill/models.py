@@ -241,6 +241,25 @@ class Meetup(models.Model):
             return []
 
 
+class PostalcodeCoordinates(models.Model):
+    postalcode = models.IntegerField(unique=True)  # PLZ (4-digit)
+    coordinate = models.PointField()
+    city = models.CharField(max_length=500, null=True, blank=True)  # Ort
+    state = models.CharField(max_length=500, null=True, blank=True)  # Bundesland
+    valid_from = models.DateField(null=True, blank=True)
+    valid_until = models.DateField(null=True, blank=True)
+    type = models.CharField(max_length=300, null=True, blank=True)
+    internal = models.CharField(max_length=300, null=True, blank=True)
+    addressable = models.BooleanField()
+    mailbox = models.BooleanField()
+    importance = models.FloatField(null=True, blank=True)
+
+    def __str__(self):
+        return self.__unicode__()
+
+    def __unicode__(self):
+        return self.postalcode
+
 class InterestingPlaces(models.Model):
     title = models.CharField(max_length=1000)
     postalcode = models.IntegerField()  # PLZ (4-digit)
