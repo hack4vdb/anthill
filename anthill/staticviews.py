@@ -41,7 +41,7 @@ def home(request):
                 return redirect(request.GET.get('next', 'meetups'))
             else:
                 # todo: resend login email
-                return redirect('register_failed')
+                return redirect('login')
     else:
         form = SignupForm()
     if request.user.is_authenticated:
@@ -49,8 +49,8 @@ def home(request):
     return render(request, 'home.html', {'form': form})
 
 
-def register_failed(request):
-    return render(request, 'register_failed.html', {})
+def login(request):
+    return render(request, 'login.html', {})
 
 
 def login_with_uuid(request, userid):

@@ -39,7 +39,7 @@ apiRouter.register(
 urlpatterns = [
     url(r'^$', staticviews.home, name='home'),
 
-    url(r'^registerfailed/$', staticviews.register_failed, name='register_failed'),
+    url(r'^login/$', staticviews.login, name='login'),
     url(r'^login/(?P<userid>[\d\w-]+)/$', staticviews.login_with_uuid, name='login_with_uuid'),
     url(r'^check_mail/$', staticviews.check_mail, name='check_mail'),
     url(r'^meetups/$', staticviews.meetups, name='meetups'),
