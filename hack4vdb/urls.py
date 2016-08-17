@@ -20,6 +20,8 @@ from django.contrib import admin
 from anthill import views
 from anthill import staticviews
 
+from mailviews.previews import autodiscover, site
+
 apiRouter = routers.DefaultRouter()
 #apiRouter.register(r'users', views.UserViewSet)
 #apiRouter.register(r'groups', views.GroupViewSet)
@@ -29,6 +31,8 @@ apiRouter.register(
     r'meetupsnearactivist',
     views.MeetupNearActivistViewSet,
     base_name='meetupsnearactivist')
+
+autodiscover()
 
 urlpatterns = [
     url(r'^$', staticviews.home, name='home'),
@@ -53,4 +57,6 @@ urlpatterns = [
     url(r'^api/interestingplaces/(?P<id>[\d\w-]+)/', views.interesting_places, name='interesting_places'),
     url(r'^api/potentialmeetups/(?P<user_bot_id>[\d\w-]+)/', views.potential_meetups, name='potential_meetups'),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+
+    url(regex=r'^emails/', view=site.urls),
 ]
