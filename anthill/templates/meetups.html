@@ -57,7 +57,8 @@
           {% if user not in meetup.activist.all %}
             <a class="button" href="{% url 'join_meetup' %}?meetup_id={{ meetup.uuid }}">Ich bin dabei</a>
           {% else %}
-            <p>✔ Hier mach ich mit</p>
+            <p class="attending"><i class="fa fa-check-circle" aria-hidden="true"></i>
+ Hier mach ich mit</p>
           {% endif %}
         </div>
 

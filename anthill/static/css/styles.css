@@ -375,6 +375,9 @@ body.meetups li.meetup i.fa {
 }
 body.meetups .join {
   line-height: 1.8em;
+  margin-top: 1.5rem;
+}
+body.meetups .join a.button {
   margin-bottom: 1rem;
 }
 
@@ -450,7 +453,13 @@ body.meetups .meetup_list .map {
 }
 
 body.meetups .meetup_list .info {
-  padding: 1.5rem;
+  padding: 1.5rem 1.5rem 0 1.5rem;
+}
+body.meetups .meetup_list .join .attending {
+  background: #cef;
+  padding: 1rem 1.5rem;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
 }
 
 body.meetups .meetup {
