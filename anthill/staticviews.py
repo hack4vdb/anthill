@@ -215,6 +215,10 @@ def thankyou(request, meetup_id):
     return render(request, 'thankyou.html')
 
 
+def instructions(request):
+    return render(request, 'instructions.html')
+
+
 def join_first_event(request):
     return render(request, 'joinFirstEvent.html')
 

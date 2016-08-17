@@ -43,6 +43,7 @@ urlpatterns = [
     url(r'^login/(?P<userid>[\d\w-]+)/$', staticviews.login_with_uuid, name='login_with_uuid'),
     url(r'^check_mail/$', staticviews.check_mail, name='check_mail'),
     url(r'^meetups/$', staticviews.meetups, name='meetups'),
+    url(r'^howto/?$', staticviews.instructions, name='instructions'),
     url(r'^invite/(?P<meetup_id>.+)/?$', staticviews.invite, name='invite'),
     url(r'^thankyou/(?P<meetup_id>.+)/?$', staticviews.thankyou, name='thankyou'),
     url(r'^join_meetup/$', staticviews.join_meetup, name='join_meetup'),

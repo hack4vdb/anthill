@@ -12,6 +12,10 @@ footer .title {
   letter-spacing: -.05em;
   white-space: nowrap;
 }
+footer .title {
+  font-size: 3rem;
+  padding-top: .9rem;
+}
 h3 {
   line-height: 1.1em;
 }
@@ -24,7 +28,8 @@ header .bpw {
   font-weight: bold;
 }
 footer {
-  font-size: .9em;
+  font-size: .8em;
+  line-height: 1.3em;
   /*margin-top: 1rem;*/
   border-top: 1px #eee solid;
   color: #999;
@@ -276,7 +281,6 @@ body.home .explainer .icon {
 body.home .explainer .fa-5x {
   font-size: 10em;
 }
-
 
 body.meetups .coach.full-width-container {
   background-color: #ffde00;
