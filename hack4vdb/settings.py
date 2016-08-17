@@ -127,7 +127,9 @@ USE_L10N = True
 USE_TZ = True
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# set EMAIL_HOST, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD in settings_local.py
 
 LOGIN_URL = '/'
 LOGIN_REDIRECT_URL = '/events'
