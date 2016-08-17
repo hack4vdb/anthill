@@ -443,6 +443,9 @@ body.meetups .attending .button {
   }
 }
 
+body.meetups ul.meetup_list {
+  margin-bottom: 0;
+}
 body.meetups .meetup_list p {
   margin: .3em 0;
   line-height: 1.4em;
@@ -477,6 +480,36 @@ body.meetups .meetup {
 body.meetups .meetup:hover {
   background: #fafafa;
   border-color: #bbb;
+}
+
+
+body.meetups .donate {
+  background-color: #eee; 
+  padding: 2rem 0;
+  text-align: center;
+}
+body.meetups .donate h4 {
+  margin-bottom: .2em;
+}
+body.meetups ul.amounts {
+  list-style: none;
+  width: 16em;
+  margin: 0 auto;
+}
+body.meetups ul.amounts li {
+  float: left;
+}
+body.meetups ul.amounts li a {
+  background: #ffde00;
+  padding: .5em 1em;
+  color: #000;
+  margin-right: .3em;
+  text-decoration: none;
+  font-size: 2rem;
+}
+body.meetups ul.amounts li a:hover {
+  background: #000;
+  color: #fff;
 }
 
 .titlebar .container > h3 {
