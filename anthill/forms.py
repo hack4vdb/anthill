@@ -59,10 +59,11 @@ class CreateAddressForm(forms.ModelForm):
     city = forms.CharField(label='Stadt', required=True, error_messages={
                            'required': 'Bitte geben Sie Ihre Stadt an.'}, widget=forms.TextInput(attrs={'class': "u-full-width"}))
     phone = forms.CharField(
-        label='Telefonnummer (als Ansprechpartner_in für die Verteilaktion',
+        label='Telefonnummer',
+        help_text='Diese müssen wir den anderen Teilnehmenden weitergeben für den Fall, dass die dich vor Ort nicht finden oder etwas dazwischenkommt.',
         required=True,
         error_messages={
-            'required': 'Bitte geben Sie Ihre Telefonnummer an.'},
+            'required': 'Sorry, ohne Telefonnummer geht’s nicht.'},
         widget=forms.TextInput(attrs={'class': "u-full-width"}))
     location_id = forms.CharField(required=False, widget=forms.HiddenInput())
     meetup_id = forms.CharField(required=False, widget=forms.HiddenInput())

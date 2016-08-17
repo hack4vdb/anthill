@@ -53,6 +53,7 @@
           </div>
         </div>
         <label for="exampleMessage">{{ form.phone.label }}</label>
+        <p class="help">{{ form.phone.help_text }}</p>
         {{ form.phone }}
         {{ form.phone.errors }}
         <br />
@@ -67,7 +68,7 @@
     </div>
   </div>
 </div>
-<div class="full-width-container map" style="background-image:url(https://maps.googleapis.com/maps/api/staticmap?center={{ city|urlencode }},Austria&zoom=13&size=640x200&key=AIzaSyANphiyaXrFh_146PzRNbNGTozPv7Meibw)">
+<div class="full-width-container map" style="background-image:url(https://maps.googleapis.com/maps/api/staticmap?center={{ city|urlencode }},Austria&zoom=10&size=640x200&key=AIzaSyANphiyaXrFh_146PzRNbNGTozPv7Meibw)">
   <div class="map-overlay"></div>
 </div>
 {% endblock %}

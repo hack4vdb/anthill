@@ -138,7 +138,8 @@ def join_meetup(request):
                 return render(request, 'name_form.html', {
                     'user': user,
                     'form': form,
-                    'meetup': meetup,
+                    'city': meetup.city,
+                    'meetup': meetup
                 })
         except Meetup.DoesNotExist:
             return redirect('meetups')
