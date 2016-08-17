@@ -36,10 +36,8 @@ class Activist(models.Model):
     @classmethod
     def create(cls, email, postalcode):
         activist = cls(email=email, postalcode=postalcode)
-        coordinate = geo.get_coordinates(activist.postalcode)
-        activist.coordinate = GEOSGeometry(
-            'POINT(%f %f)' %
-            (coordinate[1], coordinate[0]), srid=4326)
+        coordinate = PostalcodeCoordinates.get_coordinates(activist.postalcode)
+        activist.coordinate = coordinate
         return activist
 
     @property
@@ -117,7 +115,8 @@ class Meetup(models.Model):
 
     @property
     def wahl_details(self):
-        return geo.get_wahl_details(self.postalcode)
+        coordinates = PostalcodeCoordinates.get_coordinates(self.postalcode)
+        return geo.get_wahl_details(coordinates)
 
     @classmethod
     def create(cls, title, postalcode, city, street, house_number,
@@ -126,10 +125,8 @@ class Meetup(models.Model):
                      street=street, house_number=house_number,
                      datetime=datetime)
         if coordinate is None:
-            coordinate = geo.get_coordinates(postalcode)
-        meetup.coordinate = GEOSGeometry(
-            'POINT(%f %f)' %
-            (coordinate[1], coordinate[0]), srid=4326)
+            coordinate = PostalcodeCoordinates.get_coordinates(postalcode)
+        meetup.coordinate = coordinate
         return meetup
 
     @classmethod
@@ -220,14 +217,19 @@ class Meetup(models.Model):
 
     @staticmethod
     def potential_meetup(postalcode):
-        location_id, location = geo.get_nearest_ortzumflyern(postalcode)
+        coordinates = PostalcodeCoordinates.get_coordinates(postalcode)
+        location_id, location = geo.get_nearest_ortzumflyern(coordinates)
+        if not location:
+            return None
         potential_meetup = Meetup.create(
             title='', #"{} für VdB".format(location['ort']),
             postalcode=location['plz'],
             city=location['ort'],
             street=location['treffpunkt'],
             house_number='',
-            coordinate=(location['lat'], location['lon'])
+            coordinate=GEOSGeometry(
+                'POINT(%f %f)' %
+                (location['lon'], location['lat']), srid=4326)
         )
         return potential_meetup, location_id
 
@@ -253,6 +255,13 @@ class PostalcodeCoordinates(models.Model):
     addressable = models.BooleanField()
     mailbox = models.BooleanField()
     importance = models.FloatField(null=True, blank=True)
+
+    @staticmethod
+    def get_coordinates(postalcode):
+        postalcoords = PostalcodeCoordinates.objects.filter(postalcode=postalcode).first()
+        if not postalcode:
+            return GEOSGeometry('POINT(%f %f)'.format(14.3, 47.5), srid=4326)
+        return postalcoords.coordinate
 
     def __str__(self):
         return self.__unicode__()
