@@ -106,6 +106,12 @@ class Meetup(models.Model):
     def is_viable(self):
         return self.activist.count() >= 3
 
+    def is_solo(self):
+        return self.activist.count() == 1
+
+    def people_string(self):
+        return ", ".join([a.first_name for a in self.activist.all()])
+
     def other_people_string(self, user):
         return ", ".join([a.first_name for a in self.activist.all() if a != user])
 

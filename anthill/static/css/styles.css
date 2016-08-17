@@ -370,8 +370,8 @@ body.meetups li.meetup p,
 body.meetups li.meetup h3 {
   margin-bottom: 0;
 }
-.info i.fa {
-  width: 2rem;
+.info i.fa, .attending i.fa {
+  width: 2.2rem;
   text-align: center;
 }
 body.meetups .join {
@@ -433,6 +433,9 @@ body.meetups .button {
   line-height: 1em;
   padding: .7em .5em;
 }
+body.meetups .attending .button {
+  background-color: #fff;
+}
 @media (min-width: 550px) {
   body.meetups .date-join .button {
     padding-top:.3em;
@@ -458,9 +461,12 @@ body.meetups .meetup_list .info {
 }
 body.meetups .meetup_list .join .attending {
   background: #cef;
-  padding: 1rem 1.5rem;
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
+  padding: 1rem 0;
+}
+body.meetups .meetup_list .join .attending p {
+  padding: 0 1.5rem;
 }
 
 body.meetups .meetup {
