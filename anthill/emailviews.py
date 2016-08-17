@@ -17,6 +17,7 @@ class GenericMessageView(TemplatedEmailMessageView):
     def render_to_message(self, *args, **kwargs):
         assert 'to' not in kwargs  # this should only be sent to the user
         kwargs['to'] = (self.email,)
+        kwargs['from_email'] = 'VDB 4 President <noreply@weilsumwasgeht.at>'
         return super(
             GenericMessageView,
             self).render_to_message(
