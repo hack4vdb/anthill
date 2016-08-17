@@ -1,15 +1,15 @@
 {% extends "layouts/base.html" %}
-{% block body_class %}thankyou{% endblock %}
+{% block body_class %}modal thankyou{% endblock %}
 
 {% block content %}
-<div class="page">
+<div id="first-viewport">
   <div class="container">
 
     <div class="row">
       <div class="one-third column offset-by-four">
         <div class="full-width-container final">
           <div class="container">
-            <div id="final-image"></div>
+            <div id="final-image" class="biground"></div>
 
             <p>
               Dein Einsatz wird helfen, diese Wahl zu gewinnen.<br />
@@ -19,8 +19,10 @@
         </div>
       </div>
     </div>
-    <a href="/">&laquo; Zurück zum Anfang</a>
-
+    <div class="pillbtn-container">
+      <a href="/" class="pillbtn">&laquo; Zurück zum Anfang</a>
+    </div>
+    
   </div>
 </div>
 {% endblock %}
