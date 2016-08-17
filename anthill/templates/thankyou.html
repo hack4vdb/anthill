@@ -2,52 +2,23 @@
 {% block body_class %}thankyou{% endblock %}
 
 {% block content %}
-<div class="full-width-container status">
-  <div class="container">
-		<!-- if first -->
-		<h3>TODO THANKYOU</h3>
-		<!--p>
-			<strong>Danke, dass du dabei bist.</strong> Hier findest du einen Leitfaden für Straßenaktionen. Keine Sorge – alles ganz easy.
-		</p-->
-		<!-- else -->
-			<!--h3><i class="fa fa-flag" aria-hidden="true"></i> Du bist dabei!</h3-->
-		<!-- endif -->
-
-		<p>
-			{% if is_new %}
-				Bisher fehlen leider noch einige fixe Zusagen.
-			{% else %}
-				<i class="fa fa-user" aria-hidden="true"></i>
-				{% if not meetup.is_viable %}
-          <strong><!-- todo name -->{{ other_people_string }}</strong> hat auch schon zugesagt und wird
-				{% else %}
-					<strong><!-- todo name -->{{ other_people_string }}</strong> haben auch schon zugesagt und werden
-				{% endif %}
-				Flyer und Material mitbringen.<br />
-			{% endif %}
-			{% if not is_viable %}
-				Lade unbedingt noch Leute ein, damit diese Aktion Spaß macht und ein Erfolg wird!
-			{% endif %}
-		</p>
-  </div>
-
-</div>
 <div class="container">
 
-	<h3><i class="fa fa-users" aria-hidden="true"></i> Gemeinsam funktioniert’s besser.</h3>
+	<div class="row">
+		<div class="one-third column offset-by-four">
+			<div class="full-width-container final">
+			  <div class="container">
+			  	<div id="final-image"></div>
 
-  <p>
-    Denk mal nach: Welche deiner FreundInnen würden mitkommen?
-  </p>
+			  	<h3>You rock yo</h3>
+			  	<p>
+			  		You rock yo
+			  	</p>
+			  </div>
+			</div>
+	  </div>
+	</div>
+	<a href="/">&laquo; Zurück zum Anfang</a>
 
-  <button class="button-primary"><i class="fa fa-facebook" aria-hidden="true"></i></button>
-  <button class="button-primary"><i class="fa fa-twitter" aria-hidden="true"></i></button>
-  <button class="button-primary"><i class="fa fa-envelope" aria-hidden="true"></i></button>
-
-	<input type="text" value="http://weilsumwasgeht.at/3f6ba" style="min-width:30%" /><button><i class="fa fa-clipboard" aria-hidden="true"></i></button>
-
-  <p>
-    <br /><br />
-  </p>
 </div>
 {% endblock %}
