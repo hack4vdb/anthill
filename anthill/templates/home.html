@@ -3,10 +3,11 @@
 
 {% block content %}
 
-<h1>Weil's um was geht.</h1>
+<h1 onclick="switchSide()">Weil's um was geht.</h1>
 
-<div class="big-photo">
+<div id="big-photo">
   <div class="photo" style="background-image:url(/static/img/bg.jpg)"></div>
+  <div class="photo darkside" style="background-image:url(/static/img/bg2.jpg)"></div>
 </div>
 
 <div id="first-viewport">
@@ -14,7 +15,7 @@
     <div class="row">
       <div id="signup-bubble" class="one-half column offset-by-six">
         <h2>Van der Bellen muss gewinnen.</h2>
-        <p>Ich bin bereit, mich vor Ort gemeinsam mit anderen einzubringen. Weil's um was geht.</p>
+        <p>Bei dieser Wahl kann ich nicht sitzen bleiben. Ich bin bereit, aktiv zu werden. <strong>Weil's um was geht.</strong></p>
 
         <form action="" method="POST">
           {% csrf_token %}
@@ -186,5 +187,57 @@
     </div>
   </footer>
 </div>
+
+<script>
+  function loginForm() {
+    var inputPostcode = document.getElementById('inputPostalcode');
+    var inputEmail = document.getElementById('inputEmail');
+    var toggleLink = document.getElementById('returning');
+
+    if (inputPostcode.offsetWidth > 0) {
+      inputPostcode.style.width = 0;
+      inputPostcode.style.padding = 0;
+      inputPostcode.style.border = 0;
+      setTimeout(function() {
+        inputEmail.style.width = '100%';
+      }, 100);
+      setTimeout(function() {
+        inputPostcode.value = '9999'; // fake entry to bypass serverside form validation
+      }, 400);
+      toggleLink.innerText = "Doch neu anmelden?";
+    } else {
+      inputEmail.style.width = '67%';
+      setTimeout(function() {
+        inputPostcode.style.width = '30%';
+        inputPostcode.style.padding = '6px 10px';
+        inputPostcode.style.border = '1px solid #D1D1D1';
+        inputPostcode.value = '';
+      }, 100);
+      toggleLink.innerText = "Schon hier gewesen? Log dich ein";
+    }
+    inputEmail.focus();
+    return false;
+  }
+
+  function switchSide() {
+    var p = document.getElementById('big-photo');
+    var h2 = document.getElementsByTagName('h2')[0];
+    if (document.location.hash != '#darkside') {
+      p.style.backgroundColor = '#333399';
+      h2.innerText = 'Hofer darf nicht Präsident werden.';
+      document.location.hash = 'darkside';
+    } else {
+      p.style.backgroundColor = '#ffef99';
+      h2.innerText = 'Van der Bellen muss gewinnen.';
+      document.location.hash = '';
+    }
+    p.getElementsByTagName('div')[1].style.opacity = .6;
+    p.getElementsByTagName('div')[0].style.opacity = 0;
+    setTimeout(function() {
+      p.appendChild(p.getElementsByTagName('div')[0]); // move to back in dom
+    }, 550);
+  }
+  if (document.location.hash == '#darkside') switchSide(); // onload
+</script>
 
 {% endblock %}

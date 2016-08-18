@@ -17,37 +17,6 @@
 
     <script type="text/javascript" src="{% static 'js/clipboard.min.js' %}"></script>
     <script src="https://use.fontawesome.com/c0f7dc3f38.js"></script>
-    <script>
-      function loginForm() {
-        var inputPostcode = document.getElementById('inputPostalcode');
-        var inputEmail = document.getElementById('inputEmail');
-        var toggleLink = document.getElementById('returning');
-
-        if (inputPostcode.offsetWidth > 0) {
-          inputPostcode.style.width = 0;
-          inputPostcode.style.padding = 0;
-          inputPostcode.style.border = 0;
-          setTimeout(function() {
-            inputEmail.style.width = '100%';
-          }, 100);
-          setTimeout(function() {
-            inputPostcode.value = '9999'; // fake entry to bypass serverside form validation
-          }, 400);
-          toggleLink.innerText = "Doch neu anmelden?";
-        } else {
-          inputEmail.style.width = '67%';
-          setTimeout(function() {
-            inputPostcode.style.width = '30%';
-            inputPostcode.style.padding = '6px 10px';
-            inputPostcode.style.border = '1px solid #D1D1D1';
-            inputPostcode.value = '';
-          }, 100);
-          toggleLink.innerText = "Doch neu anmelden?";
-        }
-        inputEmail.focus();
-        return false;
-      }
-    </script>
   </head>
 
   <body class="{% block body_class %}{% endblock %}">
