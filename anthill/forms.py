@@ -30,7 +30,8 @@ class SignupForm(forms.Form):
             attrs={
                 'id': 'inputPostalcode',
                 'class': 'signin-input',
-                'placeholder': 'PLZ'}))
+                'placeholder': 'PLZ',
+                'autocomplete': 'off' }))
     message = forms.CharField(
         label='Ihre Nachricht',
         required=False,
