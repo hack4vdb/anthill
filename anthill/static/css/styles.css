@@ -85,6 +85,21 @@ footer .title {
 h3 {
   font-weight: bold;
 }
+h3.top {
+  margin-top: 4rem;
+  font-size: 4rem;
+}
+img.h-icon {
+  padding: 35px; 
+  margin-bottom: 0px;
+}
+@media (min-width: 550px) {
+  h3.top{ margin-top: 8rem; }
+  img.h-icon{ 
+    padding: 20px;
+    margin-bottom: -30px; 
+  }
+}
 
 
 body.home {
