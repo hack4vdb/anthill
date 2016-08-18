@@ -144,8 +144,8 @@ class Meetup(models.Model):
             house_number='',
             coordinate=GEOSGeometry(
                 'POINT(%f %f)' %
-                (loc['lat'],
-                 loc['lon']),
+                (loc['lon'],
+                 loc['lat']),
                 srid=4326),
             datetime=start_time)
 
@@ -283,7 +283,7 @@ class PostalcodeCoordinates(models.Model):
         return self.__unicode__()
 
     def __unicode__(self):
-        return self.postalcode
+        return str(self.postalcode)
 
 class InterestingPlaces(models.Model):
     title = models.CharField(max_length=1000)
