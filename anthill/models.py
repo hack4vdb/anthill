@@ -135,10 +135,7 @@ class Meetup(models.Model):
         start_time = Meetup.get_proposed_time_by_id(time_id)
         return Meetup.create(
             title='',
-            #title="{} für VdB".format(
-            #    loc['ort']),
-            postalcode=int(
-                loc['plz']),
+            postalcode=int(loc['plz']),
             city=loc['ort'],
             street=loc['treffpunkt'],
             house_number='',
