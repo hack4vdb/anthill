@@ -29,7 +29,7 @@
     </div>
     <div class="join">
       {% if type == 'potential' %}
-          <a class="button" href="{% url 'join_meetup' %}?time_id={{ forloop.counter0 | urlencode }}&location_id={{ potential_meetup_id | urlencode }}">Ich bin dabei</a>
+          <a class="button" href="{% url 'join_meetup' %}?time_id={{ time_id | urlencode }}&location_id={{ potential_meetup_id | urlencode }}">Ich bin dabei</a>
       {% else %}
         {% if user not in meetup.activist.all %}
           <a class="button" href="{% url 'join_meetup' %}?meetup_id={{ meetup.uuid }}">Ich bin dabei</a>
