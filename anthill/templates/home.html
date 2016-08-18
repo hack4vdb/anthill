@@ -6,8 +6,8 @@
 <h1 onclick="switchSide()">Weil's um was geht.</h1>
 
 <div id="big-photo">
-  <div class="photo" style="background-image:url(/static/img/bg.jpg)"></div>
-  <div class="photo darkside" style="background-image:url(/static/img/bg2.jpg)"></div>
+  <div id="bg1" class="photo" style="background-image:url(/static/img/bg.jpg)"></div>
+  <div id="bg2" class="photo darkside" style="background-image:url(/static/img/bg2.jpg)"></div>
 </div>
 
 <div id="first-viewport">
@@ -219,25 +219,27 @@
     return false;
   }
 
-  function switchSide() {
+  function switchSide(to) {
     var p = document.getElementById('big-photo');
     var h2 = document.getElementsByTagName('h2')[0];
-    if (document.location.hash != '#darkside') {
+    var bg1 = document.getElementById('bg1');
+    var bg2 = document.getElementById('bg2');
+    console.log(document.location.hash);
+    if (to == 'darkside' || document.location.hash != '#darkside') {
       p.style.backgroundColor = '#333399';
       h2.innerText = 'Hofer darf nicht Präsident werden.';
       document.location.hash = 'darkside';
+      bg2.style.opacity = .6;
+      bg1.style.opacity = 0;
     } else {
       p.style.backgroundColor = '#ffef99';
       h2.innerText = 'Van der Bellen muss gewinnen.';
       document.location.hash = '';
+      bg1.style.opacity = .6;
+      bg2.style.opacity = 0;
     }
-    p.getElementsByTagName('div')[1].style.opacity = .6;
-    p.getElementsByTagName('div')[0].style.opacity = 0;
-    setTimeout(function() {
-      p.appendChild(p.getElementsByTagName('div')[0]); // move to back in dom
-    }, 550);
   }
-  if (document.location.hash == '#darkside') switchSide(); // onload
+  if (document.location.hash == '#darkside') switchSide('darkside'); // onload
 </script>
 
 {% endblock %}
