@@ -41,7 +41,7 @@ def home(request):
                 return redirect(request.GET.get('next', 'meetups'))
             else:
                 # todo: resend login email
-                return redirect('login')
+                return redirect('login_by_email')
     else:
         form = SignupForm()
     if request.user.is_authenticated:
@@ -49,8 +49,8 @@ def home(request):
     return render(request, 'home.html', {'form': form})
 
 
-def login(request):
-    return render(request, 'login.html', {})
+def login_by_email(request):
+    return render(request, 'login_by_email.html', {})
 
 
 def login_with_uuid(request, userid):
