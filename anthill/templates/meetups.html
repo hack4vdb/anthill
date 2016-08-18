@@ -24,16 +24,20 @@
 
     <ul class="row meetup_list">
       {% for meetup in meetups %}
-   
         {% include "_meetup.html" with type='real' date=meetup.datetime %}
-
-      {% empty %}
-
-        {% for start_time, end_time in potential_meetup.proposed_times %}
-          {% include "_meetup.html" with type='potential' meetup=potential_meetup date=start_time %}
-        {% endfor %}
-
       {% endfor %}
+
+      <!-- fill up with potential meetups -->
+      {% if meetup_count < 1 %}
+        {% include "_meetup.html" with type='potential' meetup=potential_meetup date=potential_meetup.proposed_time_1 %}
+      {% endif %}
+      {% if meetup_count < 2 %}
+        {% include "_meetup.html" with type='potential' meetup=potential_meetup date=potential_meetup.proposed_time_2 %}
+      {% endif %}
+      {% if meetup_count < 3 %}
+        {% include "_meetup.html" with type='potential' meetup=potential_meetup date=potential_meetup.proposed_time_3 %}
+      {% endif %}
+
       <!--p>
         You are user {{ user.uuid }} with email {{ user.email }} in PLZ {{ user.postalcode }}
       </p>

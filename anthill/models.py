@@ -179,6 +179,22 @@ class Meetup(models.Model):
         return list(map(lambda t: (t, t + datetime.timedelta(hours=2)),
                    sorted([saturday, sunday, workday])))
 
+    # if you can refactor the following to be calleable from templates but less silly, please do
+    @staticmethod
+    def proposed_time_1():
+        start_time, end_time = Meetup.proposed_times()[0]  
+        return start_time
+
+    @staticmethod
+    def proposed_time_2():
+        start_time, end_time = Meetup.proposed_times()[1]  
+        return start_time
+
+    @staticmethod
+    def proposed_time_3():
+        start_time, end_time = Meetup.proposed_times()[2]  
+        return start_time
+
     @staticmethod
     def get_proposed_time_by_id(idx):
         idx = int(idx)
