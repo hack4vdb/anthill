@@ -131,6 +131,10 @@ USE_TZ = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # set EMAIL_HOST, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD in settings_local.py
 
+EMAIL_HOST = local.EMAIL_HOST
+EMAIL_HOST_USER = local.EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = local.EMAIL_HOST_PASSWORD
+
 LOGIN_URL = '/'
 LOGIN_REDIRECT_URL = '/events'
 
