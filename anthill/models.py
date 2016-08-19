@@ -135,17 +135,14 @@ class Meetup(models.Model):
         start_time = Meetup.get_proposed_time_by_id(time_id)
         return Meetup.create(
             title='',
-            #title="{} für VdB".format(
-            #    loc['ort']),
-            postalcode=int(
-                loc['plz']),
+            postalcode=int(loc['plz']),
             city=loc['ort'],
             street=loc['treffpunkt'],
             house_number='',
             coordinate=GEOSGeometry(
                 'POINT(%f %f)' %
-                (loc['lat'],
-                 loc['lon']),
+                (loc['lon'],
+                 loc['lat']),
                 srid=4326),
             datetime=start_time)
 
@@ -275,24 +272,18 @@ class PostalcodeCoordinates(models.Model):
     @staticmethod
     def get_coordinates(postalcode):
         postalcoords = PostalcodeCoordinates.objects.filter(postalcode=postalcode).first()
-        if not postalcode:
-            return GEOSGeometry('POINT(%f %f)'.format(14.3, 47.5), srid=4326)
+        if not postalcoords:
+            return GEOSGeometry('POINT({} {})'.format(14.3, 47.5), srid=4326)
         return postalcoords.coordinate
 
-    def __str__(self):
-        return self.__unicode__()
-
     def __unicode__(self):
-        return self.postalcode
+        return unicode(self.postalcode)
 
 class InterestingPlaces(models.Model):
     title = models.CharField(max_length=1000)
     postalcode = models.IntegerField()  # PLZ (4-digit)
     city = models.CharField(max_length=500)  # Ort
     coordinate = models.PointField()
-
-    def __str__(self):
-        return self.__unicode__()
 
     def __unicode__(self):
         return '{} {}: {}'.format(self.postalcode, self.city, self.title)

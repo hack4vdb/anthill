@@ -142,3 +142,27 @@ sudo easy_install pip;
 ```
 brew services start postgres
 ```
+
+
+## Testing emails
+
+You can use mailcatcher as a local SMTP server that displays the emails in your browser.
+
+Add this to your settings_local.py:
+
+```
+EMAIL_HOST = '127.0.0.1'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_PORT = 1026
+EMAIL_USE_TLS = False
+```
+
+Install mailcatcher version **0.5.12** (IMPORTANT! Later versions break with UTF-8 email):
+
+```
+sudo gem install mailcatcher -v 0.5.12
+```
+
+Run mailcatcher locally using `run_mailcatcher.sh` and access the inbox either via localhost:1081 or via your VM's IP and port 1081
+
