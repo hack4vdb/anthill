@@ -93,7 +93,10 @@ def join_meetup(request):
     meetup = None
 
     if meetup_id is None: # in the process of creating a meetup from suggestion
-        form = CreateAddressForm(request.POST or None, instance=user)
+        form = CreateAddressForm(request.POST or None, instance=user, initial={
+            'city': get_ortezumflyern(location_id)['ort'],
+            'plz': user.postalcode
+        })
         if request.method == 'POST': # submitting address form
             if form.is_valid():
                 form.save()  # Save activist data entered by user
