@@ -17,8 +17,7 @@
   
   <div class="row">
     <div class="six columns">
-      <p>Bitte verrate uns deinen Namen.</p>
-      <p class="help">Den Vornamen werden wir den anderen Teilnehmenden weitergeben – deinen vollen Namen jedoch nie!</p>
+      <p>Bitte verrate uns deinen Vornamen, damit wir den anderen Teilnehmenden Bescheid geben können, dass du kommst.</p>
 
       <form action="" method="POST">
         {% csrf_token %}
@@ -26,18 +25,9 @@
         {{ form.time_id }}
         {{ form.location_id }}
 
-        <div class="row">
-          <div class="one-half column">
-            <label for="exampleEmailInput">{{ form.first_name.label }}</label>
-            {{ form.first_name }}
-            {{ form.first_name.errors }}
-          </div>
-          <div class="one-half column">
-            <label for="exampleRecipientInput">{{ form.last_name.label }}</label>
-            {{ form.last_name }}
-            {{ form.last_name.errors }}            
-          </div>
-        </div>
+        <label for="exampleNameInput">{{ form.first_name.label }}</label>
+          {{ form.first_name }}
+          {{ form.first_name.errors }}
         <br />
         <button type="submit" class="button-primary u-full-width">
           Speichern
