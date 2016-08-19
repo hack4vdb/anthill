@@ -24,12 +24,20 @@ def home(request):
         if form.is_valid():
             email = form.cleaned_data['email']
             postcode = form.cleaned_data['postcode']
+            invited_by_id = form.cleaned_data['invited_by']
+            invited_to_id = form.cleaned_data['invited_to']
             # if not Activist.objects.filter(email=email).exists() and
             # len(form.cleaned_data['message']) == 0:  #honey trap was not
             # filled out
             if not Activist.objects.filter(email=email).exists() and \
                             len(form.cleaned_data['message']) == 0:  # honey trap was not filled out
                 activist = Activist.create(email=email, postalcode=postcode)
+                # todo also save invited_by for future reference (need to add to model)
+                #if invited_by_id:
+                #    try:
+                #        invited_by = Activist.objects.get(uuid=invited_by_id)
+                #    except Exception as e:
+                #        pass
                 activist.save()
                 activist = authenticate(uuid=activist.uuid)
                 login(request, activist)
@@ -38,15 +46,32 @@ def home(request):
                     'user': activist,
                 })
 
-                return redirect(request.GET.get('next', 'meetups'))
+                if invited_by_id:
+                    return HttpResponseRedirect('/meetups/?invited_by={}&invited_to={}'.format(invited_by_id, invited_to_id))
+                else:
+                    return redirect(request.GET.get('next', 'meetups'))
             else:
                 # todo: resend login email
                 return redirect('login_by_email')
     else:
-        form = SignupForm()
+        invited_by = None
+        invited_by_uuid = None
+        if request.GET.get('invited_by'):
+            try:
+                invited_by = Activist.objects.get(uuid=request.GET.get('invited_by'))
+                invited_by_uuid = invited_by.uuid
+            except Exception as e:
+                pass
+        form = SignupForm(initial={
+            'invited_by': invited_by_uuid,
+            'invited_to': request.GET.get('invited_to')
+        })
     if request.user.is_authenticated:
         return redirect('meetups')
-    return render(request, 'home.html', {'form': form})
+    return render(request, 'home.html', {
+        'invited_by': invited_by,
+        'form': form
+    })
 
 
 def login_by_email(request):
@@ -72,9 +97,24 @@ def check_mail(request):
 @login_required
 def meetups(request):
     user = request.user
+    invited_to = None
+    invited_by = None
+    if request.GET.get('invited_by'):
+        try:
+            invited_by = Activist.objects.get(uuid=request.GET.get('invited_by'))
+        except Exception as e:
+            pass
+    if request.GET.get('invited_to'):
+        try:
+            invited_to = Meetup.objects.get(uuid=request.GET.get('invited_to'))
+            # todo must also be in the future... else show a message...
+        except Exception as e:
+            pass
     meetups = user.find_meetups_nearby()[:3]
     potential_meetup, location_id = Meetup.potential_meetup(user.postalcode)
     return render(request, 'meetups.html', {
+        'invited_by': invited_by,
+        'invited_to': invited_to,
         'meetups': meetups,
         'meetup_count': len(meetups),
         'potential_meetup': potential_meetup,
@@ -137,7 +177,7 @@ def join_meetup(request):
                     with transaction.atomic():
                         meetup.activist.add(user)
                         meetup.save()
-            else: # displaying address form
+            else: # displaying name form
                 return render(request, 'name_form.html', {
                     'user': user,
                     'form': form,
@@ -157,11 +197,12 @@ def invite(request, meetup_id):
         meetup = Meetup.objects.get(uuid=meetup_id)
         if user not in meetup.activist.all():
             return HttpResponseRedirect('/join_meetup/?meetup_id={}'.format(meetup.uuid))
+        invite_url = request.scheme + '://' + request.get_host() + '?invited_by=' + str(user.uuid) + '&invited_to=' + str(meetup.uuid)
         return render(request, 'invite.html', {
                 'user': user,
                 'meetup': meetup,
                 'other_people_string': meetup.other_people_string(user),
-                'invite_url': request.build_absolute_uri(),
+                'invite_url': invite_url,
                 'is_new': meetup.activist.count() < 2
         })
     except Meetup.DoesNotExist:

@@ -12,9 +12,18 @@
         </div>
         <div class="nine columns speech-bubble">
             <h3>Willkommen im Team! &nbsp;<span style="display: inline-block; transform:rotate(4deg)">&hearts;</span></h3>
-            <p>
-              <strong>Was gerade am wichtigsten ist:</strong> Vor Ort Präsenz zeigen – so bleiben wir zum Wahlkampfauftakt im Gespräch. Welche dieser Straßenaktionen in deiner Gegend passt dir zeitlich am besten?
-            </p>
+            {% if invited_by %}
+              <p>
+                Wir sind Menschen aus der Zivilgesellschaft, die sich selbst organisieren, um sicherzustellen, dass Alexander van der Bellen Präsident wird.
+              </p>
+              <p>
+                <strong>{{ invited_by.first_name }} wird auch aktiv und lädt dich ein</strong>, bei dieser <a href="{% url 'instructions' %}">Straßenaktion</a> für Alexander van der Bellen mitzumachen. Kommst du auch?
+              </p>
+            {% else %}
+              <p>
+                <strong>Was gerade am wichtigsten ist:</strong> Vor Ort Präsenz zeigen – so bleiben wir zum Wahlkampfauftakt im Gespräch. Welche dieser von UnterstützerInnen selbst organisierten Straßenaktionen in deiner Gegend passt dir zeitlich am besten?
+              </p>
+            {% endif %}
         </div>
       </div>
     </div>
@@ -23,19 +32,29 @@
   <div class="container">
 
     <ul class="row meetup_list">
-      {% for meetup in meetups %}
-        {% include "_meetup.html" with type='real' date=meetup.datetime %}
-      {% endfor %}
+      {% if invited_to %}
 
-      <!-- fill up with potential meetups -->
-      {% if meetup_count < 1 %}
-        {% include "_meetup.html" with type='potential' meetup=potential_meetup date=potential_meetup.proposed_time_3 time_id=2 %}
-      {% endif %}
-      {% if meetup_count < 2 %}
-        {% include "_meetup.html" with type='potential' meetup=potential_meetup date=potential_meetup.proposed_time_2 time_id=1 %}
-      {% endif %}
-      {% if meetup_count < 3 %}
-        {% include "_meetup.html" with type='potential' meetup=potential_meetup date=potential_meetup.proposed_time_1 time_id=0 %}
+        <li class="placeholder one-third column"></li>
+        {% include "_meetup.html" with type='real' meetup=invited_to date=invited_to.datetime %}
+        <!-- todo "no time, show others" link -->
+
+      {% else %}
+
+        {% for meetup in meetups %}
+          {% include "_meetup.html" with type='real' date=meetup.datetime %}
+        {% endfor %}
+
+        <!-- fill up with potential meetups -->
+        {% if meetup_count < 1 %}
+          {% include "_meetup.html" with type='potential' meetup=potential_meetup date=potential_meetup.proposed_time_3 time_id=2 %}
+        {% endif %}
+        {% if meetup_count < 2 %}
+          {% include "_meetup.html" with type='potential' meetup=potential_meetup date=potential_meetup.proposed_time_2 time_id=1 %}
+        {% endif %}
+        {% if meetup_count < 3 %}
+          {% include "_meetup.html" with type='potential' meetup=potential_meetup date=potential_meetup.proposed_time_1 time_id=0 %}
+        {% endif %}
+
       {% endif %}
 
       <!--p>

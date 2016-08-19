@@ -14,14 +14,28 @@
   <div class="container">
     <div class="row">
       <div id="signup-bubble" class="one-half column offset-by-six">
-        <h2>Van der Bellen muss gewinnen.</h2>
-        <p>Bei dieser Wahl kann ich nicht sitzen bleiben. Ich bin bereit, aktiv zu werden. <strong>Weil's um was geht.</strong></p>
+        {% if invited_by %}
+          {{ invited_by.first_name }} lädt dich ein:
+          <h2>Wenn wir alle mittun, wird Van der Bellen wieder gewinnen.</h2>
+          <p>
+            Bist du bereit, mit {{ invited_by.first_name }} aktiv zu werden?
+            <strong>Weil's um was geht.</strong>
+          </p>
+        {% else %}
+          <h2>Van der Bellen muss gewinnen.</h2>
+          <p>
+            Bei dieser Wahl kann ich nicht sitzen bleiben. Ich bin bereit, aktiv zu werden.
+            <strong>Weil's um was geht.</strong>
+          </p>
+        {% endif %}
 
         <form action="" method="POST">
           {% csrf_token %}
           <div class="message">
             {{ form.message }}
           </div>
+          {{ form.invited_by }}
+          {{ form.invited_to }}
           {{ form.email }}
           {{ form.postcode }}
           {{ form.email.errors }}

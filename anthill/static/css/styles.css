@@ -439,6 +439,9 @@ body.meetups .speech-bubble {
     border-radius: 2rem;
   }
 }
+body.meetup .coach .speech-bubble p {
+  margin-bottom: .6em;
+}
 
 body.meetups .speech-bubble h3 {
   font-size: 3.5rem;
@@ -583,7 +586,11 @@ body.meetups .meetup_list .join .attending p {
   padding: 0 1.5rem;
 }
 
-body.meetups .meetup {
+body.meetups ul.meetup_list li.placeholder {
+  list-style: none;
+}
+
+body.meetups li.meetup {
   border: 1px solid #ddd;
   border-radius: 1rem;
   list-style: none;
@@ -675,13 +682,13 @@ body.address p.help {
 
 
 body.invite .full-width-container,
-body .titlebar {
+.titlebar {
   background-color: #ffde00;
   margin-bottom: 3rem;
   overflow: hidden;
   padding: 3rem 0;
 }
-body .titlebar .map-overlay h3 {
+.titlebar .map-overlay h3 {
   margin-top: 0;
 }
 body.invite .fa-flag {
@@ -689,7 +696,7 @@ body.invite .fa-flag {
   margin-right: .5em;
 }
 
-body.invite .info {
+.titlebar .info {
   border-left: 2px dotted #000;
   padding-left: 2rem;
   margin-top: 2rem;

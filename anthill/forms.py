@@ -32,13 +32,20 @@ class SignupForm(forms.Form):
                 'class': 'signin-input',
                 'placeholder': 'PLZ',
                 'autocomplete': 'off' }))
+    invited_by = forms.CharField(
+        required=False,
+        widget=forms.HiddenInput()
+    )
+    invited_to = forms.CharField(
+        required=False,
+        widget=forms.HiddenInput()
+    )
     message = forms.CharField(
         label='Ihre Nachricht',
         required=False,
         widget=forms.Textarea(
             attrs={
                 'placeholder': 'Ihre Nachricht'}))
-
 
 class CreateAddressForm(forms.ModelForm):
     first_name = forms.CharField(label='Vorname', required=True, error_messages={
