@@ -439,7 +439,7 @@ body.meetups .speech-bubble {
     border-radius: 2rem;
   }
 }
-body.meetup .coach .speech-bubble p {
+body.meetups .coach .speech-bubble p {
   margin-bottom: .6em;
 }
 

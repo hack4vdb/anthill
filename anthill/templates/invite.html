@@ -42,7 +42,7 @@
 </div>
 <div class="container">
 
-	<h3><i class="fa fa-users" aria-hidden="true"></i> Gemeinsam funktioniert’s besser.</h3>
+	<h3><i class="fa fa-users" aria-hidden="true"></i> Gemeinsam macht’s mehr Spaß.</h3>
 
   <p>
     Denk mal nach: Welche deiner FreundInnen würden mitkommen?
@@ -51,14 +51,15 @@
   <h4>Über Social Media</h4>
 
   <p>
-    <button class="button-primary"><i class="fa fa-facebook" aria-hidden="true"></i></button>
-    <button class="button-primary"><i class="fa fa-twitter" aria-hidden="true"></i></button>
+    <a class="button button-primary" id="fb-share" href="#" onclick="return popupCenter(this.href, 'fb-share', 555, 600)"><i class="fa fa-facebook" aria-hidden="true"></i> Lade Freunde per Facebook-Nachricht ein</a>
+
+    <a class="button button-primary" id="tw-share" href="#" onclick="return popupCenter(this.href, 'tw-share', 700, 300)"><i class="fa fa-twitter" aria-hidden="true"></i> Lade Freunde per Tweet ein</a>
   </p>
 
   <h4>Per E-Mail</h4>
 
   <p>
-    <a class="button button-primary" href="mailto:HIER%20EINSETZEN?subject={{ invite_email_subject|urlencode }}&body={{ invite_email_body|urlencode }}"><i class="fa fa-envelope" aria-hidden="true"></i> Lade Freunde per E-Mail ein</a>
+    <a class="button button-primary" href="mailto:HIER%20EINSETZEN?subject={{ invite_email_subject|urlencode }}&body={{ invite_email_body|urlencode }}" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i> Lade Freunde per E-Mail ein</a>
   </p>
 
   <h4>Teile einen Link</h4>
@@ -69,20 +70,58 @@
 
   <p>
     <br /><br />
-    <a href="{% url 'thankyou' meetup_id=meetup.uuid %}">Überspringen &raquo;</a>
+    <a id="next-link" href="{% url 'thankyou' meetup_id=meetup.uuid %}">Fertig / Überspringen &raquo;</a>
   </p>
 
 </div>
 <script type="text/javascript">
-  var c = new Clipboard('.clipboard');
-  var m = document.getElementById('clipboard-msg');
-  c.on('success', function(e) {
-    m.innerText = 'Link wurde in die Zwischenablage kopiert.'
-    //e.clearSelection();
+
+  document.addEventListener("DOMContentLoaded", function(event) { 
+    
+    // Set up FB share link
+    document.getElementById('fb-share').href =
+      'https://www.facebook.com/dialog/send?app_id='+1595950890699096+
+      '&link='+encodeURIComponent('{{ invite_meetup_url }}')+
+      '&redirect_uri='+encodeURIComponent(document.getElementById('next-link').href);
+
+    document.getElementById('tw-share').href =
+      'https://twitter.com/intent/tweet?text='+encodeURIComponent(
+        '@HIER @FREUNDE @EINSETZEN Kommt ihr am {{ meetup.datetime|date:"D" }} {{ meetup.datetime|date:"j" }}. mit zu einer Aktion für Van der Bellen in {{ meetup.city }}? Weil\'s um was geht: {{ invite_meetup_url }}'
+    );
+
+    // Set up clipboard copy button
+    var c = new Clipboard('.clipboard');
+    var m = document.getElementById('clipboard-msg');
+    c.on('success', function(e) {
+      m.innerText = 'Link wurde in die Zwischenablage kopiert.'
+      //e.clearSelection();
+    });
+
+    c.on('error', function(e) {
+      m.innerText = 'Bitte manuell kopieren'
+    });
+
   });
 
-  clipboard.on('error', function(e) {
-    m.innerText = 'Bitte manuell kopieren'
-  });
+  function popupCenter(url, title, w, h) {
+    // Fixes dual-screen position                         Most browsers      Firefox
+    var dualScreenLeft = window.screenLeft != undefined ? window.screenLeft : screen.left;
+    var dualScreenTop = window.screenTop != undefined ? window.screenTop : screen.top;
+
+    var width = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
+    var height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
+
+    var left = ((width / 2) - (w / 2)) + dualScreenLeft;
+    var top = ((height / 2) - (h / 2)) + dualScreenTop;
+    var newWindow = window.open(url, title, 'scrollbars=yes, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+
+    // Puts focus on the newWindow
+    if (window.focus) {
+      newWindow.focus();
+    }
+
+    return false;
+  }
+ 
 </script>
 {% endblock %}
