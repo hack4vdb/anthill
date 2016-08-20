@@ -226,7 +226,7 @@ def invite(request, meetup_id):
             'invite_meetup_url': invite_meetup_url,
             'invite_email_subject': invite_email_subject,
             'invite_email_body': invite_email_body,
-            'is_new': meetup.activist.count() < 2
+            'is_new': meetup.activists.count() < 2
         })
     except Meetup.DoesNotExist:
         return redirect('meetups')
