@@ -197,13 +197,29 @@ def invite(request, meetup_id):
         meetup = Meetup.objects.get(uuid=meetup_id)
         if user not in meetup.activist.all():
             return HttpResponseRedirect('/join_meetup/?meetup_id={}'.format(meetup.uuid))
-        invite_url = request.scheme + '://' + request.get_host() + '?invited_by=' + str(user.uuid) + '&invited_to=' + str(meetup.uuid)
+
+        invite_site_url = request.scheme + '://' + request.get_host() + '?invited_by=' + str(user.uuid)
+        invite_meetup_url = invite_site_url + '&invited_to=' + str(meetup.uuid)
+
+        invite_email_subject = render(request, 'emails/invitation/subject.txt', {
+            'meetup': meetup
+        }).content
+        invite_email_body = render(request, 'emails/invitation/body.txt', {
+            'user': user,
+            'meetup': meetup,
+            'invite_site_url': invite_site_url,
+            'invite_meetup_url': invite_meetup_url
+        }).content
+
         return render(request, 'invite.html', {
-                'user': user,
-                'meetup': meetup,
-                'other_people_string': meetup.other_people_string(user),
-                'invite_url': invite_url,
-                'is_new': meetup.activist.count() < 2
+            'user': user,
+            'meetup': meetup,
+            'other_people_string': meetup.other_people_string(user),
+            'invite_site_url': invite_site_url,
+            'invite_meetup_url': invite_meetup_url,
+            'invite_email_subject': invite_email_subject,
+            'invite_email_body': invite_email_body,
+            'is_new': meetup.activist.count() < 2
         })
     except Meetup.DoesNotExist:
         return redirect('meetups')

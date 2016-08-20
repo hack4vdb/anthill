@@ -48,11 +48,22 @@
     Denk mal nach: Welche deiner FreundInnen würden mitkommen?
   </p>
 
-  <button class="button-primary"><i class="fa fa-facebook" aria-hidden="true"></i></button>
-  <button class="button-primary"><i class="fa fa-twitter" aria-hidden="true"></i></button>
-  <button class="button-primary"><i class="fa fa-envelope" aria-hidden="true"></i></button>
+  <h4>Über Social Media</h4>
 
-  <input id="invite-url"type="text" value="{{ invite_url }}" style="min-width:30%" />
+  <p>
+    <button class="button-primary"><i class="fa fa-facebook" aria-hidden="true"></i></button>
+    <button class="button-primary"><i class="fa fa-twitter" aria-hidden="true"></i></button>
+  </p>
+
+  <h4>Per E-Mail</h4>
+
+  <p>
+    <a class="button button-primary" href="mailto:HIER%20EINSETZEN?subject={{ invite_email_subject|urlencode }}&body={{ invite_email_body|urlencode }}"><i class="fa fa-envelope" aria-hidden="true"></i> Lade Freunde per E-Mail ein</a>
+  </p>
+
+  <h4>Teile einen Link</h4>
+
+  <input id="invite-url"type="text" value="{{ invite_meetup_url }}" style="min-width:30%" />
   <button class="clipboard" data-clipboard-target="#invite-url"><i class="fa fa-clipboard" aria-hidden="true"></i></button>
   <div id="clipboard-msg"></div>
 
