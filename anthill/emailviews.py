@@ -26,13 +26,6 @@ class TemplatedNotificationView(TemplatedHTMLEmailMessageView):
         return super(TemplatedNotificationView, self).render_to_message( *args, **kwargs)
 
 
-class TestMessageView(TemplatedNotificationView):
-    subject_template_name = 'emails/test/subject.txt'
-    body_template_name = 'emails/test/body.html'
-    html_body_template_name = 'emails/test/body.html'
-    bot_template_name = 'emails/test/bot.txt'
-
-
 class LoginLinkMessageView(TemplatedNotificationView):
     subject_template_name = 'emails/login/subject.txt'
     body_template_name = 'emails/login/body.html'
