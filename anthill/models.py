@@ -33,6 +33,7 @@ class Activist(models.Model):
     last_login = models.DateTimeField(null=True)
     login_token = models.UUIDField(default=None, null=True, blank=True)
     invited_by = models.ForeignKey('Activist', null=True, default=None)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     USERNAME_FIELD = 'uuid'
 
@@ -104,6 +105,7 @@ class Meetup(models.Model):
     activists = models.ManyToManyField(
         Activist, blank=True, related_name='meetups', through='Participation')
     owner = models.ForeignKey(Activist)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     # TODO
     ## Wenn schon genug Leute, und du der bist der es voll macht:
@@ -285,6 +287,7 @@ class Participation(models.Model):
     activist = models.ForeignKey(Activist)
     meetup = models.ForeignKey(Meetup)
     invite_code = models.CharField(max_length=10, unique=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         unique_together = ('activist', 'meetup',)
@@ -297,6 +300,7 @@ class EmailLoginJoinMeetupCode(models.Model):
     activist = models.ForeignKey(Activist)
     meetup = models.ForeignKey(Meetup)
     invite_code = models.CharField(max_length=10, unique=True)
+    created_at = models.DateTimeField(auto_now_add=True)
     accessed_at = models.DateTimeField(null=True, default=None)
 
     class Meta:
