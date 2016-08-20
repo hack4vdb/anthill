@@ -9,6 +9,8 @@ from django.contrib.gis.geos import GEOSGeometry
 from django.contrib.gis.measure import Distance, D
 from rest_framework.exceptions import ValidationError
 from anthill import geo
+from django.dispatch import receiver
+from django.db import transaction
 
 
 DISTANCE_LIMIT_METERS = 40000  # todo: check if this is really meters
@@ -64,14 +66,11 @@ class Activist(models.Model):
         except ValueError as e:
             return []
 
-    def __str__(self):
-        return self.__unicode__()
-
     def __unicode__(self):
         if self.facebook_bot_id:
-            return '{} (FB Bot User) - {}'.format(self.facebook_bot_id, self.uuid)
+            return '{}, {} (FB Bot User: {})'.format(self.first_name, self.uuid, self.facebook_bot_id)
         else:
-            return '{} ({}) - {}'.format(self.email, self.postalcode, self.uuid)
+            return '{} {} ({} - {})'.format(self.first_name, self.email, self.postalcode, self.uuid)
 
 
 class Meetup(models.Model):
@@ -83,8 +82,8 @@ class Meetup(models.Model):
     street = models.CharField(max_length=500)
     house_number = models.CharField(max_length=100)
     coordinate = models.PointField()
-    activist = models.ManyToManyField(
-        Activist, null=True, blank=True, related_name='meetups')
+    activists = models.ManyToManyField(
+        Activist, blank=True, related_name='meetups', through='Participation')
     owner = models.ForeignKey(Activist)
 
     # TODO
@@ -99,19 +98,22 @@ class Meetup(models.Model):
 
     # TODO: trigger mail to alle die schon dabei sind
 
+    def add_activist(self, activist):
+        part = Participation(activist=activist, meetup=self)
+        part.save()
 
     @property
     def is_viable(self):
-        return self.activist.count() >= 3
+        return self.activists.count() >= 3
 
     def is_solo(self):
-        return self.activist.count() == 1
+        return self.activists.count() == 1
 
     def people_string(self):
-        return ", ".join([a.first_name for a in self.activist.all()])
+        return ", ".join([a.first_name for a in self.activists.all()])
 
     def other_people_string(self, user):
-        return ", ".join([a.first_name for a in self.activist.all() if a != user])
+        return ", ".join([a.first_name for a in self.activists.all() if a != user])
 
     @property
     def wahl_details(self):
@@ -254,6 +256,29 @@ class Meetup(models.Model):
             return data
         except ValueError as e:
             return []
+
+    def __unicode__(self):
+        return "{} {} {}".format(self.postalcode, self.city, self.datetime)
+
+
+class Participation(models.Model):
+    activist = models.ForeignKey(Activist)
+    meetup = models.ForeignKey(Meetup)
+    invite_code = models.CharField(max_length=10)
+
+    def __unicode__(self):
+        return "{}: {} -- {}".format(self.invite_code, unicode(self.activist), unicode(self.meetup))
+
+
+@receiver(models.signals.post_save, sender=Participation)
+def generate_invite_code(sender, instance, created, **kwargs):
+    if created:
+        code = uuid.uuid4().hex[:5]
+        with transaction.atomic():
+            while sender.objects.filter(invite_code=code).exists():
+                code = uuid.uuid4().hex[:5]
+            instance.invite_code = code
+            instance.save()
 
 
 class PostalcodeCoordinates(models.Model):

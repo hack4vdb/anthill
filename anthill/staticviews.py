@@ -3,7 +3,7 @@ import json
 import requests
 from django.shortcuts import render, redirect, get_object_or_404
 from anthill.forms import SignupForm, CreateAddressForm, CreateRealnameForm
-from anthill.models import Activist, Meetup
+from anthill.models import Activist, Meetup, Participation
 from anthill.geo import get_ortezumflyern
 from anthill.emailviews import WelcomeMessageView, NewNearMeetupMessageView
 from django.contrib.auth import authenticate, login, logout
@@ -11,6 +11,7 @@ from django.contrib.auth.decorators import login_required
 from rest_framework.response import Response
 from django.http import HttpResponse, HttpResponseRedirect
 from django.db import transaction
+from django.urls import reverse
 
 from django.contrib.gis.geos import GEOSGeometry
 from anthill import geo
@@ -19,6 +20,7 @@ from itsdangerous import JSONWebSignatureSerializer
 
 
 def home(request):
+    invited_by = None
     if request.method == 'POST':
         form = SignupForm(request.POST)
         if form.is_valid():
@@ -54,7 +56,6 @@ def home(request):
                 # todo: resend login email
                 return redirect('login_by_email')
     else:
-        invited_by = None
         invited_by_uuid = None
         if request.GET.get('invited_by'):
             try:
@@ -134,7 +135,7 @@ def join_meetup(request):
 
     if meetup_id is None: # in the process of creating a meetup from suggestion
         form = CreateAddressForm(request.POST or None, instance=user, initial={
-            'city': get_ortezumflyern(location_id)['ort'],
+            # 'city': get_ortezumflyern(location_id)['ort'],
             'plz': user.postalcode
         })
         if request.method == 'POST': # submitting address form
@@ -145,7 +146,7 @@ def join_meetup(request):
                         location_id=location_id, time_id=time_id)
                     meetup.owner = user
                     meetup.save()
-                    meetup.activist.add(user)
+                    meetup.add_activist(user)
                     meetup.save()
 
                     #TODO Move this code to model or communication
@@ -175,7 +176,7 @@ def join_meetup(request):
                 if form.is_valid():
                     form.save()  # Save activist data entered by user
                     with transaction.atomic():
-                        meetup.activist.add(user)
+                        meetup.add_activist(user)
                         meetup.save()
             else: # displaying name form
                 return render(request, 'name_form.html', {
@@ -190,17 +191,24 @@ def join_meetup(request):
     return redirect('invite', meetup_id=str(meetup.uuid))
 
 
+def short_invite(request, invite_code=''):
+    try:
+        part = Participation.objects.get(invite_code=invite_code)
+        return HttpResponseRedirect('/?invited_by=' + str(part.activist.uuid) + '&invited_to=' + str(part.meetup.uuid))
+    except Participation.DoesNotExist:
+        return redirect('home')
+
+
 @login_required
 def invite(request, meetup_id):
     user = request.user
     try:
+        part = Participation.objects.get(meetup__uuid=meetup_id, activist=user)
         meetup = Meetup.objects.get(uuid=meetup_id)
-        if user not in meetup.activist.all():
+        if part is None:
             return HttpResponseRedirect('/join_meetup/?meetup_id={}'.format(meetup.uuid))
-
         invite_site_url = request.scheme + '://' + request.get_host() + '?invited_by=' + str(user.uuid)
-        invite_meetup_url = invite_site_url + '&invited_to=' + str(meetup.uuid)
-
+        invite_meetup_url = request.build_absolute_uri(reverse('short_invite', kwargs={'invite_code': part.invite_code}))
         invite_email_subject = render(request, 'emails/invitation/subject.txt', {
             'meetup': meetup
         }).content
@@ -210,7 +218,6 @@ def invite(request, meetup_id):
             'invite_site_url': invite_site_url,
             'invite_meetup_url': invite_meetup_url
         }).content
-
         return render(request, 'invite.html', {
             'user': user,
             'meetup': meetup,

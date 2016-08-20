@@ -112,7 +112,7 @@ class MeetupNearActivistViewSet(viewsets.ReadOnlyModelViewSet):
 def partake_meetup(request, meetupid, userid):
     meetup = Meetup.objects.filter(uuid=meetupid).first()
     activist = Activist.objects.filter(uuid=userid).first()
-    meetup.activist.add(activist)
+    meetup.add_activist(activist)
     meetup.save()
     return Response()
 

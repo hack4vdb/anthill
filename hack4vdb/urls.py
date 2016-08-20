@@ -49,6 +49,7 @@ urlpatterns = [
     url(r'^join_meetup/$', staticviews.join_meetup, name='join_meetup'),
     url(r'^join_meetup/(?P<meetupid>[\d\w-]+)/(?P<signeddata>[\d\w\.-]+)/', staticviews.join_meetup_bot, name='join_meetup_bot'),
     url(r'^invite/$', staticviews.invite, name='invite'),
+    url(r'^i/(?P<invite_code>.+)/$', staticviews.short_invite, name='short_invite'),
     url(r'^join_first_event/$', staticviews.join_first_event, name='join_first_event'),
     url(r'^start_event/$', staticviews.start_event, name='start_event'),
 
