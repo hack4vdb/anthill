@@ -3,9 +3,9 @@ import json
 import requests
 from django.shortcuts import render, redirect, get_object_or_404
 from anthill.forms import SignupForm, CreateAddressForm, CreateRealnameForm
-from anthill.models import Activist, Meetup, Participation
+from anthill.models import Activist, Meetup, Participation, EmailLoginJoinMeetupCode
 from anthill.geo import get_ortezumflyern
-from anthill.emailviews import WelcomeMessageView, NewNearMeetupMessageView, LoginLinkMessageView
+from anthill.notifications import Notifications
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from rest_framework.response import Response
@@ -41,10 +41,6 @@ def home(request):
                 activist = authenticate(uuid=activist.uuid)
                 login(request, activist)
 
-                WelcomeMessageView(recipient=activist).send(extra_context={
-                    'user': activist,
-                })
-
                 if invited_by_id:
                     return HttpResponseRedirect('/meetups/?invited_by={}&invited_to={}'.format(invited_by_id, invited_to_id))
                 else:
@@ -53,10 +49,7 @@ def home(request):
                 #Send login link to user
                 try:
                     activist = Activist.objects.get(email=email)
-                    token = activist.generate_login_token()
-                    LoginLinkMessageView(recipient=activist).send(extra_context={
-                        'login_link': request.build_absolute_uri(reverse('login_with_token', kwargs={'login_token': token}))
-                    })
+                    Notifications.send_login_link(request=request, recipient=activist)
                 except Activist.DoesNotExist:
                     pass
                 return redirect('login_by_email')
@@ -93,6 +86,19 @@ def login_with_token(request, login_token):
         activist = authenticate(uuid=activist.uuid)
         login(request, activist)
         return redirect('meetups')
+    except Activist.DoesNotExist:
+        return render(request, 'login_error.html')
+
+
+def join_meetup_from_email(request, login_token):
+    if request.user.is_authenticated:
+        logout(request)
+    try:
+        join_login = EmailLoginJoinMeetupCode.objects.get(invite_code=login_token)
+        join_login.log_access()
+        activist = authenticate(uuid=join_login.activist.uuid)
+        login(request, activist)
+        return HttpResponseRedirect('/join_meetup/?meetup_id={}'.format(join_login.meetup.uuid))
     except Activist.DoesNotExist:
         return render(request, 'login_error.html')
 
@@ -153,14 +159,7 @@ def join_meetup(request):
                     meetup.owner = user
                     meetup.save()
                     meetup.add_activist(user)
-                    meetup.save()
-
-                    #TODO Move this code to model or communication
-                    # utils. also send out bot messages
-                    for activist in meetup.find_activists_nearby().all():
-                        NewNearMeetupMessageView(email=activist.email).send(extra_context={
-                            'meetup': meetup
-                        })
+                    Notifications.send_meetup_created_notifications(request=request, meetup=meetup)
 
                 is_new = True
         else: # displaying address form
@@ -233,7 +232,7 @@ def invite(request, meetup_id):
             'invite_email_body': invite_email_body,
             'is_new': meetup.activists.count() < 2
         })
-    except Meetup.DoesNotExist:
+    except (Meetup.DoesNotExist, Participation.DoesNotExist):
         return redirect('meetups')
 
 

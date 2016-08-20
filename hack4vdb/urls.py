@@ -41,6 +41,7 @@ urlpatterns = [
 
     url(r'^login/$', staticviews.login_by_email, name='login_by_email'),
     url(r'^login/(?P<login_token>[\d\w-]+)/$', staticviews.login_with_token, name='login_with_token'),
+    url(r'^join_meetup_from_email/(?P<login_token>[\d\w-]+)/$', staticviews.join_meetup_from_email, name='join_meetup_from_email'),
     url(r'^check_mail/$', staticviews.check_mail, name='check_mail'),
     url(r'^meetups/$', staticviews.meetups, name='meetups'),
     url(r'^howto/?$', staticviews.instructions, name='instructions'),
