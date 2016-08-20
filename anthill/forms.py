@@ -15,7 +15,8 @@ class SignupForm(forms.Form):
             attrs={
                 'id': 'inputEmail',
                 'class': 'signin-input',
-                'placeholder': 'E-Mail'}))
+                'placeholder': 'E-Mail',
+                'autofocus': True}))
     postcode = forms.IntegerField(
         label='PLZ',
         error_messages={
