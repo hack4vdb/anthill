@@ -99,8 +99,9 @@ class Meetup(models.Model):
     # TODO: trigger mail to alle die schon dabei sind
 
     def add_activist(self, activist):
-        part = Participation(activist=activist, meetup=self)
-        part.save()
+        part, created = Participation.objects.get_or_create(activist=activist, meetup=self)
+        if created:
+            part.save()
 
     @property
     def is_viable(self):
@@ -264,7 +265,10 @@ class Meetup(models.Model):
 class Participation(models.Model):
     activist = models.ForeignKey(Activist)
     meetup = models.ForeignKey(Meetup)
-    invite_code = models.CharField(max_length=10)
+    invite_code = models.CharField(max_length=10, unique=True)
+
+    class Meta:
+        unique_together = ('activist', 'meetup',)
 
     def __unicode__(self):
         return "{}: {} -- {}".format(self.invite_code, unicode(self.activist), unicode(self.meetup))
