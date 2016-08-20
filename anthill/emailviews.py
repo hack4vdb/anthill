@@ -22,7 +22,7 @@ class TemplatedNotificationView(TemplatedHTMLEmailMessageView):
             kwargs['to'] = (self.recipient.email,)
         else:
             kwargs['to'] = ("{}@fb_bot".format(self.recipient.facebook_bot_id),)
-        kwargs['from_email'] = 'VDB 4 President <noreply@weilsumwasgeht.at>'
+        kwargs['from_email'] = 'Weil\'s um was geht <aktiv@weilsumwasgeht.at>'
         return super(TemplatedNotificationView, self).render_to_message( *args, **kwargs)
 
 
