@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from __future__ import unicode_literals
-import uuid
+from uuid import uuid4
 import datetime
 from django.contrib.gis.db import models
 from django.contrib.gis.geos import GEOSGeometry
@@ -17,8 +17,7 @@ DISTANCE_LIMIT_METERS = 40000  # todo: check if this is really meters
 
 
 class Activist(models.Model):
-    uuid = models.UUIDField(unique=True, default=uuid.uuid4, editable=False)
-    # Anrede (Herr, Frau, Keine Angabe)
+    uuid = models.UUIDField(unique=True, default=uuid4, editable=False)
     anrede = models.CharField(max_length=100, null=True, blank=True)
     first_name = models.CharField(max_length=300, null=True, blank=True)
     last_name = models.CharField(max_length=300, null=True, blank=True)
@@ -32,6 +31,7 @@ class Activist(models.Model):
     house_number = models.CharField(max_length=100, null=True, blank=True)
     coordinate = models.PointField(null=True, blank=True)
     last_login = models.DateTimeField(null=True)
+    login_token = models.UUIDField(default=None, null=True, blank=True)
 
     USERNAME_FIELD = 'uuid'
 
@@ -41,6 +41,16 @@ class Activist(models.Model):
         coordinate = PostalcodeCoordinates.get_coordinates(activist.postalcode)
         activist.coordinate = coordinate
         return activist
+
+    def generate_login_token(self):
+        token = uuid4()
+        self.login_token = token
+        self.save()
+        return token
+
+    def invalidate_login_token(self):
+        self.login_token = None
+        self.save()
 
     @property
     def is_authenticated(self):
@@ -74,7 +84,7 @@ class Activist(models.Model):
 
 
 class Meetup(models.Model):
-    uuid = models.UUIDField(unique=True, default=uuid.uuid4, editable=False)
+    uuid = models.UUIDField(unique=True, default=uuid4, editable=False)
     title = models.CharField(max_length=1000)
     datetime = models.DateTimeField()
     postalcode = models.IntegerField()  # PLZ (4-digit)
@@ -277,10 +287,10 @@ class Participation(models.Model):
 @receiver(models.signals.post_save, sender=Participation)
 def generate_invite_code(sender, instance, created, **kwargs):
     if created:
-        code = uuid.uuid4().hex[:5]
+        code = uuid4().hex[:5]
         with transaction.atomic():
             while sender.objects.filter(invite_code=code).exists():
-                code = uuid.uuid4().hex[:5]
+                code = uuid4().hex[:5]
             instance.invite_code = code
             instance.save()
 

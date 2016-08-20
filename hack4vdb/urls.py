@@ -40,7 +40,7 @@ urlpatterns = [
     url(r'^$', staticviews.home, name='home'),
 
     url(r'^login/$', staticviews.login_by_email, name='login_by_email'),
-    url(r'^login/(?P<userid>[\d\w-]+)/$', staticviews.login_with_uuid, name='login_with_uuid'),
+    url(r'^login/(?P<login_token>[\d\w-]+)/$', staticviews.login_with_token, name='login_with_token'),
     url(r'^check_mail/$', staticviews.check_mail, name='check_mail'),
     url(r'^meetups/$', staticviews.meetups, name='meetups'),
     url(r'^howto/?$', staticviews.instructions, name='instructions'),

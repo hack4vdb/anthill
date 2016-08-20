@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from anthill.forms import SignupForm, CreateAddressForm, CreateRealnameForm
 from anthill.models import Activist, Meetup, Participation
 from anthill.geo import get_ortezumflyern
-from anthill.emailviews import WelcomeMessageView, NewNearMeetupMessageView
+from anthill.emailviews import WelcomeMessageView, NewNearMeetupMessageView, LoginLinkMessageView
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from rest_framework.response import Response
@@ -34,7 +34,7 @@ def home(request):
             if not Activist.objects.filter(email=email).exists() and \
                             len(form.cleaned_data['message']) == 0:  # honey trap was not filled out
                 activist = Activist.create(email=email, postalcode=postcode)
-                # todo also save invited_by for future reference (need to add to model)
+                #TODO also save invited_by for future reference (need to add to model)
                 #if invited_by_id:
                 #    try:
                 #        invited_by = Activist.objects.get(uuid=invited_by_id)
@@ -44,7 +44,7 @@ def home(request):
                 activist = authenticate(uuid=activist.uuid)
                 login(request, activist)
 
-                WelcomeMessageView(email=activist.email).send(extra_context={
+                WelcomeMessageView(recipient=activist).send(extra_context={
                     'user': activist,
                 })
 
@@ -53,7 +53,15 @@ def home(request):
                 else:
                     return redirect(request.GET.get('next', 'meetups'))
             else:
-                # todo: resend login email
+                #Send login link to user
+                try:
+                    activist = Activist.objects.get(email=email)
+                    token = activist.generate_login_token()
+                    LoginLinkMessageView(recipient=activist).send(extra_context={
+                        'login_link': request.build_absolute_uri(reverse('login_with_token', kwargs={'login_token': token}))
+                    })
+                except Activist.DoesNotExist:
+                    pass
                 return redirect('login_by_email')
     else:
         invited_by_uuid = None
@@ -79,16 +87,17 @@ def login_by_email(request):
     return render(request, 'login_by_email.html', {})
 
 
-def login_with_uuid(request, userid):
+def login_with_token(request, login_token):
     if request.user.is_authenticated:
         logout(request)
     try:
-        activist = Activist.objects.filter(uuid=userid).first()
+        activist = Activist.objects.get(login_token=login_token)
+        activist.invalidate_login_token()
         activist = authenticate(uuid=activist.uuid)
         login(request, activist)
         return redirect('meetups')
-    except ValueError as e:
-        return HttpResponse(e)
+    except Activist.DoesNotExist:
+        return render(request, 'login_error.html')
 
 
 def check_mail(request):
@@ -153,7 +162,6 @@ def join_meetup(request):
                     # utils. also send out bot messages
                     for activist in meetup.find_activists_nearby().all():
                         NewNearMeetupMessageView(email=activist.email).send(extra_context={
-                            'recipient': activist,
                             'meetup': meetup
                         })
 
