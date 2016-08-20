@@ -32,6 +32,7 @@ class Activist(models.Model):
     coordinate = models.PointField(null=True, blank=True)
     last_login = models.DateTimeField(null=True)
     login_token = models.UUIDField(default=None, null=True, blank=True)
+    invited_by = models.ForeignKey('Activist', null=True, default=None)
 
     USERNAME_FIELD = 'uuid'
 
@@ -51,6 +52,14 @@ class Activist(models.Model):
     def invalidate_login_token(self):
         self.login_token = None
         self.save()
+
+    def save_invited_by(self, inviter_uuid):
+        try:
+            inviter = Activist.objects.get(uuid=inviter_uuid)
+            self.invited_by = inviter
+            self.save()
+        except Activist.DoesNotExist:
+            pass
 
     @property
     def is_authenticated(self):

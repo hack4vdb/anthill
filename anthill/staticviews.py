@@ -34,13 +34,10 @@ def home(request):
             if not Activist.objects.filter(email=email).exists() and \
                             len(form.cleaned_data['message']) == 0:  # honey trap was not filled out
                 activist = Activist.create(email=email, postalcode=postcode)
-                #TODO also save invited_by for future reference (need to add to model)
-                #if invited_by_id:
-                #    try:
-                #        invited_by = Activist.objects.get(uuid=invited_by_id)
-                #    except Exception as e:
-                #        pass
                 activist.save()
+                #Save who has invited this user
+                if invited_by_id:
+                    activist.save_invited_by(inviter_uuid=invited_by_id)
                 activist = authenticate(uuid=activist.uuid)
                 login(request, activist)
 
