@@ -46,19 +46,8 @@
       {% else %}
 
         {% for meetup in meetups %}
-          {% include "_meetup.html" with type='real' date=meetup.datetime %}
+          {% include "_meetup.html" %}
         {% endfor %}
-
-        <!-- fill up with potential meetups -->
-        {% if meetup_count < 1 %}
-          {% include "_meetup.html" with type='potential' meetup=potential_meetup date=potential_meetup.potential_time_1 time_id=0 %}
-        {% endif %}
-        {% if meetup_count < 2 %}
-          {% include "_meetup.html" with type='potential' meetup=potential_meetup date=potential_meetup.potential_time_2 time_id=1 %}
-        {% endif %}
-        {% if meetup_count < 3 %}
-          {% include "_meetup.html" with type='potential' meetup=potential_meetup date=potential_meetup.potential_time_3 time_id=2 %}
-        {% endif %}
 
       {% endif %}
 

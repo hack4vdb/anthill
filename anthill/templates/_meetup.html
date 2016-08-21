@@ -4,7 +4,7 @@
       &nbsp;
     </div>
     <div class="info">
-      <h3>{{ date|date:"l j.n. H:i" }}</h3>
+      <h3>{{ meetup.datetime|date:"l j.n. H:i" }}</h3>
       <p class="meetup_city"><i class="fa fa-map-marker" aria-hidden="true"></i> 
         <!--{{ meetup.postalcode }} -->{{ meetup.city }}</p>
       <p class="meetup_street"><i class="fa fa-crosshairs" aria-hidden="true"></i> 
@@ -28,8 +28,8 @@
       <p class="meetup_type"><i class="fa fa-tag" aria-hidden="true"></i> <a href="{% url 'instructions' %}">Straßenaktion</a></p>
     </div>
     <div class="join">
-      {% if type == 'potential' %}
-          <a class="button" href="{% url 'join_meetup' %}?time_id={{ time_id | urlencode }}&location_id={{ potential_meetup_id | urlencode }}">Ich bin dabei</a>
+      {% if meetup.type == 'potential' %}
+          <a class="button" href="{% url 'join_meetup' %}?datetime={{ meetup.datetime | date:"c" }}&location_id={{ meetup.location_id | urlencode }}">Ich bin dabei</a>
       {% else %}
         {% if user not in meetup.activists.all %}
           <a class="button" href="{% url 'join_meetup' %}?meetup_id={{ meetup.uuid }}">Ich bin dabei</a>

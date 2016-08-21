@@ -4,6 +4,7 @@
 from __future__ import unicode_literals
 import json
 import requests
+import datetime
 from django.shortcuts import render, redirect, get_object_or_404
 from anthill.forms import SignupForm, CreateAddressForm, CreateRealnameForm
 from anthill.models import Activist, Meetup, Participation, EmailLoginJoinMeetupCode
@@ -131,15 +132,11 @@ def meetups(request):
             # todo must also be in the future... else show a message...
         except Exception as e:
             pass
-    meetups = user.find_meetups_nearby()[:3]
-    potential_meetup, location_id = Meetup.potential_meetup(user.postalcode)
+    meetups = user.proposed_meetups()
     return render(request, 'meetups.html', {
         'invited_by': invited_by,
         'invited_to': invited_to,
         'meetups': meetups,
-        'meetup_count': len(meetups),
-        'potential_meetup': potential_meetup,
-        'potential_meetup_id': location_id,
         'user': user,
     })
 
@@ -148,7 +145,9 @@ def meetups(request):
 def join_meetup(request):
     user = request.user
     meetup_id = request.GET.get('meetup_id', None)
-    time_id = request.GET.get('time_id', None)
+    start_time = request.GET.get('datetime', None)
+    if start_time != None:
+        start_time = datetime.datetime.strptime(start_time, "%Y-%m-%dT%H:%M:%S")
     location_id = request.GET.get('location_id', None)
     is_new = False
     meetup = None
@@ -163,7 +162,7 @@ def join_meetup(request):
                 form.save()  # Save activist data entered by user
                 with transaction.atomic():
                     meetup = Meetup.create_from_potentialmeetup_specs(
-                        location_id=location_id, time_id=time_id)
+                        location_id=location_id, datetime=start_time)
                     meetup.owner = user
                     meetup.save()
                     meetup.add_activist(user)
@@ -171,7 +170,6 @@ def join_meetup(request):
 
                 is_new = True
         else: # displaying address form
-            start_time = Meetup.get_potential_time_by_id(time_id)
             city = get_ortezumflyern(location_id)['ort']
             return render(request, 'address_form.html', {
                 'user': user,

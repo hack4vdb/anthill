@@ -90,6 +90,12 @@ class Activist(models.Model):
         except ValueError as e:
             return []
 
+    def proposed_meetups(self):
+        existing_meetups = list(self.find_meetups_nearby()[:3])
+        potential_meetups = Meetup.potential_meetups(self.postalcode)
+        return existing_meetups + potential_meetups
+
+
     def __unicode__(self):
         if self.facebook_bot_id:
             return '{}, {} (FB Bot User: {})'.format(self.first_name, self.uuid, self.facebook_bot_id)
@@ -110,6 +116,8 @@ class Meetup(models.Model):
         Activist, blank=True, related_name='meetups', through='Participation')
     owner = models.ForeignKey(Activist)
     created_at = models.DateTimeField(auto_now_add=True)
+    location_id = None # only for potential meetups right now
+    type = 'real'
 
     # TODO
     ## Wenn schon genug Leute, und du der bist der es voll macht:
@@ -155,19 +163,20 @@ class Meetup(models.Model):
 
     @classmethod
     def create(cls, title, postalcode, city, street, house_number,
-               coordinate=None, datetime=None):
+               coordinate=None, datetime=None, type='real', location_id=None):
         meetup = cls(title=title, postalcode=postalcode, city=city,
                      street=street, house_number=house_number,
                      datetime=datetime)
+        meetup.type = type
+        meetup.location_id = location_id
         if coordinate is None:
             coordinate = PostalcodeCoordinates.get_coordinates(postalcode)
         meetup.coordinate = coordinate
         return meetup
 
     @classmethod
-    def create_from_potentialmeetup_specs(cls, location_id, time_id):
+    def create_from_potentialmeetup_specs(cls, location_id, datetime):
         loc = geo.get_ortezumflyern(location_id)
-        start_time = Meetup.get_potential_time_by_id(time_id)
         return Meetup.create(
             title='',
             postalcode=int(loc['plz']),
@@ -179,7 +188,7 @@ class Meetup(models.Model):
                 (loc['lon'],
                  loc['lat']),
                 srid=4326),
-            datetime=start_time)
+            datetime=datetime)
 
     def _unicode__(self):
         return '{} - {}'.format(self.title, self.uuid)
@@ -210,6 +219,14 @@ class Meetup(models.Model):
             workday = workday + datetime.timedelta(days=1)
         return list(map(lambda t: (t, t + datetime.timedelta(hours=2)),
                    sorted([saturday, sunday, workday])))
+
+    @staticmethod
+    def potential_meetups(postalcode):
+        def create_potential_meetup(postalcode, datetime):
+            meetup, location_id = Meetup.potential_meetup(postalcode)
+            meetup.datetime = datetime[0]
+            return meetup
+        return map(lambda t: create_potential_meetup(postalcode, t), Meetup.potential_times())
 
     # if you can refactor the following to be calleable from templates but less silly, please do
     @staticmethod
@@ -277,7 +294,9 @@ class Meetup(models.Model):
             house_number='',
             coordinate=GEOSGeometry(
                 'POINT(%f %f)' %
-                (location['lon'], location['lat']), srid=4326)
+                (location['lon'], location['lat']), srid=4326),
+            location_id=location_id,
+            type='potential'
         )
         return potential_meetup, location_id
 
