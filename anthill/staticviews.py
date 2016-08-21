@@ -254,50 +254,34 @@ def invite(request, meetup_id):
         return redirect('meetups')
 
 
-def join_meetup_bot(request, meetupid, signeddata):
+def join_meetup_fb_messenger(request, signeddata):
 
     s = JSONWebSignatureSerializer('anthill4vdb')
 
     indata = s.loads(signeddata)
-    # lat, fb_last_name, fb_first_name, long, fb_recipient_id
     user_bot_id = indata['fb_recipient_id']
     lat = float(indata['lat'])
     lng = float(indata['long'])
     firstname = indata['fb_first_name']
     lastname = indata['fb_last_name']
-
-    data = {
-        "data": {
-                # "msgtype": "i", # image
-                "msgtype": "t", # text
-                "fb_recipient_id": user_bot_id,
-                "delay": 60,
-                #"data": "https://pbs.twimg.com/media/Cp1EL5gXgAAgx5p.jpg"
-                "data": "Danke, dass du dabei bist! :)"
-            }
-        }
-    data = {
-        "data": s.dumps(data['data'])
-        }
-    requests.post('https://vdbmemes.appspot.com/fb/relay', json=data)
+    meetup_id = indata.get('uuid', None)
+    time_id = indata.get('time_id', None)
+    location_id = indata.get('location_id', None)
 
     try:
-        activist = Activist.objects.filter(facebook_bot_id=user_bot_id).first()
-        if activist is None:
-            activist = Activist(facebook_bot_id=user_bot_id, postalcode=8010)
-
+        activist, created = Activist.objects.get_or_create(facebook_bot_id=user_bot_id)
         activist.coordinate = GEOSGeometry('POINT(%f %f)' % (lng, lat), srid=4326)
         activist.first_name = firstname
         activist.last_name = lastname
-
         activist.save()
         activist = authenticate(uuid=activist.uuid)
         login(request, activist)
-        return HttpResponseRedirect('/join_meetup/?meetup_id={}'.format(meetupid))
-    except ValueError as e:
-        # todo: return error
-        return HttpResponse(
-            'invalid request')
+        if meetup_id:
+            return HttpResponseRedirect('/join_meetup/?meetup_id={}'.format(meetup_id))
+        else:
+            return HttpResponseRedirect('/join_meetup/?location_id={}&time_id={}'.format(location_id, time_id))
+    except Activist.DoesNotExist:
+        return redirect('meetups')
 
 
 def thankyou(request, meetup_id):
