@@ -28,7 +28,6 @@
       <p class="meetup_type"><i class="fa fa-tag" aria-hidden="true"></i> <a href="{% url 'instructions' %}">Straßenaktion</a></p>
     </div>
     <div class="join">
-    {{ meetup.type }}
       {% if meetup.type == 'potential' %}
           <a class="button" href="{% url 'join_meetup' %}?datetime={{ meetup.datetime | date:"Y-m-d" }}T{{ meetup.datetime | date:"H:i" }}&location_id={{ meetup.location_id | urlencode }}">Ich bin dabei</a>
       {% else %}

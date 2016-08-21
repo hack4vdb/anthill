@@ -132,7 +132,9 @@ def meetups(request):
             # todo must also be in the future... else show a message...
         except Exception as e:
             pass
-    meetups = user.proposed_meetups()
+    meetups = user.find_meetups_nearby()[:3]
+    if len(meetups) == 0:
+        meetups = Meetup.potential_meetups(user.postalcode)
     return render(request, 'meetups.html', {
         'invited_by': invited_by,
         'invited_to': invited_to,
