@@ -3,7 +3,7 @@
 
 {% block title %}
   {% if invited_to %}
-    Aktiv für Van Der Bellen am {{ invited_to.datetime|date:"j.m." }} in {{ invited_to.city }}
+    Aktiv für Van der Bellen am {{ invited_to.datetime|date:"j.m." }} in {{ invited_to.city }}
   {% else %}
     Weil's um was geht.
   {% endif %}
@@ -40,7 +40,7 @@
         {% else %}
           <h2>Van der Bellen muss gewinnen.</h2>
           <p>
-            Bei dieser Wahl kann ich nicht sitzen bleiben. Ich bin bereit, aktiv zu werden.
+            Ich bin bereit, aktiv zu werden.
             <strong>Weil's um was geht.</strong>
           </p>
         {% endif %}
@@ -59,6 +59,10 @@
           <button type="submit" class="event-button">
             Zeige, was ich tun kann ➜
           </button>
+          <p class="disclaimer">
+            <i class="fa fa-check" aria-hidden="true"></i>
+            Die Kampagne darf mich elektronisch kontaktieren. Ich kann mich von Nachrichten jederzeit wieder abmelden.
+          </p>
           <a href="#" id="returning" onclick="return loginForm()">Schon hier gewesen? Log dich ein</a>
         </form>
 

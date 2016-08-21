@@ -310,6 +310,11 @@ body.home #signup-bubble-2 h2 {
   }
 }
 
+body.home #signup-bubble .disclaimer {
+  color: #999;
+  font-size: 1.4rem;
+}
+
 body.home hr {
   margin-top: 0;
   margin-bottom: 1.4em;
@@ -580,7 +585,7 @@ body.meetups .meetup_list .join .attending {
   background: #cef;
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
-  padding: 1rem 0;
+  padding: 1rem 0 .1rem;
 }
 body.meetups .meetup_list .join .attending p {
   padding: 0 1.5rem;
