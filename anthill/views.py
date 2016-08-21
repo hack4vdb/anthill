@@ -164,10 +164,7 @@ def meetupsByLatLng(request, latlong):
             status=status.HTTP_400_BAD_REQUEST)
     meetups = list(Meetup.find_meetups_by_latlong(lat, lng)[:3])
     if meetups == []:
-        # FIXME: THIS IS HORRIBLE
-        coordinates = GEOSGeometry('POINT(%f %f)' % (lng, lat), srid=4326)
-        location_id, location = geo.get_nearest_ortzumflyern(coordinates)
-        postalcode = int(location['plz'])
+        postalcode = PostalcodeCoordinates.get_postalcode_from_latlng(lat, lng)
         meetups = Meetup.potential_meetups(postalcode)
     serializer = MeetupSerializer(
         meetups, many=True, context={
