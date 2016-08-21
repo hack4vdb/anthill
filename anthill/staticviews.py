@@ -171,7 +171,7 @@ def join_meetup(request):
 
                 is_new = True
         else: # displaying address form
-            start_time = Meetup.get_proposed_time_by_id(time_id)
+            start_time = Meetup.get_potential_time_by_id(time_id)
             city = get_ortezumflyern(location_id)['ort']
             return render(request, 'address_form.html', {
                 'user': user,

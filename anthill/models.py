@@ -167,7 +167,7 @@ class Meetup(models.Model):
     @classmethod
     def create_from_potentialmeetup_specs(cls, location_id, time_id):
         loc = geo.get_ortezumflyern(location_id)
-        start_time = Meetup.get_proposed_time_by_id(time_id)
+        start_time = Meetup.get_potential_time_by_id(time_id)
         return Meetup.create(
             title='',
             postalcode=int(loc['plz']),
@@ -190,7 +190,7 @@ class Meetup(models.Model):
         return activist.find_meetups_nearby()
 
     @staticmethod
-    def proposed_times():
+    def potential_times():
         """returns an array of porposed datetimes that new events may be created at"""
         today = datetime.date.today()
         # find the next saturday that's at least 7 days away from today
@@ -213,24 +213,24 @@ class Meetup(models.Model):
 
     # if you can refactor the following to be calleable from templates but less silly, please do
     @staticmethod
-    def proposed_time_1():
-        start_time, end_time = Meetup.proposed_times()[0]  
+    def potential_time_1():
+        start_time, end_time = Meetup.potential_times()[0]
         return start_time
 
     @staticmethod
-    def proposed_time_2():
-        start_time, end_time = Meetup.proposed_times()[1]  
+    def potential_time_2():
+        start_time, end_time = Meetup.potential_times()[1]
         return start_time
 
     @staticmethod
-    def proposed_time_3():
-        start_time, end_time = Meetup.proposed_times()[2]  
+    def potential_time_3():
+        start_time, end_time = Meetup.potential_times()[2]
         return start_time
 
     @staticmethod
-    def get_proposed_time_by_id(idx):
+    def get_potential_time_by_id(idx):
         idx = int(idx)
-        times = Meetup.proposed_times()
+        times = Meetup.potential_times()
         if idx < len(times):
             start_time, end_time = times[idx]
         else:

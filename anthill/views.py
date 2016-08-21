@@ -132,11 +132,11 @@ def interesting_places(request, id):
 def potential_meetups(request, user_bot_id):
     activist = Activist.objects.filter(facebook_bot_id=user_bot_id).first()
     potential_meetup1, location_id = Meetup.potential_meetup(activist.postalcode)
-    potential_meetup1.datetime = potential_meetup1.proposed_times()[0][0]
+    potential_meetup1.datetime = potential_meetup1.potential_times()[0][0]
     potential_meetup2, location_id = Meetup.potential_meetup(activist.postalcode)
-    potential_meetup2.datetime = potential_meetup2.proposed_times()[1][0]
+    potential_meetup2.datetime = potential_meetup2.potential_times()[1][0]
     potential_meetup3, location_id = Meetup.potential_meetup(activist.postalcode)
-    potential_meetup3.datetime = potential_meetup3.proposed_times()[2][0]
+    potential_meetup3.datetime = potential_meetup3.potential_times()[2][0]
     potential_meetups = [
         potential_meetup1,
         potential_meetup2,
