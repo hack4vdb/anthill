@@ -72,7 +72,7 @@
 
     {% else %}
 
-      <a class="" id="fb-share" href="https://www.facebook.com/dialog/send?app_id=1595950890699096&link={{ invite_meetup_url|urlencode }}&redirect_uri={{ thankyou_url|urlencode }}" onclick="return popupCenter(this.href, 'fb-share', 650, 600)"><i class="fa fa-facebook" aria-hidden="true"></i> per Facebook-Nachricht</a>
+      <a class="" id="fb-share" href="https://www.facebook.com/dialog/send?display=popup&app_id=1595950890699096&link={{ invite_meetup_url|urlencode }}&redirect_uri={{ "http://"|urlencode }}{{ request.get_host|urlencode }}{{ thankyou_url|urlencode }}" onclick="return popupCenter(this.href, 'fb-share', 555, 600)"><i class="fa fa-facebook" aria-hidden="true"></i> per Facebook-Nachricht</a>
 
     {% endif %}
 
