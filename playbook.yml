@@ -40,6 +40,9 @@
         become: yes
         become_user: postgres
 
+      - name: setup local settings
+        copy: src=/vagrant/hack4vdb/settings_local.vagrant.py dest=/vagrant/hack4vdb/settings_local.py
+
       - name: migrations
         django_manage: app_path=/vagrant
                        command=migrate
