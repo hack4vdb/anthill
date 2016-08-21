@@ -165,6 +165,7 @@ def join_meetup(request):
             # 'city': get_ortezumflyern(location_id)['ort'],
             'plz': user.postalcode
         })
+        city = get_ortezumflyern(location_id)['ort']
         if request.method == 'POST': # submitting address form
             if form.is_valid():
                 form.save()  # Save activist data entered by user
@@ -175,10 +176,15 @@ def join_meetup(request):
                     meetup.save()
                     meetup.add_activist(user)
                     Notifications.send_meetup_created_notifications(request=request, meetup=meetup)
-
-                is_new = True
+                return redirect('invite', meetup_id=str(meetup.uuid))
+            else:
+                return render(request, 'address_form.html', {
+                    'user': user,
+                    'form': form,
+                    'city': city,
+                    'date': start_time
+                })
         else: # displaying address form
-            city = get_ortezumflyern(location_id)['ort']
             return render(request, 'address_form.html', {
                 'user': user,
                 'form': form,
@@ -205,8 +211,6 @@ def join_meetup(request):
                 })
         except Meetup.DoesNotExist:
             return redirect('meetups')
-
-    return redirect('invite', meetup_id=str(meetup.uuid))
 
 
 def short_invite(request, invite_code=''):
