@@ -1,6 +1,22 @@
 {% extends "layouts/base.html" %}
 {% block body_class %}home{% endblock %}
 
+{% block title %}
+  {% if invited_to %}
+    Aktiv für Van Der Bellen am {{ invited_to.datetime|date:"j.m." }} in {{ invited_to.city }}
+  {% else %}
+    Weil's um was geht.
+  {% endif %}
+{% endblock %}
+
+{% block og:description %}
+  {% if invited_to %}
+    {{ invited_by.first_name }} wird aktiv und lädt dich ein, dabei zu sein. Sag hier bescheid, dass du mitmachst - weil's um was geht!
+  {% else %}
+    Jetzt für Alexander Van der Bellen aktiv werden - weil's um was geht.
+  {% endif %}
+{% endblock %}
+
 {% block content %}
 
 <h1 onclick="switchSide()">Weil's um was geht.</h1>

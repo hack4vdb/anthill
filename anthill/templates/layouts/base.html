@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="og:description" content="{% block og:description %}Wenige Stunden Engagement für die Kampagne können das Wahlergebnis entscheiden.{% endblock %}" />
+    <meta property="og:description" content="{% block og:description %}Jetzt für Alexander Van der Bellen aktiv werden - weil's um was geht.{% endblock %}" />
     <meta property="og:image" content="{% block og:image %}{% if request.is_secure %}https://{% else %}http://{% endif %}{{ request.get_host }}/static/img/bg.jpg{% endblock %}" />
-    <title>Weil's um was geht</title>
+    <title>{% block title %}Weil's um was geht – aktiv für Van der Bellen{% endblock %}</title>
 
     {% load staticfiles %}
     <link rel="stylesheet" href="{% static 'css/normalize.css' %}">

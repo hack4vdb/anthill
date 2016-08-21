@@ -58,20 +58,24 @@ def home(request):
                 return redirect('login_by_email')
     else:
         invited_by_uuid = None
+        invited_to_uuid = None
         if request.GET.get('invited_by'):
             try:
                 invited_by = Activist.objects.get(uuid=request.GET.get('invited_by'))
                 invited_by_uuid = invited_by.uuid
+                invited_to = Meetup.objects.get(uuid=request.GET.get('invited_to'))
+                invited_to_uuid = invited_to.uuid
             except Exception as e:
                 pass
         form = SignupForm(initial={
             'invited_by': invited_by_uuid,
-            'invited_to': request.GET.get('invited_to')
+            'invited_to': invited_to_uuid
         })
     if request.user.is_authenticated:
         return redirect('meetups')
     return render(request, 'home.html', {
         'invited_by': invited_by,
+        'invited_to': invited_to,
         'form': form
     })
 
