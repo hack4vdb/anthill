@@ -12,6 +12,8 @@ from anthill import geo
 from django.dispatch import receiver
 from django.db import transaction
 
+from utils import concat_list_verbosely
+
 
 DISTANCE_LIMIT_METERS = 40000  # todo: check if this is really meters
 
@@ -132,10 +134,10 @@ class Meetup(models.Model):
         return self.activists.count() == 1
 
     def people_string(self):
-        return ", ".join([a.first_name for a in self.activists.all()])
+        return concat_list_verbosely([a.first_name for a in self.activists.all()])
 
     def other_people_string(self, user):
-        return ", ".join([a.first_name for a in self.activists.all() if a != user])
+        return concat_list_verbosely([a.first_name for a in self.activists.all() if a != user])
 
     @property
     def wahl_details(self):
