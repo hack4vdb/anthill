@@ -17,7 +17,12 @@
                 Wir sind Menschen aus der Zivilgesellschaft, die sich selbst organisieren, um sicherzustellen, dass Alexander Van der Bellen Präsident wird.
               </p>
               <p>
-                <strong>{{ invited_by.first_name }} wird auch aktiv und lädt dich ein</strong>, gemeinsam bei dieser <a href="{% url 'instructions' %}">Straßenaktion</a> für Alexander van der Bellen mitzumachen. Kommst du auch?
+                <strong>{{ invited_by.first_name }} wird auch aktiv
+                {% if invited_to %}
+                  und lädt dich ein</strong>, gemeinsam bei dieser <a href="{% url 'instructions' %}">Straßenaktion</a> für Alexander Van der Bellen mitzumachen. Kommst du auch?
+                {% else %}
+                  und hat dich eingeladen, ebenfalls etwas zu tun. Hier sind Aktionen in deiner Nähe:
+                {% end %}
               </p>
             {% else %}
               <p>
