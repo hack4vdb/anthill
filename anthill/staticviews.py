@@ -24,6 +24,7 @@ from itsdangerous import JSONWebSignatureSerializer
 
 def home(request):
     invited_by = None
+    invited_to = None
     if request.method == 'POST':
         form = SignupForm(request.POST)
         if form.is_valid():
