@@ -239,22 +239,6 @@ class Meetup(models.Model):
             return meetup
         return map(lambda t: create_potential_meetup(postalcode, t), Meetup.potential_times())
 
-    # if you can refactor the following to be calleable from templates but less silly, please do
-    @staticmethod
-    def potential_time_1():
-        start_time, end_time = Meetup.potential_times()[0]
-        return start_time
-
-    @staticmethod
-    def potential_time_2():
-        start_time, end_time = Meetup.potential_times()[1]
-        return start_time
-
-    @staticmethod
-    def potential_time_3():
-        start_time, end_time = Meetup.potential_times()[2]
-        return start_time
-
     @staticmethod
     def get_potential_time_by_id(idx):
         idx = int(idx)
