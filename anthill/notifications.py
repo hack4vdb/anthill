@@ -30,10 +30,14 @@ class Notifications:
         for activist in meetup.find_activists_nearby().all():
             #TODO despam
             join_login, created = EmailLoginJoinMeetupCode.objects.get_or_create(activist=activist, meetup=meetup)
-            print('email for {} - {}'.format(activist.email, join_login.invite_code))
             NewNearMeetupMessageView(recipient=activist).send(extra_context={
                 'meetup': meetup,
-                'join_link': request.build_absolute_uri(reverse('join_meetup_from_email', kwargs={ #TODO: join_url
+                'join_link': request.build_absolute_uri(reverse('join_meetup_from_email', kwargs={
                     'login_token': join_login.invite_code
                 }))
             })
+
+    @staticmethod
+    def send_welcome_notification(activist):
+        WelcomeMessageView(recipient=activist).send()
+

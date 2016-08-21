@@ -1,4 +1,7 @@
-# -*- coding: UTF-8 -*-
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+from __future__ import unicode_literals
 import json
 import requests
 from django.shortcuts import render, redirect, get_object_or_404

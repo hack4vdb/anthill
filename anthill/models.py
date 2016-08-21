@@ -32,7 +32,7 @@ class Activist(models.Model):
     coordinate = models.PointField(null=True, blank=True)
     last_login = models.DateTimeField(null=True)
     login_token = models.UUIDField(default=None, null=True, blank=True)
-    invited_by = models.ForeignKey('Activist', null=True, default=None)
+    invited_by = models.ForeignKey('Activist', null=True, default=None, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     USERNAME_FIELD = 'uuid'
