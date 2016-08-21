@@ -3,7 +3,7 @@
 
 {% block content %}
 
-<div class="full-width-container status">
+<div class="full-width-container titlebar status">
   <div class="container">
 		<div class="row">
       <div class="two-thirds column">
@@ -46,12 +46,12 @@
 
   <p>
     Denk mal nach: Welche deiner FreundInnen würden mitkommen?
+    Lade sie mit eurer Lieblingsapp ein:
   </p>
 
-  <h4>Ausgewählte FreundInnen einladen</h4>
+  {% url 'thankyou' meetup_id=meetup.uuid as thankyou_url %}
 
   <p id="share-buttons">
-    {% url 'thankyou' meetup_id=meetup.uuid as thankyou_url %}
 
     {% if request.is_mobile %}
 
@@ -81,11 +81,13 @@
     <a class="" href="mailto:HIER%20EINSETZEN?subject={{ invite_email_subject|urlencode }}&body={{ invite_email_body|urlencode }}" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i> per E-Mail</a>
   </p>
 
-  <h4>Teile einen Link</h4>
+  <h4>Teile den Link</h4>
 
-  <input id="invite-url" type="text" value="{{ invite_meetup_url }}" style="min-width:30%" />
-  <button class="clipboard" data-clipboard-target="#invite-url"><i class="fa fa-clipboard" aria-hidden="true"></i></button>
-  <div id="clipboard-msg"></div>
+  <input id="invite-url" type="text" value="{{ invite_meetup_url }}" style="min-width:30%" onclick="this.select()" />
+  {% if not request.is_mobile %}
+    <button class="clipboard" data-clipboard-target="#invite-url"><i class="fa fa-clipboard" aria-hidden="true"></i></button>
+    <div id="clipboard-msg"></div>
+  {% endif %}
 
   <p>
     <br /><br />

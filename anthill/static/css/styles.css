@@ -670,9 +670,6 @@ body.address .illu {
     width: 100%;
   }
 }
-body.address .titlebar p {
-  margin: 0;
-}
 
 body.address p.help {
   margin: 0 0 1rem 0;
@@ -699,29 +696,56 @@ body.invite .fa-flag {
 .titlebar .info {
   border-left: 2px dotted #000;
   padding-left: 2rem;
-  margin-top: 2rem;
+  margin-top: 3rem;
 }
+@media (min-width: 550px) {
+  .titlebar .info {
+    border-left: 2px dotted #000;
+    padding-left: 2rem;
+    margin-top: 2rem;
+  }
+}
+
 body.invite .status p {
   margin: 0;
 }
 
 body.invite #share-buttons a {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   background: #1EAEDB;
   color: #fff;
   display: inline-block;
   padding: 0 3rem 0 1.5rem;
-  line-height: 5rem;
+  line-height: 4rem;
   border-radius: .5rem;
   vertical-align: middle;
+  width: 100%;
+  margin-bottom: .2rem;
+  box-sizing: border-box;
+}
+@media (min-width: 550px) {
+  body.invite #share-buttons a {
+    line-height: 5rem;
+    width: auto;
+  }
 }
 body.invite #share-buttons a .fa {
   font-size: 3rem;
   position: relative;
   top: .5rem;
   margin-right: 1rem;
+  width: 2.7rem;
+  text-align: center;
 }
 
+body.invite #invite-url {
+  width: 100%;
+}
+@media (min-width: 550px) {
+  body.invite #invite-url {
+    width: auto;
+  }
+}
 
 
 body.modal .final {
