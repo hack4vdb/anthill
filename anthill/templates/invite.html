@@ -22,9 +22,9 @@
           {% else %}
             <i class="fa fa-user" aria-hidden="true"></i>
             {% if not meetup.is_viable %}
-              <strong><!-- todo name -->{{ other_people_string }}</strong> hat auch schon zugesagt und wird
+              <strong>{{ other_people_string }}</strong> hat auch schon zugesagt und wird
             {% else %}
-              <strong><!-- todo name -->{{ other_people_string }}</strong> haben auch schon zugesagt und werden
+              <strong>{{ other_people_string }}</strong> haben auch schon zugesagt und werden
             {% endif %}
             Flyer und Material mitbringen.<br />
           {% endif %}
@@ -48,46 +48,54 @@
     Denk mal nach: Welche deiner FreundInnen würden mitkommen?
   </p>
 
-  <h4>Über Social Media</h4>
+  <h4>Ausgewählte FreundInnen einladen</h4>
 
-  <p>
-    <a class="button button-primary" id="fb-share" href="#" onclick="return popupCenter(this.href, 'fb-share', 555, 600)"><i class="fa fa-facebook" aria-hidden="true"></i> Lade Freunde per Facebook-Nachricht ein</a>
+  <p id="share-buttons">
+    {% url 'thankyou' meetup_id=meetup.uuid as thankyou_url %}
 
-    <a class="button button-primary" id="tw-share" href="#" onclick="return popupCenter(this.href, 'tw-share', 700, 300)"><i class="fa fa-twitter" aria-hidden="true"></i> Lade Freunde per Tweet ein</a>
-  </p>
+    {% if request.is_mobile %}
 
-  <h4>Per E-Mail</h4>
+      <a class="" id="wa-share" href="whatsapp://send?text={{ "Kommst du am "|urlencode }}{{ meetup.datetime|date:"D j"|urlencode }}{{ ". mit zu einer Aktion für Van der Bellen in "|urlencode }}{{ meetup.city|urlencode }}{{ "? Weil's um was geht: "|urlencode }}{{ invite_meetup_url|urlencode }}" data-action="share/whatsapp/share">
+        <i class="fa fa-whatsapp" aria-hidden="true"></i>
+        per Whatsapp-Nachricht
+      </a>
 
-  <p>
-    <a class="button button-primary" href="mailto:HIER%20EINSETZEN?subject={{ invite_email_subject|urlencode }}&body={{ invite_email_body|urlencode }}" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i> Lade Freunde per E-Mail ein</a>
+      <a class="" id="fb-share" href="fb-messenger://share?link={{ invite_meetup_url|urlencode }}">
+        <i class="fa fa-commenting" aria-hidden="true"></i>
+        per Facebook Messenger
+      </a>
+
+      <a class="" id="tg-share" href="https://telegram.me/share/url?url={{ invite_meetup_url|urlencode }}">
+        <i class="fa fa-paper-plane" aria-hidden="true"></i>
+        per Telegram
+      </a>
+
+    {% else %}
+
+      <a class="" id="fb-share" href="https://www.facebook.com/dialog/send?app_id=1595950890699096&link={{ invite_meetup_url|urlencode }}&redirect_uri={{ thankyou_url|urlencode }}" onclick="return popupCenter(this.href, 'fb-share', 650, 600)"><i class="fa fa-facebook" aria-hidden="true"></i> per Facebook-Nachricht</a>
+
+    {% endif %}
+
+    <a class="" id="tw-share" href="https://twitter.com/intent/tweet?text={{ "@HIER @FREUNDE @EINSETZEN Kommt ihr am "|urlencode }}{{ meetup.datetime|date:"D j"|urlencode }}{{ ". mit zu einer Aktion für VdB in "|urlencode }}{{ meetup.city }}{{ "? Weil's um was geht: "|urlencode }}{{ invite_meetup_url|urlencode }}" onclick="return popupCenter(this.href, 'tw-share', 700, 300)"><i class="fa fa-twitter" aria-hidden="true"></i> per Tweet</a>
+
+    <a class="" href="mailto:HIER%20EINSETZEN?subject={{ invite_email_subject|urlencode }}&body={{ invite_email_body|urlencode }}" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i> per E-Mail</a>
   </p>
 
   <h4>Teile einen Link</h4>
 
-  <input id="invite-url"type="text" value="{{ invite_meetup_url }}" style="min-width:30%" />
+  <input id="invite-url" type="text" value="{{ invite_meetup_url }}" style="min-width:30%" />
   <button class="clipboard" data-clipboard-target="#invite-url"><i class="fa fa-clipboard" aria-hidden="true"></i></button>
   <div id="clipboard-msg"></div>
 
   <p>
     <br /><br />
-    <a id="next-link" href="{% url 'thankyou' meetup_id=meetup.uuid %}">Fertig / Überspringen &raquo;</a>
+    <a id="next-link" href="{{ thankyou_url }}">Fertig / Überspringen &raquo;</a>
   </p>
 
 </div>
 <script type="text/javascript">
 
   document.addEventListener("DOMContentLoaded", function(event) { 
-    
-    // Set up FB share link
-    document.getElementById('fb-share').href =
-      'https://www.facebook.com/dialog/send?app_id='+1595950890699096+
-      '&link='+encodeURIComponent('{{ invite_meetup_url }}')+
-      '&redirect_uri='+encodeURIComponent(document.getElementById('next-link').href);
-
-    document.getElementById('tw-share').href =
-      'https://twitter.com/intent/tweet?text='+encodeURIComponent(
-        '@HIER @FREUNDE @EINSETZEN Kommt ihr am {{ meetup.datetime|date:"D" }} {{ meetup.datetime|date:"j" }}. mit zu einer Aktion für Van der Bellen in {{ meetup.city }}? Weil\'s um was geht: {{ invite_meetup_url }}'
-    );
 
     // Set up clipboard copy button
     var c = new Clipboard('.clipboard');

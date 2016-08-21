@@ -705,6 +705,25 @@ body.invite .status p {
   margin: 0;
 }
 
+body.invite #share-buttons a {
+  font-size: 1.8rem;
+  background: #1EAEDB;
+  color: #fff;
+  display: inline-block;
+  padding: 0 3rem 0 1.5rem;
+  line-height: 5rem;
+  border-radius: .5rem;
+  vertical-align: middle;
+}
+body.invite #share-buttons a .fa {
+  font-size: 3rem;
+  position: relative;
+  top: .5rem;
+  margin-right: 1rem;
+}
+
+
+
 body.modal .final {
   margin-bottom: 3rem;
 }
