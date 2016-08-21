@@ -56,8 +56,11 @@
       </p>
       <p><a href="https://www.google.com/maps?hl=en&q={{ user.coordinate }}">Maps </a></p-->
     </ul>
+    {% if invited_to %}
+      <a href="." class="more">Da hab ich keine Zeit, zeige andere</a>    
+    {% endif %}
     {% if show_more_allowed %}
-      <a href="?show_more=true">Da hab ich keine Zeit</a>
+      <a href="?show_more=true" class="more">Da hab ich keine Zeit, zeige andere</a>
     {% endif %}
   </div>
 </div>

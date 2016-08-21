@@ -605,6 +605,18 @@ body.meetups .meetup:hover {
   border-color: #bbb;
 }
 
+body.meetups .more {
+  display: block;
+  margin: 0 auto;
+  width: 16em;
+  max-width: 78%;
+  text-align: center;
+  border: 1px solid #bbb;
+  color: #888;
+  padding: 1.5rem 3rem;
+  border-radius: 4rem;
+}
+
 
 body.meetups .donate {
   background-color: #eee; 
