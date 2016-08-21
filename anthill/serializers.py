@@ -29,6 +29,8 @@ class ActivistSerializer(serializers.ModelSerializer):
 
 class MeetupSerializer(serializers.ModelSerializer):
 
+    title = serializers.CharField(source='city')
+
     class Meta:
         model = Meetup
         fields = ('uuid', 'title', 'datetime', 'postalcode', 'city',
