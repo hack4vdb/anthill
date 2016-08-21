@@ -202,6 +202,7 @@ def join_meetup(request):
                     with transaction.atomic():
                         meetup.add_activist(user)
                         meetup.save()
+                return redirect('invite', meetup_id=str(meetup.uuid))
             else: # displaying name form
                 return render(request, 'name_form.html', {
                     'user': user,
