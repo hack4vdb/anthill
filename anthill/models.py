@@ -11,6 +11,7 @@ from rest_framework.exceptions import ValidationError
 from anthill import geo
 from django.dispatch import receiver
 from django.db import transaction
+from django.utils import timezone
 from anthill.settings import MIN_PARTICIPANTS_PER_MEETUP
 
 from utils import concat_list_verbosely
@@ -90,10 +91,20 @@ class Activist(models.Model):
         except ValueError as e:
             return []
 
-    def proposed_meetups(self):
-        existing_meetups = list(self.find_meetups_nearby()[:3])
+    def proposed_meetups(self, limit=3):
+        existing_meetups = list(self.find_meetups_nearby()[:limit])
         potential_meetups = Meetup.potential_meetups(self.postalcode)
-        return existing_meetups + potential_meetups
+
+        # Create a list of existing and potential meetups, but only add potential meetups that don't
+        # start at the same time as an existing meetup as long as we aren't at `limit`.
+        # Assumes taht `existing_meetups` is sorted by datetime ASC
+        # I'm bad at Python so this is being done using mutation.
+        proposed_meetups = list(existing_meetups) # copy. not necessary but cleaner
+        existing_times = map(lambda m: m.datetime, existing_meetups)
+        for meetup in potential_meetups:
+            if meetup.datetime not in existing_times and len(proposed_meetups) < limit:
+                proposed_meetups.append(meetup)
+        return sorted(proposed_meetups, key=lambda m: m.datetime)
 
 
     def __unicode__(self):
@@ -188,7 +199,7 @@ class Meetup(models.Model):
                 (loc['lon'],
                  loc['lat']),
                 srid=4326),
-            datetime=datetime)
+            datetime=timezone.make_aware(datetime))
 
     def _unicode__(self):
         return '{} - {}'.format(self.title, self.uuid)
@@ -217,8 +228,8 @@ class Meetup(models.Model):
             workday = workday + datetime.timedelta(days=2)
         elif workday.weekday() == 6:
             workday = workday + datetime.timedelta(days=1)
-        return list(map(lambda t: (t, t + datetime.timedelta(hours=2)),
-                   sorted([saturday, sunday, workday])))
+        times = map(lambda t: timezone.make_aware(t), sorted([saturday, sunday, workday]))
+        return map(lambda t: (t, t + datetime.timedelta(hours=2)), times)
 
     @staticmethod
     def potential_meetups(postalcode):

@@ -147,7 +147,7 @@ def join_meetup(request):
     meetup_id = request.GET.get('meetup_id', None)
     start_time = request.GET.get('datetime', None)
     if start_time != None:
-        start_time = datetime.datetime.strptime(start_time, "%Y-%m-%dT%H:%M:%S")
+        start_time = datetime.datetime.strptime(start_time, "%Y-%m-%dT%H:%M")
     location_id = request.GET.get('location_id', None)
     is_new = False
     meetup = None
