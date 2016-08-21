@@ -119,26 +119,32 @@ def check_mail(request):
 @login_required
 def meetups(request):
     user = request.user
+    show_more = request.GET.get('show_more', False)
+    show_more_allowed = True
     invited_to = None
     invited_by = None
     if request.GET.get('invited_by'):
         try:
             invited_by = Activist.objects.get(uuid=request.GET.get('invited_by'))
+            show_more_allowed = False
         except Exception as e:
             pass
     if request.GET.get('invited_to'):
         try:
             invited_to = Meetup.objects.get(uuid=request.GET.get('invited_to'))
+            show_more_allowed = False
             # todo must also be in the future... else show a message...
         except Exception as e:
             pass
     meetups = user.find_meetups_nearby()[:3]
-    if len(meetups) == 0:
+    if len(meetups) == 0 or show_more:
+        show_more_allowed = False
         meetups = Meetup.potential_meetups(user.postalcode)
     return render(request, 'meetups.html', {
         'invited_by': invited_by,
         'invited_to': invited_to,
         'meetups': meetups,
+        'show_more_allowed': show_more_allowed,
         'user': user,
     })
 

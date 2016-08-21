@@ -56,6 +56,9 @@
       </p>
       <p><a href="https://www.google.com/maps?hl=en&q={{ user.coordinate }}">Maps </a></p-->
     </ul>
+    {% if show_more_allowed %}
+      <a href="?show_more=true">Da hab ich keine Zeit</a>
+    {% endif %}
   </div>
 </div>
 <div class="full-width-container donate">
