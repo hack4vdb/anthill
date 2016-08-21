@@ -1,7 +1,10 @@
 from anthill.emailviews import WelcomeMessageView
 from anthill.emailviews import NewNearMeetupMessageView
 from anthill.emailviews import LoginLinkMessageView
-from anthill.models import EmailLoginJoinMeetupCode
+from anthill.emailviews import MeetupBecameViableMessageView
+from anthill.emailviews import WelcomeToViableMeetupMessageView
+import models
+from anthill.utils import make_absolute_url
 
 from django.urls import reverse
 
@@ -29,7 +32,7 @@ class Notifications:
     def send_meetup_created_notifications(request, meetup):
         for activist in meetup.find_activists_nearby().all():
             #TODO despam
-            join_login, created = EmailLoginJoinMeetupCode.objects.get_or_create(activist=activist, meetup=meetup)
+            join_login, created = models.EmailLoginJoinMeetupCode.objects.get_or_create(activist=activist, meetup=meetup)
             NewNearMeetupMessageView(recipient=activist).send(extra_context={
                 'meetup': meetup,
                 'join_link': request.build_absolute_uri(reverse('join_meetup_from_email', kwargs={
@@ -40,4 +43,21 @@ class Notifications:
     @staticmethod
     def send_welcome_notification(activist):
         WelcomeMessageView(recipient=activist).send()
+
+    @staticmethod
+    def send_meetup_became_viable_notifications(meetup):
+        for activist in meetup.activists.all():
+            invite_link = make_absolute_url(reverse('invite', kwargs={'meetup_id': meetup.uuid}))
+            MeetupBecameViableMessageView(recipient=activist).send(extra_context={
+                'meetup': meetup,
+                'invite_link': invite_link,
+            })
+
+    @staticmethod
+    def send_welcome_to_viable_meetup(activist, meetup):
+        invite_link = make_absolute_url(reverse('invite', kwargs={'meetup_id': meetup.uuid}))
+        WelcomeToViableMeetupMessageView(recipient=activist).send(extra_context={
+            'meetup': meetup,
+            'invite_link': invite_link,
+        })
 

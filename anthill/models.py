@@ -11,8 +11,10 @@ from rest_framework.exceptions import ValidationError
 from anthill import geo
 from django.dispatch import receiver
 from django.db import transaction
+from anthill.settings import MIN_PARTICIPANTS_PER_MEETUP
 
 from utils import concat_list_verbosely
+import notifications
 
 
 DISTANCE_LIMIT_METERS = 40000  # todo: check if this is really meters
@@ -97,12 +99,12 @@ class Activist(models.Model):
 
 class Meetup(models.Model):
     uuid = models.UUIDField(unique=True, default=uuid4, editable=False)
-    title = models.CharField(max_length=1000)
+    title = models.CharField(max_length=1000, blank=True)
     datetime = models.DateTimeField()
     postalcode = models.IntegerField()  # PLZ (4-digit)
     city = models.CharField(max_length=500)  # Ort
     street = models.CharField(max_length=500)
-    house_number = models.CharField(max_length=100)
+    house_number = models.CharField(max_length=100, blank=True)
     coordinate = models.PointField()
     activists = models.ManyToManyField(
         Activist, blank=True, related_name='meetups', through='Participation')
@@ -122,13 +124,20 @@ class Meetup(models.Model):
     # TODO: trigger mail to alle die schon dabei sind
 
     def add_activist(self, activist):
+        was_viable = self.is_viable
         part, created = Participation.objects.get_or_create(activist=activist, meetup=self)
+        is_now_viable = self.is_viable
         if created:
             part.save()
+        if not was_viable and is_now_viable:
+            notifications.Notifications.send_meetup_became_viable_notifications(meetup=self)
+        elif is_now_viable:
+            notifications.Notifications.send_welcome_to_viable_meetup(activist=activist, meetup=self)
+
 
     @property
     def is_viable(self):
-        return self.activists.count() >= 3
+        return self.activists.count() >= MIN_PARTICIPANTS_PER_MEETUP
 
     def is_solo(self):
         return self.activists.count() == 1

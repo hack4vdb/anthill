@@ -7,3 +7,4 @@ django-mailviews==0.6.5
 geopy==1.11.0
 requests
 itsdangerous==0.24
+django-crontab==0.7.1

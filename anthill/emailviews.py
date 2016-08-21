@@ -68,7 +68,7 @@ class LoginLinkMessageView(TemplatedNotificationView):
     subject_template_name = 'emails/login/subject.txt'
     body_template_name = 'emails/login/body.html'
     html_body_template_name = 'emails/login/body.html'
-    # bot_template_name = 'emails/login/bot.txt'
+    bot_template_name = 'emails/login/bot.txt'
 
 
 class WelcomeMessageView(TemplatedNotificationView):
@@ -83,3 +83,19 @@ class NewNearMeetupMessageView(TemplatedNotificationView):
     body_template_name = 'emails/1_new_meetup_1person/body.txt'
     html_body_template_name = 'emails/1_new_meetup_1person/body.html'
     bot_template_name = 'emails/1_new_meetup_1person/bot.txt'
+
+
+class MeetupBecameViableMessageView(TemplatedNotificationView):
+    subject_template_name = 'emails/4_date_confirmation/subject.txt'
+    body_template_name = 'emails/4_date_confirmation/body.txt'
+    html_body_template_name = 'emails/4_date_confirmation/body.html'
+    bot_template_name = 'emails/4_date_confirmation/bot.txt'
+
+
+class WelcomeToViableMeetupMessageView(TemplatedNotificationView):
+    subject_template_name = 'emails/welcome_to_viable_meetup/subject.txt'
+    body_template_name = 'emails/welcome_to_viable_meetup/body.txt'
+    html_body_template_name = 'emails/welcome_to_viable_meetup/body.html'
+    bot_template_name = 'emails/welcome_to_viable_meetup/bot.txt'
+
+

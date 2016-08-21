@@ -3,10 +3,9 @@
     <td>
       <p>{{ recipient.first_name }} —</p>
       <p>
-        Die Verteilaktion am {{ meetup.datetime|date:"j. F" }} hat eben die notwendige Teilnehmerzahl erreicht. Wir schicken heute die Flyer per Post an
-        {{ meetup.owner.first_name }}.
+        Die Verteilaktion am {{ meetup.datetime|date:"j. F" }} kommt fix zustande. Die Flyer wurden bereits an {{ meetup.owner.first_name }} per Post verschickt.
       </p>
-      <p>Toll, dass Du, gemeinsam mit Anderen Alexander Van der Bellen auf diese Art unterst&uuml;tzen wirst. Diese Unterstützer haben zugesagt:</p>
+      <p>Toll, dass Du, gemeinsam mit Anderen Alexander Van der Bellen auf diese Art unterst&uuml;tzen wirst. Diese Unterstützer haben bis jetzt zugesagt:</p>
       <p>
         {% for participant in meetup.activists.all %}
           {{ participant.first_name }}<br />

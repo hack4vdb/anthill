@@ -13,3 +13,9 @@ def concat_list_verbosely(string_list):
         return " und ".join([result] + string_list[-1:])
     else:
         return ", ".join(string_list)
+
+
+def make_absolute_url(path):
+    #TODO: load domain from settings
+    return 'http://weilsumwasgeht.at{}'.format(path)
+

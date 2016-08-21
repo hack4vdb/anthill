@@ -1,0 +1,2 @@
+Hier ist dein Login-Link:
+{{ login_link }}

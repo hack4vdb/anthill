@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'rest_framework',
     #'mailviews',
     'anthill',
+    'django_crontab',
 ]
 
 MIDDLEWARE = [
@@ -62,6 +63,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'mobileesp.middleware.MobileDetectionMiddleware',
+]
+
+CRONJOBS = [
+    ('*/5 * * * *', 'anthill.crons.send_meetup_reminders')
 ]
 
 ROOT_URLCONF = 'hack4vdb.urls'
