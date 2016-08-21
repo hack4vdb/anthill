@@ -65,7 +65,7 @@
         per Facebook Messenger
       </a>
 
-      <a class="" id="tg-share" href="https://telegram.me/share/url?url={{ invite_meetup_url|urlencode }}">
+      <a class="" id="tg-share" href="https://telegram.me/share/url?url={{ invite_meetup_url|urlencode }}&text={{ "Kommst du am "|urlencode }}{{ meetup.datetime|date:"D j"|urlencode }}{{ ". mit zu einer Aktion für Van der Bellen in "|urlencode }}{{ meetup.city|urlencode }}{{ "? Weil's um was geht."|urlencode }}">
         <i class="fa fa-paper-plane" aria-hidden="true"></i>
         per Telegram
       </a>
