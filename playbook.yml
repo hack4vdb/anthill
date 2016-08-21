@@ -49,5 +49,12 @@
         become: yes
         become_user: vagrant
 
+      - name: load PostalcodeCoordinates.json fixtures
+        django_manage: app_path=/vagrant
+                       command=loaddata
+                       fixtures=anthill/fixtures/PostalcodeCoordinates.json
+        become: yes
+        become_user: vagrant
+
       - lineinfile: dest=/home/vagrant/.bashrc
                     line='cd /vagrant'

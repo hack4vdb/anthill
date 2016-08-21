@@ -91,19 +91,7 @@ local   all             all                                     md5
 
 #### Finalize Setup
 
-To fill the database with our tables, navigate to the project dir and run:
-
-```
-python manage.py migrate
-```
-
-Load postalcodeCoordinates data fixture:
-
-```
-python manage.py loaddata anthill/fixtures/PostalcodeCoordinates.json
-```
-
-Afterwards, you can create an admin user:
+Can create an admin user:
 
 ```
 python manage.py createsuperuser
