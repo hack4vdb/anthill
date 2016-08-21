@@ -189,8 +189,8 @@ class Meetup(models.Model):
         saturday = datetime.datetime.combine(saturday, datetime.time(11, 00))
         # find the sunday after this saturday, using the same time as saturday
         sunday = saturday + datetime.timedelta(days=1)
-        # find the next workday that's at least 5 days away from today
-        workday = today + datetime.timedelta(days=5)
+        # find the next workday that's at least 7 days away from today
+        workday = today + datetime.timedelta(days=7)
         # events on a workday start at 18:00
         workday = datetime.datetime.combine(workday, datetime.time(18, 00))
         if workday.weekday() == 5:
