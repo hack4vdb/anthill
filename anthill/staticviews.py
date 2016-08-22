@@ -196,7 +196,7 @@ def join_meetup(request):
         try:
             meetup = Meetup.objects.get(uuid=meetup_id)
             form = CreateRealnameForm(request.POST or None, instance=user)
-            if request.method == 'POST': # submitting address form
+            if request.method == 'POST': # submitting name form
                 if form.is_valid():
                     form.save()  # Save activist data entered by user
                     with transaction.atomic():

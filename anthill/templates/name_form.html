@@ -29,6 +29,15 @@
           {{ form.first_name }}
           {{ form.first_name.errors }}
         <br />
+        <label for="examplePhoneInput">{{ form.phone.label }}</label>
+        <p class="help">{{ form.phone.help_text }}</p>
+          {{ form.phone }}
+          {{ form.phone.errors }}
+        <br />
+        <p class="help">
+          <i class="fa fa-check" aria-hidden="true"></i>
+          Ich möchte die Bundespräsidentschafts-Kampagne von Alexander Van der Bellen unterstützen! Ich erkläre mich damit einverstanden, dass mich der Verein "Gemeinsam für Van der Bellen" diesbezüglich elektronisch und telefonisch kontaktiert sowie mich über den weiteren Verlauf der Kampagne informiert.
+        </p>
         <button type="submit" class="button-primary u-full-width">
           Aktiv werden &rarr;
         </button>

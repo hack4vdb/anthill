@@ -92,6 +92,13 @@ class CreateRealnameForm(forms.ModelForm):
     first_name = forms.CharField(label='Vorname', required=True, error_messages={
                                  'required': 'Bitte geben Sie Ihren Vornamen an.'},
                                  widget=forms.TextInput(attrs={'class': "u-full-width", 'autofocus': True}))
+    phone = forms.CharField(
+        label='Telefonnummer',
+        help_text='Diese müssen wir den anderen Teilnehmenden weitergeben für den Fall, dass die dich vor Ort nicht finden oder etwas dazwischenkommt.',
+        required=True,
+        error_messages={
+            'required': 'Sorry, ohne Telefonnummer geht’s nicht.'},
+        widget=forms.TextInput(attrs={'class': "u-full-width"}))
     location_id = forms.CharField(required=False, widget=forms.HiddenInput())
     meetup_id = forms.CharField(required=False, widget=forms.HiddenInput())
     time_id = forms.CharField(required=False, widget=forms.HiddenInput())
@@ -100,4 +107,5 @@ class CreateRealnameForm(forms.ModelForm):
         model = Activist
         fields = (
             'first_name',
+            'phone'
         )
