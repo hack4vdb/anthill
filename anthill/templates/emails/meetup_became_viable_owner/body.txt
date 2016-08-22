@@ -1,6 +1,6 @@
 {% if recipient.first_name %}{{ recipient.first_name }} — {% endif %}
 
-Die Verteilaktion am {{ meetup.datetime|date:"j. F" }} hat eben die notwendige Teilnehmerzahl erreicht. Wir schicken heute die Flyer per Post an {{ meetup.owner.first_name }}.
+Die Verteilaktion am {{ meetup.datetime|date:"j. F" }} hat eben die notwendige Teilnehmerzahl erreicht. Wir schicken heute die Flyer per Post an dich!
 
 Toll, dass Du, gemeinsam mit Anderen Alexander Van der Bellen auf diese Art unterstüzen wirst. Diese Unterstützer haben zugesagt:
 

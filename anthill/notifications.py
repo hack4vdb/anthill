@@ -1,7 +1,8 @@
 from anthill.emailviews import WelcomeMessageView
 from anthill.emailviews import NewNearMeetupMessageView
 from anthill.emailviews import LoginLinkMessageView
-from anthill.emailviews import MeetupBecameViableMessageView
+from anthill.emailviews import MeetupBecameViableParticipantMessageView
+from anthill.emailviews import MeetupBecameViableOwnerMessageView
 from anthill.emailviews import WelcomeToViableMeetupMessageView
 import models
 from anthill.utils import make_absolute_url
@@ -48,10 +49,14 @@ class Notifications:
     def send_meetup_became_viable_notifications(meetup):
         for activist in meetup.activists.all():
             invite_link = make_absolute_url(reverse('invite', kwargs={'meetup_id': meetup.uuid}))
-            MeetupBecameViableMessageView(recipient=activist).send(extra_context={
+            extra_context={
                 'meetup': meetup,
                 'invite_link': invite_link,
-            })
+            }
+            if activist == meetup.owner:
+                MeetupBecameViableOwnerMessageView(recipient=activist).send(extra_context=extra_context)
+            else:
+                MeetupBecameViableParticipantMessageView(recipient=activist).send(extra_context=extra_context)
 
     @staticmethod
     def send_welcome_to_viable_meetup(activist, meetup):

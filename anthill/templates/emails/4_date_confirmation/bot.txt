@@ -1,9 +1,0 @@
-{{ recipient.first_name }} — Die Verteilaktion am {{ meetup.datetime|date:"j. F" }} um {{ meetup.datetime|date:"H" }} Uhr hat eben die notwendige Teilnehmerzahl erreicht. Wir schicken heute die Flyer per Post an {{ meetup.owner.first_name }}.
-
-Diese Unterstützer haben bis jetzt zugesagt:
-{% for participant in meetup.activists.all %}
-- {{ participant.first_name }}
-{% endfor %}
-
-Bitte erscheine zuverlässig und pünktlich am vereinbarten Treffpunkt.
-Die anderen Unterstützer und das Team zählen auf Dich.

@@ -1,0 +1,40 @@
+{% extends "emails/base.html" %}
+
+{% block body %}
+<table border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td>
+      <p>{{ recipient.first_name }} —</p>
+      <p>
+        Die Verteilaktion am {{ meetup.datetime|date:"j. F" }} hat eben die notwendige Teilnehmerzahl erreicht. Wir schicken heute die Flyer per Post an dich!
+      </p>
+      <p>Toll, dass Du, gemeinsam mit Anderen Alexander Van der Bellen auf diese Art unterst&uuml;tzen wirst. Diese Unterstützer haben bis jetzt zugesagt:</p>
+      <p>
+        {% for participant in meetup.activists.all %}
+          {{ participant.first_name }}<br />
+        {% endfor %}
+      </p>
+      <p>Bitte erscheine zuverl&auml;ssig und p&uuml;nktlich am vereinbarten Zeitpunkt. Die anderen Unterst&uuml;tzer und das Team z&auml;hlen auf Dich.</p>
+      <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
+        <tbody>
+          <tr>
+            <td align="center">
+              <table border="0" cellpadding="0" cellspacing="0">
+                <tbody>
+                  <tr>
+                    <td> <a href="{{ invite_link }}" target="_blank">Lade jetzt sofort Freunde und Bekannte ein</a> </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p>{% if recipient.first_name %}Danke, {{ recipient.first_name }}! {% endif %}Gemeinsam werden wir am 2. Oktober erneut erfolgreich sein.<br />
+        Weils um was geht.</p>
+        <p><br />Team Van der Bellen</p>
+      </td>
+    </tr>
+  </table>
+{% endblock %}
+

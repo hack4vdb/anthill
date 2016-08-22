@@ -65,10 +65,10 @@ class TemplatedNotificationView(TemplatedHTMLEmailMessageView):
 
 
 class LoginLinkMessageView(TemplatedNotificationView):
-    subject_template_name = 'emails/login/subject.txt'
-    body_template_name = 'emails/login/body.txt'
-    html_body_template_name = 'emails/login/body.html'
-    bot_template_name = 'emails/login/bot.txt'
+    subject_template_name = 'emails/login_link/subject.txt'
+    body_template_name = 'emails/login_link/body.txt'
+    html_body_template_name = 'emails/login_link/body.html'
+    bot_template_name = 'emails/login_link/bot.txt'
 
 
 class WelcomeMessageView(TemplatedNotificationView):
@@ -79,17 +79,24 @@ class WelcomeMessageView(TemplatedNotificationView):
 
 
 class NewNearMeetupMessageView(TemplatedNotificationView):
-    subject_template_name = 'emails/1_new_meetup_1person/subject.txt'
-    body_template_name = 'emails/1_new_meetup_1person/body.txt'
-    html_body_template_name = 'emails/1_new_meetup_1person/body.html'
-    bot_template_name = 'emails/1_new_meetup_1person/bot.txt'
+    subject_template_name = 'emails/new_meetup_in_proximity/subject.txt'
+    body_template_name = 'emails/new_meetup_in_proximity/body.txt'
+    html_body_template_name = 'emails/new_meetup_in_proximity/body.html'
+    bot_template_name = 'emails/new_meetup_in_proximity/bot.txt'
 
 
-class MeetupBecameViableMessageView(TemplatedNotificationView):
-    subject_template_name = 'emails/4_date_confirmation/subject.txt'
-    body_template_name = 'emails/4_date_confirmation/body.txt'
-    html_body_template_name = 'emails/4_date_confirmation/body.html'
-    bot_template_name = 'emails/4_date_confirmation/bot.txt'
+class MeetupBecameViableParticipantMessageView(TemplatedNotificationView):
+    subject_template_name = 'emails/meetup_became_viable_participant/subject.txt'
+    body_template_name = 'emails/meetup_became_viable_participant/body.txt'
+    html_body_template_name = 'emails/meetup_became_viable_participant/body.html'
+    bot_template_name = 'emails/meetup_became_viable_participant/bot.txt'
+
+
+class MeetupBecameViableOwnerMessageView(TemplatedNotificationView):
+    subject_template_name = 'emails/meetup_became_viable_owner/subject.txt'
+    body_template_name = 'emails/meetup_became_viable_owner/body.txt'
+    html_body_template_name = 'emails/meetup_became_viable_owner/body.html'
+    bot_template_name = 'emails/meetup_became_viable_owner/bot.txt'
 
 
 class WelcomeToViableMeetupMessageView(TemplatedNotificationView):
