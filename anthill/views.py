@@ -163,10 +163,9 @@ def meetupsByLatLng(request, latlong):
             'invalid request, coordinates malformed',
             status=status.HTTP_400_BAD_REQUEST)
     meetups = list(Meetup.find_meetups_by_latlong(lat, lng)[:3])
+    serializer = MeetupSerializer(meetups, many=True, context={'request': request})
     if meetups == []:
         postalcode = PostalcodeCoordinates.get_postalcode_from_latlng(lat, lng)
         meetups = Meetup.potential_meetups(postalcode)
-    serializer = MeetupSerializer(
-        meetups, many=True, context={
-            'request': request})
+        serializer = PotentialMeetupSerializer(meetups, many=True, context={'request': request})
     return Response(serializer.data)
