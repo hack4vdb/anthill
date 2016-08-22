@@ -4,7 +4,7 @@ from anthill.emailviews import LoginLinkMessageView
 from anthill.emailviews import MeetupBecameViableParticipantMessageView
 from anthill.emailviews import MeetupBecameViableOwnerMessageView
 from anthill.emailviews import WelcomeToViableMeetupMessageView
-import models
+from anthill.models import models
 from anthill.utils import make_absolute_url, concat_list_verbosely
 
 from django.urls import reverse

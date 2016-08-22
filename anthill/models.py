@@ -16,8 +16,8 @@ from anthill.settings import MIN_PARTICIPANTS_PER_MEETUP
 from django.utils.http import urlquote
 from django.utils.formats import date_format
 
-from utils import concat_list_verbosely
-import notifications
+from anthill.utils import concat_list_verbosely
+from anthill import notifications
 
 
 DISTANCE_LIMIT_METERS = 40000  # todo: check if this is really meters

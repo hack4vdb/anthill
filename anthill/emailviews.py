@@ -3,7 +3,7 @@
 
 from __future__ import unicode_literals
 
-import bot_api
+from anthill import bot_api
 from anthill.utils import split_string_by_newlines
 
 from mailviews.messages import TemplatedHTMLEmailMessageView
