@@ -23,7 +23,9 @@ body {
 	background: #fff;
     font-family: 'Montserrat-Regular',sans-serif;
 }
-body.modal {
+body.modal,
+body.home #signup-bubble,
+body.home #signup-bubble-2 {
 	background: #ededed;
 }
 
@@ -53,11 +55,14 @@ body.meetups .button,
 body.meetups ul.amounts li a,
 button.button-primary,
 body.invite #share-buttons a,
-body.modal .pillbtn {
+body.modal .pillbtn,
+body.home #signup-bubble button[type="submit"],
+body.home #signup-bubble-2 button[type="submit"] {
 	background-color: #ffff01;
 }
 
-body.meetups .speech-bubble:before {
+body.meetups .speech-bubble:before,
+footer .title {
 	display: none;
 }
 body.meetups .speech-bubble {
@@ -89,7 +94,11 @@ body.invite #share-buttons a,
 body.modal .pillbtn,
 body.meetups .meetup_list .join .attending,
 body.meetups .more,
-body.meetups .coach-photo {
+body.meetups .coach-photo,
+body.home #signup-bubble,
+body.home #signup-bubble-2,
+body.home #signup-bubble button[type="submit"],
+body.home #signup-bubble-2 button[type="submit"] {
 	border-radius: 0;
 }
 
@@ -102,7 +111,10 @@ button.button-primary,
 button.button-primary:hover,
 input[type="text"]:focus,
 body.invite #share-buttons a,
-body.modal .pillbtn {
+body.modal .pillbtn,
+body.meetups ul.amounts li a:hover,
+body.home #signup-bubble button[type="submit"],
+body.home #signup-bubble-2 button[type="submit"] {
 	text-decoration: none;
 	border-color: #ffff01;
 	color: #000;
@@ -115,12 +127,17 @@ body.meetups .attending .button {
 body.meetups .button:hover,
 button.button-primary:hover,
 body.invite #share-buttons a:hover,
-body.modal .pillbtn:hover {
+body.modal .pillbtn:hover,
+body.meetups ul.amounts li a:hover,
+body.home #signup-bubble button[type="submit"]:hover,
+body.home #signup-bubble-2 button[type="submit"]:hover,
+body.home .explainer {
 	background: #fff;
 }
 
 body.invite #share-buttons a,
-body.modal .pillbtn {
+body.modal .pillbtn,
+body.meetups ul.amounts li a {
 	border: 1px solid #ffff01;
 }
 
@@ -147,5 +164,40 @@ a:hover {
 body.address form {
     background: #eee;
     padding: .5em 1em;
+}
+
+footer {
+	background: #000;
+	color: #fff;
+	border-top: 0;
+}
+footer a:hover {
+	color: #ffff01;
+}
+
+body.home #first-viewport {
+	position absolute;
+	top: 0;
+}
+body.home #big-photo,
+body.home #big-photo .photo {
+	height: 500px;
+}
+body.home #second-viewport,
+body.home #big-photo,
+body.home #big-photo .photo {
+	position: static;
+}
+body.home header,
+body.home footer {
+	display: block;
+}
+body.home h1,
+body.home #second-viewport footer,
+body.home header #logout {
+	display: none;
+}
+body.home #big-photo .photo {
+	opacity: 1;
 }
 
