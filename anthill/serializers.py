@@ -32,7 +32,6 @@ class MeetupSerializer(serializers.ModelSerializer):
     title = serializers.CharField(source='fb_card_title')
     image_url = serializers.CharField(source='fb_card_image_url')
     description = serializers.CharField(source='fb_card_description')
-    datetime = serializers.DateTimeField(format='%Y-%m-%dT%H:%M')
 
     class Meta:
         model = Meetup
