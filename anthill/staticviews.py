@@ -266,9 +266,9 @@ def join_meetup_fb_messenger(request, signeddata):
     firstname = indata['fb_first_name']
     lastname = indata['fb_last_name']
     meetup_id = indata.get('uuid', None)
-    datetime = indata.get('datetime', None)
-    if datetime != None:
-        datetime = datetime.datetime.strptime(datetime, "%Y-%m-%dT%H:%M:%SZ")
+    start_time = indata.get('datetime', None)
+    if start_time != None:
+        start_time = datetime.datetime.strptime(start_time, "%Y-%m-%dT%H:%M:%SZ")
     location_id = indata.get('location_id', None)
 
     try:
@@ -283,7 +283,7 @@ def join_meetup_fb_messenger(request, signeddata):
         if meetup_id:
             return HttpResponseRedirect('/join_meetup/?meetup_id={}'.format(meetup_id))
         else:
-            return HttpResponseRedirect('/join_meetup/?location_id={}&time_id={}'.format(location_id, time_id))
+            return HttpResponseRedirect('/join_meetup/?location_id={}&datetime={}'.format(location_id, start_time))
     except Activist.DoesNotExist:
         return redirect('meetups')
 
