@@ -274,7 +274,7 @@ def join_meetup_fb_messenger(request, signeddata):
     try:
         activist, created = Activist.objects.get_or_create(facebook_bot_id=user_bot_id)
         activist.coordinate = GEOSGeometry('POINT(%f %f)' % (lng, lat), srid=4326)
-        activist.postalcode = PostalcodeCoordinates.get_postalcode_from_coordinates(actiivst.coordinate)
+        activist.postalcode = PostalcodeCoordinates.get_postalcode_from_coordinates(activist.coordinate)
         activist.first_name = firstname
         activist.last_name = lastname
         activist.save()
