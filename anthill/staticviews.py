@@ -267,8 +267,6 @@ def join_meetup_fb_messenger(request, signeddata):
     lastname = indata['fb_last_name']
     meetup_id = indata.get('uuid', None)
     start_time = indata.get('datetime', None)
-    if start_time != None:
-        start_time = datetime.datetime.strptime(start_time, "%Y-%m-%dT%H:%M:%SZ")
     location_id = indata.get('location_id', None)
 
     try:
