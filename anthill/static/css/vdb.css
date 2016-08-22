@@ -144,3 +144,8 @@ a:hover {
 	color: #000;	
 }
 
+body.address form {
+    background: #eee;
+    padding: .5em 1em;
+}
+
