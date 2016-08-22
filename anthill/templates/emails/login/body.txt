@@ -10,5 +10,3 @@ Danke für dein Engagement! Nur gemeinsam können wir am 2. Oktober erfolgreich 
 Weils um was geht.
 
 Team Van der Bellen
-{% endblock %}
-
