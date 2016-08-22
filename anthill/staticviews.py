@@ -296,6 +296,10 @@ def instructions(request):
     return render(request, 'instructions.html')
 
 
+def about(request):
+    return render(request, 'about.html')
+
+
 def join_first_event(request):
     return render(request, 'joinFirstEvent.html')
 

@@ -45,6 +45,7 @@ urlpatterns = [
     url(r'^check_mail/$', staticviews.check_mail, name='check_mail'),
     url(r'^meetups/$', staticviews.meetups, name='meetups'),
     url(r'^howto/?$', staticviews.instructions, name='instructions'),
+    url(r'^about/?$', staticviews.about, name='about'),
     url(r'^invite/(?P<meetup_id>.+)/?$', staticviews.invite, name='invite'),
     url(r'^thankyou/(?P<meetup_id>.+)/?$', staticviews.thankyou, name='thankyou'),
     url(r'^join_meetup/$', staticviews.join_meetup, name='join_meetup'),
