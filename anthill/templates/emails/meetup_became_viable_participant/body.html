@@ -10,11 +10,11 @@
         {{ meetup.owner.first_name }} ({{ meetup.owner.phone }}).
       </p>
       <p>Toll, dass Du, gemeinsam mit Anderen Alexander Van der Bellen auf diese Art unterst&uuml;tzen wirst. Diese Unterstützer haben zugesagt:</p>
-      <p>
+      <ul>
         {% for participant in meetup.activists.all %}
-          {{ participant.first_name }}<br />
+          <li>{{ participant.first_name }}</li>
         {% endfor %}
-      </p>
+      </ul>
       <p>Bitte erscheine zuverl&auml;ssig und p&uuml;nktlich am vereinbarten Zeitpunkt. Die anderen Unterst&uuml;tzer und das Team z&auml;hlen auf Dich.</p>
       <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
         <tbody>

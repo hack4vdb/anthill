@@ -5,7 +5,7 @@ from anthill.emailviews import MeetupBecameViableParticipantMessageView
 from anthill.emailviews import MeetupBecameViableOwnerMessageView
 from anthill.emailviews import WelcomeToViableMeetupMessageView
 import models
-from anthill.utils import make_absolute_url
+from anthill.utils import make_absolute_url, concat_list_verbosely
 
 from django.urls import reverse
 
@@ -52,6 +52,7 @@ class Notifications:
             extra_context={
                 'meetup': meetup,
                 'invite_link': invite_link,
+                'participants_string': concat_list_verbosely([a.first_name for a in meetup.activists.all()])
             }
             if activist == meetup.owner:
                 MeetupBecameViableOwnerMessageView(recipient=activist).send(extra_context=extra_context)
