@@ -304,3 +304,8 @@ def join_first_event(request):
 
 def start_event(request):
     return render(request, 'startEvent.html')
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('home')

@@ -34,6 +34,13 @@ header h1 {
 header .bpw {
   font-weight: bold;
 }
+header #logout {
+  float: right;
+  color: #bbb;
+  margin-top: 2rem;
+  border: 0;
+  text-decoration: underline
+}
 footer {
   font-size: .8em;
   line-height: 1.3em;

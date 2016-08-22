@@ -54,6 +54,7 @@ urlpatterns = [
     url(r'^i/(?P<invite_code>.+)/$', staticviews.short_invite, name='short_invite'),
     url(r'^join_first_event/$', staticviews.join_first_event, name='join_first_event'),
     url(r'^start_event/$', staticviews.start_event, name='start_event'),
+    url(r'^logout/$', staticviews.logout_view, name='logout_view'),
 
     url(r'^admin/', admin.site.urls),
 
