@@ -14,6 +14,7 @@ from django.db import transaction
 from django.utils import timezone
 from anthill.settings import MIN_PARTICIPANTS_PER_MEETUP
 from django.utils.http import urlquote
+from django.utils.formats import date_format
 
 from utils import concat_list_verbosely
 import notifications
@@ -177,6 +178,14 @@ class Meetup(models.Model):
     def fb_card_image_url(self):
         center = urlquote(self.street) + "," + urlquote(self.city) + ",Austria"
         return "https://maps.googleapis.com/maps/api/staticmap?center=" + center + "&markers=color:red%7C" + center + "&zoom=15&size=500x260&key=AIzaSyANphiyaXrFh_146PzRNbNGTozPv7Meibw"
+
+    @property
+    def fb_card_title(self):
+        return "" + self.city + " " + date_format(self.datetime, "l j.n. H:i")
+
+    @property
+    def fb_card_description(self):
+        return self.street + " " + self.house_number
 
     @classmethod
     def create(cls, title, postalcode, city, street, house_number,

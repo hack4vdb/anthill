@@ -29,8 +29,9 @@ class ActivistSerializer(serializers.ModelSerializer):
 
 class MeetupSerializer(serializers.ModelSerializer):
 
-    title = serializers.CharField(source='city')
+    title = serializers.CharField(source='fb_card_title')
     image_url = serializers.CharField(source='fb_card_image_url')
+    description = serializers.CharField(source='fb_card_description')
 
     class Meta:
         model = Meetup
@@ -42,8 +43,9 @@ class MeetupSerializer(serializers.ModelSerializer):
 class PotentialMeetupSerializer(serializers.ModelSerializer):
 
     image_url = serializers.CharField(source='fb_card_image_url')
+    title = serializers.CharField(source='fb_card_title')
+    description = serializers.CharField(source='fb_card_description')
 
     class Meta:
         model = Meetup
-        fields = ('title', 'location_id', 'datetime', 'postalcode', 'city',
-                  'street', 'house_number', 'image_url')
+        fields = ('title', 'description', 'image_url', 'location_id', 'datetime')
