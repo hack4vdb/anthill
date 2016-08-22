@@ -61,7 +61,19 @@ class TemplatedNotificationView(TemplatedHTMLEmailMessageView):
             text = message.body
             text_chunks = split_string_by_newlines(text, 320)
             for i in range(len(text_chunks)):
-                bot_api.send_text(text=text_chunks[i], fb_bot_id=self.recipient.facebook_bot_id, delay=i*5)
+                if 'fb_button' in extra_context and i == 0:
+                    bot_api.send_text_with_button(
+                        text=text_chunks[i],
+                        button=extra_context.get('fb_button', {}),
+                        fb_bot_id=self.recipient.facebook_bot_id,
+                        delay=i*5
+                    )
+                else:
+                    bot_api.send_text(
+                        text=text_chunks[i],
+                        fb_bot_id=self.recipient.facebook_bot_id,
+                        delay=i*5
+                    )
         else:
             return super(TemplatedNotificationView, self).send(extra_context=extra_context, **kwargs)
 

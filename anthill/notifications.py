@@ -34,11 +34,16 @@ class Notifications:
         for activist in meetup.find_activists_nearby().all():
             #TODO despam
             join_login, created = models.EmailLoginJoinMeetupCode.objects.get_or_create(activist=activist, meetup=meetup)
+            join_link = request.build_absolute_uri(reverse('join_meetup_from_email', kwargs={
+                'login_token': join_login.invite_code
+            }))
             NewNearMeetupMessageView(recipient=activist).send(extra_context={
                 'meetup': meetup,
-                'join_link': request.build_absolute_uri(reverse('join_meetup_from_email', kwargs={
-                    'login_token': join_login.invite_code
-                }))
+                'join_link': join_link,
+                'fb_button': {
+                    'text': 'Ich bin dabei!',
+                    'url': join_link
+                }
             })
 
     @staticmethod
@@ -65,5 +70,6 @@ class Notifications:
         WelcomeToViableMeetupMessageView(recipient=activist).send(extra_context={
             'meetup': meetup,
             'invite_link': invite_link,
+            'participants_string': concat_list_verbosely([a.first_name for a in meetup.activists.all()])
         })
 
