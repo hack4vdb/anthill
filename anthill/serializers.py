@@ -30,17 +30,20 @@ class ActivistSerializer(serializers.ModelSerializer):
 class MeetupSerializer(serializers.ModelSerializer):
 
     title = serializers.CharField(source='city')
+    image_url = serializers.CharField(source='fb_card_image_url')
 
     class Meta:
         model = Meetup
         fields = ('uuid', 'title', 'datetime', 'postalcode', 'city',
-                  'street', 'house_number', 'coordinate')
+                  'street', 'house_number', 'coordinate', 'image_url')
 
 
 
 class PotentialMeetupSerializer(serializers.ModelSerializer):
 
+    image_url = serializers.CharField(source='fb_card_image_url')
+
     class Meta:
         model = Meetup
         fields = ('title', 'location_id', 'datetime', 'postalcode', 'city',
-                  'street', 'house_number', 'coordinate')
+                  'street', 'house_number', 'image_url')
