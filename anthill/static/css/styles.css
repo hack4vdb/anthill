@@ -699,6 +699,14 @@ body.address p.help {
   color: #888;
   font-size: .9em;
 }
+body.address p.help label {
+  font-weight: normal;
+}
+body.address p.help label input[type=checkbox] {
+  float: left;
+  margin: 0 .5em 0 0;
+}
+
 
 .titlebar {
   background-color: #ffde00;
