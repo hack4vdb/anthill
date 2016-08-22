@@ -9,7 +9,7 @@
       {% endif %}
       <p>Willkommen!</p>
       <p>
-        Danke, {{ recipient.first_name }}! Nur gemeinsam können wir am 2. Oktober erfolgreich sein.<br/>
+        {% if recipient.first_name %}Danke, {{ recipient.first_name }}! {% endif %}Nur gemeinsam können wir am 2. Oktober erfolgreich sein.<br/>
         Weils um was geht.
       </p>
       <p>Team Van der Bellen</p>

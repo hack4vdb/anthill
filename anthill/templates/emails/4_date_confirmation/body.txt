@@ -15,7 +15,7 @@ Lade jetzt sofort Freunde und Bekannte ein:
 {{ invite_link }}
 
 
-Danke, {{ recipient.first_name }}! Gemeinsam werden wir am 2. Oktober erneut erfolgreich sein.
+{% if recipient.first_name %}Danke, {{ recipient.first_name }}! {% endif %}Gemeinsam werden wir am 2. Oktober erneut erfolgreich sein.
 Weils um was geht.
 Team Van der Bellen
 

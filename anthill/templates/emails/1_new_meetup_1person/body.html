@@ -36,7 +36,7 @@
         {{ meetup.city }}<br />
       </p>
       
-      <p>Danke, {{ recipient.first_name }}! Nur gemeinsam können wir am 2. Oktober erfolgreich sein.<br />
+      <p>{% if recipient.first_name %}Danke, {{ recipient.first_name }}! {% endif %}Nur gemeinsam können wir am 2. Oktober erfolgreich sein.<br />
         Weils um was geht.</p>
         <p><br />Team Van der Bellen</p>
       </td>

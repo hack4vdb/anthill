@@ -31,7 +31,7 @@
           </tr>
         </tbody>
       </table>
-      <p>Danke, {{ recipient.first_name }}! Gemeinsam werden wir am 2. Oktober erneut erfolgreich sein.<br />
+      <p>{% if recipient.first_name %}Danke, {{ recipient.first_name }}! {% endif %}Gemeinsam werden wir am 2. Oktober erneut erfolgreich sein.<br />
         Weils um was geht.</p>
         <p><br />Team Van der Bellen</p>
       </td>
