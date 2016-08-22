@@ -13,6 +13,7 @@ from django.dispatch import receiver
 from django.db import transaction
 from django.utils import timezone
 from anthill.settings import MIN_PARTICIPANTS_PER_MEETUP
+from django.utils.http import urlquote
 
 from utils import concat_list_verbosely
 import notifications
@@ -171,6 +172,11 @@ class Meetup(models.Model):
     def wahl_details(self):
         coordinates = PostalcodeCoordinates.get_coordinates(self.postalcode)
         return geo.get_wahl_details(coordinates)
+
+    @property
+    def fb_card_image_url(self):
+        center = urlquote(self.street) + "," + urlquote(self.city) + ",Austria"
+        return "https://maps.googleapis.com/maps/api/staticmap?center=" + center + "&markers=color:red%7C" + center + "&zoom=15&size=500x260&key=AIzaSyANphiyaXrFh_146PzRNbNGTozPv7Meibw"
 
     @classmethod
     def create(cls, title, postalcode, city, street, house_number,
