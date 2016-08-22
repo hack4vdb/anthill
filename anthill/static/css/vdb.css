@@ -25,7 +25,8 @@ body {
 }
 body.modal,
 body.home #signup-bubble,
-body.home #signup-bubble-2 {
+body.home #signup-bubble-2,
+body.invite button.clipboard {
 	background: #ededed;
 }
 
@@ -44,6 +45,10 @@ header {
 header h1 {
 	margin-top: 0;
 	display: none;
+}
+
+header #logout {
+	color: #000;
 }
 
 .titlebar,
@@ -99,7 +104,8 @@ body.meetups .coach-photo,
 body.home #signup-bubble,
 body.home #signup-bubble-2,
 body.home #signup-bubble button[type="submit"],
-body.home #signup-bubble-2 button[type="submit"] {
+body.home #signup-bubble-2 button[type="submit"],
+button.clipboard {
 	border-radius: 0;
 }
 
@@ -202,3 +208,13 @@ body.home #big-photo .photo {
 	opacity: 1;
 }
 
+
+body.invite button.clipboard {
+	border: 0;
+}
+body.invite #invite-url {
+	border: 1px solid #666;
+}
+body.invite .fa-flag {
+    text-shadow: none;
+}

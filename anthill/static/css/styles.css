@@ -780,6 +780,11 @@ body.invite #invite-url {
   }
 }
 
+body.invite button.clipboard {
+  font-size: 1.5rem;
+  line-height: 1rem;
+}
+
 
 body.modal .final {
   margin-bottom: 3rem;
