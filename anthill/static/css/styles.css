@@ -402,7 +402,6 @@ body.home .explainer .fa-5x {
   }
 }
 body.meetups .coach.full-width-container {
-  background-color: #ffde00;
   margin-bottom: 3rem;
   padding: 2rem 0;
   overflow: hidden;
@@ -442,7 +441,7 @@ body.meetups .coach-photo {
 
 body.meetups .speech-bubble {
   background: #fff;
-  padding: 0 2.5rem 0 3rem;
+  padding: 0 2.5rem 1rem 3rem;
   border-bottom-left-radius: 2rem;
   border-bottom-right-radius: 2rem;
 }
@@ -701,10 +700,12 @@ body.address p.help {
   font-size: .9em;
 }
 
+.titlebar {
+  background-color: #ffde00;
+}
 
 body.invite .full-width-container,
 .titlebar {
-  background-color: #ffde00;
   margin-bottom: 3rem;
   overflow: hidden;
   padding: 3rem 0;
