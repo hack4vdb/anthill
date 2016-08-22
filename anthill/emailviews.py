@@ -66,7 +66,7 @@ class TemplatedNotificationView(TemplatedHTMLEmailMessageView):
 
 class LoginLinkMessageView(TemplatedNotificationView):
     subject_template_name = 'emails/login/subject.txt'
-    body_template_name = 'emails/login/body.html'
+    body_template_name = 'emails/login/body.txt'
     html_body_template_name = 'emails/login/body.html'
     bot_template_name = 'emails/login/bot.txt'
 
