@@ -371,7 +371,7 @@ class PostalcodeCoordinates(models.Model):
             return GEOSGeometry('POINT({} {})'.format(14.3, 47.5), srid=4326)
         return postalcoords.coordinate
 
-    @staticmetho
+    @staticmethod
     def get_postalcode_from_coordinates(coordinates):
         location_id, location = geo.get_nearest_ortzumflyern(coordinates)
         return int(location['plz'])
