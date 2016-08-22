@@ -70,7 +70,8 @@ body.meetups .speech-bubble {
     padding-left: 0;
 }
 
-body.meetups .coach h3 {
+body.meetups .coach h3,
+body.modal h3 {
 	color: #000;
 }
 

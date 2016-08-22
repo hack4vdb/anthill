@@ -823,6 +823,10 @@ body.login #final-image {
   margin: 4rem auto 2rem;
 }
 
+#final-image {
+  text-align: center;
+}
+
 body.modal {
   background: #ffde00;
 }
