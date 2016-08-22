@@ -157,5 +157,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 
 PIWIK_DOMAIN_PATH = 'stats.fnordserver.eu'
 PIWIK_SITE_ID = '5'
-ANALYTICAL_AUTO_IDENTIFY = True
+ANALYTICAL_AUTO_IDENTIFY = False  # somehow this didn't work
 ANALYTICAL_INTERNAL_IPS = ['localhost', '127.0.0.1']
