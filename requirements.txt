@@ -8,3 +8,4 @@ geopy==1.11.0
 requests
 itsdangerous==0.24
 django-crontab==0.7.1
+django-analytical==2.2.1
