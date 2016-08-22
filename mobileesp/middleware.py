@@ -23,3 +23,6 @@ class MobileDetectionMiddleware(MiddlewareMixin):
         request.is_mobile = is_mobile
         request.is_tablet = is_tablet
         request.is_phone = is_phone
+
+        # Added by @msch: Detect if we're in the FB Messenger webview by looking at the user agent
+        request.is_fb_messenger = user_agent.contains("FBAN/MessengerForiOS")

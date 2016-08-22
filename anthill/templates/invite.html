@@ -91,7 +91,12 @@
 
   <p>
     <br /><br />
-    <a id="next-link" href="{{ thankyou_url }}">Fertig / Überspringen &raquo;</a>
+    {% if request.is_fb_messenger %}
+      <a href="https://www.messenger.com/closeWindow/">Fertig</a>
+    {% else %}
+      <a id="next-link" href="{{ thankyou_url }}">Fertig / Überspringen &raquo;</a>
+    {% endif %}
+
   </p>
 
 </div>
