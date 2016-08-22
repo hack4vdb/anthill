@@ -8,13 +8,13 @@ import requests
 from itsdangerous import JSONWebSignatureSerializer
 
 
-def send_text(text, fb_bot_id):
+def send_text(text, fb_bot_id, delay=0):
     s = JSONWebSignatureSerializer('anthill4vdb')
 
     data = {
         "msgtype": "t", # text
         "fb_recipient_id": fb_bot_id,
-        "delay": 0,
+        "delay": delay,
         "data": text
     }
     payload = {

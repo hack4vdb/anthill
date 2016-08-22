@@ -4,6 +4,7 @@
 from __future__ import unicode_literals
 
 import bot_api
+from anthill.utils import split_string_by_newlines
 
 from mailviews.messages import TemplatedHTMLEmailMessageView
 from mailviews.utils import unescape
@@ -57,8 +58,10 @@ class TemplatedNotificationView(TemplatedHTMLEmailMessageView):
     def send(self, extra_context=None, **kwargs):
         if self._is_facebook_bot():
             message = self.render_to_message(extra_context=extra_context, **kwargs)
-            text = message.body[:320]
-            bot_api.send_text(text=text, fb_bot_id=self.recipient.facebook_bot_id)
+            text = message.body
+            text_chunks = split_string_by_newlines(text, 320)
+            for i in range(len(text_chunks)):
+                bot_api.send_text(text=text_chunks[i], fb_bot_id=self.recipient.facebook_bot_id, delay=i*5)
         else:
             return super(TemplatedNotificationView, self).send(extra_context=extra_context, **kwargs)
 
