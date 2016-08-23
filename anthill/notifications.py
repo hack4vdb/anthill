@@ -4,7 +4,7 @@ from anthill.emailviews import LoginLinkMessageView
 from anthill.emailviews import MeetupBecameViableParticipantMessageView
 from anthill.emailviews import MeetupBecameViableOwnerMessageView
 from anthill.emailviews import WelcomeToViableMeetupMessageView
-import models
+import anthill.models
 from anthill.utils import make_absolute_url, concat_list_verbosely
 
 from django.urls import reverse
@@ -36,7 +36,7 @@ class Notifications:
     def send_meetup_created_notifications(request, meetup):
         for activist in meetup.find_activists_nearby().all():
             #TODO despam
-            join_login, created = models.EmailLoginJoinMeetupCode.objects.get_or_create(activist=activist, meetup=meetup)
+            join_login, created = anthill.models.EmailLoginJoinMeetupCode.objects.get_or_create(activist=activist, meetup=meetup)
             join_link = request.build_absolute_uri(reverse('join_meetup_from_email', kwargs={
                 'login_token': join_login.invite_code
             }))
