@@ -68,7 +68,7 @@ class CreateAddressForm(forms.ModelForm):
                            'required': 'Bitte geben Sie Ihre Stadt an.'}, widget=forms.TextInput(attrs={'class': "u-full-width"}))
     phone = forms.CharField(
         label='Telefonnummer',
-        help_text='Diese müssen wir den anderen Teilnehmenden weitergeben für den Fall, dass die dich vor Ort nicht finden oder etwas dazwischenkommt.',
+        help_text=' - ',
         required=True,
         error_messages={
             'required': 'Sorry, ohne Telefonnummer geht’s nicht.'},
@@ -94,7 +94,7 @@ class CreateRealnameForm(forms.ModelForm):
                                  widget=forms.TextInput(attrs={'class': "u-full-width", 'autofocus': True}))
     phone = forms.CharField(
         label='Telefonnummer',
-        help_text='Diese müssen wir den anderen Teilnehmenden weitergeben für den Fall, dass die dich vor Ort nicht finden oder etwas dazwischenkommt.',
+        help_text=' - ',
         required=True,
         error_messages={
             'required': 'Sorry, ohne Telefonnummer geht’s nicht.'},
