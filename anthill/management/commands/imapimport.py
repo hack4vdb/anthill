@@ -46,7 +46,7 @@ class Command(BaseCommand):
            # translate field names in data[] to API names (eg; data['Vorname'] would be first_name in the API implementation)
            # POST to API (internally?http?), probably there is some kind of validation in the API (postalcodes,etc),
            # which would be bypassed if written directly to the model?
-            print 'Message num: %s\nSubject: %s\nmsg-data:%s\n' % (num, subject, msg.get_payload(decode=True))
+            print('Message num: %s\nSubject: %s\nmsg-data:%s\n' % (num, subject, msg.get_payload(decode=True)))
         M.close()
         M.logout()
 
