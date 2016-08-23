@@ -1,7 +1,6 @@
 from django.core.management.base import BaseCommand, CommandError
 
 from anthill.models import *
-from anthill.views import ActivistViewSet
 import imaplib
 import email, email.header, email.message
 
