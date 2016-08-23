@@ -3,6 +3,8 @@
 
 from __future__ import unicode_literals
 
+from django.core.exceptions import ImproperlyConfigured
+
 from anthill import bot_api
 from anthill.utils import split_string_by_newlines
 
