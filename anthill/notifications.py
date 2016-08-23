@@ -20,13 +20,16 @@ class Notifications:
     """
 
     @staticmethod
-    def send_login_link(request, recipient):
+    def send_login_link(request, recipient, invited_to_id=None):
         """Generates a login_token and sends out the login email"""
         token = recipient.generate_login_token()
-        LoginLinkMessageView(recipient=recipient).send(extra_context={
-            'login_link': request.build_absolute_uri(reverse('login_with_token', kwargs={
+        login_link = request.build_absolute_uri(reverse('login_with_token', kwargs={
                 'login_token': token
             }))
+        if invited_to_id:
+            login_link += '?invited_to={}'.format(invited_to_id)
+        LoginLinkMessageView(recipient=recipient).send(extra_context={
+            'login_link': login_link
         })
 
     @staticmethod

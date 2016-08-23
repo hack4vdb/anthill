@@ -54,7 +54,11 @@ def home(request):
                 #Send login link to user
                 try:
                     activist = Activist.objects.get(email=email)
-                    Notifications.send_login_link(request=request, recipient=activist)
+                    Notifications.send_login_link(
+                        request=request,
+                        recipient=activist,
+                        invited_to_id=invited_to_id
+                    )
                 except Activist.DoesNotExist:
                     pass
                 return redirect('login_by_email')
@@ -94,7 +98,11 @@ def login_with_token(request, login_token):
         activist.invalidate_login_token()
         activist = authenticate(uuid=activist.uuid)
         login(request, activist)
-        return redirect('meetups')
+        invited_to = request.GET.get('invited_to', None)
+        if invited_to:
+            return HttpResponseRedirect('/meetups/?invited_to={}'.format(invited_to))
+        else:
+            return redirect('meetups')
     except Activist.DoesNotExist:
         return render(request, 'login_error.html')
 
