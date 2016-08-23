@@ -2,11 +2,13 @@ import re
 from mobileesp import mdetect
 from django.utils.deprecation import MiddlewareMixin
 
+
 class MobileDetectionMiddleware(MiddlewareMixin):
     """
     Useful middleware to detect if the user is
     on a mobile device.
     """
+
     def process_request(self, request):
         is_mobile = False
         is_tablet = False
