@@ -22,6 +22,7 @@ from anthill import geo
 
 from itsdangerous import JSONWebSignatureSerializer
 
+from hack4vdb.settings_local import BOT_API_KEY
 
 def home(request):
     invited_by = None
@@ -265,7 +266,7 @@ def invite(request, meetup_id):
 
 def join_meetup_fb_messenger(request, signeddata):
 
-    s = JSONWebSignatureSerializer('anthill4vdb')
+    s = JSONWebSignatureSerializer(BOT_API_KEY)
 
     indata = s.loads(signeddata)
     user_bot_id = indata['fb_recipient_id']

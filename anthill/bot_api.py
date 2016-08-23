@@ -4,12 +4,12 @@
 from __future__ import unicode_literals
 
 import requests
-
 from itsdangerous import JSONWebSignatureSerializer
 
+from hack4vdb.settings_local import BOT_API_KEY
 
 def send_text(text, fb_bot_id, delay=0):
-    s = JSONWebSignatureSerializer('anthill4vdb')
+    s = JSONWebSignatureSerializer(BOT_API_KEY)
     data = {
         "msgtype": "t", # text
         "fb_recipient_id": fb_bot_id,
@@ -23,7 +23,7 @@ def send_text(text, fb_bot_id, delay=0):
 
 
 def send_text_with_button(text, button, fb_bot_id, delay=0):
-    s = JSONWebSignatureSerializer('anthill4vdb')
+    s = JSONWebSignatureSerializer(BOT_API_KEY)
     data = {
         "msgtype": "r", # free form
         "fb_recipient_id": fb_bot_id,
