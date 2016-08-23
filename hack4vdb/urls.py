@@ -39,6 +39,7 @@ urlpatterns = [
 
     url(r'^login/$', views.login_by_email, name='login_by_email'),
     url(r'^login/(?P<login_token>[\d\w-]+)/$', views.login_with_token, name='login_with_token'),
+    url(r'^unsubscribe/(?P<uuid>[\d\w-]+)/$', views.unsubscribe, name='unsubscribe'),
     url(r'^join_meetup_from_email/(?P<login_token>[\d\w-]+)/$', views.join_meetup_from_email,
         name='join_meetup_from_email'),
     url(r'^check_mail/$', views.check_mail, name='check_mail'),

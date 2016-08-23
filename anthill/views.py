@@ -108,6 +108,20 @@ def login_with_token(request, login_token):
         return render(request, 'login_error.html')
 
 
+def unsubscribe(request, uuid):
+    if request.user.is_authenticated:
+        logout(request)
+    try:
+        activist = Activist.objects.get(uuid=uuid)
+        activist.subscribed = False
+        activist = authenticate(uuid=activist.uuid)
+        login(request, activist)
+        # TODO: also tell CRM that user has been unsubscribed?
+        return redirect('meetups') # TODO: Disablay 'unsubscribe successful' msg?
+    except Activist.DoesNotExist:
+        return render(request, 'login_error.html')
+
+
 def join_meetup_from_email(request, login_token):
     if request.user.is_authenticated:
         logout(request)

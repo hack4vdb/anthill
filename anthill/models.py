@@ -41,6 +41,7 @@ class Activist(models.Model):
     login_token = models.UUIDField(default=None, null=True, blank=True)
     invited_by = models.ForeignKey('Activist', null=True, default=None, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    subscribed = models.BooleanField(default=True)
 
     USERNAME_FIELD = 'uuid'
 
