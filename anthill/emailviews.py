@@ -90,7 +90,7 @@ class LoginLinkMessageView(TemplatedNotificationView):
 
 class WelcomeMessageView(TemplatedNotificationView):
     subject_template_name = 'emails/welcome/subject.txt'
-    body_template_name = 'emails/welcome/body.html'
+    body_template_name = 'emails/welcome/body.txt'
     html_body_template_name = 'emails/welcome/body.html'
     bot_template_name = 'emails/welcome/bot.txt'
 
