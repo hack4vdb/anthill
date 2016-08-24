@@ -10,11 +10,11 @@
 }
 @font-face{
 	font-family:'Montserrat-Regular';
-	src:url('https://www.vanderbellen.at/fileadmin/Templates/Public/Fonts/Montserrat-Regular.eot');
+	src:url('/static/fonts/Montserrat-Regular.eot');
 	src:local('☺'),
-		url('https://www.vanderbellen.at/fileadmin/Templates/Public/Fonts/Montserrat-Regular.woff') format('woff'),
-		url('https://www.vanderbellen.at/fileadmin/Templates/Public/Fonts/Montserrat-Regular.ttf') format('truetype'),
-		url('https://www.vanderbellen.at/fileadmin/Templates/Public/Fonts/Montserrat-Regular.svg') format('svg');
+		url('/static/fonts/Montserrat-Regular.woff') format('woff'),
+		url('/static/fonts/Montserrat-Regular.ttf') format('truetype'),
+		url('/static/fonts/Montserrat-Regular.svg') format('svg');
 	font-weight:normal;
 	font-style:normal
 }
@@ -22,38 +22,44 @@
 body {
 	background: #fff;
     font-family: 'Montserrat-Regular',sans-serif;
+    max-width: 1590px;
+    margin: 0 auto;
 }
+
+body > .container, header .container, footer .container {
+	max-width: none;
+	position: static;
+} /* counteract skeleton.css conflicting with vdb css */
+body .pagecontainer .container {
+	padding: 0 20px;
+}
+
+/* counteract vdb css */
+
+body .pagecontainer .row, footer .row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+body h1, body .h1, body h2, body .h2, body h3, body .h3 {
+	margin-top: 0;
+}
+
+/* end counteract vdb css */
+
 body.modal,
 body.home #signup-bubble,
 body.home #signup-bubble-2,
-body.invite button.clipboard {
-	background: #ededed;
-}
-
-header {
-	background: #ffff01 url(https://www.vanderbellen.at/fileadmin/Templates/Public/Theme/logo.png) center 25px no-repeat;
-	background-size: 150px;
-	border-bottom: none;
-	min-height: 90px;
-}
-@media (min-width: 550px) {
-	header {
-		background-position: 18px 16px;
-		background-size: 170px;
-	}
-}
-header h1 {
-	margin-top: 0;
-	display: none;
+body.invite button.clipboard,
+.titlebar {
+	background-color: #ededed;
 }
 
 header #logout {
+	position: absolute;
+	right: .5rem;
+	font-size: 1.3rem;
 	color: #000;
-}
-
-.titlebar,
-body.meetups .speech-bubble {
-	background-color: #ededed;
 }
 
 body.meetups .button,
@@ -69,10 +75,6 @@ body.home #signup-bubble-2 button[type="submit"] {
 body.meetups .speech-bubble:before,
 footer .title {
 	display: none;
-}
-body.meetups .speech-bubble {
-    padding-top: 1rem;
-    padding-left: 0;
 }
 
 body.meetups .coach h3,
@@ -101,12 +103,18 @@ body.modal .pillbtn,
 body.meetups .meetup_list .join .attending,
 body.meetups .more,
 body.meetups .coach-photo,
+body.meetups .speech-bubble,
 body.home #signup-bubble,
 body.home #signup-bubble-2,
 body.home #signup-bubble button[type="submit"],
 body.home #signup-bubble-2 button[type="submit"],
 button.clipboard {
 	border-radius: 0;
+}
+@media (min-width: 550px) {
+  body.meetups .speech-bubble {
+	border-radius: 0;
+  }
 }
 
 input[type="text"] {
@@ -148,6 +156,51 @@ body.meetups ul.amounts li a {
 	border: 1px solid #ffff01;
 }
 
+
+body.meetups .coach.full-width-container {
+	padding-top: 0;
+}
+body.meetups .coach.full-width-container .container {
+	padding: 0;
+}
+
+body.meetups .titlebar .coach-photo-column {
+	width: 100%;
+	background-image: url(/static/img/yay.jpg);
+	background-size: cover;
+	background-position: center;
+	height: 200px;
+	float: none;
+}
+body.meetups .titlebar .container {
+	width: 100%;
+	max-width: none;
+}
+body.meetups .coach-photo {
+	display: none;
+}
+body.meetups .titlebar .speech-bubble {
+	width: 100%;
+	max-width: 960px;
+	margin: 0 auto;
+	background: inherit;
+	float: none;
+	box-sizing: border-box;
+	padding: 2rem 2rem 0 2rem;
+}
+@media (min-width: 550px) {
+	body.meetups .titlebar .speech-bubble {
+		width: 960px;
+	}
+}
+body.meetups .speech-bubble h3 {
+	margin-top: 0;
+}
+body.meetups .coach.full-width-container {
+	padding-bottom: 1rem;
+}
+
+
 body.meetups .more {
 	background: #fff;
 	border: 0;
@@ -177,10 +230,16 @@ footer {
 	background: #000;
 	color: #fff;
 	border-top: 0;
+    line-height: 1.55;
 }
 footer a:hover {
 	color: #ffff01;
 }
+footer p {
+    margin: 0 0 12px; /* restore vdb css */
+    line-height: 1.55;
+}
+
 
 body.home #first-viewport {
 	position absolute;

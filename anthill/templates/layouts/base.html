@@ -15,31 +15,125 @@
     <link rel="stylesheet" href="{% static 'css/vdb.css' %}">
     <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
     <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="https://www.vanderbellen.at/typo3temp/compressor/merged-ca4982a3cf18f08467d5e974eb15f5ae-785d0462a774c5ac31a1082e7af0cb59.css">
 
     <script type="text/javascript" src="{% static 'js/clipboard.min.js' %}"></script>
   </head>
 
   <body class="{% block body_class %}{% endblock %}">
-    <header>
+    <!--header>
       <div class="container">
-        <a id="logout" href="{% url 'logout_view' %}">Ausloggen</a>
         <h1><a href="/" style="text-decoration: none; border-bottom: none; color: black;">Weil's um was geht.</a></h1>
-        <!--p class="bpw">bei der Bundespräsidentenwahl 2016</p-->
+      </div>
+    </header-->
+
+    <header class="navbar navbar-default navbar-has-image navbar-top"> 
+      <a id="logout" href="{% url 'logout_view' %}">Ausloggen</a>
+      <div class="container"> 
+        <div class="small_container"> 
+          <div class="row"> 
+            <div class="col-xs-12 col-md-2"> 
+              <div class="navbar-header navbar-header-main"> 
+                <div class="nav_mobile_button"> <i class="fa fa-bars fa-2x"></i> </div>
+                 
+                <div class="nav_logo"> <a href="https://www.vanderbellen.at/"> <img src="/static/img/logo.png" alt="Vanderbellen 2016 logo" width="220" id="img_logo"> </a> </div>
+                 
+                <div class="nav_mobile_share"> <i class="fa fa-share-alt fa-2x"></i> </div>
+                 
+                <div class="nav_mobile_share_menu"> 
+                  <div class="nav_mobile_share_menu_close"> <i class="fa fa-times fa-2x"></i> Schließen </div>
+                   <ul> <li><a href="https://www.facebook.com/sharer/sharer.php?u=https://www.vanderbellen.at/" target="_blank">Facebook</a></li> <li><a href="https://twitter.com/home?status=Van der Bellen 2016 https://www.vanderbellen.at/" target="_blank">Twitter</a></li> </ul> </div>
+                 
+                <div class="clearfix"></div>
+              </div>
+            </div>
+             
+            <div class="col-xs-0 col-md-9" id="navigation_container">
+              <nav class="navbar-collapse collapse" role="navigation"> 
+                <div class="nav_mobile_close"> <i class="fa fa-times fa-2x"></i> Schließen </div>
+              
+                <ul class="nav navbar-nav navbar-main"><li><a href="https://www.vanderbellen.at/zur-person/" title="Zur Person Alexander Van der Bellen zur Präsidentschaftskandidatur 2016"><span class="textwrapper">Zur Person</span></a></li><li><a href="https://www.vanderbellen.at/ziele-inhalte/" title="Ziele &amp; Inhalte"><span class="textwrapper">Ziele & Inhalte</span></a></li><li><a href="https://www.vanderbellen.at/spenden/" title="Damit diese Kampagne so viele Menschen wie möglich erreicht, brauchen wir Ihre Unterstützung."><span class="textwrapper">Spenden</span></a></li><li><a href="/" title="Mitmachen"><span class="textwrapper">Mitmachen</span></a></li><li><a href="https://www.vanderbellen.at/nc/komitee/" title="Personenkomitee"><span class="textwrapper">Komitee</span></a></li><li><a href="https://www.vanderbellen.at/transparenz/" title="Verein Gemeinsam für Van der Bellen unterstützt die Präsidentschaftskandidatur Alexander Van der Bellens 2016"><span class="textwrapper">Transparenz</span></a></li><li><a href="https://www.vanderbellen.at/kampagne/" title="Kampagne"><span class="textwrapper">Kampagne</span></a></li></ul>
+              </nav>
+            </div>
+             
+            <div class="col-xs-0 col-md-1 pull-right" id="navigation_socialmedia_container"> 
+              <div>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.vanderbellen.at/" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a> <a href="https://twitter.com/home?status=Van der Bellen 2016 https://www.vanderbellen.at/'" target="_blank"><i class="fa fa-twitter fa-2x"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </header>
+
+    <div class="container pagecontainer"><!-- for vdb layout -->
     {% block content %}
     {% endblock %}
-    <footer><!-- todo unify with same template in home.html -->
+    </div>
+
+    <!--footer><!-x- todo unify with same template in home.html -x->
       <div class="container">
         <div class="row">
           <div class="one-half column">
-            <p>Diese Seite steht in keiner Verbindung zum Verein „Gemeinsam für Van der Bellen“ oder Alexander Van der Bellen. &nbsp; <a href="{% url 'about' %}">Impressum &amp; Datenschutz</a></p>
+
+          <div id="c208"><p><a href="impressum-kontakt/">Kontakt/Impressum</a>&nbsp; <a href="datenschutz/">Datenschutz</a>&nbsp; <a href="presse/">Presse/Downloads</a> </p> <p>&nbsp;</p> <p>E-Mail:&nbsp;<a href="javascript:linkTo_UnCryptMailto('nbjmup+lpoubluAwboefscfmmfo/bu');" title="Opens window for sending email">kontakt@vanderbellen.at</a> </p> <p>IBAN: AT06 2011 1827 8591 6100</p> <p>BIC: GIBAATWWXXX</p> <p>&nbsp;</p> <p>Verein "Gemeinsam für Van der Bellen – Unabhängige Initiative für die Bundespräsidentschaftswahl 2016"</p> <p>&nbsp;</p> <p>&nbsp;</p></div>
+
+            <!-x-p>Diese Seite steht in keiner Verbindung zum Verein „Gemeinsam für Van der Bellen“ oder Alexander Van der Bellen. &nbsp; <a href="{% url 'about' %}">Impressum &amp; Datenschutz</a></p-x->
           </div>
           <div class="one-half column">
             <p class="title">Weil's um was geht.</p>
           </div>
         </div>
       </div>
+    </footer-->
+
+    <footer xmlns:f="http://www.w3.org/1999/html"> <section class="footer-section"> 
+      <div class="container"> 
+        <div class="small_container"> 
+          <div class="row"> 
+            <div class="col-sm-1"></div>
+             
+            <div class="col-sm-4"> 
+              <div id="c208"><p><a href="impressum-kontakt/">Kontakt/Impressum</a>&nbsp; <a href="datenschutz/">Datenschutz</a>&nbsp; <a href="presse/">Presse/Downloads</a> </p> <p>&nbsp;</p> <p>E-Mail:&nbsp;<a href="javascript:linkTo_UnCryptMailto('nbjmup+lpoubluAwboefscfmmfo/bu');" title="Opens window for sending email">kontakt&#64;vanderbellen.at</a> </p> <p>IBAN: AT06 2011 1827 8591 6100</p> <p>BIC: GIBAATWWXXX</p> <p>&nbsp;</p> <p>Verein &quot;Gemeinsam für Van der Bellen – Unabhängige Initiative für die Bundespräsidentschaftswahl 2016&quot;</p> <p>&nbsp;</p> <p>&nbsp;</p></div>
+               </div>
+             
+            <div class="col-sm-2"> Folgen Sie Alexander Van der Bellen auf: 
+              <div class="footer_socmedia"> <a href="https://www.facebook.com/alexandervanderbellen" title="Facebook" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a> <a href="https://www.youtube.com/channel/UCguMeO2ZTxHB0ytM0b_1NRw" title="Youtube" target="_blank"><i class="fa fa-youtube-play fa-2x"></i></a> <a href="https://twitter.com/vanderbellen" title="Twitter" target="_blank"><i class="fa fa-twitter fa-2x"></i></a> <a href="https://www.instagram.com/vanderbellen2016/" title="Instagramm" target="_blank"><i class="fa fa-instagram fa-2x"></i></a> <a href="https://www.flickr.com/photos/138481140@N05" title="Flicker" target="_blank"><i class="fa fa-flickr fa-2x"></i></a> </div>
+               </div>
+             
+            <div class="col-sm-1"></div>
+             
+            <div class="col-sm-3 col_footer_newsletter"> 
+              <div id="c162">
+                <div class="Tx-Formhandler"> 
+                  <div class="nl-footer"> 
+                    <div class="container-formhandler"> <form action="" method="post" id="contact-formfooter" enctype="multipart/form-data" class="form-examples form-horizontal" role="form"> <input type="hidden" name="id" value="1" /> <input type="hidden" name="contactfooter[submitted]" value="1" /> <input type="hidden" name="contactfooter[randomID]" value="b40e02dcf03c43d7612fcafd50bb6c2b" /> <input type="hidden" id="removeFile-b40e02dcf03c43d7612fcafd50bb6c2b" name="contactfooter[removeFile]" value="" /> <input type="hidden" id="removeFileField-b40e02dcf03c43d7612fcafd50bb6c2b" name="contactfooter[removeFileField]" value="" /> <input type="hidden" id="submitField-b40e02dcf03c43d7612fcafd50bb6c2b" name="contactfooter[submitField]" value="" /> <input type="hidden" name="contactfooter[step-2-next]" id="ieHiddenField-b40e02dcf03c43d7612fcafd50bb6c2b" value="1" /> <fieldset> <legend>Informiert bleiben - werden Sie Teil der Bewegung. Wir informieren Sie laufend über die Bundespräsidentschafts-Kampagne von Alexander Van der Bellen und darüber, wie Sie dazu beizutragen können.</legend> 
+                          <div class="row"> 
+                            <div class="col-xs-12 col-sm-12 col-md-8"> 
+                              <div class="form-group "> <label class="control-label " for="email">E-Mail-Adresse *</label> <input class="form-control" type="text" size="20" id="email" name="contactfooter[email]" value="" placeholder="E-Mail-Adresse *"/> </div>
+                               </div>
+                             
+                            <div class="col-xs-12 col-sm-12 col-md-4"> 
+                              <div class="form-group "> <label class="control-label " for="plz">PLZ *</label> <input class="form-control" type="text" size="20" id="plz" name="contactfooter[plz]" value="" placeholder="PLZ *"/> </div>
+                               </div>
+                             </div>
+                           </fieldset> <fieldset> 
+                          <div class="row"> 
+                            <div class="form-group"> 
+                              <div class="col-md-12 col-lg-5"> <button type="submit" name="contactfooter[step-2-next]" id="nlfooter-submit" class="btn btn-default btn-primary btn-block" value="WEITER" >WEITER</button> </div>
+                               </div>
+                             </div>
+                           </fieldset> </form> </div>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             
+            <div class="col-sm-1"></div>
+             </div>
+           </div>
+         </div>
+       </section>
     </footer>
 
     {% load piwik %}

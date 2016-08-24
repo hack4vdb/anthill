@@ -1,10 +1,10 @@
 body {
   font-family: 'Source Sans Pro', sans-serif;
 }
-header {
+/*header {
   padding-bottom: 1rem;
   border-bottom: 1px #eee solid;
-}
+}*/
 a {
   border-bottom: 1px solid #cef;
   text-decoration: none;  
@@ -26,14 +26,14 @@ footer .title {
 h3 {
   line-height: 1.1em;
 }
-header h1 {
+/*header h1 {
   margin-top: 2rem;
   margin-bottom: 0;
   font-weight: bold;
 }
 header .bpw {
   font-weight: bold;
-}
+}*/
 header #logout {
   float: right;
   color: #bbb;
