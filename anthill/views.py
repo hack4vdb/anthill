@@ -114,6 +114,7 @@ def unsubscribe(request, uuid):
     try:
         activist = Activist.objects.get(uuid=uuid)
         activist.subscribed = False
+        activist.save()
         activist = authenticate(uuid=activist.uuid)
         login(request, activist)
         # TODO: also tell CRM that user has been unsubscribed?
