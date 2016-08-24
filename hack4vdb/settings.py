@@ -159,3 +159,22 @@ PIWIK_DOMAIN_PATH = 'stats.fnordserver.eu'
 PIWIK_SITE_ID = '5'
 ANALYTICAL_AUTO_IDENTIFY = False  # somehow this didn't work
 ANALYTICAL_INTERNAL_IPS = ['localhost', '127.0.0.1']
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': '~/anthill-debug.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'WARNING', # DEBUG, INFO, WARNING, ERROR, CRITICAL
+            'propagate': True,
+        },
+    },
+}
