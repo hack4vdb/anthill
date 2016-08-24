@@ -167,7 +167,7 @@ LOGGING = {
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': '~/anthill-debug.log',
+            'filename': 'log/anthill-debug.log',
         },
     },
     'loggers': {

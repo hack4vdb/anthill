@@ -9,3 +9,4 @@ local_settings.py
 settings_local.py
 __pycache__/
 .DS_Store
+log/*.log
