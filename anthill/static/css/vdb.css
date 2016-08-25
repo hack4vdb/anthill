@@ -20,10 +20,11 @@
 }
 
 body {
-	background: #fff;
+    background: #fff;
     font-family: 'Montserrat-Regular',sans-serif;
     max-width: 1590px;
     margin: 0 auto;
+    overflow-x: hidden;
 }
 
 body > .container, header .container, footer .container {
