@@ -64,7 +64,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'mobileesp.middleware.MobileDetectionMiddleware',
-    'hack4vdb.middleware.CacheControl',
 ]
 
 CRONJOBS = [
