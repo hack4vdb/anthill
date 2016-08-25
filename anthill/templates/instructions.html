@@ -1,5 +1,6 @@
 {% extends "layouts/base.html" %}
 {% block body_class %}instructions{% endblock %}
+{% load staticfiles %}
 
 {% block content %}
 <div class="page">
@@ -7,7 +8,7 @@
     <div class="row">
 
       <h3 class="nine columns top">So gehts: Straßenaktionen leicht gemacht</h3>
-      <img src="/static/img/loudspeaker.svg" class="three columns u-max-full-width h-icon" />
+      <img src="{% static 'img/loudspeaker.svg' %}" class="three columns u-max-full-width h-icon" />
     </div>
 
     <h4>Warum auf die Straße?</h4>
@@ -25,7 +26,7 @@
       Die vorgeschlagenen Treffpunkte sind jeweils an einem zentralen Ort in der jeweiligen Gemeinde. Ihr müsst aber nicht dort bleiben. Sucht die Straßen und Plätze, wo die meisten Menschen sind. Bleibt am besten nicht an einem Platz, sondern geht aktiv auf die Leute zu. Bitte beachtet, dass ihr nur auf öffentlichem Grund Material verteilen dürft. Privatgrundstücke - dazu gehören z. B. auch Bahnhöfe, Haltestellen und die Parkplätze von Einkaufs- oder Fachmarktzentren - sind tabu.
     </p>
     </div>
-      <img src="/static/img/vdbmerch.jpeg" class="five columns u-max-full-width" />
+      <img src="{% static 'img/vdbmerch.jpeg' %}" class="five columns u-max-full-width" />
     </div>
     <h4>Worum geht es?</h4>
     <p>

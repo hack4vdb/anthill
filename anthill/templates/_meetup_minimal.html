@@ -1,3 +1,6 @@
+{% load cache %}
+
+{% cache 500 meetup-minimal meetup %}
 <div class="info">
   <p class="meetup_date"><i class="fa fa-calendar" aria-hidden="true"></i> 
     {{ meetup.datetime|date:"l j.n. H:i" }}</p>
@@ -6,3 +9,4 @@
   <p class="meetup_street"><i class="fa fa-crosshairs" aria-hidden="true"></i> 
     {{ meetup.street }}</p>
 </div>
+{% endcache %}

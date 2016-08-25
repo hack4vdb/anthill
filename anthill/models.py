@@ -15,6 +15,7 @@ from django.utils import timezone
 from anthill.settings import MIN_PARTICIPANTS_PER_MEETUP
 from django.utils.http import urlquote
 from django.utils.formats import date_format
+from django.utils.functional import cached_property
 
 from anthill.utils import concat_list_verbosely
 from anthill import notifications
@@ -157,34 +158,36 @@ class Meetup(models.Model):
             notifications.Notifications.send_welcome_to_viable_meetup(activist=activist, meetup=self)
 
 
-    @property
+    @cached_property
     def is_viable(self):
         return self.activists.count() >= MIN_PARTICIPANTS_PER_MEETUP
 
+    @cached_property
     def is_solo(self):
         return self.activists.count() == 1
 
+    @cached_property
     def people_string(self):
         return concat_list_verbosely([a.first_name for a in self.activists.all()])
 
     def other_people_string(self, user):
         return concat_list_verbosely([a.first_name for a in self.activists.all() if a != user])
 
-    @property
+    @cached_property
     def wahl_details(self):
         coordinates = PostalcodeCoordinates.get_coordinates(self.postalcode)
         return geo.get_wahl_details(coordinates)
 
-    @property
+    @cached_property
     def fb_card_image_url(self):
         center = urlquote(self.street) + "," + urlquote(self.city) + ",Austria"
         return "https://maps.googleapis.com/maps/api/staticmap?center=" + center + "&markers=color:red%7C" + center + "&zoom=15&size=500x260&key=AIzaSyANphiyaXrFh_146PzRNbNGTozPv7Meibw"
 
-    @property
+    @cached_property
     def fb_card_title(self):
         return "" + self.city + " " + date_format(self.datetime, "l j.n. H:i")
 
-    @property
+    @cached_property
     def fb_card_description(self):
         return self.street + " " + self.house_number
 
