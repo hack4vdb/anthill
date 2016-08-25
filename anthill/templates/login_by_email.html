@@ -1,5 +1,6 @@
 {% extends "layouts/base.html" %}
 {% block body_class %}modal login{% endblock %}
+{% load staticfiles %}
 
 {% block content %}
 <div id="first-viewport">
@@ -10,7 +11,7 @@
         <div class="full-width-container final">
           <div class="container">
             <div id="final-image" class="biground">
-              <img src="/static/img/icon_victory.png" width="65%" style="margin-top: 18%" />
+              <img src="{% static 'img/icon_victory.png' %}" width="65%" style="margin-top: 18%" />
             </div>
             <h3>Willkommen zurück</h3>
             <p>

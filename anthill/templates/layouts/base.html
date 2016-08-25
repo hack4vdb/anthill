@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta property="og:description" content="{% block og:description %}Jetzt für Alexander Van der Bellen aktiv werden - weil's um was geht.{% endblock %}" />
-    <meta property="og:image" content="{% block og:image %}{% if request.is_secure %}https://{% else %}http://{% endif %}{{ request.get_host }}/static/img/bg.jpg{% endblock %}" />
+    <meta property="og:image" content="{% block og:image %}{% static 'img/bg.jpg' %}{% endblock %}" />
     <title>{% block title %}Weil's um was geht – aktiv für Van der Bellen{% endblock %}</title>
 
     {% load staticfiles %}
@@ -36,7 +36,7 @@
               <div class="navbar-header navbar-header-main"> 
                 <div class="nav_mobile_button"> <i class="fa fa-bars fa-2x"></i> </div>
                  
-                <div class="nav_logo"> <a href="https://www.vanderbellen.at/"> <img src="/static/img/logo.png" alt="Vanderbellen 2016 logo" width="220" id="img_logo"> </a> </div>
+                <div class="nav_logo"> <a href="https://www.vanderbellen.at/"> <img src="{% static 'img/logo.png' %}" alt="Vanderbellen 2016 logo" width="220" id="img_logo"> </a> </div>
                  
                 <div class="nav_mobile_share"> <i class="fa fa-share-alt fa-2x"></i> </div>
                  

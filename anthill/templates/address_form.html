@@ -1,5 +1,6 @@
 {% extends "layouts/base.html" %}
 {% block body_class %}address{% endblock %}
+{% load staticfiles %}
 
 {% block content %}
 <div class="full-width-container titlebar">
@@ -71,7 +72,7 @@
 
     </div>
     <div class="six columns illu">
-      <img src="/static/img/delivery.svg" width="70%"/>
+      <img src="{% static 'img/delivery.svg' %}" width="70%"/>
     </div>
   </div>
 </div>
