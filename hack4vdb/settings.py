@@ -165,7 +165,7 @@ LOGGING = {
 
 # Use the file local_settings.py to overwrite the defaults with your own settings
 try:
-	from settings_local import *
+	from hack4vdb.settings_local import *
 except ImportError:
 	pass
 
