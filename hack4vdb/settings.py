@@ -33,9 +33,12 @@ CSRF_COOKIE_HTTPONLY = True
 X_FRAME_OPTIONS = 'DENY'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+try:
+       DEBUG = local.DEBUG
+except AttributeError:
+       DEBUG = True
 
-ALLOWED_HOSTS = ['weilsumwasgeht.at']
+ALLOWED_HOSTS = ['weilsumwasgeht.at', 'mitmachen.vanderbellen.at', 'mm-vdb.fnordserver.net']
 
 
 # Application definition
@@ -152,8 +155,16 @@ LOGIN_REDIRECT_URL = '/events'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+try:
+       STATIC_URL = local.STATIC_URL
+except AttributeError:
+       STATIC_URL = '/static/'
+try:
+       STATIC_ROOT = local.STATIC_ROOT
+except AttributeError:
+       STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
 PIWIK_DOMAIN_PATH = 'stats.fnordserver.eu'
 PIWIK_SITE_ID = '5'
