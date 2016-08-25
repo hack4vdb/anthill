@@ -1,3 +1,5 @@
+{% load staticfiles %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,7 +10,6 @@
     <meta property="og:image" content="{% block og:image %}{% static 'img/bg.jpg' %}{% endblock %}" />
     <title>{% block title %}Weil's um was geht – aktiv für Van der Bellen{% endblock %}</title>
 
-    {% load staticfiles %}
     <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
     <link rel="stylesheet" href="{% static 'css/skeleton.css' %}">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
