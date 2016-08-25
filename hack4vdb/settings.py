@@ -16,8 +16,6 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 
 import os
 
-import hack4vdb.settings_local as local
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -25,18 +23,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = local.SECRET_KEY
-
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_BROWSER_XSS_FILTER = True
 CSRF_COOKIE_HTTPONLY = True
 X_FRAME_OPTIONS = 'DENY'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-try:
-       DEBUG = local.DEBUG
-except AttributeError:
-       DEBUG = True
+DEBUG = True
 
 ALLOWED_HOSTS = ['weilsumwasgeht.at', 'mitmachen.vanderbellen.at', 'mm-vdb.fnordserver.net']
 
@@ -96,12 +89,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'hack4vdb.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/1.10/ref/settings/#databases
-
-DATABASES = local.DATABASES
-
-
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
 
@@ -142,12 +129,6 @@ USE_TZ = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # set EMAIL_HOST, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD in settings_local.py
 
-EMAIL_HOST = local.EMAIL_HOST
-EMAIL_HOST_USER = local.EMAIL_HOST_USER
-EMAIL_HOST_PASSWORD = local.EMAIL_HOST_PASSWORD
-EMAIL_PORT = local.EMAIL_PORT
-EMAIL_USE_TLS = local.EMAIL_USE_TLS
-
 LOGIN_URL = '/'
 LOGIN_REDIRECT_URL = '/events'
 
@@ -155,15 +136,8 @@ LOGIN_REDIRECT_URL = '/events'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
-try:
-       STATIC_URL = local.STATIC_URL
-except AttributeError:
-       STATIC_URL = '/static/'
-try:
-       STATIC_ROOT = local.STATIC_ROOT
-except AttributeError:
-       STATIC_ROOT = os.path.join(BASE_DIR, "static/")
-
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
 PIWIK_DOMAIN_PATH = 'stats.fnordserver.eu'
@@ -189,3 +163,10 @@ LOGGING = {
         },
     },
 }
+
+# Use the file local_settings.py to overwrite the defaults with your own settings
+try:
+	from local_settings import *
+except ImportError:
+	pass
+
