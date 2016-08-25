@@ -72,6 +72,10 @@ body.home #signup-bubble-2 button[type="submit"] {
 	background-color: #ffff01;
 }
 
+body.home #signup-bubble-2 button[type="submit"] {
+	margin-top: 1rem;
+}
+
 body.meetups .speech-bubble:before,
 footer .title {
 	display: none;

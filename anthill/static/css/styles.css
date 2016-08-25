@@ -335,7 +335,6 @@ body.home #signup-bubble-2 button[type="submit"] {
   max-width: 100%;
   white-space: normal;
   line-height: 1.2em;
-  margin-top: 1rem;
   margin-bottom: 1rem;
 }
 @media (max-width: 375px) {
