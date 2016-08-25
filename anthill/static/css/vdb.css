@@ -73,6 +73,12 @@ body.home #signup-bubble-2 button[type="submit"] {
 	background-color: #ffff01;
 }
 
+/* Make signup-bubble explicity clickable, as we've disabled pointer events for
+ * it's parent elements */
+body.home #signup-bubble {
+	pointer-events: auto;
+}
+
 body.meetups .speech-bubble:before,
 footer .title {
 	display: none;
@@ -244,6 +250,12 @@ footer p {
 body.home #first-viewport {
 	position absolute;
 	top: 0;
+
+	/* This div covers the footer. To make sure links in footer are
+	 * clickable, disable pointer events here. Note that you have to
+	 * explicitly manually enable pointer events for child elements
+	 * of this that should be clickable (like #signup-bubble above). */
+	pointer-events: none;
 }
 body.home #big-photo,
 body.home #big-photo .photo {
