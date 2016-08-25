@@ -4,7 +4,7 @@
 <li class="meetup one-third column">
 
     {% cache 500 meetup-info meetup %}
-    <div class="map" style="background-image:url(https://maps.googleapis.com/maps/api/staticmap?center={{ meetup.street|urlencode }},{{ meetup.city|urlencode }},Austria&markers=color:red%7C{{ meetup.street|urlencode }},{{ meetup.city|urlencode }},Austria&zoom=15&size=500x200&key=AIzaSyANphiyaXrFh_146PzRNbNGTozPv7Meibw)">
+    <div class="map" style="background-image:url(/api/staticmaps/{{ meetup.city|urlencode }}/{{ meetup.street|urlencode }}/)">
       &nbsp;
     </div>
     <div class="info">

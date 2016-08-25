@@ -1,7 +1,10 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User, Group
+from django.views.decorators.cache import cache_page
 from anthill import models
 from rest_framework import viewsets
+
+from hack4vdb.settings_local import GOOGLE_API_KEY
 
 from anthill.serializers import UserSerializer, GroupSerializer, \
     ActivistSerializer, MeetupSerializer, PotentialMeetupSerializer
@@ -16,6 +19,7 @@ from anthill.models import *
 from django.http import HttpResponse
 from rest_framework.decorators import api_view
 from anthill import geo
+import requests
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -169,3 +173,11 @@ def meetupsByLatLng(request, latlong):
         meetups = Meetup.potential_meetups(postalcode)
         serializer = PotentialMeetupSerializer(meetups, many=True, context={'request': request})
     return Response(serializer.data)
+
+
+@cache_page(60 * 60 * 24 * 14)
+def static_maps(request, city, street):
+    url = 'https://maps.googleapis.com/maps/api/staticmap?center={},{},Austria&markers=color:red%7C{},{},Austria&zoom=15&size=500x200&key={}'\
+        .format(street, city, street, city, GOOGLE_API_KEY)
+    response = requests.get(url)
+    return HttpResponse(response.content, content_type='image/png')
