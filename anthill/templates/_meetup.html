@@ -1,4 +1,5 @@
 {% load cache %}
+{% load l10n %}
 
 <li class="meetup one-third column">
 
@@ -10,8 +11,12 @@
       <h3>{{ meetup.datetime|date:"l j.n. H:i" }}</h3>
       <p class="meetup_city"><i class="fa fa-map-marker" aria-hidden="true"></i> 
         <!--{{ meetup.postalcode }} -->{{ meetup.city }}</p>
-      <p class="meetup_street"><i class="fa fa-crosshairs" aria-hidden="true"></i> 
-        {{ meetup.street }}</p>
+      <p class="meetup_street">
+        <i class="fa fa-crosshairs" aria-hidden="true"></i>
+        <a href="https://www.openstreetmap.org/?mlat={{ meetup.coordinate.y|unlocalize }}&mlon={{ meetup.coordinate.x|unlocalize }}&zoom=15&layers=M">
+          {{ meetup.street }}
+        </a>
+      </p>
 
       {% if meetup.title %}
       <p class="meetup_title"><i class="fa fa-calendar" aria-hidden="true"></i> 
