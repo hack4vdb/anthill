@@ -1,5 +1,7 @@
 language: python
 
+sudo: required
+
 python:
   #- "2.6"
   - "2.7"
@@ -19,7 +21,7 @@ install:
   - "createdb anthill"
   - "psql -U postgres -d anthill -c 'CREATE EXTENSION postgis;'"
   - psql -U postgres -d anthill -c "CREATE USER anthill WITH PASSWORD 'vander';"
-  - "'local   all             all                                     md5' >> /etc/postgresql/9.4/main/pg_hba.conf"
+  - "sudo 'local   all             all                                     md5' >> /etc/postgresql/9.4/main/pg_hba.conf"
   - "/etc/init.d/postgresql reload"
   - "pip install -r requirements.txt"
   - "cp hack4vdb/settings_local.vagrant.py hack4vdb/settings_local.py"
