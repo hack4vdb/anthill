@@ -35,4 +35,4 @@ def split_string_by_newlines(string, n_characters_per_string):
         else:
             results.append(c)
             idx += 1
-    return [r.strip() for r in results if r ]
+    return [r.strip() for r in results if r]

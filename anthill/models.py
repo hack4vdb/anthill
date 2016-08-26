@@ -180,8 +180,7 @@ class Meetup(models.Model):
 
     @cached_property
     def fb_card_image_url(self):
-        center = urlquote(self.street) + "," + urlquote(self.city) + ",Austria"
-        return "https://maps.googleapis.com/maps/api/staticmap?center=" + center + "&markers=color:red%7C" + center + "&zoom=15&size=500x260&key=AIzaSyANphiyaXrFh_146PzRNbNGTozPv7Meibw"
+        return '/api/staticmaps/{}/{}/'.format(self.city, self.street)
 
     @cached_property
     def fb_card_title(self):
