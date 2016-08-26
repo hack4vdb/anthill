@@ -1,20 +1,20 @@
 @font-face{
 	font-family:'Montserrat-Bold';
-	src:url('https://www.vanderbellen.at/fileadmin/Templates/Public/Fonts/Montserrat-Bold.eot');
+	src:url('../fonts/Montserrat-Bold.eot');
 	src:local('☺'),
-		url('https://www.vanderbellen.at/fileadmin/Templates/Public/Fonts/Montserrat-Bold.woff') format('woff'),
-		url('https://www.vanderbellen.at/fileadmin/Templates/Public/Fonts/Montserrat-Bold.ttf') format('truetype'),
-		url('https://www.vanderbellen.at/fileadmin/Templates/Public/Fonts/Montserrat-Bold.svg') format('svg');
+		url('../fonts/Montserrat-Bold.woff') format('woff'),
+		url('../fonts/Montserrat-Bold.ttf') format('truetype'),
+		url('../fonts/Montserrat-Bold.svg') format('svg');
 	font-weight:normal;
 	font-style:normal
 }
 @font-face{
 	font-family:'Montserrat-Regular';
-	src:url('/static/fonts/Montserrat-Regular.eot');
+	src:url('../fonts/Montserrat-Regular.eot');
 	src:local('☺'),
-		url('/static/fonts/Montserrat-Regular.woff') format('woff'),
-		url('/static/fonts/Montserrat-Regular.ttf') format('truetype'),
-		url('/static/fonts/Montserrat-Regular.svg') format('svg');
+		url('../fonts/Montserrat-Regular.woff') format('woff'),
+		url('../fonts/Montserrat-Regular.ttf') format('truetype'),
+		url('../fonts/Montserrat-Regular.svg') format('svg');
 	font-weight:normal;
 	font-style:normal
 }
