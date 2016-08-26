@@ -18,7 +18,7 @@ install:
 #  - "sudo apt-get install -y postgresql-9.4 postgresql-9.4-postgis-2.2 postgresql-server-dev-all python-psycopg2"
   - "createdb anthill"
   - "psql -U postgres -d anthill -c 'CREATE EXTENSION postgis;'"
-  - psql -U postgres -d anthill -c 'CREATE USER anthill PASSWORD "vander";'
+  - psql -U postgres -d anthill -c "CREATE USER anthill WITH PASSWORD 'vander';"
   - "'local   all             all                                     md5' >> /etc/postgresql/9.4/main/pg_hba.conf"
   - "/etc/init.d/postgresql reload"
   - "pip install -r requirements.txt"
