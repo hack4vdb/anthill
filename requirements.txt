@@ -9,3 +9,6 @@ requests
 itsdangerous==0.24
 django-crontab==0.7.1
 django-analytical==2.2.1
+django-compressor==2.1
+slimit==0.8.1
+csscompressor==0.9.4

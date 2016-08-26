@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load compress %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,13 +11,13 @@
     <meta property="og:image" content="{% block og:image %}{% static 'img/bg.jpg' %}{% endblock %}" />
     <title>{% block title %}Weil's um was geht – aktiv für Van der Bellen{% endblock %}</title>
 
+    {% compress css %}
     <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
     <link rel="stylesheet" href="{% static 'css/skeleton.css' %}">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="{% static 'css/vdb.css' %}">
     <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
     <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
-    <link rel="stylesheet" href="https://www.vanderbellen.at/typo3temp/compressor/merged-ca4982a3cf18f08467d5e974eb15f5ae-785d0462a774c5ac31a1082e7af0cb59.css">
 
     <style>
         body.home .photowall { background: url({% static 'img/cheers.jpg' %}); }
@@ -24,7 +25,9 @@
         body.thankyou #final-image { background: url({% static 'img/result.jpg' %}); }
         body.meetups .titlebar .coach-photo-column { background: url({% static 'img/yay.jpg' %}); }
     </style>
+    {% endcompress %}
 
+    <link rel="stylesheet" href="https://www.vanderbellen.at/typo3temp/compressor/merged-ca4982a3cf18f08467d5e974eb15f5ae-785d0462a774c5ac31a1082e7af0cb59.css">
     <script type="text/javascript" src="{% static 'js/clipboard.min.js' %}"></script>
   </head>
 

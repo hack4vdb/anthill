@@ -1,7 +1,7 @@
 {% extends "layouts/base.html" %}
 {% block body_class %}home{% endblock %}
 {% load staticfiles %}
-
+{% load compress %}
 
 {% block title %}
   {% if invited_to %}
@@ -224,6 +224,7 @@
   </footer>
 </div>
 
+{% compress js inline %}
 <script>
   function loginForm() {
     var inputPostcode = document.getElementById('inputPostalcode');
@@ -277,5 +278,5 @@
   }
   if (document.location.hash == '#darkside') switchSide('darkside'); // onload
 </script>
-
+{% endcompress %}
 {% endblock %}
