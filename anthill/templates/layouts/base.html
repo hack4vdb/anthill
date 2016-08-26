@@ -1,7 +1,4 @@
-{% load staticfiles %}
-{% load compress %}
-
-<!DOCTYPE html>
+{% load staticfiles %}{% load compress %}<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -10,6 +7,8 @@
     <meta property="og:description" content="{% block og:description %}Jetzt für Alexander Van der Bellen aktiv werden - weil's um was geht.{% endblock %}" />
     <meta property="og:image" content="{% block og:image %}{% static 'img/bg.jpg' %}{% endblock %}" />
     <title>{% block title %}Weil's um was geht – aktiv für Van der Bellen{% endblock %}</title>
+
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon; charset=binary">
 
     {% compress css %}
     <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
