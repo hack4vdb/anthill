@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'analytical',
     'anthill',
     'django_crontab',
+    'compressor'
 ]
 
 MIDDLEWARE = [
@@ -138,6 +139,23 @@ LOGIN_REDIRECT_URL = '/events'
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
+
+COMPRESS_OFFLINE = True
+COMPRESS_OUTPUT_DIR = 'comp'
+COMPRESS_CSS_FILTERS = [
+	'compressor.filters.template.TemplateFilter',
+	'compressor.filters.css_default.CssAbsoluteFilter',
+	'compressor.filters.cssmin.CSSCompressorFilter',
+]
+COMPRESS_JS_FILTERS = [
+	'compressor.filters.jsmin.JSMinFilter',
+	'compressor.filters.jsmin.SlimItFilter',
+]
 
 PIWIK_DOMAIN_PATH = 'stats.fnordserver.eu'
 PIWIK_SITE_ID = '5'
