@@ -1,4 +1,8 @@
 SECRET_KEY = 'asd'
+BOT_API_KEY = 'asd1'
+CRM_API_KEY = 'asd2'
+GOOGLE_API_KEY = 'asd3'
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',

@@ -1,0 +1,33 @@
+language: python
+
+sudo: required
+
+python:
+  #- "2.6"
+  - "2.7"
+  #- "3.2"
+  #- "3.3"
+  - "3.4"
+  - "3.5"
+  - "3.5-dev" # 3.5 development branch
+  - "nightly" # currently points to 3.6-dev
+  
+services:
+  - postgresql
+  
+install:
+  - "createdb anthill"
+  - "psql -U postgres -d anthill -c 'CREATE EXTENSION postgis;'"
+  - psql -U postgres -d anthill -c "CREATE USER anthill WITH PASSWORD 'vander' CREATEDB CREATEUSER;"
+  - sudo sh -c "echo 'local   all             all                                     md5' >> /etc/postgresql/9.1/main/pg_hba.conf"
+  - sudo /etc/init.d/postgresql restart
+  - "pip install -r requirements.txt"
+  - "cp hack4vdb/settings_local.vagrant.py hack4vdb/settings_local.py"
+
+script:
+  - python manage.py migrate
+  - python manage.py crontab remove
+  - python manage.py crontab add
+  - python manage.py collectstatic --noinput
+  - python manage.py loaddata anthill/fixtures/PostalcodeCoordinates.json
+  - python manage.py test -v 2

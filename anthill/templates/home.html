@@ -1,5 +1,7 @@
 {% extends "layouts/base.html" %}
 {% block body_class %}home{% endblock %}
+{% load staticfiles %}
+{% load compress %}
 
 {% block title %}
   {% if invited_to %}
@@ -22,8 +24,8 @@
 <h1 onclick="switchSide()">Weil's um was geht.</h1>
 
 <div id="big-photo">
-  <div id="bg1" class="photo" style="background-image:url(/static/img/bg.jpg)"></div>
-  <div id="bg2" class="photo darkside" style="background-image:url(/static/img/bg3.jpg)"></div>
+  <div id="bg1" class="photo" style="background-image:url({% static 'img/bg.jpg' %})"></div>
+  <div id="bg2" class="photo darkside" style="background-image:url({% static 'img/bg3.jpg' %})"></div>
 </div>
 
 <div id="first-viewport">
@@ -122,63 +124,63 @@
 
   <div class="full-width-container final-call">
     <ul class="photowall" id="photo-bg">
-      <li><img src="/static/img/people/1.jpg" /></li>
-      <li><img src="/static/img/people/2.jpg" /></li>
-      <li><img src="/static/img/people/3.jpg" /></li>
-      <li><img src="/static/img/people/4.jpg" /></li>
-      <li><img src="/static/img/people/5.jpg" /></li>
-      <li><img src="/static/img/people/6.jpg" /></li>
-      <li><img src="/static/img/people/7.jpg" /></li>
-      <li><img src="/static/img/people/8.jpg" /></li>
-      <li><img src="/static/img/people/9.jpg" /></li>
-      <li><img src="/static/img/people/10.jpg" /></li>
-      <li><img src="/static/img/people/11.jpg" /></li>
-      <li><img src="/static/img/people/12.jpg" /></li>
-      <li><img src="/static/img/people/13.jpg" /></li>
-      <li><img src="/static/img/people/14.jpg" /></li>
-      <li><img src="/static/img/people/15.jpg" /></li>
-      <li><img src="/static/img/people/16.jpg" /></li>
-      <li><img src="/static/img/people/17.jpg" /></li>
-      <li><img src="/static/img/people/18.jpg" /></li>
-      <li><img src="/static/img/people/19.jpg" /></li>
-      <li><img src="/static/img/people/20.jpg" /></li>
-      <li><img src="/static/img/people/21.jpg" /></li>
-      <li><img src="/static/img/people/1.jpg" /></li>
-      <li><img src="/static/img/people/2.jpg" /></li>
-      <li><img src="/static/img/people/3.jpg" /></li>
-      <li><img src="/static/img/people/4.jpg" /></li>
-      <li><img src="/static/img/people/5.jpg" /></li>
-      <li><img src="/static/img/people/6.jpg" /></li>
-      <li><img src="/static/img/people/7.jpg" /></li>
-      <li><img src="/static/img/people/8.jpg" /></li>
-      <li><img src="/static/img/people/9.jpg" /></li>
-      <li><img src="/static/img/people/10.jpg" /></li>
-      <li><img src="/static/img/people/11.jpg" /></li>
-      <li><img src="/static/img/people/12.jpg" /></li>
-      <li><img src="/static/img/people/13.jpg" /></li>
-      <li><img src="/static/img/people/14.jpg" /></li>
-      <li><img src="/static/img/people/15.jpg" /></li>
-      <li><img src="/static/img/people/16.jpg" /></li>
-      <li><img src="/static/img/people/17.jpg" /></li>
-      <li><img src="/static/img/people/18.jpg" /></li>
-      <li><img src="/static/img/people/19.jpg" /></li>
-      <li><img src="/static/img/people/20.jpg" /></li>
-      <li><img src="/static/img/people/21.jpg" /></li>
-      <li><img src="/static/img/people/1.jpg" /></li>
-      <li><img src="/static/img/people/2.jpg" /></li>
-      <li><img src="/static/img/people/3.jpg" /></li>
-      <li><img src="/static/img/people/4.jpg" /></li>
-      <li><img src="/static/img/people/5.jpg" /></li>
-      <li><img src="/static/img/people/6.jpg" /></li>
-      <li><img src="/static/img/people/7.jpg" /></li>
-      <li><img src="/static/img/people/8.jpg" /></li>
-      <li><img src="/static/img/people/9.jpg" /></li>
-      <li><img src="/static/img/people/10.jpg" /></li>
-      <li><img src="/static/img/people/11.jpg" /></li>
-      <li><img src="/static/img/people/12.jpg" /></li>
-      <li><img src="/static/img/people/13.jpg" /></li>
-      <li><img src="/static/img/people/14.jpg" /></li>
-      <li><img src="/static/img/people/15.jpg" /></li>
+      <li><img src="{% static 'img/people/1.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/2.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/3.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/4.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/5.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/6.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/7.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/8.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/9.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/10.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/11.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/12.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/13.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/14.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/15.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/16.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/17.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/18.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/19.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/20.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/21.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/1.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/2.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/3.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/4.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/5.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/6.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/7.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/8.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/9.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/10.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/11.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/12.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/13.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/14.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/15.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/16.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/17.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/18.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/19.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/20.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/21.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/1.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/2.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/3.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/4.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/5.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/6.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/7.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/8.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/9.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/10.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/11.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/12.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/13.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/14.jpg' %}" /></li>
+      <li><img src="{% static 'img/people/15.jpg' %}" /></li>
     </ul>
     <div class="container">
       <div class="row">
@@ -222,6 +224,7 @@
   </footer>
 </div>
 
+{% compress js inline %}
 <script>
   function loginForm() {
     var inputPostcode = document.getElementById('inputPostalcode');
@@ -275,5 +278,5 @@
   }
   if (document.location.hash == '#darkside') switchSide('darkside'); // onload
 </script>
-
+{% endcompress %}
 {% endblock %}

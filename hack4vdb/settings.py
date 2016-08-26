@@ -16,8 +16,6 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 
 import os
 
-import hack4vdb.settings_local as local
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -25,8 +23,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = local.SECRET_KEY
-
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_BROWSER_XSS_FILTER = True
 CSRF_COOKIE_HTTPONLY = True
@@ -35,7 +31,7 @@ X_FRAME_OPTIONS = 'DENY'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['weilsumwasgeht.at']
+ALLOWED_HOSTS = ['weilsumwasgeht.at', 'mitmachen.vanderbellen.at', 'mm-vdb.fnordserver.net']
 
 
 # Application definition
@@ -53,6 +49,7 @@ INSTALLED_APPS = [
     'analytical',
     'anthill',
     'django_crontab',
+    'compressor'
 ]
 
 MIDDLEWARE = [
@@ -64,7 +61,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'mobileesp.middleware.MobileDetectionMiddleware',
-    'hack4vdb.middleware.CacheControl',
 ]
 
 CRONJOBS = [
@@ -91,12 +87,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'hack4vdb.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/1.10/ref/settings/#databases
-
-DATABASES = local.DATABASES
 
 
 # Password validation
@@ -139,12 +129,6 @@ USE_TZ = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # set EMAIL_HOST, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD in settings_local.py
 
-EMAIL_HOST = local.EMAIL_HOST
-EMAIL_HOST_USER = local.EMAIL_HOST_USER
-EMAIL_HOST_PASSWORD = local.EMAIL_HOST_PASSWORD
-EMAIL_PORT = local.EMAIL_PORT
-EMAIL_USE_TLS = local.EMAIL_USE_TLS
-
 LOGIN_URL = '/'
 LOGIN_REDIRECT_URL = '/events'
 
@@ -154,6 +138,24 @@ LOGIN_REDIRECT_URL = '/events'
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
+
+COMPRESS_OFFLINE = True
+COMPRESS_OUTPUT_DIR = 'comp'
+COMPRESS_CSS_FILTERS = [
+	'compressor.filters.template.TemplateFilter',
+	'compressor.filters.css_default.CssAbsoluteFilter',
+	'compressor.filters.cssmin.CSSCompressorFilter',
+]
+COMPRESS_JS_FILTERS = [
+	'compressor.filters.jsmin.JSMinFilter',
+	'compressor.filters.jsmin.SlimItFilter',
+]
 
 PIWIK_DOMAIN_PATH = 'stats.fnordserver.eu'
 PIWIK_SITE_ID = '5'
@@ -178,3 +180,10 @@ LOGGING = {
         },
     },
 }
+
+# Use the file local_settings.py to overwrite the defaults with your own settings
+try:
+	from hack4vdb.settings_local import *
+except ImportError:
+	pass
+

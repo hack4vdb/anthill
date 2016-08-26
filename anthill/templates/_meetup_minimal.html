@@ -1,8 +1,17 @@
+{% load cache %}
+{% load l10n %}
+
+{% cache 500 meetup-minimal meetup %}
 <div class="info">
   <p class="meetup_date"><i class="fa fa-calendar" aria-hidden="true"></i> 
     {{ meetup.datetime|date:"l j.n. H:i" }}</p>
   <p class="meetup_city"><i class="fa fa-map-marker" aria-hidden="true"></i> 
     {{ meetup.city }}</p>
-  <p class="meetup_street"><i class="fa fa-crosshairs" aria-hidden="true"></i> 
-    {{ meetup.street }}</p>
+      <p class="meetup_street">
+        <i class="fa fa-crosshairs" aria-hidden="true"></i>
+        <a href="https://www.openstreetmap.org/?mlat={{ meetup.coordinate.y|unlocalize }}&mlon={{ meetup.coordinate.x|unlocalize }}&zoom=15&layers=M">
+          {{ meetup.street }}
+        </a>
+      </p>
 </div>
+{% endcache %}

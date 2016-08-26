@@ -1,5 +1,6 @@
 {% extends "layouts/base.html" %}
 {% block body_class %}address{% endblock %}
+{% load staticfiles %}
 
 {% block content %}
 <div class="full-width-container titlebar">
@@ -45,11 +46,11 @@
 
     </div>
     <div class="six columns illu">
-      <img src="/static/img/delivery.svg" width="70%"/>
+      <img src="{% static 'img/delivery.svg' %}" width="70%"/>
     </div>
   </div>
 </div>
-<div class="full-width-container map" style="background-image:url(https://maps.googleapis.com/maps/api/staticmap?center={{ city|urlencode }},Austria&zoom=10&size=640x200&key=AIzaSyANphiyaXrFh_146PzRNbNGTozPv7Meibw)">
+<div class="full-width-container map" style="background-image:url(/api/staticmaps/{{ meetup.city|urlencode }}/{{ meetup.street|urlencode }}/)">
   <div class="map-overlay"></div>
 </div>
 {% endblock %}
