@@ -21,6 +21,7 @@ install:
   - "createdb anthill"
   - "psql -U postgres -d anthill -c 'CREATE EXTENSION postgis;'"
   - psql -U postgres -d anthill -c "CREATE USER anthill WITH PASSWORD 'vander';"
+  - psql -U postgres -d anthill -c "CREATE USER django CREATEDB;"
   - sudo sh -c "echo 'local   all             all                                     md5' >> /etc/postgresql/9.1/main/pg_hba.conf"
   - sudo /etc/init.d/postgresql restart
   - "pip install -r requirements.txt"
