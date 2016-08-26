@@ -94,6 +94,9 @@ class Activist(models.Model):
                 proposed_meetups.append(meetup)
         return sorted(proposed_meetups, key=lambda m: m.datetime)
 
+    def __str__(self):
+        return self.__unicode__()
+
     def __unicode__(self):
         if self.facebook_bot_id:
             return '{}, {} (FB Bot User: {})'.format(self.first_name, self.uuid, self.facebook_bot_id)

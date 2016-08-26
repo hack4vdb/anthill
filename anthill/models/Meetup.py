@@ -224,5 +224,8 @@ class Meetup(models.Model):
         except ValueError as e:
             return []
 
+    def __str__(self):
+        return self.__unicode__()
+
     def __unicode__(self):
         return "{} {} {}".format(self.postalcode, self.city, self.datetime)

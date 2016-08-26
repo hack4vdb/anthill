@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 from __future__ import unicode_literals
-from builtins import str as text
 import datetime
 from uuid import uuid4
 from django.db import transaction
@@ -25,8 +24,11 @@ class EmailLoginJoinMeetupCode(models.Model):
         self.accessed_at = datetime.datetime.now()
         self.save()
 
+    def __str__(self):
+        return self.__unicode__()
+
     def __unicode__(self):
-        return "{}: {} -- {}".format(self.invite_code, text(self.activist), text(self.meetup))
+        return "{}: {} -- {}".format(self.invite_code, self.activist, self.meetup)
 
 
 @receiver(models.signals.post_save, sender=Participation)

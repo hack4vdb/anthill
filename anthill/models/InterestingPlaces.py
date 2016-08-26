@@ -10,5 +10,8 @@ class InterestingPlaces(models.Model):
     city = models.CharField(max_length=500)  # Ort
     coordinate = models.PointField()
 
+    def __str__(self):
+        return self.__unicode__()
+
     def __unicode__(self):
         return '{} {}: {}'.format(self.postalcode, self.city, self.title)

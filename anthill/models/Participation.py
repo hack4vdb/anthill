@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-from builtins import str as text
+from __future__ import unicode_literals
 from django.contrib.gis.db import models
 
 
@@ -14,5 +14,8 @@ class Participation(models.Model):
     class Meta:
         unique_together = ('activist', 'meetup',)
 
+    def __str__(self):
+        return self.__unicode__()
+
     def __unicode__(self):
-        return "{}: {} -- {}".format(self.invite_code, text(self.activist), text(self.meetup))
+        return "{}: {} -- {}".format(self.invite_code, self.activist, self.meetup)

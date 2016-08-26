@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-from builtins import str as text
+from __future__ import unicode_literals
 from django.contrib.gis.db import models
 from django.contrib.gis.geos import GEOSGeometry
 from anthill import geo
@@ -37,5 +37,8 @@ class PostalcodeCoordinates(models.Model):
         return PostalcodeCoordinates.get_postalcode_from_coordinates(
             GEOSGeometry('POINT(%f %f)' % (lng, lat), srid=4326))
 
+    def __str__(self):
+        return self.__unicode__()
+
     def __unicode__(self):
-        return text(self.postalcode)
+        return str(self.postalcode)
