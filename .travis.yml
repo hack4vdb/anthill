@@ -16,13 +16,9 @@ services:
   - postgresql
   
 install:
-#  - "sudo apt-get -qq update"
-#  - "sudo apt-get install -y postgresql-9.4 postgresql-9.4-postgis-2.2 postgresql-server-dev-all python-psycopg2"
   - "createdb anthill"
-  - "createdb test_anthill"
   - "psql -U postgres -d anthill -c 'CREATE EXTENSION postgis;'"
-  - psql -U postgres -d anthill -c "CREATE USER anthill WITH PASSWORD 'vander';"
-  - psql -U postgres -d anthill -c "CREATE USER django CREATEDB;"
+  - psql -U postgres -d anthill -c "CREATE USER anthill WITH PASSWORD 'vander' CREATEDB;"
   - sudo sh -c "echo 'local   all             all                                     md5' >> /etc/postgresql/9.1/main/pg_hba.conf"
   - sudo /etc/init.d/postgresql restart
   - "pip install -r requirements.txt"
