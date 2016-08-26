@@ -45,6 +45,10 @@ body h1, body .h1, body h2, body .h2, body h3, body .h3 {
 	margin-top: 0;
 }
 
+body.modal {
+	display: block;
+}
+
 /* end counteract vdb css */
 
 body.modal,
