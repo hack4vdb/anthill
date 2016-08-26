@@ -22,7 +22,7 @@ install:
   - "psql -U postgres -d anthill -c 'CREATE EXTENSION postgis;'"
   - psql -U postgres -d anthill -c "CREATE USER anthill WITH PASSWORD 'vander';"
   - sudo sh -c "echo 'local   all             all                                     md5' >> /etc/postgresql/9.1/main/pg_hba.conf"
-  - "/etc/init.d/postgresql reload"
+  - sudo /etc/init.d/postgresql restart
   - "pip install -r requirements.txt"
   - "cp hack4vdb/settings_local.vagrant.py hack4vdb/settings_local.py"
 
