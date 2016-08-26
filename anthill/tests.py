@@ -5,8 +5,8 @@ from __future__ import unicode_literals
 
 import unittest
 
-from utils import concat_list_verbosely
-from utils import split_string_by_newlines
+from anthill.utils import concat_list_verbosely
+from anthill.utils import split_string_by_newlines
 
 
 class TestUtils(unittest.TestCase):
