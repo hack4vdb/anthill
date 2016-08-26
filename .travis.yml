@@ -10,8 +10,12 @@ python:
   - "3.5-dev" # 3.5 development branch
   - "nightly" # currently points to 3.6-dev
   
+services:
+  - postgresql
+  
 install:
-  - "apt-get install postgresql-9.4 postgresql-9.4-postgis-2.2 postgresql-server-dev-all python-psycopg2"
+#  - "sudo apt-get -qq update"
+#  - "sudo apt-get install -y postgresql-9.4 postgresql-9.4-postgis-2.2 postgresql-server-dev-all python-psycopg2"
   - "createdb anthill"
   - "psql -U postgres -d anthill -c 'CREATE EXTENSION postgis;'"
   - psql -U postgres -d anthill -c 'CREATE USER anthill PASSWORD "vander";'
