@@ -1,0 +1,82 @@
+{% extends "layouts/base.html" %}
+{% block body_class %}meetups{% endblock %}
+
+{% block content %}
+<div class="page">
+  <div class="full-width-container coach titlebar">
+    <div class="container">
+
+      <div class="row">
+        <div class="three columns">
+          <div class="coach-photo">&nbsp;</div>
+        </div>
+        <div class="nine columns speech-bubble">
+            <h3>Willkommen im Team! &nbsp;<span style="display: inline-block; transform:rotate(4deg)">&hearts;</span></h3>
+            {% if invited_by %}
+              <p>
+                Wir sind Menschen aus der Zivilgesellschaft, die sich selbst organisieren, um sicherzustellen, dass Alexander Van der Bellen Präsident wird.
+              </p>
+              <p>
+                <strong>{{ invited_by.first_name }} wird auch aktiv
+                {% if invited_to %}
+                  und lädt dich ein</strong>, gemeinsam bei dieser <a href="{% url 'instructions' %}">Straßenaktion</a> für Alexander Van der Bellen mitzumachen. Kommst du auch?
+                {% else %}
+                  und hat dich eingeladen, ebenfalls etwas zu tun. Hier sind Aktionen in deiner Nähe:
+                {% endif %}
+              </p>
+            {% else %}
+              <p>
+                <strong>Was gerade am wichtigsten ist:</strong> Vor Ort Präsenz zeigen – so bleiben wir zum Wahlkampfauftakt im Gespräch. Welche dieser von UnterstützerInnen selbst organisierten Straßenaktionen in deiner Gegend passt dir zeitlich am besten?
+              </p>
+            {% endif %}
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="container">
+
+    <ul class="row meetup_list">
+      {% if invited_to %}
+
+        <li class="placeholder one-third column"></li>
+        {% include "_meetup.html" with type='real' meetup=invited_to date=invited_to.datetime %}
+        <!-- todo "no time, show others" link -->
+
+      {% else %}
+
+        {% for meetup in meetups %}
+          {% include "_meetup.html" %}
+        {% endfor %}
+
+      {% endif %}
+
+      <!--p>
+        You are user {{ user.uuid }} with email {{ user.email }} in PLZ {{ user.postalcode }}
+      </p>
+      <p><a href="https://www.google.com/maps?hl=en&q={{ user.coordinate }}">Maps </a></p-->
+    </ul>
+    {% if invited_to %}
+      <a href="." class="more">Da hab ich keine Zeit, zeige andere</a>    
+    {% endif %}
+    {% if show_more_allowed %}
+      <a href="?show_more=true" class="more">Da hab ich keine Zeit, zeige andere</a>
+    {% endif %}
+  </div>
+</div>
+<div class="full-width-container donate">
+  <div class="container">
+    <div class="row">
+      <div class="one-half column offset-by-three">
+        <h4>Leiste einen finanziellen Beitrag</h4>
+        <p>Die BürgerInnenbewegung für VdB lebt vom lebendigen Engagement der tausenden Unterstützer wie dir und den freiwilligen Beiträgen, die ihr leistet – auch finanziell. Ohne euch läuft nix.</p>
+        <ul class="amounts">
+          <li><a href="https://www.vanderbellen.at/spenden/" target="_blank">€ 5</a></li>
+          <li><a href="https://www.vanderbellen.at/spenden/" target="_blank">€ 50</a></li>
+          <li><a href="https://www.vanderbellen.at/spenden/" target="_blank">€ 500</a></li>
+        </ul>
+     </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

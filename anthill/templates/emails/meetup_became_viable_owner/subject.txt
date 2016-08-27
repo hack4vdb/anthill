@@ -1,0 +1,1 @@
+Bestätigt: Verteilaktion {{ meetup.datetime|date:"j. n." }}, {{ meetup.datetime|time:"H" }} Uhr in {{ meetup.city }}

@@ -1,0 +1,11 @@
+.idea
+.vagrant/
+*.swp
+.python-version
+*.py[cod]
+*.sqlite3
+*.log
+local_settings.py
+settings_local.py
+__pycache__/
+.DS_Store

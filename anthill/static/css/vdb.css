@@ -1,0 +1,220 @@
+@font-face{
+	font-family:'Montserrat-Bold';
+	src:url('https://www.vanderbellen.at/fileadmin/Templates/Public/Fonts/Montserrat-Bold.eot');
+	src:local('☺'),
+		url('https://www.vanderbellen.at/fileadmin/Templates/Public/Fonts/Montserrat-Bold.woff') format('woff'),
+		url('https://www.vanderbellen.at/fileadmin/Templates/Public/Fonts/Montserrat-Bold.ttf') format('truetype'),
+		url('https://www.vanderbellen.at/fileadmin/Templates/Public/Fonts/Montserrat-Bold.svg') format('svg');
+	font-weight:normal;
+	font-style:normal
+}
+@font-face{
+	font-family:'Montserrat-Regular';
+	src:url('https://www.vanderbellen.at/fileadmin/Templates/Public/Fonts/Montserrat-Regular.eot');
+	src:local('☺'),
+		url('https://www.vanderbellen.at/fileadmin/Templates/Public/Fonts/Montserrat-Regular.woff') format('woff'),
+		url('https://www.vanderbellen.at/fileadmin/Templates/Public/Fonts/Montserrat-Regular.ttf') format('truetype'),
+		url('https://www.vanderbellen.at/fileadmin/Templates/Public/Fonts/Montserrat-Regular.svg') format('svg');
+	font-weight:normal;
+	font-style:normal
+}
+
+body {
+	background: #fff;
+    font-family: 'Montserrat-Regular',sans-serif;
+}
+body.modal,
+body.home #signup-bubble,
+body.home #signup-bubble-2,
+body.invite button.clipboard {
+	background: #ededed;
+}
+
+header {
+	background: #ffff01 url(https://www.vanderbellen.at/fileadmin/Templates/Public/Theme/logo.png) center 25px no-repeat;
+	background-size: 150px;
+	border-bottom: none;
+	min-height: 90px;
+}
+@media (min-width: 550px) {
+	header {
+		background-position: 18px 16px;
+		background-size: 170px;
+	}
+}
+header h1 {
+	margin-top: 0;
+	display: none;
+}
+
+header #logout {
+	color: #000;
+}
+
+.titlebar,
+body.meetups .speech-bubble {
+	background-color: #ededed;
+}
+
+body.meetups .button,
+body.meetups ul.amounts li a,
+button.button-primary,
+body.invite #share-buttons a,
+body.modal .pillbtn,
+body.home #signup-bubble button[type="submit"],
+body.home #signup-bubble-2 button[type="submit"] {
+	background-color: #ffff01;
+}
+
+body.meetups .speech-bubble:before,
+footer .title {
+	display: none;
+}
+body.meetups .speech-bubble {
+    padding-top: 1rem;
+    padding-left: 0;
+}
+
+body.meetups .coach h3,
+body.modal h3 {
+	color: #000;
+}
+
+body.meetups li.meetup,
+body.meetups li.meetup:hover {
+    border-color: #fff;
+    background: #ededed;
+}
+
+body.meetups .meetup_list .join .attending {
+	background: #000;
+	color: #fff;
+}
+
+body.meetups .meetup_list .map,
+body.meetups li.meetup,
+body.meetups .button,
+button.button-primary,
+input[type="text"],
+body.invite #share-buttons a,
+body.modal .pillbtn,
+body.meetups .meetup_list .join .attending,
+body.meetups .more,
+body.meetups .coach-photo,
+body.home #signup-bubble,
+body.home #signup-bubble-2,
+body.home #signup-bubble button[type="submit"],
+body.home #signup-bubble-2 button[type="submit"],
+button.clipboard {
+	border-radius: 0;
+}
+
+input[type="text"] {
+	border: 0;
+}
+
+body.meetups .button,
+button.button-primary,
+button.button-primary:hover,
+input[type="text"]:focus,
+body.invite #share-buttons a,
+body.modal .pillbtn,
+body.meetups ul.amounts li a:hover,
+body.home #signup-bubble button[type="submit"],
+body.home #signup-bubble-2 button[type="submit"] {
+	text-decoration: none;
+	border-color: #ffff01;
+	color: #000;
+}
+
+body.meetups .attending .button {
+	border-color: #fff;
+}
+
+body.meetups .button:hover,
+button.button-primary:hover,
+body.invite #share-buttons a:hover,
+body.modal .pillbtn:hover,
+body.meetups ul.amounts li a:hover,
+body.home #signup-bubble button[type="submit"]:hover,
+body.home #signup-bubble-2 button[type="submit"]:hover,
+body.home .explainer {
+	background: #fff;
+}
+
+body.invite #share-buttons a,
+body.modal .pillbtn,
+body.meetups ul.amounts li a {
+	border: 1px solid #ffff01;
+}
+
+body.meetups .more {
+	background: #fff;
+	border: 0;
+	width: 18em;
+}
+
+body.meetups ul.amounts {
+    width: 19em;
+}
+
+a,
+body.meetups .more {
+	color: #000;
+	text-decoration: underline;
+    border-bottom: none;
+}
+a:hover {
+	color: #000;	
+}
+
+body.address form {
+    background: #eee;
+    padding: .5em 1em;
+}
+
+footer {
+	background: #000;
+	color: #fff;
+	border-top: 0;
+}
+footer a:hover {
+	color: #ffff01;
+}
+
+body.home #first-viewport {
+	position absolute;
+	top: 0;
+}
+body.home #big-photo,
+body.home #big-photo .photo {
+	height: 500px;
+}
+body.home #second-viewport,
+body.home #big-photo,
+body.home #big-photo .photo {
+	position: static;
+}
+body.home header,
+body.home footer {
+	display: block;
+}
+body.home h1,
+body.home #second-viewport footer,
+body.home header #logout {
+	display: none;
+}
+body.home #big-photo .photo {
+	opacity: 1;
+}
+
+
+body.invite button.clipboard {
+	border: 0;
+}
+body.invite #invite-url {
+	border: 1px solid #666;
+}
+body.invite .fa-flag {
+    text-shadow: none;
+}

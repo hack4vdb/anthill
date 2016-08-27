@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:description" content="{% block og:description %}Jetzt für Alexander Van der Bellen aktiv werden - weil's um was geht.{% endblock %}" />
+    <meta property="og:image" content="{% block og:image %}{% if request.is_secure %}https://{% else %}http://{% endif %}{{ request.get_host }}/static/img/bg.jpg{% endblock %}" />
+    <title>{% block title %}Weil's um was geht – aktiv für Van der Bellen{% endblock %}</title>
+
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/skeleton.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/vdb.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+
+    <script type="text/javascript" src="{% static 'js/clipboard.min.js' %}"></script>
+  </head>
+
+  <body class="{% block body_class %}{% endblock %}">
+    <header>
+      <div class="container">
+        <a id="logout" href="{% url 'logout_view' %}">Ausloggen</a>
+        <h1><a href="/" style="text-decoration: none; border-bottom: none; color: black;">Weil's um was geht.</a></h1>
+        <!--p class="bpw">bei der Bundespräsidentenwahl 2016</p-->
+      </div>
+    </header>
+    {% block content %}
+    {% endblock %}
+    <footer><!-- todo unify with same template in home.html -->
+      <div class="container">
+        <div class="row">
+          <div class="one-half column">
+            <p>Diese Seite steht in keiner Verbindung zum Verein „Gemeinsam für Van der Bellen“ oder Alexander Van der Bellen. &nbsp; <a href="{% url 'about' %}">Impressum &amp; Datenschutz</a></p>
+          </div>
+          <div class="one-half column">
+            <p class="title">Weil's um was geht.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    {% load piwik %}
+    {% piwik %}
+  </body>
+</html>

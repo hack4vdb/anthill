@@ -1,0 +1,34 @@
+{% extends "layouts/base.html" %}
+{% block body_class %}modal login{% endblock %}
+
+{% block content %}
+<div id="first-viewport">
+  <div class="container">
+
+    <div class="row">
+      <div class="one-half column offset-by-three">
+        <div class="full-width-container final">
+          <div class="container">
+            <div id="final-image" class="biground">
+              <img src="/static/img/icon_victory.png" width="65%" style="margin-top: 18%" />
+            </div>
+            <h3>Willkommen zurück</h3>
+            <p>
+              Wir haben dir eine E-Mail mit einem Link geschickt,
+              mit dem du dich wieder einloggen kannst.
+            </p>
+            <p>
+              Bitte prüfe dein E-Mail-Postfach (auch den Spam-Ordner).
+              Diese Seite kannst du danach schließen.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pillbtn-container">
+        <a href="/" class="pillbtn">&laquo; Zurück zum Anfang</a>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

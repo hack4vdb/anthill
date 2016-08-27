@@ -1,0 +1,12 @@
+{% if recipient.first_name %}{{ recipient.first_name }}{% endif %}
+
+Jemand hat versucht sich mit deiner E-Mail-Adresse auf weilsumwasgeht.at einzuloggen.
+Solltest Du das nicht gewesen sein, kannst Du dieses E-Mail ignorieren.
+
+Klicke auf folgenden Link um dich einzuloggen:
+{{ login_link }}
+      
+Danke für dein Engagement! Nur gemeinsam können wir am 2. Oktober erfolgreich sein.
+Weils um was geht.
+
+Team Van der Bellen

@@ -1,0 +1,30 @@
+{% extends "layouts/base.html" %}
+{% block body_class %}modal login{% endblock %}
+
+{% block content %}
+<div id="first-viewport">
+  <div class="container">
+
+    <div class="row">
+      <div class="one-half column offset-by-three">
+        <div class="full-width-container final">
+          <div class="container">
+            <div id="final-image" class="biground"></div>
+            <h3>Fehler beim Einloggen</h3>
+            <p>
+              Der Login-Link ist falsch.
+            </p>
+            <p>
+              Bitte gehe zurück zur Startseite und versuch dich noch einmal mit deiner E-Mail-Adresse einzuloggen.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pillbtn-container">
+        <a href="/" class="pillbtn">&laquo; Zurück zur Startseite</a>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

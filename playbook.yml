@@ -1,0 +1,60 @@
+---
+- hosts: all
+  become: yes
+  become_user: root
+  tasks:
+#      - name: add backports repository
+#        apt_repository: repo='deb http://http.debian.net/debian stable-backports main' state=present update_cache=yes
+      - apt: pkg=postgresql-9.4
+      - apt: pkg=postgresql-9.4-postgis-2.2
+      - apt: pkg=postgresql-server-dev-all
+      - apt: pkg=python-psycopg2
+      - apt: pkg=python-pip
+      - apt: pkg=python-dev
+
+      - pip: requirements=/vagrant/requirements.txt
+
+# DB stuff
+
+      - name: postgres auth
+        lineinfile: dest=/etc/postgresql/9.4/main/pg_hba.conf
+                    line='local   all             all                                     md5'
+                    insertafter='local   all             postgres                                peer'
+
+      - name: restart postgres
+        service: name=postgresql state=restarted
+
+
+      - name: create postgres db
+        postgresql_db: name=anthill
+        become: yes
+        become_user: postgres
+
+      - name: create postgis extension
+        postgresql_ext: name=postgis db=anthill
+        become: yes
+        become_user: postgres
+
+      - name: create postgres user
+        postgresql_user: db=anthill name=anthill password=vander
+        become: yes
+        become_user: postgres
+
+      - name: setup local settings
+        copy: src=/vagrant/hack4vdb/settings_local.vagrant.py dest=/vagrant/hack4vdb/settings_local.py
+
+      - name: migrations
+        django_manage: app_path=/vagrant
+                       command=migrate
+        become: yes
+        become_user: vagrant
+
+      - name: load PostalcodeCoordinates.json fixtures
+        django_manage: app_path=/vagrant
+                       command=loaddata
+                       fixtures=anthill/fixtures/PostalcodeCoordinates.json
+        become: yes
+        become_user: vagrant
+
+      - lineinfile: dest=/home/vagrant/.bashrc
+                    line='cd /vagrant'

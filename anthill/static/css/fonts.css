@@ -1,0 +1,30 @@
+
+@font-face {
+    font-family: 'Caveat Brush';
+    src: url('../fonts/caveatbrush-regular-webfont.woff2') format('woff2'),
+         url('../fonts/caveatbrush-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: url('../fonts/sourcesanspro-regular-webfont.woff2') format('woff2'),
+         url('../fonts/sourcesanspro-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: url('../fonts/sourcesanspro-bold-webfont.woff2') format('woff2'),
+         url('../fonts/sourcesanspro-bold-webfont.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: url('../fonts/sourcesanspro-it-webfont.woff2') format('woff2'),
+         url('../fonts/sourcesanspro-it-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+}
