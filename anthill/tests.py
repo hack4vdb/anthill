@@ -2,11 +2,20 @@
 # -*- coding: utf-8 -*-
 
 from __future__ import unicode_literals
-
 import unittest
-
+from django.test import Client
 from anthill.utils import concat_list_verbosely
 from anthill.utils import split_string_by_newlines
+
+
+class TestHomeView(unittest.TestCase):
+
+    def setUp(self):
+        self.client = Client(HTTP_USER_AGENT='Mozilla/5.0')
+
+    def test_up(self):
+        response = self.client.get('')
+        self.assertEqual(response.status_code, 200)
 
 
 class TestUtils(unittest.TestCase):
