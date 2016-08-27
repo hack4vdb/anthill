@@ -1,25 +1,18 @@
-from django.shortcuts import render
-from django.contrib.auth.models import User, Group
+from django.http import HttpResponse
 from django.views.decorators.cache import cache_page
-from anthill import models
+from django.contrib.auth.models import User, Group
+
 from rest_framework import viewsets
-
-from hack4vdb.settings_local import GOOGLE_API_KEY
-
-from anthill.serializers import UserSerializer, GroupSerializer, \
-    ActivistSerializer, MeetupSerializer, PotentialMeetupSerializer
-
 from rest_framework import status
 from rest_framework.response import Response
-from rest_framework.decorators import list_route
-from django.contrib.gis.measure import Distance
-from django.contrib.gis.geos import GEOSGeometry
-
-from anthill.models import *
-from django.http import HttpResponse
 from rest_framework.decorators import api_view
-from anthill import geo
+
 import requests
+
+from hack4vdb.settings_local import GOOGLE_API_KEY
+from anthill.models import *
+from anthill.serializers import UserSerializer, GroupSerializer, \
+    ActivistSerializer, MeetupSerializer, PotentialMeetupSerializer
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -99,7 +92,7 @@ class MeetupNearActivistViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Meetup.objects.all()
     serializer_class = MeetupSerializer
 
-    def list(self, request, format=None):
+    def list(self, request):
         # we don't return lists of all meetups ...
         return Response()
 
@@ -177,9 +170,11 @@ def meetupsByLatLng(request, latlong):
 
 @cache_page(60 * 60 * 24 * 14)
 def static_maps(request, city, street):
-    base_url = 'https://maps.googleapis.com/maps/api/staticmap?center={},{},Austria&markers=color:red%7C{},{},Austria&zoom=15&size=500x200&key={}'
+    base_url = 'https://maps.googleapis.com/maps/api/staticmap?center={},{},Austria&'
     if street == '':
-        base_url = 'https://maps.googleapis.com/maps/api/staticmap?center={},{},Austria&zoom=12&size=500x200&key={}'
-    url = base_url.format(street, city, street, city, GOOGLE_API_KEY)
+        url = base_url + 'zoom=12&size=500x200&key={}'
+    else:
+        url = base_url + 'markers=color:red%7C{},{},Austria&zoom=15&size=500x200&key={}'
+    url = url.format(street, city, street, city, GOOGLE_API_KEY)
     response = requests.get(url)
     return HttpResponse(response.content, content_type='image/png')
