@@ -177,6 +177,7 @@ body.home .photowall {
   background: #fff;
   overflow: hidden;
   list-style:none;
+  background: url(../img/cheers.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -420,6 +421,7 @@ body.meetups .meetup_list h3 {
 }
 body.meetups .coach-photo {
   width: 100%; height: 100px;
+  background-image: url('../img/alexandra.jpg');
   background-position: 0 -20px;
   background-size: cover;
   border-top-left-radius: 2rem;
@@ -817,6 +819,7 @@ body.thankyou .final h3 {
 }
 
 body.thankyou #final-image {
+  background-image: url(../img/result.jpg);
   background-size: 190%;
   margin: 4rem auto 2rem;
 }

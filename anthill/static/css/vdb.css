@@ -176,6 +176,7 @@ body.meetups .coach.full-width-container .container {
 
 body.meetups .titlebar .coach-photo-column {
 	width: 100%;
+	background-image: url(../img/yay.jpg);
 	background-size: cover;
 	background-position: center;
 	height: 200px;
