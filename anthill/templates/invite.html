@@ -1,8 +1,9 @@
 {% extends "layouts/base.html" %}
+{% load compress %}
+
 {% block body_class %}invite{% endblock %}
 
 {% block content %}
-
 <div class="full-width-container titlebar status">
   <div class="container">
 		<div class="row">
@@ -100,8 +101,9 @@
   </p>
 
 </div>
-<script type="text/javascript">
 
+{% compress js inline %}
+<script type="text/javascript">
   document.addEventListener("DOMContentLoaded", function(event) { 
 
     // Set up clipboard copy button
@@ -139,4 +141,5 @@
   }
  
 </script>
+{% endcompress %}
 {% endblock %}
