@@ -177,7 +177,9 @@ def meetupsByLatLng(request, latlong):
 
 @cache_page(60 * 60 * 24 * 14)
 def static_maps(request, city, street):
-    url = 'https://maps.googleapis.com/maps/api/staticmap?center={},{},Austria&markers=color:red%7C{},{},Austria&zoom=15&size=500x200&key={}'\
-        .format(street, city, street, city, GOOGLE_API_KEY)
+    base_url = 'https://maps.googleapis.com/maps/api/staticmap?center={},{},Austria&markers=color:red%7C{},{},Austria&zoom=15&size=500x200&key={}'
+    if street == '':
+        base_url = 'https://maps.googleapis.com/maps/api/staticmap?center={},{},Austria&zoom=12&size=500x200&key={}'
+    url = base_url.format(street, city, street, city, GOOGLE_API_KEY)
     response = requests.get(url)
     return HttpResponse(response.content, content_type='image/png')

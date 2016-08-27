@@ -66,7 +66,7 @@ urlpatterns = [
     # url(r'^api/interestingplaces/(?P<id>[\d\w-]+)/', api_views.interesting_places, name='interesting_places'),
     # url(r'^api/potentialmeetups/(?P<user_bot_id>[\d\w-]+)/', api_views.potential_meetups, name='potential_meetups'),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'api/staticmaps/(?P<city>[\d\w-]+)/(?P<street>[\d\w\W-]+)/', api_views.static_maps, name='static_maps')
+    url(r'api/staticmaps/(?P<city>[\d\w-]+)/(?P<street>[\d\w\W-]*)/', api_views.static_maps, name='static_maps')
 
     # url(regex=r'^emails/', view=site.urls),
 ]

@@ -76,7 +76,11 @@
     </div>
   </div>
 </div>
+{% if meetup %}
 <div class="full-width-container map" style="background-image:url(/api/staticmaps/{{ meetup.city|urlencode }}/{{ meetup.street|urlencode }}/)">
+{% else %}
+<div class="full-width-container map" style="background-image:url(/api/staticmaps/{{ city|urlencode }}//)">
+{% endif %}
   <div class="map-overlay"></div>
 </div>
 {% endblock %}
