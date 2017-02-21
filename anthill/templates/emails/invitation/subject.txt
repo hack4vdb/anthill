@@ -1,0 +1,1 @@
+Hast du am {{ meetup.datetime|date:"l" }}, den {{ meetup.datetime|date:"j" }}. Zeit?

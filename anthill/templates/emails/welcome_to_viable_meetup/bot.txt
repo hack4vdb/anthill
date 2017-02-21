@@ -1,0 +1,6 @@
+{{ recipient.first_name }} — Die Verteilaktion am {{ meetup.datetime|date:"j. F" }} um {{ meetup.datetime|date:"H" }} Uhr kommt fix zustande. Die Flyer wurden bereits an {{ meetup.owner.first_name }} per Post verschickt.
+
+Diese Unterstützer haben bis jetzt zugesagt: {{ participants_string }}.
+
+Bitte erscheine zuverlässig und pünktlich am vereinbarten Treffpunkt.
+Die anderen Unterstützer und das Team zählen auf Dich.

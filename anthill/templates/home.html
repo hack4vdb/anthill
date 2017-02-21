@@ -1,0 +1,279 @@
+{% extends "layouts/base.html" %}
+{% block body_class %}home{% endblock %}
+
+{% block title %}
+  {% if invited_to %}
+    Aktiv für Van der Bellen am {{ invited_to.datetime|date:"j.m." }} in {{ invited_to.city }}
+  {% else %}
+    Weil's um was geht.
+  {% endif %}
+{% endblock %}
+
+{% block og:description %}
+  {% if invited_to %}
+    {{ invited_by.first_name }} wird aktiv und lädt dich ein, dabei zu sein. Sag hier bescheid, dass du mitmachst - weil's um was geht!
+  {% else %}
+    Jetzt für Alexander Van der Bellen aktiv werden - weil's um was geht.
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+
+<h1 onclick="switchSide()">Weil's um was geht.</h1>
+
+<div id="big-photo">
+  <div id="bg1" class="photo" style="background-image:url(/static/img/bg.jpg)"></div>
+  <div id="bg2" class="photo darkside" style="background-image:url(/static/img/bg3.jpg)"></div>
+</div>
+
+<div id="first-viewport">
+  <div class="container">
+    <div class="row">
+      <div id="signup-bubble" class="one-half column offset-by-six">
+        {% if invited_by %}
+          {{ invited_by.first_name }} lädt dich ein:
+          <h2>Wenn wir alle mittun, wird Van der Bellen wieder gewinnen.</h2>
+          <p>
+            Bist du bereit, mit {{ invited_by.first_name }} aktiv zu werden?
+            <strong>Weil's um was geht.</strong>
+          </p>
+        {% else %}
+          <h2>Van der Bellen muss gewinnen.</h2>
+          <p>
+            Ich bin bereit, aktiv zu werden.
+            <strong>Weil's um was geht.</strong>
+          </p>
+        {% endif %}
+
+        <form action="" method="POST">
+          {% csrf_token %}
+          <div class="message">
+            {{ form.message }}
+          </div>
+          {{ form.invited_by }}
+          {{ form.invited_to }}
+          {{ form.email }}
+          {{ form.postcode }}
+          {{ form.email.errors }}
+          {{ form.postcode.errors }}
+          <button type="submit" class="event-button">
+            Zeige, was ich tun kann ➜
+          </button>
+          <p class="disclaimer">
+            <i class="fa fa-check" aria-hidden="true"></i>
+            Ich möchte Benachrichtigungen über Veranstaltungen in meiner Nähe erhalten, von denen ich mich jederzeit wieder abmelden kann.
+          </p>
+          <a href="#" id="returning" onclick="return loginForm()">Schon hier gewesen? Log dich ein</a>
+        </form>
+
+        <!--hr />
+
+        <div class="sm-button" onclick="FB.login(function(response) { statusChangeCallback(response); }, {scope: 'public_profile,email,user_location'});">
+          <i class="fa fa-facebook-official" aria-hidden="true"></i> Mit Facebook anmelden
+        </div-->
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="second-viewport" class="full-width-container explainer">
+  
+  <div class="container">
+    <div class="row">
+      <div class="one-half column text">
+        <h3>Gemeinsam sind wir unaufhaltbar.</h3>
+        <ul>
+          <li>
+            In deiner Nähe gibt es hunderte UnterstützerInnen von Alexander van der Bellen, die nicht still sitzen wollen.
+          </li>
+          <li>
+            Diese Website bringt euch zusammen und zeigt auf, was ihr tun könnt, um Van der Bellen zum Präsidenten zu machen.
+          </li>
+          <li>
+            Make plans. Make friends. Make a difference.
+          </li>
+        </ul>
+      </div>
+      <div class="one-half column icon">
+        <i class="fa fa-5x fa-users" aria-hidden="true"></i>
+      </div>
+    </div>
+    <div class="row">
+      <div class="one-half column icon">
+        <i class="fa fa-5x fa-map-signs" aria-hidden="true"></i>
+      </div>
+      <div class="one-half column text">
+        <h3>Du machst den Unterschied.</h3>
+        <ul>
+          <li>
+            Wir wissen: Es wird wieder knapp. Es geht um jede Stimme.
+          </li>
+          <li>
+            Dein Kreuzerl am Stimmzettel ist unverzichtbar. Sich darüber hinaus aktiv zu engagieren, kann die Wahl entscheiden.
+          </li>
+          <li>
+            Überlass es nicht dem Zufall. Steh auf!
+          </li>
+        </ul>        
+      </div>
+    </div>
+  </div>
+
+  <div class="full-width-container final-call">
+    <ul class="photowall" id="photo-bg">
+      <li><img src="/static/img/people/1.jpg" /></li>
+      <li><img src="/static/img/people/2.jpg" /></li>
+      <li><img src="/static/img/people/3.jpg" /></li>
+      <li><img src="/static/img/people/4.jpg" /></li>
+      <li><img src="/static/img/people/5.jpg" /></li>
+      <li><img src="/static/img/people/6.jpg" /></li>
+      <li><img src="/static/img/people/7.jpg" /></li>
+      <li><img src="/static/img/people/8.jpg" /></li>
+      <li><img src="/static/img/people/9.jpg" /></li>
+      <li><img src="/static/img/people/10.jpg" /></li>
+      <li><img src="/static/img/people/11.jpg" /></li>
+      <li><img src="/static/img/people/12.jpg" /></li>
+      <li><img src="/static/img/people/13.jpg" /></li>
+      <li><img src="/static/img/people/14.jpg" /></li>
+      <li><img src="/static/img/people/15.jpg" /></li>
+      <li><img src="/static/img/people/16.jpg" /></li>
+      <li><img src="/static/img/people/17.jpg" /></li>
+      <li><img src="/static/img/people/18.jpg" /></li>
+      <li><img src="/static/img/people/19.jpg" /></li>
+      <li><img src="/static/img/people/20.jpg" /></li>
+      <li><img src="/static/img/people/21.jpg" /></li>
+      <li><img src="/static/img/people/1.jpg" /></li>
+      <li><img src="/static/img/people/2.jpg" /></li>
+      <li><img src="/static/img/people/3.jpg" /></li>
+      <li><img src="/static/img/people/4.jpg" /></li>
+      <li><img src="/static/img/people/5.jpg" /></li>
+      <li><img src="/static/img/people/6.jpg" /></li>
+      <li><img src="/static/img/people/7.jpg" /></li>
+      <li><img src="/static/img/people/8.jpg" /></li>
+      <li><img src="/static/img/people/9.jpg" /></li>
+      <li><img src="/static/img/people/10.jpg" /></li>
+      <li><img src="/static/img/people/11.jpg" /></li>
+      <li><img src="/static/img/people/12.jpg" /></li>
+      <li><img src="/static/img/people/13.jpg" /></li>
+      <li><img src="/static/img/people/14.jpg" /></li>
+      <li><img src="/static/img/people/15.jpg" /></li>
+      <li><img src="/static/img/people/16.jpg" /></li>
+      <li><img src="/static/img/people/17.jpg" /></li>
+      <li><img src="/static/img/people/18.jpg" /></li>
+      <li><img src="/static/img/people/19.jpg" /></li>
+      <li><img src="/static/img/people/20.jpg" /></li>
+      <li><img src="/static/img/people/21.jpg" /></li>
+      <li><img src="/static/img/people/1.jpg" /></li>
+      <li><img src="/static/img/people/2.jpg" /></li>
+      <li><img src="/static/img/people/3.jpg" /></li>
+      <li><img src="/static/img/people/4.jpg" /></li>
+      <li><img src="/static/img/people/5.jpg" /></li>
+      <li><img src="/static/img/people/6.jpg" /></li>
+      <li><img src="/static/img/people/7.jpg" /></li>
+      <li><img src="/static/img/people/8.jpg" /></li>
+      <li><img src="/static/img/people/9.jpg" /></li>
+      <li><img src="/static/img/people/10.jpg" /></li>
+      <li><img src="/static/img/people/11.jpg" /></li>
+      <li><img src="/static/img/people/12.jpg" /></li>
+      <li><img src="/static/img/people/13.jpg" /></li>
+      <li><img src="/static/img/people/14.jpg" /></li>
+      <li><img src="/static/img/people/15.jpg" /></li>
+    </ul>
+    <div class="container">
+      <div class="row">
+        <div class="eight columns offset-by-two" id="signup-bubble-2">
+          <h2>Werde Teil Österreichs größter Wahlbewegung.</h2>
+          <p>Mach jetzt den ersten Schritt – ganz einfach und unverbindlich:</p>
+          <!--button class="sm-button" onclick="FB.login(function(response) { statusChangeCallback(response); }, {scope: 'public_profile,email,user_location'});">
+            <i class="fa fa-facebook-official" aria-hidden="true"></i> Mit Facebook anmelden
+          </button-->
+
+          <form action="" method="POST">
+            {% csrf_token %}
+            <div class="message">
+              {{ form.message.errors }}
+              {{ form.message }}
+            </div>
+            {{ form.email.errors }}
+            {{ form.email }}
+            {{ form.postcode.errors }}
+            {{ form.postcode }}
+            <button type="submit" class="event-button">
+              Weiter: Zeige, was ich tun kann ➜
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer><!-- todo unify with same template in base.html -->
+    <div class="container">
+      <div class="row">
+        <div class="one-half column">
+          <p>Diese Seite steht in keiner Verbindung zum Verein „Gemeinsam für Van der Bellen“ oder Alexander Van der Bellen. &nbsp; <a href="#">Impressum</a> &middot; <a href="#">Datenschutz</a></p>
+        </div>
+        <div class="one-half column">
+          <p class="title">Weil's um was geht.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+  function loginForm() {
+    var inputPostcode = document.getElementById('inputPostalcode');
+    var inputEmail = document.getElementById('inputEmail');
+    var toggleLink = document.getElementById('returning');
+
+    if (inputPostcode.offsetWidth > 0) {
+      inputPostcode.style.width = 0;
+      inputPostcode.style.padding = 0;
+      inputPostcode.style.border = 0;
+      setTimeout(function() {
+        inputEmail.style.width = '100%';
+      }, 100);
+      setTimeout(function() {
+        inputPostcode.value = '9999'; // fake entry to bypass serverside form validation
+      }, 400);
+      toggleLink.innerText = "Doch neu anmelden?";
+    } else {
+      inputEmail.style.width = '67%';
+      setTimeout(function() {
+        inputPostcode.style.width = '30%';
+        inputPostcode.style.padding = '6px 10px';
+        inputPostcode.style.border = '1px solid #D1D1D1';
+        inputPostcode.value = '';
+      }, 100);
+      toggleLink.innerText = "Schon hier gewesen? Log dich ein";
+    }
+    inputEmail.focus();
+    return false;
+  }
+
+  function switchSide(to) {
+    var p = document.getElementById('big-photo');
+    var h2 = document.getElementsByTagName('h2')[0];
+    var bg1 = document.getElementById('bg1');
+    var bg2 = document.getElementById('bg2');
+    console.log(document.location.hash);
+    if (to == 'darkside' || document.location.hash != '#darkside') {
+      p.style.backgroundColor = '#333399';
+      h2.innerText = 'Hofer darf nicht Präsident werden.';
+      document.location.hash = 'darkside';
+      bg2.style.opacity = .6;
+      bg1.style.opacity = 0;
+    } else {
+      p.style.backgroundColor = '#ffef99';
+      h2.innerText = 'Van der Bellen muss gewinnen.';
+      document.location.hash = '';
+      bg1.style.opacity = .6;
+      bg2.style.opacity = 0;
+    }
+  }
+  if (document.location.hash == '#darkside') switchSide('darkside'); // onload
+</script>
+
+{% endblock %}
