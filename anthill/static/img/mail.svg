@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="50px" height="50px" viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>Mail</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Event-Confirm" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Event-Confirm-Desktop" transform="translate(-789.000000, -1311.000000)">
+            <g id="event" transform="translate(656.000000, 1105.000000)">
+                <g id="Mail" transform="translate(133.000000, 206.000000)">
+                    <g id="Page-1">
+                        <g>
+                            <g id="Mail">
+                                <g id="Group">
+                                    <path d="M0.187150573,25 C0.187150573,11.1928806 11.2124508,0 24.8128494,0 C38.413248,0 49.4385483,11.1928806 49.4385483,25 C49.4385483,38.8071194 38.413248,50 24.8128494,50 C11.2124508,50 0.187150573,38.8071194 0.187150573,25 L0.187150573,25 Z" id="Shape" fill="#D3D3D3"></path>
+                                    <path d="M28.5566172,25.5320005 L38.7021858,32.9803553 L38.7021858,15.8333333 L28.5566172,25.5320005 L28.5566172,25.5320005 Z M10.8333333,15.8333333 L10.8333333,32.9803553 L20.9786843,25.5309576 L10.8333333,15.8333333 L10.8333333,15.8333333 Z M24.7677596,29.1537409 L22.3455099,26.8387681 L10.8333333,34.1666667 L38.7021858,34.1666667 L27.189737,26.8387681 L24.7677596,29.1537409 L24.7677596,29.1537409 Z M37.8661203,15.8333333 L11.6693989,15.8333333 L24.7677596,26.212442 L37.8661203,15.8333333 L37.8661203,15.8333333 Z" id="Shape" fill="#333333"></path>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

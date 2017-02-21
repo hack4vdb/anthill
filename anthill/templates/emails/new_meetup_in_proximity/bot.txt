@@ -1,0 +1,10 @@
+{% if recipient.first_name %}{{ recipient.first_name }} — {% endif %}
+Am {{ meetup.datetime|date:"j. F" }} um {{ meetup.datetime|date:"H" }} Uhr verteilt {{ meetup.owner.first_name }} 100 Flyer in {{ meetup.city }} um Alexander Van der Bellen so zu unterstützen.
+
+Sag jetzt zu und werdet gemeinsam aktiv.
+
+Treffpunkt:
+{{ meetup.datetime|date:"j. F" }}
+{{ meetup.datetime|time }} (pünktlich)
+{{ meetup.street }}
+{{ meetup.city }}

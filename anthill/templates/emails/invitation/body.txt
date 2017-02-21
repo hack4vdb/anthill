@@ -1,0 +1,14 @@
+Hallo,
+
+Ich treff mich am {{ meetup.datetime|date:"l" }}, den {{ meetup.datetime|date:"j" }}. um {{ meetup.datetime|date:"H" }} mit weiteren Unterstützerinnen und Unterstützern in {{ meetup.city }} ({{ meetup.street }}), um für Alexander Van der Bellen Präsenz zu zeigen und Leute für die Wahl am 2. Oktober zu motivieren – weil's um was geht!
+
+Willst du nicht dazustoßen? Gemeinsam macht's sicher mehr Spaß.
+
+Zusagen kannst du hier über die Unterstützerplattform WeilsUmWasGeht.at:
+{{ invite_meetup_url }}
+
+Wenn du da keine Zeit hast, aber so wie ich auch dafür sorgen willst, dass Van der Bellen die Wahl gewinnt, schau hier rein:
+{{ invite_site_url }}
+
+Alles Liebe,
+{{ user.first_name }}

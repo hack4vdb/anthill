@@ -1,0 +1,866 @@
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+/*header {
+  padding-bottom: 1rem;
+  border-bottom: 1px #eee solid;
+}*/
+a {
+  border-bottom: 1px solid #cef;
+  text-decoration: none;  
+}
+h1,
+footer .title {
+  font-size: 4rem;
+  font-family: 'Caveat Brush';
+  letter-spacing: -.05em;
+  white-space: nowrap;
+}
+footer .title {
+  font-size: 3rem;
+}
+.page h2:first-child {
+  margin-top: 1rem;
+  font-size: 3.8rem;
+}
+h3 {
+  line-height: 1.1em;
+}
+/*header h1 {
+  margin-top: 2rem;
+  margin-bottom: 0;
+  font-weight: bold;
+}
+header .bpw {
+  font-weight: bold;
+}*/
+header #logout {
+  float: right;
+  color: #bbb;
+  margin-top: 2rem;
+  border: 0;
+  text-decoration: underline
+}
+footer {
+  font-size: .8em;
+  line-height: 1.3em;
+  /*margin-top: 1rem;*/
+  border-top: 1px #eee solid;
+  color: #999;
+  padding-bottom: 1.5rem;
+}
+.page {
+  padding-bottom: 2rem;
+}
+footer a {
+  color: inherit;
+}
+footer p {
+  margin: 2rem 0;
+}
+footer .title {
+  float: right;
+  margin: 0 0 2rem;
+  color: #aaa;
+}
+@media (min-width: 550px) {
+  footer .title {
+    margin-top: 1.9rem;
+    margin-right: 5rem;
+    padding-top: .9rem;
+  }
+}
+
+#first-viewport {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+#second-viewport {
+  position: absolute;
+  top: 100%; left: 0;
+  width: 100%;
+}
+
+.full-width-container {
+  width: 100%;
+  max-width: 100%;
+  clear: both;
+}
+
+h3 {
+  font-weight: bold;
+}
+h3.top {
+  margin-top: 4rem;
+  font-size: 4rem;
+}
+img.h-icon {
+  padding: 35px; 
+  margin-bottom: 0px;
+}
+@media (min-width: 550px) {
+  h3.top{ margin-top: 8rem; }
+  img.h-icon{ 
+    padding: 20px;
+    margin-bottom: -30px; 
+  }
+}
+
+
+body.home {
+  display: block;
+  height:100%;
+}
+
+body.home h1 {
+  color: #fff;
+  position: absolute;
+  top: 0; left: 0;
+  padding-top: 2.5rem;
+  padding-left: 4rem;
+  width: 100%;
+  height: 20%;
+  background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,0));
+  z-index: 9;
+  text-shadow: rgba(0,0,0,.5) 0 0 .5em;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+body.home .final-call {
+  position: relative;
+  overflow: hidden;
+  margin-top: 5rem;
+  padding-bottom: 2rem;
+}
+body.home .final-call .container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+body.home #big-photo {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 1;
+  background-color: #ffef99;
+  overflow: hidden;
+  transition: background-color .5s;
+}
+body.home #big-photo .photo {
+  position: absolute;
+  top: 0; left: 0;
+  width: 120%;
+  height: 100%;
+  opacity: .6;
+  background-size: cover;
+  background-position: -120px;
+  transition: opacity .5s;
+}
+body.home #big-photo .photo.darkside {
+  width: 100%;
+  background-position: center;
+  opacity: 0;
+}
+
+
+body.home .photowall {
+  position: absolute;
+  top: 0; left: 0;
+  width: 120%; height: 100%;
+  /*width: 100%; height: 100%;*/
+  z-index: 1;
+  background: #fff;
+  overflow: hidden;
+  list-style:none;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+body.home .photowall li {
+  xdisplay: none;
+  float: left;
+  margin: 0; padding: 0;
+  width: 110px;
+  height: 110px;
+  overflow: hidden;
+}
+body.home .photowall img {
+  width: 200%;
+  /*height: 200%;*/
+  margin-left: -50%;
+  /*margin-top: -30%;*/
+  /*-webkit-filter: blur(6px);
+  transition: -webkit-filter 2s ease-in-out;*/
+}
+
+body.home h2 {
+  font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 0;
+  line-height: 1em;
+}
+body.home div.sm-button {
+  font-size: 2rem;
+  text-transform: uppercase;
+  padding-top: 1.3rem;
+  padding-bottom: 1.3rem;
+  border-radius: 1rem;
+  letter-spacing: .05rem;
+  cursor: pointer;
+  max-width: 100%;
+  box-size: border-box;
+}
+
+body.home .signin-input {
+  font-size: 1.2em;
+}
+body.home #inputPostalcode {
+  width: 30%;
+  float: left;
+}
+body.home #inputEmail {
+  width: 67%;
+  margin-right:3%;
+  float: left;
+}
+
+body.home input.signin-input::-webkit-outer-spin-button,
+body.home input.signin-input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+body.home .sm-button {
+  background-color: #3b5998;
+  width: 100%;
+  color: white;
+}
+body.home .sm-button:hover {
+  background-color: white;
+  color: #3b5998;
+}
+body.home .signin-input {
+  width: 100%;
+}
+body.home #signup-bubble {
+  margin-top: 14rem;
+  background: #fff;
+  border-radius: 5px;
+  padding: 2rem 2.1rem 1rem;
+  font-size: 2.2rem;
+  box-shadow: rgba(0,0,0,.6) 0 0 2em;
+  line-height: 1.4em;
+}
+
+body.home #signup-bubble h2 {
+  font-size: 3.2rem;
+}
+@media (min-width: 550px) {
+  body.home #signup-bubble {
+    padding: 2.5rem 3.5rem 1.6rem;
+  }
+  body.home #signup-bubble h2 {
+    font-size: 4rem;
+  }
+}
+
+body.home #signup-bubble form,
+body.home #signup-bubble-2 form {
+  margin-bottom: 0;
+}
+body.home #signup-bubble p {
+  font-size: 1.6rem;
+  margin: .8em 0 1em;
+  line-height: 1.45em;
+}
+
+body.home #signup-bubble #returning {
+  display: inline-block;
+  font-size: 1.5rem;
+  border-bottom: 1px solid #cef;
+  text-decoration: none;
+  opacity: .7;
+  padding: 0;
+  line-height: 1.4em;
+}
+
+body.home #signup-bubble input {
+  transition: all .3s;
+}
+
+body.home #signup-bubble-2 {
+  background: #fff;
+  border-radius: 5px;
+  font-size: 1.8rem;
+  padding: 2rem 2.1rem 1rem;
+  margin-top: 2rem;
+  line-height: 1.4em;
+}
+body.home #signup-bubble-2 h2 {
+  font-size: 2.9rem;
+  line-height: 1.1em;
+  margin-bottom: 1.2rem;
+}
+@media (min-width: 550px) {
+  body.home #signup-bubble-2 {
+    padding: 2.5rem 3.5rem 1.2rem;    
+  }
+  body.home #signup-bubble-2 h2 {
+    font-size: 3.8rem;
+  }
+}
+
+body.home #signup-bubble .disclaimer {
+  color: #999;
+  font-size: 1.4rem;
+}
+
+body.home hr {
+  margin-top: 0;
+  margin-bottom: 1.4em;
+}
+body.home #signup-bubble button[type="submit"],
+body.home #signup-bubble-2 button[type="submit"] {
+  font-size: .9em;
+  padding: 8px 15px;
+  height: auto;
+  background: #ffde00;
+  max-width: 100%;
+  white-space: normal;
+  line-height: 1.2em;
+  margin-bottom: 1rem;
+}
+@media (max-width: 375px) {
+  body.home #signup-bubble button[type="submit"] {
+    font-size: .83em;
+    width: 100%;
+  }
+}
+
+body.home p.loginDivider {
+  margin: .8rem 0;
+  font-size: .8em;
+  color: #777;
+}
+
+body.home header,
+body.home footer {
+  display: none;
+}
+body.home #second-viewport footer {
+  display: block;
+  background: #fff;
+  margin-top: 0;
+}
+
+body.home .explainer {
+  padding: 3rem 0 0 0;
+  background-color: #ffde00;
+}
+@media (min-width: 550px) {
+  body.home .explainer {
+    padding: 10rem 0 0 0;
+  }
+}
+body.home .explainer .icon {
+  text-align: center;
+}
+@media (max-width: 550px) {
+  body.home .explainer .icon {
+    float: right;
+    width: 15%;
+    margin: .8rem 0 0 0;
+    opacity: .2;
+    padding: 0;
+  }
+  body.home .explainer .text {
+    float: left;
+    width: 85%;
+    margin: 0;
+    left: 0;
+  }
+}
+@media (min-width: 550px) {
+  body.home .explainer .icon {
+    padding-top: 2em;
+  }
+}
+
+body.home .explainer .fa-5x {
+  font-size: 3em;
+}
+@media (min-width: 550px) {
+  body.home .explainer .fa-5x {
+    font-size: 10em;
+  }
+}
+body.meetups .coach.full-width-container {
+  margin-bottom: 3rem;
+  padding: 2rem 0;
+  overflow: hidden;
+}
+
+body.meetups .coach h3 {
+  font-family: 'Caveat Brush';
+  color: #f6cd00;
+  font-size: 3.8rem;
+  line-height:.8em;
+  margin: 0 0 .4em;
+}
+
+
+body.meetups .meetup_list h3 {
+  font-size: 3rem;
+}
+body.meetups .coach-photo {
+  width: 100%; height: 100px;
+  background-position: 0 -20px;
+  background-size: cover;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+}
+@media (min-width: 550px) {
+  body.meetups .coach-photo {
+    width: 85%;
+    border-radius: 50%;
+    height: 0;
+    padding-bottom: 85%;
+    margin-left:3%;
+    background-size: 170%;
+    background-position: top;
+  }
+}
+
+body.meetups .speech-bubble {
+  background: #fff;
+  padding: 0 2.5rem 1rem 3rem;
+  border-bottom-left-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+}
+@media (min-width: 550px) {
+  body.meetups .speech-bubble {
+    border-radius: 2rem;
+  }
+}
+body.meetups .coach .speech-bubble p {
+  margin-bottom: .6em;
+}
+
+body.meetups .speech-bubble h3 {
+  font-size: 3.5rem;
+  margin-top: 1.5rem;
+}
+@media (min-width: 550px) {
+  body.meetups .speech-bubble h3 {
+    margin-top: 0;
+    font-size: 3.8rem;
+  }
+}
+
+body.meetups .speech-bubble:before {
+  position: relative;
+  content: "";
+  height: 0;
+  font-size: 0;
+  line-height: 0;
+}
+@media (min-width: 550px) {
+  body.meetups .speech-bubble:before {
+    border-top: 1.5rem solid #ffde00;
+    border-bottom: 1.5rem solid #ffde00;
+    border-right: 1.5rem solid #fff;
+    left: -4.4rem;
+    top: 3rem;    
+  }
+}
+
+body.meetups li.meetup {
+  list-style: none;
+  margin-bottom: 3rem;
+}
+
+body.meetups .meetup_city {
+  font-size: 2rem;
+}
+
+body.meetups li.meetup p,
+body.meetups li.meetup h3 {
+  margin-bottom: 0;
+}
+.info i.fa, .attending i.fa {
+  width: 2.2rem;
+  text-align: center;
+}
+body.meetups .join {
+  line-height: 1.8em;
+  margin-top: 1.5rem;
+}
+body.meetups .join a.button {
+  margin-bottom: 1rem;
+}
+
+body.meetups .join .date-join {
+  clear:both;
+}
+@media (min-width: 550px) {
+  body.meetups .join .date-join {
+    float: left;
+    clear: none;
+    width: 30.33333%;
+    margin-left: 3%;
+  }
+}
+
+body.meetups .join .date {
+  float: left;
+  margin-left: 2rem;
+}
+
+body.meetups .join span {
+  display: block;
+  line-height: 1.1em;
+  margin: .5rem 0;
+}
+body.meetups .join span.date-nice {
+  margin-bottom: .3rem;
+}
+body.meetups .join span.date-full {
+  font-size: 2.4rem;
+  padding: 0;
+  margin-top: 0;
+}
+
+
+body.meetups li.meetup h3 {
+  font-size: 2.7rem;
+  margin: 0 0 .8rem;
+}
+body.meetups .button {
+  background-color: #ffde00;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: .8rem;
+  margin-right: 0;
+  margin-left: 5%;
+  white-space: normal;
+  line-height: 2.6em;
+  height: initial;
+  display: block;
+  width: 90%;
+  line-height: 1em;
+  padding: .7em .5em;
+}
+body.meetups .attending .button {
+  background-color: #fff;
+}
+@media (min-width: 550px) {
+  body.meetups .date-join .button {
+    padding-top:.3em;
+    padding-bottom:.3em;
+  }
+}
+
+body.meetups ul.meetup_list {
+  margin-bottom: 0;
+}
+body.meetups .meetup_list p {
+  margin: .3em 0;
+  line-height: 1.4em;
+}
+body.meetups .meetup_list .map {
+  height: 60px;
+  background-color: #eee;
+  background-position: 50% 43%;
+  background-size: cover;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+body.meetups .meetup_list .info {
+  padding: 1.5rem 1.5rem 0 1.5rem;
+}
+body.meetups .meetup_list .join .attending {
+  background: #cef;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  padding: 1rem 0 .1rem;
+}
+body.meetups .meetup_list .join .attending p {
+  padding: 0 1.5rem;
+}
+
+body.meetups ul.meetup_list li.placeholder {
+  list-style: none;
+}
+
+body.meetups li.meetup {
+  border: 1px solid #ddd;
+  border-radius: 1rem;
+  list-style: none;
+}
+body.meetups .meetup:hover {
+  background: #fafafa;
+  border-color: #bbb;
+}
+
+body.meetups .more {
+  display: block;
+  margin: 0 auto;
+  width: 16em;
+  max-width: 78%;
+  text-align: center;
+  border: 1px solid #bbb;
+  color: #888;
+  padding: 1.5rem 3rem;
+  border-radius: 4rem;
+}
+
+
+body.meetups .donate {
+  background-color: #eee; 
+  padding: 2rem 0;
+  text-align: center;
+}
+body.meetups .donate h4 {
+  margin-bottom: .2em;
+}
+body.meetups ul.amounts {
+  list-style: none;
+  width: 16em;
+  margin: 0 auto;
+}
+body.meetups ul.amounts li {
+  float: left;
+}
+body.meetups ul.amounts li a {
+  background: #ffde00;
+  padding: .5em 1em;
+  color: #000;
+  margin-right: .3em;
+  text-decoration: none;
+  font-size: 2rem;
+}
+body.meetups ul.amounts li a:hover {
+  background: #000;
+  color: #fff;
+}
+
+.titlebar .container > h3 {
+  margin: 1rem 0 .3rem;
+}
+h3 .fa {
+  margin-right: .8rem;
+}
+
+body.address .map {
+  height: 250px;
+  margin-top: 1rem;
+  background-size: cover;
+  background-position: center;
+  -moz-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+  -webkit-filter: grayscale(100%);
+  filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+}
+@media (max-width: 550px) {
+  body.address .map {
+    position: relative;
+    top: -215px;
+    z-index: 0;
+    margin-bottom: -215px;
+  }
+}
+
+body.address .map-overlay {
+  background-color: rgba(255, 255, 255, .7);
+  height: 250px;
+}
+body.address .illu {
+  text-align: center;
+  width: 40%
+}
+@media (max-width: 550px) {
+  body.address .illu {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+  }
+}
+
+body.address p.help {
+  margin: 0 0 1rem 0;
+  color: #888;
+  font-size: .9em;
+}
+body.address p.help label {
+  font-weight: normal;
+}
+body.address p.help label input[type=checkbox] {
+  float: left;
+  margin: 0 .5em 0 0;
+}
+
+
+.titlebar {
+  background-color: #ffde00;
+}
+
+body.invite .full-width-container,
+.titlebar {
+  margin-bottom: 3rem;
+  overflow: hidden;
+  padding: 3rem 0;
+}
+.titlebar .map-overlay h3 {
+  margin-top: 0;
+}
+body.invite .fa-flag {
+  text-shadow: 4px 3px 0 #ffde00,7px 6px 0 rgba(0,0,0,0.15);
+  margin-right: .5em;
+}
+
+.titlebar .info {
+  border-left: 2px dotted #000;
+  padding-left: 2rem;
+  margin-top: 3rem;
+}
+@media (min-width: 550px) {
+  .titlebar .info {
+    border-left: 2px dotted #000;
+    padding-left: 2rem;
+    margin-top: 2rem;
+  }
+}
+
+body.invite .status p {
+  margin: 0;
+}
+
+body.invite #share-buttons a {
+  font-size: 1.6rem;
+  background: #1EAEDB;
+  color: #fff;
+  display: inline-block;
+  padding: 0 3rem 0 1.5rem;
+  line-height: 4rem;
+  border-radius: .5rem;
+  vertical-align: middle;
+  width: 100%;
+  margin-bottom: .2rem;
+  box-sizing: border-box;
+}
+@media (min-width: 550px) {
+  body.invite #share-buttons a {
+    line-height: 5rem;
+    width: auto;
+  }
+}
+body.invite #share-buttons a .fa {
+  font-size: 3rem;
+  position: relative;
+  top: .5rem;
+  margin-right: 1rem;
+  width: 2.7rem;
+  text-align: center;
+}
+
+body.invite #invite-url {
+  width: 100%;
+}
+@media (min-width: 550px) {
+  body.invite #invite-url {
+    width: auto;
+  }
+}
+
+body.invite button.clipboard {
+  font-size: 1.5rem;
+  line-height: 1rem;
+}
+
+
+body.modal .final {
+  margin-bottom: 3rem;
+}
+body.thankyou .final {
+  text-align: center;
+}
+body.modal h3 {
+  text-align: center;
+  color: #fff;
+}
+body.modal p {
+  margin-bottom: 1rem;
+}
+body.thankyou .final h3 {
+  margin-bottom: .2em;
+}
+.biground {
+  margin: 0 auto;
+  width: 60%;
+  padding-bottom: 60%;
+  border-radius: 50%;
+  height: 0;
+  background-color: #fff;
+  background-position: center;
+}
+@media (min-width: 550px) {
+  .biground {
+    width: 70%;
+    padding-bottom: 70%;
+  }
+}
+
+body.thankyou #final-image {
+  background-size: 190%;
+  margin: 4rem auto 2rem;
+}
+
+body.login #final-image {
+  margin: 4rem auto 2rem;
+}
+
+#final-image {
+  text-align: center;
+}
+
+body.modal {
+  background: #ffde00;
+}
+
+body.modal header, body.modal footer {
+  display: none;
+}
+
+body.modal .pillbtn-container {
+  text-align: center;
+}
+
+body.modal .pillbtn {
+  text-align: center;
+  background: #fff;
+  padding: .7rem 1.8rem;
+  border-radius: 2rem;
+  text-decoration: none;
+  color: #000;
+}
+
+
+form .message {
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0.01;
+}
+
+form .errorlist {
+  font-size: 13px;
+  text-align: left;
+  list-style: none;
+  margin: 14px 0;
+}
